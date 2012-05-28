@@ -1,0 +1,2 @@
+syn keyword CTagsFunction pop_sort cmpintgp cmpstringp sort_inter quick_sort sort_string output main
+

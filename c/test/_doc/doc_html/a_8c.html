@@ -1,0 +1,483 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>ProjectName: a.c文件参考</title>
+<link href="ubisoft.css" rel="stylesheet" type="text/css">
+<a href="zenki2001cn@163.com">
+<img src="logo.gif" alt="abc" align="middle" border=0 >
+</a>
+</head><body bgcolor="#ffffff">
+<hr>
+<!-- 制作者 Doxygen 1.6.3 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>首页</span></a></li>
+      <li><a href="namespaces.html"><span>名字空间</span></a></li>
+      <li><a href="annotated.html"><span>数据结构</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>a.c文件参考</h1><code>#include &quot;<a class="el" href="a_8c_source.html">a.h</a>&quot;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
+<code>#include &lt;sys/time.h&gt;</code><br/>
+<code>#include &lt;unistd.h&gt;</code><br/>
+<code>#include &lt;time.h&gt;</code><br/>
+<code>#include &lt;pthread.h&gt;</code><br/>
+<code>#include &lt;sys/types.h&gt;</code><br/>
+<div class="dynheader">
+a.c包含/依赖关系图：</div>
+<div class="dynsection">
+<div class="center"><img src="a_8c__incl.png" border="0" usemap="#a_8c_map" alt=""/></div>
+</div>
+<div class="dynheader">
+此图展示直接或间接包含该文件的文件：</div>
+<div class="dynsection">
+<div class="center"><img src="a_8c__dep__incl.png" border="0" usemap="#a_8cdep_map" alt=""/></div>
+</div>
+
+<p><a href="a_8c_source.html">浏览该文件的源代码。</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>类型定义</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#a16bbeeb993f1d44d554024c69c3ddc9a">CALLBACK</a> )(char *str)</td></tr>
+<tr><td colspan="2"><h2>函数</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#a91b8895832736cba4347b0bfb6105e65">show2</a> (int i, int j, int p)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#a0a8834e39e02f846b7bea8181f60f141">show1</a> (int i, int j, int p)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#a06a9a78c851e8b17bdeacb8b8324ac79">print_time</a> (void *arg)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#a555c390a2b5f2f987d5a5daa075d5d4b">localtimes</a> (time_t time, long timezone, struct tm *tm_time)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#a30923f627502c13c454090d62689b852">localtime_h</a> (time_t time, struct tm *ret_time)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#afc3dfff3a2f4935b21e7df039870eff4">function1</a> (char *s1, char *accept)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#a0f0b6c4685f540a5f481ad3d534375e0">function2</a> (char *s1, char *accept)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#a118946adc0f965ea7d1a8a7c2b098028">function3</a> (char *s, char *delm)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#aae5304aebc62ba4924ded0d8058141b5">get_point</a> (<a class="el" href="a_8c.html#a16bbeeb993f1d44d554024c69c3ddc9a">CALLBACK</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#ac01624f13431a20b30c18a9c084247e7">callback</a> (char *str)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr><td colspan="2"><h2>变量</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#a3885893d5706305816fee26c9b14c36f">olds</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static int *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#a1e1546008fc7288153ac2dca1b2bcf55">ptr</a> = NULL</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a_8c.html#ad43c3812e6d13e0518d9f8b8f463ffcf">count</a> = 1</td></tr>
+</table>
+<hr/><h2>类型定义文档</h2>
+<a class="anchor" id="a16bbeeb993f1d44d554024c69c3ddc9a"></a><!-- doxytag: member="a.c::CALLBACK" ref="a16bbeeb993f1d44d554024c69c3ddc9a" args=")(char *str)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* <a class="el" href="a_8c.html#a16bbeeb993f1d44d554024c69c3ddc9a">CALLBACK</a>)(char *str)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00246">246</a>行定义。</p>
+
+</div>
+</div>
+<hr/><h2>函数文档</h2>
+<a class="anchor" id="ac01624f13431a20b30c18a9c084247e7"></a><!-- doxytag: member="a.c::callback" ref="ac01624f13431a20b30c18a9c084247e7" args="(char *str)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void callback </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>str</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00260">260</a>行定义。</p>
+
+<p>参考 <a class="el" href="a_8h_source.html#l00020">PDEBUG</a>.</p>
+
+<p>参考自 <a class="el" href="a_8c_source.html#l00265">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afc3dfff3a2f4935b21e7df039870eff4"></a><!-- doxytag: member="a.c::function1" ref="afc3dfff3a2f4935b21e7df039870eff4" args="(char *s1, char *accept)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int function1 </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>accept</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00180">180</a>行定义。</p>
+
+<p>参考 <a class="el" href="c_8py_source.html#l00020">c::a</a>及<a class="el" href="a_8c_source.html#l00245">count</a>.</p>
+
+<p>参考自 <a class="el" href="a_8c_source.html#l00224">function3()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0f0b6c4685f540a5f481ad3d534375e0"></a><!-- doxytag: member="a.c::function2" ref="a0f0b6c4685f540a5f481ad3d534375e0" args="(char *s1, char *accept)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int function2 </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>s1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>accept</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00197">197</a>行定义。</p>
+
+<p>参考 <a class="el" href="c_8py_source.html#l00020">c::a</a>及<a class="el" href="a_8c_source.html#l00245">count</a>.</p>
+
+<p>参考自 <a class="el" href="a_8c_source.html#l00224">function3()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a118946adc0f965ea7d1a8a7c2b098028"></a><!-- doxytag: member="a.c::function3" ref="a118946adc0f965ea7d1a8a7c2b098028" args="(char *s, char *delm)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* function3 </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>delm</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00224">224</a>行定义。</p>
+
+<p>参考 <a class="el" href="a_8c_source.html#l00180">function1()</a>、<a class="el" href="a_8c_source.html#l00197">function2()</a>及<a class="el" href="a_8c_source.html#l00003">olds</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aae5304aebc62ba4924ded0d8058141b5"></a><!-- doxytag: member="a.c::get_point" ref="aae5304aebc62ba4924ded0d8058141b5" args="(CALLBACK)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void get_point </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a_8c.html#a16bbeeb993f1d44d554024c69c3ddc9a">CALLBACK</a>&nbsp;</td>
+          <td class="paramname"> <em>cb</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00250">250</a>行定义。</p>
+
+<p>参考 <a class="el" href="a_8c_source.html#l00245">count</a>及<a class="el" href="a_8c_source.html#l00244">ptr</a>.</p>
+
+<p>参考自 <a class="el" href="a_8c_source.html#l00265">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a30923f627502c13c454090d62689b852"></a><!-- doxytag: member="a.c::localtime_h" ref="a30923f627502c13c454090d62689b852" args="(time_t time, struct tm *ret_time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void localtime_h </td>
+          <td>(</td>
+          <td class="paramtype">time_t&nbsp;</td>
+          <td class="paramname"> <em>time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct tm *&nbsp;</td>
+          <td class="paramname"> <em>ret_time</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00105">105</a>行定义。</p>
+
+<p>参考自 <a class="el" href="a_8c_source.html#l00015">print_time()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a555c390a2b5f2f987d5a5daa075d5d4b"></a><!-- doxytag: member="a.c::localtimes" ref="a555c390a2b5f2f987d5a5daa075d5d4b" args="(time_t time, long timezone, struct tm *tm_time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void localtimes </td>
+          <td>(</td>
+          <td class="paramtype">time_t&nbsp;</td>
+          <td class="paramname"> <em>time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&nbsp;</td>
+          <td class="paramname"> <em>timezone</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct tm *&nbsp;</td>
+          <td class="paramname"> <em>tm_time</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00040">40</a>行定义。</p>
+
+</div>
+</div>
+<a class="anchor" id="a3c04138a5bfe5d72780bb7e82a18e627"></a><!-- doxytag: member="a.c::main" ref="a3c04138a5bfe5d72780bb7e82a18e627" args="(int argc, char **argv)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&nbsp;</td>
+          <td class="paramname"> <em>argv</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00265">265</a>行定义。</p>
+
+<p>参考 <a class="el" href="a_8c_source.html#l00260">callback()</a>、<a class="el" href="a_8c_source.html#l00245">count</a>、<a class="el" href="a_8c_source.html#l00250">get_point()</a>及<a class="el" href="a_8c_source.html#l00244">ptr</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a06a9a78c851e8b17bdeacb8b8324ac79"></a><!-- doxytag: member="a.c::print_time" ref="a06a9a78c851e8b17bdeacb8b8324ac79" args="(void *arg)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* print_time </td>
+          <td>(</td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>arg</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00015">15</a>行定义。</p>
+
+<p>参考 <a class="el" href="a_8c_source.html#l00105">localtime_h()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0a8834e39e02f846b7bea8181f60f141"></a><!-- doxytag: member="a.c::show1" ref="a0a8834e39e02f846b7bea8181f60f141" args="(int i, int j, int p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void show1 </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>p</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00010">10</a>行定义。</p>
+
+<p>参考 <a class="el" href="a_8c_source.html#l00005">show2()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a91b8895832736cba4347b0bfb6105e65"></a><!-- doxytag: member="a.c::show2" ref="a91b8895832736cba4347b0bfb6105e65" args="(int i, int j, int p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void show2 </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>p</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00005">5</a>行定义。</p>
+
+<p>参考 <a class="el" href="a_8c_source.html#l00005">show2()</a>.</p>
+
+<p>参考自 <a class="el" href="a_8c_source.html#l00010">show1()</a>及<a class="el" href="a_8c_source.html#l00005">show2()</a>.</p>
+
+</div>
+</div>
+<hr/><h2>变量文档</h2>
+<a class="anchor" id="ad43c3812e6d13e0518d9f8b8f463ffcf"></a><!-- doxytag: member="a.c::count" ref="ad43c3812e6d13e0518d9f8b8f463ffcf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="a_8c.html#ad43c3812e6d13e0518d9f8b8f463ffcf">count</a> = 1<code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00245">245</a>行定义。</p>
+
+<p>参考自 <a class="el" href="a_8c_source.html#l00180">function1()</a>、<a class="el" href="a_8c_source.html#l00197">function2()</a>、<a class="el" href="a_8c_source.html#l00250">get_point()</a>及<a class="el" href="a_8c_source.html#l00265">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3885893d5706305816fee26c9b14c36f"></a><!-- doxytag: member="a.c::olds" ref="a3885893d5706305816fee26c9b14c36f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* <a class="el" href="a_8c.html#a3885893d5706305816fee26c9b14c36f">olds</a><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00003">3</a>行定义。</p>
+
+<p>参考自 <a class="el" href="a_8c_source.html#l00224">function3()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1e1546008fc7288153ac2dca1b2bcf55"></a><!-- doxytag: member="a.c::ptr" ref="a1e1546008fc7288153ac2dca1b2bcf55" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int* <a class="el" href="a_8c.html#a1e1546008fc7288153ac2dca1b2bcf55">ptr</a> = NULL<code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>在文件<a class="el" href="a_8c_source.html">a.c</a>第<a class="el" href="a_8c_source.html#l00244">244</a>行定义。</p>
+
+<p>参考自 <a class="el" href="a_8c_source.html#l00250">get_point()</a>及<a class="el" href="a_8c_source.html#l00265">main()</a>.</p>
+
+</div>
+</div>
+</div>
+<hr><address>
+© Copyright 2010 Zenki. All Rights Reserved.
+</address>
+</body>
+</html>

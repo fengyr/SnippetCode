@@ -1,0 +1,1 @@
+cmd_/home/zenki/study/kernel/char_dev/simple_char.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-2.6.35-22-generic/scripts/module-common.lds --build-id -o /home/zenki/study/kernel/char_dev/simple_char.ko /home/zenki/study/kernel/char_dev/simple_char.o /home/zenki/study/kernel/char_dev/simple_char.mod.o

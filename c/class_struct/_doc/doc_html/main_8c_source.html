@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>ProjectName: main.c源文件</title>
+<link href="ubisoft.css" rel="stylesheet" type="text/css">
+<a href="zenki2001cn@163.com">
+<img src="logo.gif" alt="abc" align="middle" border=0 >
+</a>
+</head><body bgcolor="#ffffff">
+<hr>
+<!-- 制作者 Doxygen 1.6.3 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>数据结构</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<h1>main.c</h1><a href="main_8c.html">浏览该文件的文档。</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00013"></a>00013 <span class="preprocessor">#include &quot;<a class="code" href="main_8h.html">main.h</a>&quot;</span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &quot;<a class="code" href="class_8h.html">class.h</a>&quot;</span>
+<a name="l00015"></a>00015 
+<a name="l00016"></a><a class="code" href="main_8c.html#a21670f25491725d712433eba21657496">00016</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="main_8c.html#a21670f25491725d712433eba21657496" title="File main.c.">initialize</a>(MAIN *<span class="keyword">this</span>)
+<a name="l00017"></a>00017 {
+<a name="l00018"></a>00018     <a class="code" href="class_8h.html#a138e8d51fe55f53bb2390cd9695e1c2e" title="在使用之前，对包进行初始化">demo_init</a>(&amp;this-&gt;<a class="code" href="struct___d_e_m_o.html#a5fea695f547cc4171ed8511618c68e07" title="包的元素和方法">Attr</a>.demo1, 7, 28, <span class="stringliteral">&quot;zenki&quot;</span>);
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020     <a class="code" href="class_8h.html#a138e8d51fe55f53bb2390cd9695e1c2e" title="在使用之前，对包进行初始化">demo_init</a>(&amp;this-&gt;<a class="code" href="struct___d_e_m_o.html#a5fea695f547cc4171ed8511618c68e07" title="包的元素和方法">Attr</a>.demo2, 8, 22, <span class="stringliteral">&quot;jacky&quot;</span>);
+<a name="l00021"></a>00021 }
+<a name="l00022"></a>00022 
+<a name="l00023"></a><a class="code" href="main_8c.html#a406fea16c773e6aa3d80a8b2bb9cfc15">00023</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="main_8c.html#a406fea16c773e6aa3d80a8b2bb9cfc15">destroy</a>(MAIN *<span class="keyword">this</span>)
+<a name="l00024"></a>00024 {
+<a name="l00025"></a>00025     <a class="code" href="class_8h.html#a83d62c18ac594d48db9aff32e15e45d4" title="在使用后，销毁包">demo_free</a>(&amp;this-&gt;<a class="code" href="struct___d_e_m_o.html#a5fea695f547cc4171ed8511618c68e07" title="包的元素和方法">Attr</a>.demo1);
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027     <a class="code" href="class_8h.html#a83d62c18ac594d48db9aff32e15e45d4" title="在使用后，销毁包">demo_free</a>(&amp;this-&gt;<a class="code" href="struct___d_e_m_o.html#a5fea695f547cc4171ed8511618c68e07" title="包的元素和方法">Attr</a>.demo2);
+<a name="l00028"></a>00028 }
+<a name="l00029"></a>00029 
+<a name="l00030"></a><a class="code" href="main_8c.html#a6fdd7d560e3cfc89788dddee86a0f827">00030</a> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="main_8c.html#a6fdd7d560e3cfc89788dddee86a0f827">Main</a>(MAIN *<span class="keyword">this</span>, <span class="keywordtype">int</span> argc, <span class="keyword">const</span> <span class="keywordtype">char</span> *argv[])
+<a name="l00031"></a>00031 {
+<a name="l00032"></a>00032     this-&gt;<a class="code" href="struct___d_e_m_o.html#a5fea695f547cc4171ed8511618c68e07" title="包的元素和方法">Attr</a>.demo1.Iface.display(&amp;this-&gt;<a class="code" href="struct___d_e_m_o.html#a5fea695f547cc4171ed8511618c68e07" title="包的元素和方法">Attr</a>.demo1);
+<a name="l00033"></a>00033     this-&gt;<a class="code" href="struct___d_e_m_o.html#a5fea695f547cc4171ed8511618c68e07" title="包的元素和方法">Attr</a>.demo1.number += 100;
+<a name="l00034"></a>00034     <a class="code" href="debug_8h.html#a5a9cc968ee7262fddda93f73341beedb" title="File debug.h.">PDEBUG</a>(<span class="stringliteral">&quot;number: %d\n&quot;</span>, this-&gt;<a class="code" href="struct___d_e_m_o.html#a5fea695f547cc4171ed8511618c68e07" title="包的元素和方法">Attr</a>.demo1.number);
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036     this-&gt;<a class="code" href="struct___d_e_m_o.html#a5fea695f547cc4171ed8511618c68e07" title="包的元素和方法">Attr</a>.demo2.Iface.display(&amp;this-&gt;<a class="code" href="struct___d_e_m_o.html#a5fea695f547cc4171ed8511618c68e07" title="包的元素和方法">Attr</a>.demo2);
+<a name="l00037"></a>00037     this-&gt;<a class="code" href="struct___d_e_m_o.html#a5fea695f547cc4171ed8511618c68e07" title="包的元素和方法">Attr</a>.demo2.number += 101;
+<a name="l00038"></a>00038     <a class="code" href="debug_8h.html#a5a9cc968ee7262fddda93f73341beedb" title="File debug.h.">PDEBUG</a>(<span class="stringliteral">&quot;number: %d\n&quot;</span>, this-&gt;<a class="code" href="struct___d_e_m_o.html#a5fea695f547cc4171ed8511618c68e07" title="包的元素和方法">Attr</a>.demo2.number);
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040     <span class="keywordflow">return</span> 0;
+<a name="l00041"></a>00041 }
+<a name="l00042"></a>00042 
+<a name="l00043"></a><a class="code" href="main_8c.html#a65c8847ba8761db022e06fc1a0910bfc">00043</a> <span class="keywordtype">void</span> <a class="code" href="main_8h.html#a65c8847ba8761db022e06fc1a0910bfc">main_init</a>(MAIN *<span class="keyword">this</span>)
+<a name="l00044"></a>00044 {
+<a name="l00045"></a>00045     this-&gt;<a class="code" href="main_8c.html#a21670f25491725d712433eba21657496" title="File main.c.">initialize</a> = <a class="code" href="main_8c.html#a21670f25491725d712433eba21657496" title="File main.c.">initialize</a>;
+<a name="l00046"></a>00046     this-&gt;<a class="code" href="main_8c.html#a406fea16c773e6aa3d80a8b2bb9cfc15">destroy</a> = <a class="code" href="main_8c.html#a406fea16c773e6aa3d80a8b2bb9cfc15">destroy</a>;
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048     this-&gt;<a class="code" href="struct___d_e_m_o.html#a1167f3994519f571cacd3c25dd662b40">Iface</a>.main = <a class="code" href="main_8c.html#a6fdd7d560e3cfc89788dddee86a0f827">Main</a>;
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050     this-&gt;<a class="code" href="main_8c.html#a21670f25491725d712433eba21657496" title="File main.c.">initialize</a>(<span class="keyword">this</span>);
+<a name="l00051"></a>00051 }
+<a name="l00052"></a>00052 
+<a name="l00053"></a><a class="code" href="main_8c.html#a254ac58ec916f1c798ea9faf577ec9c0">00053</a> <span class="keywordtype">void</span> <a class="code" href="main_8h.html#a254ac58ec916f1c798ea9faf577ec9c0">main_free</a>(MAIN *<span class="keyword">this</span>)
+<a name="l00054"></a>00054 {
+<a name="l00055"></a>00055     this-&gt;<a class="code" href="main_8c.html#a406fea16c773e6aa3d80a8b2bb9cfc15">destroy</a>(<span class="keyword">this</span>);
+<a name="l00056"></a>00056     <a class="code" href="debug_8h.html#a5a9cc968ee7262fddda93f73341beedb" title="File debug.h.">PDEBUG</a>(<span class="stringliteral">&quot;main free\n&quot;</span>);    
+<a name="l00057"></a>00057 }
+<a name="l00058"></a>00058 
+<a name="l00059"></a><a class="code" href="main_8c.html#ac0f2228420376f4db7e1274f2b41667c">00059</a> <span class="keywordtype">int</span> <a class="code" href="main_8c.html#ac0f2228420376f4db7e1274f2b41667c">main</a>(<span class="keywordtype">int</span> argc, <span class="keyword">const</span> <span class="keywordtype">char</span> *argv[])
+<a name="l00060"></a>00060 {
+<a name="l00061"></a>00061     MAIN <a class="code" href="main_8c.html#a6fdd7d560e3cfc89788dddee86a0f827">Main</a>;
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063     <a class="code" href="main_8h.html#a65c8847ba8761db022e06fc1a0910bfc">main_init</a>(&amp;Main);
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065     Main.Iface.main(&amp;Main, argc, argv);
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067     <a class="code" href="main_8h.html#a254ac58ec916f1c798ea9faf577ec9c0">main_free</a>(&amp;Main);
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069     <span class="keywordflow">return</span> 0;
+<a name="l00070"></a>00070 }
+</pre></div></div>
+<hr><address>
+© Copyright 2010 Zenki. All Rights Reserved.
+</address>
+</body>
+</html>

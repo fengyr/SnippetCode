@@ -1,0 +1,20 @@
+#logout {
+	text-align:right; background:rgb(0, 100, 160); color:rgb(255, 255, 255);
+	font-weight:bold;
+}
+
+#login {
+	height:100%; margin:auto; background:rgb(223, 223, 255);
+}
+
+#log_form {
+	text-align:center; margin-top:1px;
+}
+
+.top {
+	margin-top:30%;
+}
+
+.bottom {
+	margin-bottom:30%;
+}

@@ -1,0 +1,16 @@
+file filter = c,C,c++,cc,cp,cpp,cxx,h,H,h++,hh,hp,hpp,hxx,inl,ipp,cs,java,hlsl,vsh,psh,fx,fxh,cg,shd,glsl,py,pyw,pyx,pxd,vim,uc,m,wiki,ini,cfg,mak,mk,Makefile,makefile,sh,SH,bsh,bash,ksh,zsh,bat,log,err,exe,qrc,pro,pri,
+dir filter = 
+
+-[F]class_struct {
+ |-[F]include {
+ | |-[h]class.h
+ | |-[h]debug.h
+ | |-[h]main.h }
+ |
+ |-[F]src {
+ | |-[c]class.c
+ | |-[c]main.c }
+ |
+ |-[s]quick_gen_project_entry_autogen.sh }
+
+

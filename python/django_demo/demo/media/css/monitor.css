@@ -1,0 +1,47 @@
+A:visited {color:rgb(80, 200, 110); text-decoration:none;}
+A:hover {color:rgb(80, 200, 110); text-decoration:none;}
+A:link {color:rgb(80, 200, 110); text-decoration:none;}
+img {border:0px}
+
+#left {
+	width:29%; height:100%; float:left; margin-right:3px; margin-top:1px; 
+	background:rgb(223, 223, 255);
+}
+
+#right {
+	width:70%; height:100%; float:right; margin-top:3px; margin-right:1px;
+	background:rgb(255, 255, 255);
+}
+
+#logout {
+	text-align:right; background:rgb(0, 100, 160); color:rgb(255, 255, 255);
+	font-weight:bold;
+}
+
+#activex {
+	text-align:center; margin-top:40px;
+}
+
+#button {
+	width:100%; margin-top:20px;
+}
+
+#label_top {
+	margin-top:40px;
+}
+
+#label {
+	background:url("/media/images/dbg.gif") repeat-x; color:rgb(255, 255, 255);
+	font-weight:bold;
+}
+
+.but1 {
+	margin-left:15%; width:56px; height:80px; float:left;
+}
+.but2 {
+	margin-left:10px; width:56px; height:80px; float:left;
+}
+
+.clear {
+	clear:both;
+}

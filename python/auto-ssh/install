@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cp host.ssh /etc/.host.ssh
+
+sleep 10s
+
+apt-get install python2.6 python-pexpect 
+
+sleep 10s
+
+cp myssh /usr/bin/

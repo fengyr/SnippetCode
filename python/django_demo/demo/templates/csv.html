@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for row in data %}"{{ row.0|addslashes}}", "{{ row.1|addslashes}}",
+{% endfor %}
+{% for n in num %} {{ n }},
+{% endfor %}
+
+{% endblock %}

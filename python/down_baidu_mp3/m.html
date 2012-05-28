@@ -1,0 +1,738 @@
+<!--STATUS OK-->
+<HTML><HEAD><TITLE>MP3试听      </TITLE>
+
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+
+<style>
+
+*{margin:0;padding:0}
+
+body{background:#D7DFE6;background-image:url(http://imgs.zhangmen.baidu.com/imgs/bdbg.gif);background-repeat:repeat-x;margin:0;font-size:12px;font-family:SimSun}
+
+img{border:0}
+
+a{color:#00c}
+
+
+
+.prelrc{font-size:12px;margin-left:12px;color:#000000}
+
+.nowlrc{font-weight:bold;font-size:12px;margin-left:12px;color:#ff5a00}
+
+
+
+#plus_img_div, #next_img_div, #pre_img_div, .aw  {background-image: url(http://imgs.zhangmen.baidu.com/imgs/mb.gif?v=1.00);background-repeat:no-repeat}
+
+#Head_div {height:60px;width:400px}
+
+#Usr_div {float:right;margin:30px 20px 10px;width:350px}
+
+#Usr_div {margin:30px 0 10px 20px;width:190px}
+
+#Logo_div {margin:13px 0 10px 3px;width:145px;float:left;}
+
+#Lrc_div {position:absolute;width:350px;height:515px;float:left;margin-top:-60px;margin-left:8px;}
+
+#url_div {margin:30px 10px 22px 5px;width:350px}
+
+#song_div {margin:5px 10px 5px 5px}
+
+#S_div {background:#E0E6F7;border:1px solid #A0BACD;width:350px;margin-bottom:10px}
+
+#SongNum_div {clear:both}
+
+
+
+#next_div, #next_img_div, #pre_div, #pre_img_div {display:none;float:right;}
+
+#plus_img_div {float:left;width:16px;height:16px;background-position:-80px -304px;margin:9px 4px 0px 10px}
+
+#plus_div {float:left;padding:10px 0px;color:blue;text-decoration:underline}
+
+#next_div {padding:10px 0px;text-decoration:underline;color:blue;margin-right:15px}
+
+#next_img_div {width:11px;height:12px;background-position:-51px -304px;margin:10px 3px 0px 16px}
+
+#pre_div {padding:10px 0px;text-decoration:underline;color:blue;}
+
+#pre_img_div {width:11px;height:12px;background-position:-40px -304px;margin:10px 3px 0px 0px}
+
+
+
+#InP_div {margin:2px;clear:both;line-height:20px}
+
+#aw_div {float:left;height:460px;width:10px;}
+
+.aw {height:321px;width:10px;cursor:pointer;filter:fliph;background-position:0px 0px;margin-top:25px;position:absolute;}
+
+.small_aw {height:141px;background-position:-10px 0px;margin-top:0px}
+
+#rightIfrm_div {float:left;width:420px;margin-top:-60px}
+
+#MngIfrm_div {}
+
+#leftAd_div {width:350px;float:left;margin-left:10px;margin-top:420px;}
+#leftAd2_div {width:360px;height:430px;float:left;margin-left:10px;}
+
+#bt{float:left;}
+
+#ad3 {float:right;}
+
+
+
+#leftAd_div iframe, #lrctellall_div iframe{width:360px;height:300px}
+#leftAd2_div iframe{width:360px;height:430px}
+
+#ad1 iframe{width:190px;height:20px}
+
+#ad3 iframe{width:180px;height:20px}
+
+</style>
+
+</HEAD>
+
+<BODY onunload="bclosewin();">
+
+<div id="Head_div">
+
+	<div id="Logo_div">&nbsp;</div>
+
+	<div id="Usr_div">&nbsp;</div>
+
+</div>
+
+<div id="aw_div">
+
+    <div id="arrowright_div" class="aw" title="展开音乐盒" onclick="reWin()">
+
+</div>
+
+</div>
+
+<div id="rightIfrm_div" style="display:none">
+
+<div id="MngIfrm_div" style="display:none">
+
+	<iframe id="try_iframe" name="try_iframe" src="" align="top" width="100%" height="512px" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
+
+</div>
+
+<div style="display:none" id="leftAd_div"></div>
+<div style="display:none" id="leftAd2_div"></div>
+
+</div>
+
+<script language="javascript" type="text/javascript">
+
+function $d(s) {
+
+	return document.getElementById(s);
+
+}
+
+
+
+var txtEp="展开音乐盒";
+
+var txtTb="隐藏音乐盒";
+
+var isLoadIf = false; 
+
+var try_iframe = window.frames[0];
+
+var search_location = window.location.href;
+
+var ext_mb = false;
+
+var is_ext_mb = false;
+
+var woffset = 0;
+
+
+
+if(search_location.indexOf("gate=1") < 0) ext_mb = true;
+
+
+
+function reWin() {
+
+	var mngIfrm_div = $d("MngIfrm_div");
+
+	var rightIfrm_div = $d("rightIfrm_div");
+
+	var arrowright_div = $d("arrowright_div");
+
+	arrowright_div.className = "aw";
+
+	if(mngIfrm_div.style.display!="none") {
+
+		mngIfrm_div.style.display="none";
+
+		arrowright_div.style.filter="fliph";
+
+		arrowright_div.title=txtEp;
+
+		is_ext_mb = false;
+
+		if(hasAds) {
+
+			if(hasLrc || isAllyesExt) {
+
+				arrowright_div.style.marginLeft="420px";
+
+				rightIfrm_div.style.display="inline";
+
+			}	else {
+
+				rightIfrm_div.style.display="none";
+
+				arrowright_div.style.marginLeft="0px";
+
+				showAdRight(arrBaiduAds[18]);
+
+				$d("Lrc_div").style.marginLeft = "8";
+
+				window.moveTo((screen.width - 399) / 2, 0);
+
+				window.resizeTo(399 + woffset, 600);
+
+			}
+
+		}	else {
+
+			rightIfrm_div.style.display="none";
+
+			$d("Lrc_div").style.marginLeft = "8";
+
+			window.moveTo((screen.width - 399) / 2, 0);
+
+			window.resizeTo(399 + woffset, 600);
+
+		}
+
+	}	else {
+
+		$d("Lrc_div").style.marginLeft = "3";
+
+		
+
+		if(screen.width > 800) window.moveTo(100, 0);	else window.moveTo(0, 0);
+
+		window.resizeTo(810 + woffset, 600);
+
+		
+
+		mngIfrm_div.style.display="inline";
+
+		rightIfrm_div.style.display="inline";
+
+		if(!isLoadIf) {
+
+			search_location = search_location.replace("baidumt", "baidubox");
+
+			$d("try_iframe").src= search_location;
+
+			try_iframe = window.frames[0];
+
+			isLoadIf = true;
+
+		}
+
+		$d("Blrc").style.display          = "inline";
+
+		$d("LrcShower_div").style.display = "inline";
+
+		$d("lrctellall_div").style.display = "none";
+
+		arrowright_div.style.filter="normal";
+
+		arrowright_div.style.marginLeft="0px";
+
+		arrowright_div.title=txtTb;
+
+		is_ext_mb = true;
+
+	}
+
+	if(hasAds){
+		$d('try_iframe').style.height = "225px";
+	}else{
+		$d('try_iframe').style.height = "520px";
+	}
+
+	if (is_ext_mb) {
+	
+		$d("leftAd_div").style.marginTop = "5px";
+	}
+	else {
+		if (isAllyesExt) {
+			$d("leftAd_div").style.display = "none";
+			$d("leftAd2_div").style.display = "";
+			$d("leftAd2_div").style.height = "430px";
+			$d("leftAd2_div").style.marginTop = "100px";
+			
+			return true;
+		}
+		else {
+			$d("leftAd_div").style.marginTop = "230px";
+		}
+	}
+	
+	$d("leftAd_div").style.display = "";
+	$d("leftAd2_div").style.display = "none";
+
+}
+
+function cclsDiv() {
+
+	if($d("MngIfrm_div").style.display!="none") {
+
+		try_iframe.qaz.value='none'
+
+	}
+
+}
+
+function ggetClk() {
+
+	try{document.attachEvent("onmouseup",cclsDiv)}
+
+	catch (e){document.addEventListener("mouseup",cclsDiv, false)}
+
+}
+
+</script>
+
+<div id="Lrc_div">
+
+	<div id="url_div">歌曲出处：<a id="song_url" href="" target="_blank" onclick="sd();sampling.clkURL();"></a></div>
+
+<div id="song" style="display:none">另一种平静</div><div id="singer" style="display:none">陈绮贞</div>
+
+<div id="song_div">歌曲试听：<b>另一种平静   ... </b></div>
+
+<div id="S_div">
+
+<div id="player_div">
+
+
+<div id="mpdiv">
+
+
+</div>
+
+<div id="rpdiv">
+
+</div>
+
+<script type="text/javascript">
+function G(A){return document.getElementById(A)}var song_1234242528;function sd(){var A=new Image();A.src="http://box.zhangmen.baidu.com/wd/mt-url.jpg?url="+song_1234242528+"&r="+Math.random()}function disUrl(){var D=1234242528,J=0;var F="t551://EDL.DHC.EDJ.HL:DDD/1CLCECJ1/ECCI/EG/IKH/L.iym",H="t551://EDL.DHC.EDJ.HL:DDD/...CCI/EG/IKH/L.iym";var M="",C="";var I=[],E=[];var B=G("song_url");function L(Q,N,O){for(var P=Q;P<=N;P++){I[P]=P+O;E[P+O]=P}}L(0,9,48);L(10,35,55);L(36,61,61);var K=D%26;K=K?K:1;function A(O){var N=O.length;var Q="";for(var P=0;P<N;P++){var R=O.charAt(P);if(/[A-Za-z0-9]/.test(R)){var S=E[O.charCodeAt(P)]-K;if(S<0){S+=62}R=String.fromCharCode(I[S])}Q+=R}return Q}M=A(F);C=(F==H)?M:A(H);B.href=song_1234242528=M;B.innerHTML=C}disUrl();
+
+
+var player_str = '<object id="MediaPlayer1" width="350" height="64" classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=6,4,7,1112" align="baseline" border="0" standby="Loading Microsoft Windows Media Player components..." type="application/x-oleobject"><param name="URL" value="' + song_1234242528 + '"><param name="autoStart" value="true"><param name="invokeURLs" value="false"><param name="playCount" value="100"><param name="defaultFrame" value="datawindow"><embed src="' + song_1234242528 + '" align="baseline" border="0" width="350" height="68" type="application/x-mplayer2"pluginspage="" name="MediaPlayer1" showcontrols="1" showpositioncontrols="0" showaudiocontrols="1" showtracker="1" showdisplay="0" showstatusbar="1" autosize="0" showgotobar="0" showcaptioning="0" autostart="1" autorewind="0" animationatstart="0" transparentatstart="0" allowscan="1" enablecontextmenu="1" clicktoplay="0" defaultframe="datawindow" invokeurls="0"></embed></object>';
+G("mpdiv").innerHTML = player_str;
+
+
+
+
+
+
+
+
+
+</script>
+
+</div>
+
+	<div id="SongNum_div">
+
+		<div id="plus_img_div"></div>
+
+		<div id="plus_div" onclick="if(!isLoadIf)	{window.document.getElementById('plus_a').target='mt';reWin();} else {try_iframe.Controller(event);if(!is_ext_mb) reWin();return false;}"><a id="plus_a" style="cursor:hand;">收藏歌曲至音乐盒</a></div>
+
+		<div id="next_div" onclick="try_iframe.Controller(event);return false;"><a id="next_a" style="cursor:hand;">下一首</a></div>
+
+		<div id="next_img_div"></div>
+
+		<div id="pre_div" onclick="try_iframe.Controller(event);return false;"><a id="pre_a"" style="cursor:hand;">上一首</a></div>
+
+		<div id="pre_img_div"></div>
+
+	</div>
+
+</div>
+
+
+
+<table id="adtb" border="0" cellspacing="0" cellpadding="0" style="display:none;margin-top:-10px;clear:both;width:350px!important;width:358px">
+
+	<tr>
+
+		<td>
+
+			<div id="ad1">
+
+			
+
+			</div>
+
+		</td>
+
+		<td style="text-align:right;font-size:12px;padding-right:10px;height:20px">
+
+			<div id="ad2" style="width:150px;text-align:right">
+
+				
+
+			</div>
+
+		</td>
+
+	</tr>
+
+</table>
+
+
+
+<div style="display:none;clear:both" id="Blrc">
+
+	<div style="border:#B4C2E2 1px solid;font-size:12px;text-align:left;width:350px">
+
+		<table width="350px" style="background:#ECEDED" cellspacing="0" cellpadding="0"><tr><td style="padding:5px 10px 1px;text-align:left;font-size:12px;"><b>歌词：</b></td><td style="text-align:right"></td></tr></table>
+
+		<div style="display:none;height:243px;width:350px;line-height:20px;overflow-y:scroll;overflow-x:hidden;background:#fff;display:none" id="LrcShower_div"></div>
+
+	</div>
+
+</div>
+
+<div style="display:none" id="lrctellall_div"></div>
+
+<div id="LrcUrl_div" style="height:23px;line-height:23px;margin-left:2px;clear:both;display:none"><a id="LrcUrlA" target="_blank"></a></div>
+
+<div id="InP_div">
+
+	<div id="bt">
+
+		<a href="http://www.baidu.com/search/mp3_help.html" target="_blank">帮助</a>&nbsp;&nbsp;<a href="http://tieba.baidu.com/f?kw=%B0%D9%B6%C8MP3%CA%D4%CC%FD" target="_blank">意见反馈</a>&nbsp;&nbsp;<a href="http://www.baidu.com/search/listencopyright.html" target=_blank style="color:#666666">权利声明</a>
+
+	</div>
+
+	<div id="ad3"><div>
+
+</div>
+
+
+
+<script language="VBScript">
+
+  Function bdBytes2Str(vIn)
+
+    dim strReturn
+
+    dim i
+
+    dim ThisCharCode
+
+    dim NextCharCode
+
+ 	  strReturn = ""
+
+ 	  For i = 1 To LenB(vIn)
+
+        ThisCharCode = AscB(MidB(vIn,i,1))
+
+       	If ThisCharCode < &H80 Then
+
+          strReturn = strReturn & Chr(ThisCharCode)
+
+       	Else
+
+          NextCharCode = AscB(MidB(vIn,i+1,1))
+
+          strReturn = strReturn & Chr(CLng(ThisCharCode) * &H100 + CInt(NextCharCode))
+
+          i = i + 1
+
+       	End If
+
+   	Next
+
+    bdBytes2Str = strReturn
+
+	End Function
+
+</script>
+
+<script src="http://box.zhangmen.baidu.com/js/bd_syncLRC.js?v=1.1"></script>
+
+<script>
+
+function isHighVer() {
+
+	try {
+
+		var x = new ActiveXObject("WMPlayer.OCX");
+
+	} catch (e) {
+
+		return false;
+
+	}
+
+	return true;
+
+}
+
+var isMH = isHighVer();
+
+var isFF=(navigator.userAgent.toLowerCase().indexOf("firefox")!=-1)
+
+var hasLrc
+
+var pType = null;
+
+function init(pType, lrcID) {
+
+	document.onkeydown=function(){if(window.event.keyCode==8){window.event.returnValue=false;}else if(window.event.keyCode>=112&&window.event.keyCode<=123){window.event.keyCode=0;window.event.returnValue = false;};};
+
+	
+
+	$d("plus_a").contentEditable = false;
+
+	$d("pre_a").contentEditable = false;
+
+	$d("next_a").contentEditable = false;
+
+	$d("plus_div").contentEditable = false;
+
+	$d("pre_div").contentEditable = false;
+
+	$d("next_div").contentEditable = false;
+
+
+
+	if (isFF) {
+
+		$d("arrowright_div").style.display = "none";
+
+	  $d("plus_div").style.display = "none";
+
+	  $d("plus_img_div").style.display = "none";
+
+	  $d("Lrc_div").style.marginRight = "15px";
+
+	};
+
+
+
+	if(lrcID && lrcID != "" && lrcID != "0" && lrcID != 0 && lrcID > 0) {
+
+		var re=new RegExp("^[0-9]+$");
+
+		var d= lrcID.match(re)
+
+		hasLrc=(d!=null&&d!=""&&parseInt(lrcID)>0)
+
+	  
+
+		if(!isFF){
+
+			if(hasLrc){
+
+				$d('Blrc').style.display="";
+
+				$d('LrcShower_div').style.display="";
+
+				if(typeof(lrcInterface)=="function"){
+
+					lrcInterface(pType, lrcID);
+
+				}else{
+
+					$d('LrcShower_div').innerHTML="<br><br><br><br><br><br><span style='font-size:12px;margin-left:12px'>&nbsp;可能是因为网络的原因，系统没有找到合适的歌词。请稍后重试<span style='color:#FFF'>P1</span></span>";
+
+					document.getElementById('LrcUrlA').innerHTML = "";
+
+				}
+
+			}
+
+		}
+
+	} else {
+
+		hasLrc = false;
+
+		tmpLrcContent = "";
+
+		tmpLrcs = new Array();
+
+  	$d('LrcShower_div').innerHTML = "<br><br><br><br><br><br><span style='font-size:12px;margin-left:12px'>&nbsp;抱歉，系统未找到对应歌词。";
+
+  	document.getElementById('LrcUrlA').innerHTML = "";
+
+	}
+
+}
+
+	
+
+var reg = new RegExp("(^|&)"+ "si" +"=([^&]*)(&|$)");
+
+var r = window.location.search.substr(1).match(reg);
+
+
+
+if (r!=null) {
+
+  arrPar = r[0].split(";;")
+
+  lrcID = arrPar[2];
+
+  
+
+	if($d('MediaPlayer1')){
+
+		pType = isMH ? "MPH" : "MPL";
+
+	} else if($d('RealPlayer1')){pType="RP"}
+
+  
+
+  init(pType, lrcID);
+
+}
+
+
+
+function initSize() {
+
+	if(ext_mb) {
+
+		reWin();
+
+	} else {
+
+		if(!isFF) {
+
+			width=399 + woffset;
+
+			if(!hasLrc) height=275; else height=600;
+
+			var hasAds2 = $d("ad1").innerHTML != '' && $d("ad2").innerHTML != '';
+
+			if(!hasLrc && hasAds2) height += 20; 
+
+			window.resizeTo(width, height);
+
+		} else {
+
+			width=384;
+
+			height=275;
+
+			window.resizeTo(width, height);
+
+		}
+
+	}
+
+	
+
+	if(hasLrc && hasAds2) { 
+
+		$d('LrcShower_div').style.height = "266px";
+
+	}
+
+	
+
+	if(document.body.clientHeight < 500) {
+
+		$d('arrowright_div').className="aw small_aw";
+
+	}
+
+};
+
+
+
+try {
+
+	initSize();
+
+} catch (err){}
+
+</script>
+
+</div>
+
+
+
+<div id="ad_script_div"></div>
+
+<div id="show_flag" style="display:none"></div>
+
+<script src="http://box.zhangmen.baidu.com/js/bd_Adv.js?v=1.7"></script>
+
+<script for="MediaPlayer1" event="PlayStateChange(ns)">
+
+	try {
+
+		if(sampling == null) return;
+
+		if(!sampling.hasDone){
+
+			if(!sampling.buffstart && ns == 6){
+
+				sampling.buffstart = new Date().getTime();
+
+			}
+
+			if(sampling.buffstart && ns == 3){
+
+				sampling.buffstop = new Date().getTime();
+
+				if(sampling.buffstop - sampling.buffstart < 200){
+
+					sampling.cached = 1;
+
+				}
+
+				sampling.hasDone = 1;
+
+			}
+
+		}
+
+		if(sampling.opFlag == 1) return;
+
+		if(ns == 1 || ns == 2) {
+
+			sampling.opFlag = 1;
+
+		} else if(ns == 3) {
+
+			if(player == null) return;
+
+			if(Math.abs(sampling.latestPos - player.controls.currentPosition) >= 5) sampling.opFlag = 1;
+
+		}
+
+	} catch (err) {};
+
+</script>
+<script for="MediaPlayer1" event="OpenStateChange(os)">
+	try{
+		if(sampling.os == -1){
+			if(os >= 14 && os <= 19){
+				sampling.os = os;
+			}
+		}
+	}catch(e){}
+</script>
+<img src="http://imgs.zhangmen.baidu.com/wd/mp3-mt.jpg" style="display:none" />
+</BODY>
+
+</HTML>

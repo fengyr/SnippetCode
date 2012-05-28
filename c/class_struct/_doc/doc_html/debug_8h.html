@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>ProjectName: debug.h文件参考</title>
+<link href="ubisoft.css" rel="stylesheet" type="text/css">
+<a href="zenki2001cn@163.com">
+<img src="logo.gif" alt="abc" align="middle" border=0 >
+</a>
+</head><body bgcolor="#ffffff">
+<hr>
+<!-- 制作者 Doxygen 1.6.3 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>数据结构</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>debug.h文件参考</h1><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &lt;string.h&gt;</code><br/>
+<div class="dynheader">
+debug.h包含/依赖关系图：</div>
+<div class="dynsection">
+<div class="center"><img src="debug_8h__incl.png" border="0" usemap="#debug_8h_map" alt=""/></div>
+</div>
+<div class="dynheader">
+此图展示直接或间接包含该文件的文件：</div>
+<div class="dynsection">
+<div class="center"><img src="debug_8h__dep__incl.png" border="0" usemap="#debug_8hdep_map" alt=""/></div>
+<map name="debug_8hdep_map" id="debug_8hdep">
+<area shape="rect" id="node3" href="main_8h.html" title="main.h" alt="" coords="8,86,69,117"/><area shape="rect" id="node6" href="main_8c.html" title="main.c" alt="" coords="8,166,69,197"/></map>
+</div>
+
+<p><a href="debug_8h_source.html">浏览该文件的源代码。</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>宏定义</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#a5a9cc968ee7262fddda93f73341beedb">PDEBUG</a>(fmt, args...)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">File <a class="el" href="debug_8h.html">debug.h</a>.  <a href="#a5a9cc968ee7262fddda93f73341beedb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug_8h.html#add2e554d59f54d119d82296a50867fbb">MAKE</a>(CLASS, VAR, ARGS...)</td></tr>
+</table>
+<hr/><h2>宏定义文档</h2>
+<a class="anchor" id="add2e554d59f54d119d82296a50867fbb"></a><!-- doxytag: member="debug.h::MAKE" ref="add2e554d59f54d119d82296a50867fbb" args="(CLASS, VAR, ARGS...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAKE</td>
+          <td>(</td>
+          <td class="paramtype">CLASS, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VAR, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ARGS...&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>值:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span> {                            \
+        CLASS #VAR;                 \
+        VAR_init(&amp;VAR, ## ARGS);   \
+    } <span class="keywordflow">while</span> (0)
+</pre></div>
+<p>在文件<a class="el" href="debug_8h_source.html">debug.h</a>第<a class="el" href="debug_8h_source.html#l00029">29</a>行定义。</p>
+
+</div>
+</div>
+<a class="anchor" id="a5a9cc968ee7262fddda93f73341beedb"></a><!-- doxytag: member="debug.h::PDEBUG" ref="a5a9cc968ee7262fddda93f73341beedb" args="(fmt, args...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PDEBUG</td>
+          <td>(</td>
+          <td class="paramtype">fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">args...&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>File <a class="el" href="debug_8h.html">debug.h</a>. </p>
+<p>Revision: none Compiler: gcc</p>
+<p>Version 1.0 Author: Zenki (zhajun), <a href="mailto:zenki2001cn@163.com">zenki2001cn@163.com</a> Date: 2010年06月02日 13时19分52秒</p>
+<p>===================================================================================== </p>
+
+<p>在文件<a class="el" href="debug_8h_source.html">debug.h</a>第<a class="el" href="debug_8h_source.html#l00026">26</a>行定义。</p>
+
+<p>参考自 <a class="el" href="class_8c_source.html#l00084">demo_free()</a>、<a class="el" href="class_8c_source.html#l00037">destroy()</a>、<a class="el" href="class_8c_source.html#l00049">display()</a>、<a class="el" href="main_8c_source.html#l00030">Main()</a>及<a class="el" href="main_8c_source.html#l00053">main_free()</a>.</p>
+
+</div>
+</div>
+</div>
+<hr><address>
+© Copyright 2010 Zenki. All Rights Reserved.
+</address>
+</body>
+</html>

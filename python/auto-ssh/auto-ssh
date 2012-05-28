@@ -1,0 +1,132 @@
+#!/usr/bin/env python
+#coding:UTF-8
+#1.通过参数自动登录ssh远程服务器
+#2.通过配置字符集解决中文乱码问题
+
+import os,sys,pexpect,string
+import struct,fcntl,termios,signal
+
+try:
+	import pexpect
+except:
+	print "你没有pexpect包，试试sudo apt-get install pexpect"
+	sys.exit(0)
+
+def sigwinch_passthrough(sig,data):
+	"""窗口改动后，自动返回当前窗口值，以便跟远程窗口同步,目前有问题"""
+	s=struct.pack("HHHH",0,0,0,0)
+	a=struct.pack('hhhh',fcntl.ioctl(sys.stdout.fileno(),termios.TIOCGWINSZ,s))
+
+	#global columns,lines
+	"""	self.lines=a[0]
+	self.columns=a[1]
+	print "resize windows size(%s,%s)"%(self.lines,self.columns)
+	"""
+	print a[0],a[1]
+
+class SimpleSsh:
+	def __init__(self):
+		self.columns=125
+		self.lines=37
+		self.base="~/ssh/"
+		self.filename="/etc/.host.ssh"
+
+	def createSshUrl(self,paramap):
+		serverip=paramap["serverip"]
+		user=paramap["user"]
+		password=paramap["password"]
+#		host=paramap["host"]
+		port=paramap["port"]
+		characters=paramap["characters"]
+		conntype=paramap["conntype"]
+		url="luit -encoding "+characters+" "+conntype+" "+user+"@"+serverip+" -p "+port
+
+		print "#"*42
+		print "#",string.center(string.join((user,"@",serverip," -p ",port," by ",characters),""),36),"#"
+		print "#",string.center("created by wangmd21@gmail.com",38),"#"
+		print "#"*42
+		
+		return url,password
+
+	def connection(self,url,password):
+		""" """
+		columns=self.columns
+		lines=self.lines
+		try:
+			p=pexpect.spawn(url)
+			try:
+				#signal.signal(signal.SIGWINCH,sigwinch_passthrough)
+				p.setwinsize(lines,columns)
+				print "resize windows(%s,%s)"%(columns,lines)
+			except:
+				pass
+			p.expect("password:")
+			p.sendline(password)
+			p.interact()
+		except:
+			print "connection close()"
+	
+	def argv2map(self,userid,conntype):
+		paramap={}
+		base=self.base
+		filename=self.filename
+		tmp=""
+		try:
+			file=open(filename,"r")
+		except:
+			file=open(string.join(base,filename))
+		content=file.readlines()
+
+		for x in content:
+			if x.startswith(userid):
+				tmp=string.strip(x)
+
+		if tmp=="":
+			print "not found %s"%userid
+			sys.exit(0)
+
+		tmparray=string.split(tmp,":")
+		paramap["user"]=tmparray[2]
+		paramap["serverip"]=tmparray[1]
+		paramap["password"]=tmparray[3]
+		paramap["userid"]=userid
+#		paramap["host"]=host
+		paramap["port"]=tmparray[4]
+		paramap["characters"]=tmparray[5]
+		paramap["conntype"]=conntype
+
+		return paramap
+
+	def initpara(self,para):
+		try:
+			userid=para[1]
+#			host=para[2]
+			conntype=""
+		except:
+			userid=raw_input("enter your userid:")
+#			host=raw_input("enter your host:")
+		try:
+			conntype=para[3]
+		except:
+			conntype="ssh"
+
+		return userid,conntype
+
+	
+	def handle(self,para):
+		userid,conntype=self.initpara(para)
+		paramap=self.argv2map(userid,conntype)
+		url,password=self.createSshUrl(paramap)
+		self.connection(url,password)
+if __name__=="__main__":
+	argvpara=string.join(sys.argv[1:]," ")
+	if "-" in argvpara:
+		b=ProxySsh()
+		b.handle(argvpara)
+	elif "help" in argvpara:
+		print help
+	else:
+		b=SimpleSsh()
+		b.handle(sys.argv)
+
+

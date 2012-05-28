@@ -1,0 +1,8 @@
+../src/main.c
+../src/class.c
+../.vimfiles.entry/quick_gen_project_post_custom.sh
+../.vimfiles.entry/quick_gen_project_pre_custom.sh
+../include/debug.h
+../include/main.h
+../include/class.h
+../quick_gen_project_entry_autogen.sh

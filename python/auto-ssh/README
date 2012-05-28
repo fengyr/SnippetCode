@@ -1,0 +1,5 @@
+解包后进入目录"auto-ssh"目录，以ROOT身份执行目录中bash脚本"install"
+
+配置文件位于“/etc/.host.ssh”，依照配置文件中的格式输入远程SSH机器的userid、IP、用户名、密码、端口号、字符集
+
+当执行auto-ssh命令后，只需要输入userid便可SSH登录远程机器

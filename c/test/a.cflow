@@ -1,0 +1,6 @@
+main() <int main (int argc,char **argv) at a.c:265>:
+    get_point() <void get_point (CALLBACK cb) at a.c:250>:
+        realloc()
+    callback() <void callback (char *str) at a.c:260>:
+        PDEBUG()
+    printf()

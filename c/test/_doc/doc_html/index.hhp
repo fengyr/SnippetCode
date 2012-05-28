@@ -1,0 +1,49 @@
+[OPTIONS]
+Compiled file=../Document.chm
+Compatibility=1.1
+Full-text search=Yes
+Contents file=index.hhc
+Default Window=main
+Default topic=main.html
+Index file=index.hhk
+Language=0x804 Chinese (PRC)
+Binary TOC=YES
+Title=ProjectName
+
+[WINDOWS]
+main="ProjectName","index.hhc","index.hhk","main.html","main.html",,,,,0x23520,,0x10387e,,,,,,,,0
+
+[FILES]
+main.html
+a_8c_source.html
+a_8h_source.html
+b_8c_source.html
+b_8h_source.html
+c_8py_source.html
+a_8c.html
+a_8h.html
+b_8c.html
+b_8h.html
+c_8py.html
+annotated.html
+classes.html
+functions.html
+functions_func.html
+functions_vars.html
+struct_b_i_t.html
+namespaces.html
+namespacec.html
+classc_1_1_abc.html
+namespacemembers.html
+namespacemembers_vars.html
+graph_legend.html
+files.html
+globals.html
+globals_func.html
+globals_vars.html
+globals_type.html
+globals_defs.html
+tabs.css
+tab_b.gif
+tab_l.gif
+tab_r.gif

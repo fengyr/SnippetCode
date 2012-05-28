@@ -1,0 +1,33 @@
+{% extends "video_base.html" %}
+
+{% block content%}
+<link rel="stylesheet" type="text/css" href="/sitemedia/css/login.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/sitemedia/css/tab.css" media="screen">
+
+<script language="javascript">
+function adminlogin()
+{
+	var passwd = prompt("请输入管理员密码:", "")
+	if ( passwd == "admin" )
+		window.open("http://{{localhttp}}:8000/webconfig");
+	else
+		return false;
+};
+</script>
+
+<div id="tabs3">
+	<ul>
+		<li><a id="current" href="" onclick="adminlogin()"><span>配置页面</span></a></li>
+	</ul>
+</div>
+
+<div id="login">
+	<div id="log_form" class="top">
+		<FORM name="log_form" method="post" action="/webvideo/">
+			<div class="user">用户名： <INPUT class="textfield" TYPE="TEXT" NAME="NAME" ></input></div>
+			<div class="pwd">密码： <INPUT class="textfield" TYPE="PASSWORD" NAME="PASSWD" ></div>
+			<div class="login"><input type="image" src="/sitemedia/images/login.gif"  /></div>
+		</FORM>
+	</div>
+<div>
+{% endblock %}

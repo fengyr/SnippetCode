@@ -1,0 +1,37 @@
+{% extends "video_base.html" %}
+
+{% block content%}
+<link rel="stylesheet" type="text/css" href="/media/css/monitor.css" media="screen">
+
+  <!-- 主菜单-->
+<div id="logout"><a href="http://192.168.100.54:8000/webvideo/logout">/ 注销  /</a></div>
+
+<div>
+<div id="left">
+	<DL id="label_top">
+		{% for s in sites %}
+		<DT id="label">{{s.0.0}}
+		{% for i in s %}
+		{% ifnotequal i s.0 %}
+		<DD><a href={{i.1}}>{{i.0}}</a>
+		{% endifnotequal %}
+		{% endfor %}
+		{% endfor %}
+	</DL>
+</div>
+
+<div id="right">
+	<div id="activex">
+	<object width="352" height="288"></object>
+	</div>
+	<div id="button">
+    	<div class="but1"><a href=""><img src="/media/images/play.gif" /></a></div>
+    	<div class="but2"><a href=""><img src="/media/images/stop.gif" /></a></div>
+		<div class="but2"><a href=""><img src="/media/images/play.gif" /></a></div>
+    	<div class="but2"><a href=""><img src="/media/images/stop.gif" /></a></div>
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+
+{% endblock %}

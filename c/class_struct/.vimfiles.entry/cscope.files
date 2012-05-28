@@ -1,0 +1,5 @@
+"./src/main.c"
+"./src/class.c"
+"./include/debug.h"
+"./include/main.h"
+"./include/class.h"

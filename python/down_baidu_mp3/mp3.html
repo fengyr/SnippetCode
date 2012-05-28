@@ -1,0 +1,694 @@
+<HTML>
+<HEAD>
+<TITLE>百度MP3_新歌TOP100</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<STYLE type=text/css>
+body{margin:5px 10px 0 10px}
+a{ TEXT-DECORATION: underline; FONT-FAMILY:  "Arial"; color:#0033cc;}
+TD { FONT-SIZE: 9pt; LINE-HEIGHT: 18px; FONT-FAMILY: "Arial" }
+.c { COLOR: #666666; size: -1 }
+.formfont { FONT-SIZE: 16px; FONT-FAMILY:"Arial" }
+.border { font-size: 14px; padding-right: 10px; }
+table.sbjt {background:#CDEAF6 url(img/top100bg.gif) no-repeat;border-top:1px #5CABCB solid; }
+table.sbjt td,table.sbjt th{font-size: 14px; color: #000000; line-height: 24px; height:24px;}
+table.sbjt th{text-align:left; text-indent:134px}
+body, td, th { font-family: 宋体; }
+table.list{background:url() no-repeat right top}
+table.list td{ height:28px; font-size:14px; width:17%}
+table.list .th{ font-weight:normal; width:3%; text-align: center;}
+td.adfoot{background:url(img/top100bg.gif) 0 -43px; height:46px;}
+td.adfoot div{width:188px; height:46px; background:url(img/top100bg.gif) 0 10px no-repeat;}
+</STYLE>
+<script type="text/javascript" src="js/swf.js"></script>
+<SCRIPT language=JavaScript>
+if (window.name == 'nw') { window.name = '';}
+
+function syn(form){
+form.lf.value="";
+if (form.lm[7].checked){
+form.tn.value="baidump3ring";
+form.ct.value="285212672";
+form.rn.value="";
+form.action="http://mp3.baidu.com/m"
+} else { 
+if(form.lm[0].checked){
+form.rn.value="10";
+form.tn.value="baidump3lyric";
+form.ct.value="150994944";
+form.lf.value="2";
+form.action="http://mp3.baidu.com/m"
+}else {
+form.tn.value="baidump3";
+form.ct.value="134217728";
+form.rn.value="";
+form.action="http://mp3.baidu.com/m"
+}  
+}
+}
+function g1(){
+	var url="http://mp3.baidu.com/m?tn=baidump3lyric&ct=150994944&rn=10&lm=-1&word="+document.f1.word.value;
+	window.location.href=url;
+}
+function g(form){
+ var url
+ if(form.lm[0].checked){
+   form.lf.value="4";
+ }
+ else {
+   form.lf.value="1";
+ }
+ form.tn.value="baidump3lyric";
+ form.ct.value="150994944";
+ form.rn.value="10";
+ form.lm.value="-1";
+ url="http://mp3.baidu.com/m";
+ form.action=url
+ form.submit();
+}
+</script>
+</HEAD>
+<body>
+<table width="760px" border="0" align="center" cellpadding=0 cellspacing=0 style="margin-bottom:10px">
+<form name=f1 action="http://mp3.baidu.com/m" onSubmit="syn(this)">
+<input type=hidden name=f value=ms>
+<input type=hidden name=tn value="baidump3">
+<input type=hidden name=ct value=134217728>
+<input type=hidden name=lf>
+<input type=hidden name=rn>
+    <tr valign=center height=55> 
+      <td width=150 valign="top"><a href="http://mp3.baidu.com"><img 
+      src="http://img.baidu.com/img/mp3-jg.gif" border="0" alt="百度MP3"></a></td>
+      <td valign="bottom" nowrap style="padding-top:22px"> <input class=formfont size=42 name=word> 
+        &nbsp;&nbsp; <input name="submit" type=submit value=百度搜索 > <input name="button" type=button onClick="g1()" value=歌词搜索> 
+        &nbsp;<a href="http://www.baidu.com/search/mp3_help.html"  target=_blank class="top">帮助</a><br> 
+        <label for="aW"> 
+        <input name=lm type=radio id="aW" value=-1 >
+        歌词</label> <label for="aM"> 
+        <input name=lm type=radio value=-1 id="aM" checked>
+        全部音乐</label> <label for="Mp3"> 
+        <input name=lm type=radio value=0 id="Mp3" >
+        mp3</label> <label for="RM"> 
+        <input name=lm type=radio value=1 id="RM" >
+        rm</label> <label for="WMA"> 
+        <input name=lm type=radio value=2 id="WMA" >
+        wma</label> <label for="Flash"> 
+        <input name=lm type=radio value=6 id="Flash" >
+        flash</label> <label for="Else"> 
+        <input name=lm type=radio value=32767  id="Else" >
+        其它格式</label> <label for="Ring"> 
+        <input name=lm type=radio value=-1 id="Ring">
+        铃声</label> <label for="Ring"></label></td>
+    </tr>
+  </form>
+</table>
+<center>
+<div id="ecomAdDiv" align="center">
+<script type="text/javascript">
+	function cf(flashsrc,flashwidth,flashheight,flashlink,br){
+		document.write("<table width="+flashwidth+" height="+flashheight+" border=0 cellpadding=0 cellspacing=0><tr><td>");
+		document.write("<div style=\"position:relative\">");
+		document.write("<embed style=\"position:absolute;z-index:0\" src="+flashsrc+" quality=\"high\" width="+flashwidth+" height="+flashheight+" TYPE=\"application/x-shockwave-flash\" PLUGINSPAGE=\"http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash\" wmode=\"opaque\"></embed>");
+		document.write("<div style=\"background:white;filter:alpha(opacity=0);opacity:0;position: relative;z-index:10;left:0pt;top:0pt;width:"+flashwidth+";height:"+flashheight+"px;\">");
+		document.write("<a href="+flashlink+" target=\"_blank\" style=\"cursor:pointer;display:block;width:"+flashwidth+";height:"+flashheight+"px;\"></a>");
+		document.write("</div>");
+		document.write("</div>");
+		document.write("</td></tr></table>");
+		if(br=="1"){document.write("<br>");
+		}
+	};
+	function cf1(flashsrc,flashwidth,flashheight,br){
+		document.write("<embed src=\""+flashsrc+"\" quality=high pluginspage=\"http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash\" type=\"application/x-shockwave-flash\" width="+flashwidth+" height="+flashheight+" align=center wmode=\"opaque\"></embed>");
+		if (br=="1") {
+		document.write("<br> <br>");
+		}
+	};
+	cf("img/top100ad.swf", 984, 157, "http://allyesszafa.allyes.com/main/adfclick?db=allyesszafa&bid=9068,4499,306&cid=4645,738,1&sid=9971&show=ignore&url=http://www.bbkmobile.com/pages/ad_television.asp");
+</script>
+</div>
+</center>
+<iframe src="iframe.html" name="partner" align="top" width="100%" height="180" marginwidth="0" marginheight="1" frameborder="0" scrolling="no"></iframe>
+<table width="100%" border="0" align="center" cellpadding="1" cellspacing="0" class="sbjt">
+  <tr>
+    <input type=hidden name=refreshtime value=@newhits@>   
+    <th>新歌TOP100</th>
+    <td align="right">更新时间:2009-02-06</td>   
+    <input type=hidden name=refreshtime value=@_newhits_@>
+  </tr>
+</table>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" class="list">
+<input type=hidden name=refreshtime value=@+RESBODY+@>
+
+  <tr> 
+    <td class="th">1.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C1%ED%D2%BB%D6%D6%C6%BD%BE%B2+%B3%C2%E7%B2%D5%EA" target=_blank>另一种平静</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B3%C2%E7%B2%D5%EA" target=_blank>陈绮贞</a>)</td>
+    <td class="th">2.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CD%F6%C3%FC%D6%AE%CD%BD+%D7%DD%B9%E1%CF%DF" target=_blank>亡命之徒</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D7%DD%B9%E1%CF%DF" target=_blank>纵贯线</a>)</td>
+    <td class="th">3.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CC%AB%D1%F4+%B3%C2%E7%B2%D5%EA" target=_blank>太阳</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B3%C2%E7%B2%D5%EA" target=_blank>陈绮贞</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">4.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D2%B9%C9%CF%BA%A3+%C2%ED%CC%EC%D3%EE" target=_blank>夜上海</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C2%ED%CC%EC%D3%EE" target=_blank>马天宇</a>)</td>
+    <td class="th">5.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B0%AE%B5%C3%C6%F0+%C1%BA%D3%BD%E7%F7" target=_blank><b>爱得起</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C1%BA%D3%BD%E7%F7" target=_blank>梁咏琪</a>)</td>
+    <td class="th">6.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D1%B0%B8%A3+%D5%C5%D1%A7%D3%D1" target=_blank>寻福</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D5%C5%D1%A7%D3%D1" target=_blank>张学友</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">7.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BD%F1%C4%EA+%C4%C7%D3%A2" target=_blank><b>今年</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C4%C7%D3%A2" target=_blank>那英</a>)</td>
+    <td class="th">8.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B1%F0%D4%D9%CE%AA%CB%FB%C1%F7%C0%E1+%C1%BA%BE%B2%C8%E3" target=_blank>别再为他流泪</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C1%BA%BE%B2%C8%E3" target=_blank>梁静茹</a>)</td>
+    <td class="th">9.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D7%A3%C4%E3%D0%D2%B8%A3+%CF%F4%BE%B4%CC%DA" target=_blank>祝你幸福</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CF%F4%BE%B4%CC%DA" target=_blank>萧敬腾</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">10.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C4%E3%B6%D4%CE%D2%B5%C4%BA%C3+%CB%EF%E9%AA" target=_blank><b>你对我的好</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CB%EF%E9%AA" target=_blank>孙楠</a>)</td>
+    <td class="th">11.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CB%F9%CE%BD+%D4%AC%C8%AA" target=_blank>所谓</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D4%AC%C8%AA" target=_blank>袁泉</a>)</td>
+    <td class="th">12.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C3%BB%D3%D0%C8%E7%B9%FB+%C1%BA%BE%B2%C8%E3" target=_blank>没有如果</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C1%BA%BE%B2%C8%E3" target=_blank>梁静茹</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">13.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B4%F3%BC%AA%B4%F3%C0%FB%D6%D0%B9%FA%C4%EA+%CD%F5%F7%EB" target=_blank><b>大吉大利中国年</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CD%F5%F7%EB" target=_blank>王麟</a>)</td>
+    <td class="th">14.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BC%C5%C4%AF%B1%A9%D7%DF+%B7%C9%C2%D6%BA%A3" target=_blank>寂寞暴走</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B7%C9%C2%D6%BA%A3" target=_blank>飞轮海</a>)</td>
+    <td class="th">15.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B9%C2%B5%A5%C4%A6%CC%EC%C2%D6+%B7%C9%C2%D6%BA%A3" target=_blank>孤单摩天轮</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B7%C9%C2%D6%BA%A3" target=_blank>飞轮海</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">16.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B5%C8+%D4%AC%C8%AA" target=_blank><b>等</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D4%AC%C8%AA" target=_blank>袁泉</a>)</td>
+    <td class="th">17.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B9%A7%CF%B2%B9%A7%CF%B2+%CB%EF%D4%C3" target=_blank>恭喜恭喜</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CB%EF%D4%C3" target=_blank>孙悦</a>)</td>
+    <td class="th">18.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B7%E8%C8%CB%D4%B8+%CE%BA%B3%BF" target=_blank>疯人愿</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CE%BA%B3%BF" target=_blank>魏晨</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">19.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D0%C5%D2%D4%CE%AA%D5%E6+%C9%D0%F6%A9%E6%BC%2B%D3%F0%C8%AA" target=_blank><b>信以为真</b></a>
+		(<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C9%D0%F6%A9%E6%BC"   target=_blank>尚雯婕</A>/<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D3%F0%C8%AA"   target=_blank>羽泉</A>)</td>
+    <td class="th">20.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D2%BB%CB%B2%BC%E4+%D5%C5%F6%A6%D3%B1" target=_blank><b>一瞬间</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D5%C5%F6%A6%D3%B1" target=_blank>张靓颖</a>)</td>
+    <td class="th">21.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BF%EC%C0%D6%D3%A2%D0%DB+%C5%CB%E7%E2%B0%D8" target=_blank>快乐英雄</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C5%CB%E7%E2%B0%D8" target=_blank>潘玮柏</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">22.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BD%C5%B1%BE+%CD%F5%C1%A6%BA%EA" target=_blank>脚本</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CD%F5%C1%A6%BA%EA" target=_blank>王力宏</a>)</td>
+    <td class="th">23.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BB%F0%D0%C7%B0%AE%D4%C2%C1%C1+%BB%C6%D1%C5%C0%F2" target=_blank>火星爱月亮</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BB%C6%D1%C5%C0%F2" target=_blank>黄雅莉</a>)</td>
+    <td class="th">24.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B8%DF%B5%F7%B0%AE+%C2%DE%D6%BE%CF%E9" target=_blank>高调爱</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C2%DE%D6%BE%CF%E9" target=_blank>罗志祥</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">25.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CE%D2%D2%AA%C4%E3+%B0%A2%B6%E4" target=_blank>我要你</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B0%A2%B6%E4" target=_blank>阿朵</a>)</td>
+    <td class="th">26.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CC%EC%B9%FA%B5%C4%CE%A2%D0%A6+%D1%A6%BF%AD%E7%F7" target=_blank>天国的微笑</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D1%A6%BF%AD%E7%F7" target=_blank>薛凯琪</a>)</td>
+    <td class="th">27.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B9%FE%86%AA%C2%F3%BF%CB%B7%E7+%B9%F0%C2%DA%C3%BE" target=_blank>哈啰麦克风</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B9%F0%C2%DA%C3%BE" target=_blank>桂纶镁</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">28.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B2%BB%CA%C7%CE%D2%B2%BB%C3%F7%B0%D7+%C1%BA%BE%B2%C8%E3" target=_blank><b>不是我不明白</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C1%BA%BE%B2%C8%E3" target=_blank>梁静茹</a>)</td>
+    <td class="th">29.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B0%AE%C4%E3%B5%C4%D6%BB%D3%D0%D2%BB%B8%F6%CE%D2+%E2%D7%B3%CE%C7%EC" target=_blank>爱你的只有一个我</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%E2%D7%B3%CE%C7%EC" target=_blank>庾澄庆</a>)</td>
+    <td class="th">30.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D2%BB%B8%F6%C8%CB%B5%C4%B6%AC%CC%EC+%B3%C2%B3%FE%C9%FA" target=_blank>一个人的冬天</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B3%C2%B3%FE%C9%FA" target=_blank>陈楚生</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">31.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BB%B9%CA%C7%BA%C3%C5%F3%D3%D1+%C1%BA%BE%B2%C8%E3%2B%B9%C5%BE%DE%BB%F9" target=_blank>还是好朋友</a>
+		(<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C1%BA%BE%B2%C8%E3"   target=_blank>梁静茹</A>/<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B9%C5%BE%DE%BB%F9"   target=_blank>古巨基</A>)</td>
+    <td class="th">32.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B9%A6%B7%F2+%BD%B9%B6%F7%BF%A1" target=_blank>功夫</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BD%B9%B6%F7%BF%A1" target=_blank>焦恩俊</a>)</td>
+    <td class="th">33.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CA%B5%D1%E9%C6%B7+%B7%EB%B5%C2%C2%D7" target=_blank>实验品</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B7%EB%B5%C2%C2%D7" target=_blank>冯德伦</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">34.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B9%FA%CD%F5%BB%CA%BA%F3+%B4%F3%D7%EC%B0%CD" target=_blank>国王皇后</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B4%F3%D7%EC%B0%CD" target=_blank>大嘴巴</a>)</td>
+    <td class="th">35.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D3%C3%C1%A6%B0%AE+%D6%DC%D1%B8%2B%B9%F0%C2%DA%C3%BE" target=_blank>用力爱</a>
+		(<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D6%DC%D1%B8"   target=_blank>周迅</A>/<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B9%F0%C2%DA%C3%BE"   target=_blank>桂纶镁</A>)</td>
+    <td class="th">36.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B9%FA%BE%B3%D6%AE%C4%CF+%B7%B6%D2%DD%B3%BC" target=_blank>国境之南</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B7%B6%D2%DD%B3%BC" target=_blank>范逸臣</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">37.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BF%BF%BD%FC%C4%E3+%D5%C5%F6%A6%D3%B1" target=_blank><b>靠近你</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D5%C5%F6%A6%D3%B1" target=_blank>张靓颖</a>)</td>
+    <td class="th">38.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BA%A3%BD%C7%C6%DF%BA%C5+%B6%AB%C0%B4%B6%AB%CD%F9" target=_blank><b>海角七号</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B6%AB%C0%B4%B6%AB%CD%F9" target=_blank>东来东往</a>)</td>
+    <td class="th">39.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CF%E7%CF%C2%D7%A1%D7%C5%D4%DB%B5%F9%C2%E8+%CD%F5%B1%A6%C7%BF" target=_blank><b>乡下住着咱爹妈</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CD%F5%B1%A6%C7%BF" target=_blank>王宝强</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">40.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C0%F1%CE%EF+%C1%BA%D3%BD%E7%F7" target=_blank><b>礼物</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C1%BA%D3%BD%E7%F7" target=_blank>梁咏琪</a>)</td>
+    <td class="th">41.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BB%A8%BF%AA%B5%C4%C9%F9%D2%F4+%D5%C5%F6%A6%D3%B1" target=_blank><b>花开的声音</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D5%C5%F6%A6%D3%B1" target=_blank>张靓颖</a>)</td>
+    <td class="th">42.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D6%D0%BB%AA%C0%E4%C3%E6+%B5%CB%C0%F6%D0%C0" target=_blank>中华冷面</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B5%CB%C0%F6%D0%C0" target=_blank>邓丽欣</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">43.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D1%F3%B4%D0%C5%A8%CC%C0+%C1%D6%D0%C4%C8%E7" target=_blank>洋葱浓汤</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C1%D6%D0%C4%C8%E7" target=_blank>林心如</a>)</td>
+    <td class="th">44.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D0%B4%B8%F8%D7%D4%BC%BA%B5%C4%B8%E8+%BB%C6%D2%E5%B4%EF" target=_blank>写给自己的歌</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BB%C6%D2%E5%B4%EF" target=_blank>黄义达</a>)</td>
+    <td class="th">45.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CF%B0%B9%DF%C1%CB+%C1%D6%D0%C4%C8%E7" target=_blank>习惯了</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C1%D6%D0%C4%C8%E7" target=_blank>林心如</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">46.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BE%CD%CB%E3%CA%C0%BD%E7%CE%DE%CD%AF%BB%B0+%CE%C0%C0%BC" target=_blank>就算世界无童话</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CE%C0%C0%BC" target=_blank>卫兰</a>)</td>
+    <td class="th">47.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B5%A5%C9%ED%C1%CF%C0%ED+%CD%F5%D7%E6%C0%B6" target=_blank>单身料理</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CD%F5%D7%E6%C0%B6" target=_blank>王祖蓝</a>)</td>
+    <td class="th">48.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B1%B1%BE%A9%B5%C4%BD%F0%C9%BD%C9%CF+%BA%FA%D1%E5%B1%F3" target=_blank>北京的金山上</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BA%FA%D1%E5%B1%F3" target=_blank>胡彦斌</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">49.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C4%E3%D2%AA%D7%DF%BE%CD%D7%DF+%B0%AC%C3%CE%C3%C8" target=_blank>你要走就走</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B0%AC%C3%CE%C3%C8" target=_blank>艾梦萌</a>)</td>
+    <td class="th">50.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D0%D2%B8%A3%B5%C4%CE%B6%B5%C0+%CD%F5%F7%EB%2B%B6%AB%C0%B4%B6%AB%CD%F9" target=_blank><b>幸福的味道</b></a>
+		(<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CD%F5%F7%EB"   target=_blank>王麟</A>/<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B6%AB%C0%B4%B6%AB%CD%F9"   target=_blank>东来东往</A>)</td>
+    <td class="th">51.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C1%F7%D0%C7%B5%C4%D1%DB%C0%E1+%D1%A6%D6%AE%C7%AB" target=_blank>流星的眼泪</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D1%A6%D6%AE%C7%AB" target=_blank>薛之谦</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">52.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B5%A5%C7%D7%B7%BF%D7%D3+%B0%AC%C3%CE%C3%C8" target=_blank>单亲房子</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B0%AC%C3%CE%C3%C8" target=_blank>艾梦萌</a>)</td>
+    <td class="th">53.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D3%D0%C4%E3%B5%C4%D0%D2%B8%A3+%CE%BA%B3%BF%2B%D3%DA%C9%AF%C9%AF" target=_blank>有你的幸福</a>
+		(<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CE%BA%B3%BF"   target=_blank>魏晨</A>/<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D3%DA%C9%AF%C9%AF"   target=_blank>于莎莎</A>)</td>
+    <td class="th">54.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BB%E9%BD%EB+%CB%D5%D3%C0%BF%B5" target=_blank>婚诫</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CB%D5%D3%C0%BF%B5" target=_blank>苏永康</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">55.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D4%C2%B9%E2+%BB%C6%BE%B8%C2%D7" target=_blank>月光</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BB%C6%BE%B8%C2%D7" target=_blank>黄靖伦</a>)</td>
+    <td class="th">56.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C4%E3%D4%DA%CE%D2%D0%C4%C9%CF+%BB%C6%CF%FE%C3%F7" target=_blank><b>你在我心上</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BB%C6%CF%FE%C3%F7" target=_blank>黄晓明</a>)</td>
+    <td class="th">57.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BA%EC%D1%D5%D6%AA%BC%BA+%CB%D5%D3%C0%BF%B5" target=_blank>红颜知己</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CB%D5%D3%C0%BF%B5" target=_blank>苏永康</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">58.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B0%AE%C9%CF%C4%E3%B5%C4%C3%C0+%D3%F0%C8%AA" target=_blank><b>爱上你的美</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D3%F0%C8%AA" target=_blank>羽泉</a>)</td>
+    <td class="th">59.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C9%EE%C9%EE%B0%AE%B9%FD%C4%E3+%D1%A6%D6%AE%C7%AB" target=_blank>深深爱过你</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D1%A6%D6%AE%C7%AB" target=_blank>薛之谦</a>)</td>
+    <td class="th">60.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CF%C4%C9%CB+sara" target=_blank><b>夏伤</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=sara" target=_blank>sara</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">61.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CC%AB%B6%E0%B5%C4%B0%AE+%CE%E9%B0%DB" target=_blank>太多的爱</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CE%E9%B0%DB" target=_blank>伍佰</a>)</td>
+    <td class="th">62.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B0%D6%B0%D6+%CD%F5%F3%DD" target=_blank><b>爸爸</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CD%F5%F3%DD" target=_blank>王筝</a>)</td>
+    <td class="th">63.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CA%B1%B9%E2%D3%EA+%CE%E9%B0%DB" target=_blank>时光雨</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CE%E9%B0%DB" target=_blank>伍佰</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">64.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C0%E4%D5%BD+%D1%EE%D8%A9%C1%D5" target=_blank>冷战</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D1%EE%D8%A9%C1%D5" target=_blank>杨丞琳</a>)</td>
+    <td class="th">65.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B2%BB%B5%C3%B2%BB%D4%DA%BA%F5+sara" target=_blank><b>不得不在乎</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=sara" target=_blank>sara</a>)</td>
+    <td class="th">66.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D4%DA%C4%E3%BB%B3%C0%EF%B5%C4%CE%A2%D0%A6+%D1%EE%D8%A9%C1%D5" target=_blank>在你怀里的微笑</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D1%EE%D8%A9%C1%D5" target=_blank>杨丞琳</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">67.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B0%AE%B5%C4%B3%C7%B1%A4+%D7%BF%CE%C4%DD%E6" target=_blank><b>爱的城堡</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D7%BF%CE%C4%DD%E6" target=_blank>卓文萱</a>)</td>
+    <td class="th">68.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CC%AB%BF%D5%B5%AF+%CE%E9%B0%DB" target=_blank>太空弹</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CE%E9%B0%DB" target=_blank>伍佰</a>)</td>
+    <td class="th">69.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C7%B0%C3%E6+%D0%C5" target=_blank>前面</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D0%C5" target=_blank>信</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">70.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C3%BB%D3%D0%C8%CB%B1%C8%CE%D2%B8%FC%B0%AE%C4%E3+%CD%F5%F3%DD%2B%CB%AE%C4%BE%C4%EA%BB%AA" target=_blank><b>没有人比我更爱你</b></a>
+		(<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CD%F5%F3%DD"   target=_blank>王筝</A>/<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CB%AE%C4%BE%C4%EA%BB%AA"   target=_blank>水木年华</A>)</td>
+    <td class="th">71.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CA%F4%D3%DA+%C1%BA%BE%B2%C8%E3" target=_blank>属于</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C1%BA%BE%B2%C8%E3" target=_blank>梁静茹</a>)</td>
+    <td class="th">72.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B0%AE%B5%C4%CE%DE%BF%C9%BE%C8%D2%A9+%C0%EE%D0%A1%E8%B4" target=_blank>爱的无可救药</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C0%EE%D0%A1%E8%B4" target=_blank>李小璐</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">73.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C3%FC%D6%D0%D7%A2%B6%A8+%C9%D0%F6%A9%E6%BC" target=_blank>命中注定</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C9%D0%F6%A9%E6%BC" target=_blank>尚雯婕</a>)</td>
+    <td class="th">74.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D2%BB%B8%F6%C8%CB%C2%C3%D0%D0+%D4%AC%C8%AA" target=_blank><b>一个人旅行</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D4%AC%C8%AA" target=_blank>袁泉</a>)</td>
+    <td class="th">75.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BB%A4%C9%ED%B7%FB+%C2%AC%C7%C9%D2%F4" target=_blank>护身符</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C2%AC%C7%C9%D2%F4" target=_blank>卢巧音</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">76.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B9%C2%B5%A5%C5%D4%B0%D7+%CE%E2%C5%E5%B4%C8" target=_blank>孤单旁白</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CE%E2%C5%E5%B4%C8" target=_blank>吴佩慈</a>)</td>
+    <td class="th">77.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C4%E3%B6%AE%CE%D2%B5%C4%B0%AE+%D5%C2%D7%D3%E2%F9%2B%C0%E8%C3%F7" target=_blank>你懂我的爱</a>
+		(<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D5%C2%D7%D3%E2%F9"   target=_blank>章子怡</A>/<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C0%E8%C3%F7"   target=_blank>黎明</A>)</td>
+    <td class="th">78.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BF%C9%D2%D4%BF%C9%D2%D4%C2%F0+%D0%BB%F6%AA%B7%E6" target=_blank>可以可以吗</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D0%BB%F6%AA%B7%E6" target=_blank>谢霆锋</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">79.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B4%F8%CE%D2%D7%DF+%D1%EE%D8%A9%C1%D5" target=_blank>带我走</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D1%EE%D8%A9%C1%D5" target=_blank>杨丞琳</a>)</td>
+    <td class="th">80.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D0%C4%C8%E7%B5%FB%CE%E8+%B2%CC%D7%BF%E5%FB" target=_blank>心如蝶舞</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B2%CC%D7%BF%E5%FB" target=_blank>蔡卓妍</a>)</td>
+    <td class="th">81.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C4%BE%E9%C8%BB%A8+%D4%AC%C8%AA" target=_blank><b>木槿花</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D4%AC%C8%AA" target=_blank>袁泉</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">82.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C0%CB%C2%FE%CE%D1+%CF%D2%D7%D3" target=_blank>浪漫窝</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CF%D2%D7%D3" target=_blank>弦子</a>)</td>
+    <td class="th">83.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C4%E3%B2%BB%CA%C7%D5%E6%D5%FD%B5%C4%BF%EC%C0%D6+%CE%E5%D4%C2%CC%EC" target=_blank><b>你不是真正的快乐</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CE%E5%D4%C2%CC%EC" target=_blank>五月天</a>)</td>
+    <td class="th">84.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B8%E6%B1%F0%B5%C4%CA%B1%B4%FA+%D0%C5" target=_blank>告别的时代</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D0%C5" target=_blank>信</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">85.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B0%AE%CC%AB%CD%B4+%CE%E2%BF%CB%C8%BA" target=_blank>爱太痛</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CE%E2%BF%CB%C8%BA" target=_blank>吴克群</a>)</td>
+    <td class="th">86.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CE%D2%BB%B9%CF%EB%CB%FD+%C1%D6%BF%A1%BD%DC" target=_blank><b>我还想她</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C1%D6%BF%A1%BD%DC" target=_blank>林俊杰</a>)</td>
+    <td class="th">87.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B9%CA%CA%C2+%D0%ED%CE%A1" target=_blank><b>故事</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D0%ED%CE%A1" target=_blank>许巍</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">88.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B0%AE+%D0%ED%CE%A1" target=_blank><b>爱</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D0%ED%CE%A1" target=_blank>许巍</a>)</td>
+    <td class="th">89.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B8%F8%CE%D2%D2%BB%CA%D7%B8%E8%B5%C4%CA%B1%BC%E4+%D6%DC%BD%DC%C2%D7" target=_blank>给我一首歌的时间</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D6%DC%BD%DC%C2%D7" target=_blank>周杰伦</a>)</td>
+    <td class="th">90.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CB%B5%BA%C3%B5%C4%D0%D2%B8%A3%C4%D8+%D6%DC%BD%DC%C2%D7" target=_blank>说好的幸福呢</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D6%DC%BD%DC%C2%D7" target=_blank>周杰伦</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">91.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BC%C5%C4%AF%BB%B9%CA%C7%C4%E3+%CF%F4%BE%B4%CC%DA" target=_blank>寂寞还是你</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CF%F4%BE%B4%CC%DA" target=_blank>萧敬腾</a>)</td>
+    <td class="th">92.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CE%B4%CA%E4+%B2%E0%CC%EF" target=_blank><b>未输</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B2%E0%CC%EF" target=_blank>侧田</a>)</td>
+    <td class="th">93.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B4%B0%CD%E2+%D6%DC%D1%B8" target=_blank>窗外</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D6%DC%D1%B8" target=_blank>周迅</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">94.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D3%C0%D4%B6%BC%B8%D4%B6+%CD%F5%DD%D2%D6%AE" target=_blank>永远几远</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CD%F5%DD%D2%D6%AE" target=_blank>王菀之</a>)</td>
+    <td class="th">95.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B3%F6%CD%B7%CC%EC+%CE%E5%D4%C2%CC%EC" target=_blank><b>出头天</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CE%E5%D4%C2%CC%EC" target=_blank>五月天</a>)</td>
+    <td class="th">96.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C3%C0%BA%C3%CA%B1%B9%E2+%B9%E2%C1%BC%2B%B0%A2%C4%C2%C2%A1" target=_blank>美好时光</a>
+		(<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B9%E2%C1%BC"   target=_blank>光良</A>/<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B0%A2%C4%C2%C2%A1"   target=_blank>阿穆隆</A>)</td>
+  </tr>
+  <tr> 
+    <td class="th">97.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%87%D6%B2%CB+%B3%C2%BB%DB%C1%D5" target=_blank>囍菜</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B3%C2%BB%DB%C1%D5" target=_blank>陈慧琳</a>)</td>
+    <td class="th">98.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%BC%AF%C0%D6%D0%C7%C7%F2+%D0%C5" target=_blank>集乐星球</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D0%C5" target=_blank>信</a>)</td>
+    <td class="th">99.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B0%AE%B9%FD+%D1%EE%C7%A7%8B%C3" target=_blank>爱过</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D1%EE%C7%A7%8B%C3" target=_blank>杨千嬅</a>)</td>
+  </tr>
+  <tr> 
+    <td class="th">100.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D7%ED%B3%E0%B1%DA+%C1%D6%BF%A1%BD%DC" target=_blank><b>醉赤壁</b></a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C1%D6%BF%A1%BD%DC" target=_blank>林俊杰</a>)</td>
+    <td class="th">101.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%D0%A1%BE%C6%CE%D1+%C1%D6%BF%A1%BD%DC%2B%B2%CC%D7%BF%E5%FB" target=_blank><b>小酒窝</b></a>
+		(<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%C1%D6%BF%A1%BD%DC"   target=_blank>林俊杰</A>/<A  href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%B2%CC%D7%BF%E5%FB"   target=_blank>蔡卓妍</A>)</td>
+    <td class="th">102.</td>
+    <td><a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=%CC%EC%C1%C1%C1%CB+s.h.e" target=_blank>天亮了</a>
+		(<a href="http://mp3.baidu.com/m?tn=baidump3&ct=134217728&lm=-1&li=2&word=s.h.e" target=_blank>s.h.e</a>)</td>
+  </tr>
+
+<input type=hidden name=refreshtime value=@-RESBODY-@>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</table>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>&nbsp;</td>
+    <td height="20"><div align="right"><a href="#">返回页首</a></div></td>
+  </tr>
+  <tr>
+  	<td colspan="2" class="adfoot"><div></div></td>
+  </tr>
+  <tr bgcolor="#BEE9F9">
+    <td height="1" colspan="2"></td>
+  </tr>
+  <tr>
+    <td height="32">新歌TOP100的数据来自百度MP3搜索中搜索量最高的100首新歌，由系统自动计算统计。</td>
+    <td><div align="right"></div></td>
+  </tr>
+  <tr>
+    <td colspan="2">欢迎您给百度MP3“新歌TOP100”提出<a href="http://utility.baidu.com/quality/quality_form.php?word=%B8%F8%B0%D9%B6%C8MP3%A1%B0%D0%C2%B8%E8TOP100%A1%B1%CC%E1%D2%E2%BC%FB" target="_blank">意见与建议</a>
+      <div align="right"></div></td>
+  </tr>
+</table>
+<br>
+<table width="100%" align="center" cellpadding="5" cellspacing="0" class="unnamed3">
+  <tr>
+    <td height="35" class="sbjt"><strong>每日排名榜：</strong><a href="http://top.baidu.com/mp3.html" 
+target=_blank>流行金曲排行榜</a>　<a href="http://top.baidu.com/ngeshou.html" 
+target=_blank>男歌手排行榜</a>　<a href="http://top.baidu.com/ygeshou.html" 
+target=_blank>女歌手排行榜</a></td>
+  </tr>
+</table>
+<br>
+<br>
+<table width="100%" border=0 cellpadding="0" cellspacing="0" bgcolor="#CDEAF6" align="center">
+  <form name=f2 action="http://mp3.baidu.com/m" onSubmit="syn(this)">
+    <input type=hidden name=f value=ms>
+    <input type=hidden name=tn value="baidump3">
+    <input type=hidden name=ct value=134217728>
+    <input type=hidden name=lf>
+    <input type=hidden name=rn>
+    <tbody>
+      <tr>
+        <td height="60"><table border=0 align="center" cellpadding=0 cellspacing=0>
+            <tbody>
+              <tr>
+                <td><input class=formfont size=42 name=word>
+                  &nbsp;&nbsp;
+                  <input name="submit2" type=submit value=百度搜索 >
+                  <input name="button2" type=button onClick="g(f2)" value=歌词搜索>
+                  &nbsp;<a href="http://www.baidu.com/search/mp3_help.html"  target=_blank class="top">帮助</a><br>
+                  <label for="aW2">
+                  <input name=lm type=radio value=-1 id="aW2" checked>
+                  歌词</label>
+                  <label for="aM2">
+                  <input name=lm type=radio value=-1 id="aM2">
+                  全部音乐</label>
+                  <label for="Mp32">
+                  <input name=lm type=radio value=0 id="Mp32">
+                  mp3</label>
+                  <label for="RM2">
+                  <input name=lm type=radio value=1 id="RM2">
+                  rm</label>
+                  <label for="WMA2">
+                  <input name=lm type=radio value=2 id="WMA2">
+                  wma</label>
+                  <label for="Flash2">
+                  <input name=lm type=radio value=6 id="Flash2">
+                  flash</label>
+                  <label for="Else2">
+                  <input name=lm type=radio value=32767  id="Else2">
+                  其它格式</label>
+                  <label for="Ring2">
+                  <input name=lm type=radio value=-1 id="Ring2">
+                  铃声</label>
+              </tr>
+          </table></td>
+      </tr>
+      <tr>
+        <td height="1" bgcolor="#5CABCB"></td>
+      </tr>
+  </form>
+</table>
+<br />
+<table width="100%" border=0 align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align=center><font color="#333333"><a href="http://www.baidu.com/duty/copyright.html" target="_blank"><font color="#7777cc">&copy;2009</font></a>&nbsp;&nbsp;Baidu&nbsp;&nbsp;<a href="http://www.baidu.com/duty/index.html"><font color="#7777cc">免责声明</font></a>&nbsp;&nbsp;<a href="http://www.baidu.com/search/appcopyright.html" target="_blank"><font color="#7777cc">权利声明</font></a></font> </td>
+  </tr>
+</table>
+<script language="JavaScript">
+function newtext() {document.title="百度MP3_新歌TOP100"}
+window.setTimeout("newtext()",2);
+</script>
+</BODY>
+</HTML>

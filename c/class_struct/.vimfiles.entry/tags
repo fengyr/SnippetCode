@@ -1,0 +1,72 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Attr	../include/class.h	/^	DEMO_ELEMENT Attr;$/;"	m	struct:_DEMO	access:public
+Attr	../include/main.h	/^    MAIN_ELEMENT Attr;$/;"	m	struct:_MAIN	access:public
+CLASS_TNTOHY6A	../include/class.h	14;"	d
+DEMO	../include/class.h	/^typedef struct _DEMO DEMO;$/;"	t	typeref:struct:_DEMO
+DEMO_ELEMENT	../include/class.h	/^} DEMO_ELEMENT;$/;"	t	typeref:struct:_DEMO_ELEMENT
+DEMO_INTERFACE	../include/class.h	/^} DEMO_INTERFACE;$/;"	t	typeref:struct:_DEMO_INTERFACE
+Iface	../include/class.h	/^	DEMO_INTERFACE Iface;$/;"	m	struct:_DEMO	access:public
+Iface	../include/main.h	/^    MAIN_INTERFACE Iface;$/;"	m	struct:_MAIN	access:public
+MAIN	../include/main.h	/^typedef struct _MAIN MAIN;$/;"	t	typeref:struct:_MAIN
+MAIN_ELEMENT	../include/main.h	/^} MAIN_ELEMENT;$/;"	t	typeref:struct:_MAIN_ELEMENT
+MAIN_IEJ8MVJB	../include/main.h	14;"	d
+MAIN_INTERFACE	../include/main.h	/^} MAIN_INTERFACE;$/;"	t	typeref:struct:_MAIN_INTERFACE
+MAKE	../include/debug.h	29;"	d
+Main	../src/main.c	/^static int Main(MAIN *this, int argc, const char *argv[])$/;"	f	file:	signature:(MAIN *this, int argc, const char *argv[])
+PDEBUG	../include/debug.h	18;"	d
+PDEBUG	../include/debug.h	21;"	d
+PDEBUG	../include/debug.h	23;"	d
+PDEBUG	../include/debug.h	26;"	d
+_DEMO	../include/class.h	/^struct _DEMO {$/;"	s
+_DEMO::Attr	../include/class.h	/^	DEMO_ELEMENT Attr;$/;"	m	struct:_DEMO	access:public
+_DEMO::Iface	../include/class.h	/^	DEMO_INTERFACE Iface;$/;"	m	struct:_DEMO	access:public
+_DEMO::destroy	../include/class.h	/^	void (*destroy) (struct _DEMO * this);$/;"	m	struct:_DEMO	access:public
+_DEMO::initialize	../include/class.h	/^	void (*initialize) (struct _DEMO * this, int id, int age, char *name);$/;"	m	struct:_DEMO	access:public
+_DEMO::number	../include/class.h	/^    int number;$/;"	m	struct:_DEMO	access:public
+_DEMO_ELEMENT	../include/class.h	/^typedef struct _DEMO_ELEMENT {$/;"	s
+_DEMO_ELEMENT::age	../include/class.h	/^	int age;$/;"	m	struct:_DEMO_ELEMENT	access:public
+_DEMO_ELEMENT::id	../include/class.h	/^	int id;$/;"	m	struct:_DEMO_ELEMENT	access:public
+_DEMO_ELEMENT::name	../include/class.h	/^	char name[256];$/;"	m	struct:_DEMO_ELEMENT	access:public
+_DEMO_INTERFACE	../include/class.h	/^typedef struct _DEMO_INTERFACE {$/;"	s
+_DEMO_INTERFACE::display	../include/class.h	/^	void (*display) (DEMO * this);$/;"	m	struct:_DEMO_INTERFACE	access:public
+_MAIN	../include/main.h	/^struct _MAIN {$/;"	s
+_MAIN::Attr	../include/main.h	/^    MAIN_ELEMENT Attr;$/;"	m	struct:_MAIN	access:public
+_MAIN::Iface	../include/main.h	/^    MAIN_INTERFACE Iface;$/;"	m	struct:_MAIN	access:public
+_MAIN::destroy	../include/main.h	/^    void (*destroy)(MAIN *this);$/;"	m	struct:_MAIN	access:public
+_MAIN::initialize	../include/main.h	/^    void (*initialize)(MAIN *this);$/;"	m	struct:_MAIN	access:public
+_MAIN_ELEMENT	../include/main.h	/^typedef struct _MAIN_ELEMENT {$/;"	s
+_MAIN_ELEMENT::demo1	../include/main.h	/^    DEMO demo1;$/;"	m	struct:_MAIN_ELEMENT	access:public
+_MAIN_ELEMENT::demo2	../include/main.h	/^    DEMO demo2;$/;"	m	struct:_MAIN_ELEMENT	access:public
+_MAIN_INTERFACE	../include/main.h	/^typedef struct _MAIN_INTERFACE {$/;"	s
+_MAIN_INTERFACE::main	../include/main.h	/^    int (*main)(MAIN *this, int argc, const char *argv[]);$/;"	m	struct:_MAIN_INTERFACE	access:public
+age	../include/class.h	/^	int age;$/;"	m	struct:_DEMO_ELEMENT	access:public
+demo1	../include/main.h	/^    DEMO demo1;$/;"	m	struct:_MAIN_ELEMENT	access:public
+demo2	../include/main.h	/^    DEMO demo2;$/;"	m	struct:_MAIN_ELEMENT	access:public
+demo_free	../include/class.h	/^void demo_free(DEMO * this);$/;"	p	signature:(DEMO * this)
+demo_free	../src/class.c	/^void demo_free(DEMO * this)$/;"	f	signature:(DEMO * this)
+demo_init	../include/class.h	/^void demo_init(DEMO * this, int id, int age, char *name);$/;"	p	signature:(DEMO * this, int id, int age, char *name)
+demo_init	../src/class.c	/^void demo_init(DEMO * this, int id, int age, char *name)$/;"	f	signature:(DEMO * this, int id, int age, char *name)
+destroy	../include/class.h	/^	void (*destroy) (struct _DEMO * this);$/;"	m	struct:_DEMO	access:public
+destroy	../include/main.h	/^    void (*destroy)(MAIN *this);$/;"	m	struct:_MAIN	access:public
+destroy	../src/class.c	/^static void destroy(struct _DEMO *this)$/;"	f	file:	signature:(struct _DEMO *this)
+destroy	../src/main.c	/^static void destroy(MAIN *this)$/;"	f	file:	signature:(MAIN *this)
+display	../include/class.h	/^	void (*display) (DEMO * this);$/;"	m	struct:_DEMO_INTERFACE	access:public
+display	../src/class.c	/^static void display(DEMO * this)$/;"	f	file:	signature:(DEMO * this)
+id	../include/class.h	/^	int id;$/;"	m	struct:_DEMO_ELEMENT	access:public
+init	../src/class.c	/^static void init(struct _DEMO *this, int id, int age, char *name)$/;"	f	file:	signature:(struct _DEMO *this, int id, int age, char *name)
+initialize	../include/class.h	/^	void (*initialize) (struct _DEMO * this, int id, int age, char *name);$/;"	m	struct:_DEMO	access:public
+initialize	../include/main.h	/^    void (*initialize)(MAIN *this);$/;"	m	struct:_MAIN	access:public
+initialize	../src/main.c	/^static void initialize(MAIN *this)$/;"	f	file:	signature:(MAIN *this)
+main	../include/main.h	/^    int (*main)(MAIN *this, int argc, const char *argv[]);$/;"	m	struct:_MAIN_INTERFACE	access:public
+main	../src/main.c	/^int main(int argc, const char *argv[])$/;"	f	signature:(int argc, const char *argv[])
+main_free	../include/main.h	/^void main_free(MAIN *this);$/;"	p	signature:(MAIN *this)
+main_free	../src/main.c	/^void main_free(MAIN *this)$/;"	f	signature:(MAIN *this)
+main_init	../include/main.h	/^void main_init(MAIN *this);$/;"	p	signature:(MAIN *this)
+main_init	../src/main.c	/^void main_init(MAIN *this)$/;"	f	signature:(MAIN *this)
+name	../include/class.h	/^	char name[256];$/;"	m	struct:_DEMO_ELEMENT	access:public
+number	../include/class.h	/^    int number;$/;"	m	struct:_DEMO	access:public
