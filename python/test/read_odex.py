@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #!encoding=utf8
 
-from struct import *
+from struct import unpack
 import os
 import glob
 import sys
@@ -30,5 +30,3 @@ for fname in files:
         print e
     finally:
         f.close()
-
-    
