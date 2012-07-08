@@ -20,8 +20,8 @@ endif
 C_FLAGS += $(DEBFLAGS)
 # Debug setting end
 
-EXE_TARGET = raw_sock
-OBJECTS = $(OBJ_DIR)raw_socket$(OBJ_EXT)
+EXE_TARGET = multi_cast
+OBJECTS = $(OBJ_DIR)multi_cast$(OBJ_EXT)
 STATIC_LIB = 
 
 all: $(EXE_TARGET) $(OBJECTS)

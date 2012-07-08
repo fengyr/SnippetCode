@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     struct addrinfo hints, *res, *result;
     struct sockaddr_in *temp_addr;
     char ip_addr[256];
-    char *hostname = "zenki-laptop";
+    char *hostname = "Zenki-laptop";
     /*char *hostname = NULL;*/
     char *service = NULL;
     /*char *service = "ftp";*/

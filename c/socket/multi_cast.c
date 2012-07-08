@@ -24,11 +24,13 @@
 #include <sys/types.h>
 #include <string.h>
 
-#define     RECV_LOCAL_IP   "192.168.100.55"
+/* 设置本地IP地址，必须符合当前的IP设定。可设定为127.0.0.1 */
+#define     RECV_LOCAL_IP   "192.168.1.101"
 #define     RECV_MULTI_IP   "224.3.2.1"
 #define     RECV_PORT   9001
 
-#define     SEND_LOCAL_IP   "192.168.100.55"
+/* 设置本地IP地址，必须符合当前的IP设定。可设定为127.0.0.1 */
+#define     SEND_LOCAL_IP   "192.168.1.101"
 #define     SEND_MULTI_IP   "224.3.2.1"
 #define     SEND_PORT   9001
 
