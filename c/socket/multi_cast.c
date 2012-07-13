@@ -25,23 +25,25 @@
 #include <string.h>
 
 /* 设置本地IP地址，必须符合当前的IP设定。可设定为127.0.0.1 */
-#define     RECV_LOCAL_IP   "192.168.1.101"
+#define     RECV_LOCAL_IP   "127.0.0.1"
 #define     RECV_MULTI_IP   "224.3.2.1"
 #define     RECV_PORT   9001
 
 /* 设置本地IP地址，必须符合当前的IP设定。可设定为127.0.0.1 */
-#define     SEND_LOCAL_IP   "192.168.1.101"
+#define     SEND_LOCAL_IP   "127.0.0.1"
 #define     SEND_MULTI_IP   "224.3.2.1"
 #define     SEND_PORT   9001
 
 struct sockaddr_in local_addr_in, remote_addr_in;
 
-
-/* 
- * ===  FUNCTION  ======================================================================
- *         Name:  init_multi_server
- *  Description:  初始化组播的服务器端
- * =====================================================================================
+/**
+ * @Synopsis    初始化组播的服务器端  
+ *
+ * @Param interface_ip  网络接口的IP地址
+ * @Param multi_ip      多播的IP地址
+ * @Param multi_port    多播的端口
+ *
+ * @Returns 
  */
 int init_multi_server(char *interface_ip, char *multi_ip, int multi_port)
 {
@@ -53,15 +55,18 @@ int init_multi_server(char *interface_ip, char *multi_ip, int multi_port)
     memset(&local_addr_in, 0, sizeof(local_addr_in));
     memset(&mreq, 0, sizeof(mreq));
 
-    /*设置本地的sockaddr_in结构，用于绑定接收地址和端口*/
+    // 设置本地的sockaddr_in结构，用于绑定接收地址和端口
     local_addr_in.sin_family = AF_INET;
     local_addr_in.sin_port = htons(multi_port);
     inet_aton(multi_ip, &local_addr_in.sin_addr);
 
-    /*设置ip_mreq结构，目的是指定接收数据的组播ip地址和接收该组播的网络设备接口*/
+    // 设置ip_mreq结构，目的是指定接收数据的组播ip地址和接收该组播的网络设备接口
     inet_aton(multi_ip, &mreq.imr_multiaddr.s_addr);
-    inet_aton(interface_ip, &mreq.imr_interface.s_addr);
-    /*mreq.imr_interface.s_addr = htonl(INADDR_ANY);*/
+    // 1. 如果是指定网络设备接口，则使用interface_ip
+    inet_aton(interface_ip, &mreq.imr_interface.s_addr); 
+
+    // 2. 如果是接收任何IP地址的组播，则设置INADDR_ANY参数 
+    /* mreq.imr_interface.s_addr = htonl(INADDR_ANY); */
     if (mreq.imr_multiaddr.s_addr == -1) {
         printf("multiaddr error\n");
         return -1;
@@ -97,12 +102,14 @@ int init_multi_server(char *interface_ip, char *multi_ip, int multi_port)
     return fd;
 }
 
-
-/* 
- * ===  FUNCTION  ======================================================================
- *         Name:  init_multi_client
- *  Description:  初始化组播的客户端
- * =====================================================================================
+/**
+ * @Synopsis 初始化组播的客户端
+ *
+ * @Param interface_ip  网络接口的IP地址
+ * @Param multi_ip      多播的IP地址
+ * @Param multi_port    多播的端口
+ *
+ * @Returns 
  */
 int init_multi_client(char *interface_ip, char *multi_ip, int multi_port)
 {
@@ -171,7 +178,7 @@ int main(int argc, char *argv[])
     for (;;) {
         if ( server ) {
             len = sizeof(local_addr_in);
-            /*size = recvfrom(net_fd, buf, sizeof(buf), 0, (struct sockaddr*)&local_addr_in, &len);*/
+            /* size = recvfrom(net_fd, buf, sizeof(buf), 0, (struct sockaddr*)&local_addr_in, &len);  */
             size = recv(net_fd, buf, sizeof(buf), 0);
             printf("recv buf: %s, size: %d\n", buf, size);
         }

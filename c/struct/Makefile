@@ -20,8 +20,8 @@ endif
 C_FLAGS += $(DEBFLAGS)
 # Debug setting end
 
-EXE_TARGET = select_test
-OBJECTS = $(OBJ_DIR)select_test$(OBJ_EXT)
+EXE_TARGET = struct_test
+OBJECTS = $(OBJ_DIR)struct_test$(OBJ_EXT)
 STATIC_LIB = 
 
 all: $(EXE_TARGET) $(OBJECTS)

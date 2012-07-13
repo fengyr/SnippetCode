@@ -25,7 +25,6 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 
-
 int main(int argc, char *argv[])
 {
     int fd, rfd;
@@ -34,14 +33,14 @@ int main(int argc, char *argv[])
     struct sockaddr_in sockin_remote;
     int timeout = 3000;
     int rtn = -1;
-    int sock_len;
+    socklen_t sock_len;
     sock_len = sizeof(sockin_remote);
 
     fd = socket(AF_INET, SOCK_STREAM, 0);
     memset(&sockin, 0, sizeof(sockin));
     sockin.sin_family = AF_INET;
     inet_aton("127.0.0.1", &sockin.sin_addr);
-    sockin.sin_port = htons(9999);
+    sockin.sin_port = htons(9998);
     bind(fd, (struct sockaddr*)&sockin, sizeof(sockin));
     listen(fd, 10);
 
@@ -66,5 +65,3 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-
-

@@ -18,5 +18,5 @@ class myserver( SocketServer.StreamRequestHandler ):
         SocketServer.StreamRequestHandler.finish(self)
 
 if __name__ == '__main__':
-    server = SocketServer.TCPServer( ('192.168.100.55', 9000), myserver )
+    server = SocketServer.TCPServer( ('127.0.0.1', 9998), myserver )
     server.serve_forever()
