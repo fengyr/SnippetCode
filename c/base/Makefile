@@ -37,6 +37,6 @@ $(OBJ_DIR)%$(OBJ_EXT): $(SRC_DIR)%$(CSRC_EXT)
 	$(CXX)  $(INC) $(C_FLAGS) -c $< -o $@
 
 clean:
-	-rm -f $(EXE_TARGET) $(OBJECTS) *~
+	-rm -f $(EXE_TARGET) $(OBJECTS) GPATH GRTAGS GTAGS tags *~
 
 

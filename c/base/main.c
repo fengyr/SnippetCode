@@ -3,7 +3,7 @@
  *
  *       Filename:  base_test.c
  *
- *    Description:  
+ *    Description:  C语言基本语法的测试示例
  *
  *        Version:  
  *        Created:  七月 13, 2012
@@ -20,17 +20,21 @@
 
 /* 引用外部连接的变量 */
 extern int external_var1;
-extern external_var2;
+extern external_var2;       // 该形式的声明会给出warning提示，没有int类型声明
 
+/* ## 表示连接符号，将a，b两个符号进行连接，而不进行类型的判断 */
 #define test_join_func(a, b)            \
     do {                                \
         printf("a=%d, b=%d\n", a, b);   \
         printf("a##b is %d\n", a##b);   \
     } while (0)
 
+/* # 表示引用符号，var变量被va和参数r组合而成：va##a == var */
 #define test_ref_func(a)                \
     do {                                \
-        printf("a = %s\n", #a);         \
+        int var = 100;                  \
+        int va = 10;                    \
+        printf("var = %d\n", va##a);         \
     } while (0);
 
 int main(int argc, const char *argv[])
@@ -42,7 +46,8 @@ int main(int argc, const char *argv[])
     test_join_func(20, 12);
 
     printf("\n------------------TEST #--------------------\n");
-    test_ref_func("test ref func");
+    int r = 1;
+    test_ref_func(r);
     
     return 0;
 }
