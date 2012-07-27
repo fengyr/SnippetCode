@@ -41,7 +41,7 @@ int main(int argc, const char *argv[])
 
     printf("char size: %d addr: %p value: %c\n", sizeof(char_v), &char_v, char_v);
     printf("int size: %d addr: %p value: %d\n", sizeof(int_v), &int_v, int_v);
-    printf("long size: %d addr: %p value: %d\n", sizeof(long_v), &long_v, long_v);
+    printf("long size: %d addr: %p value: %ld\n", sizeof(long_v), &long_v, long_v);
     printf("double size: %d addr: %p value: %f\n", sizeof(double_v), &double_v, double_v);
 
     printf("\n-------------------TEST POINT-------------------\n");
@@ -63,7 +63,7 @@ int main(int argc, const char *argv[])
 
     printf("char* size: %d addr: %p value: %c\n", sizeof(char_p), char_p, *char_p);
     printf("int* size: %d addr: %p value: %d\n", sizeof(int_p), int_p, *int_p);
-    printf("long* size: %d addr: %p value: %d\n", sizeof(long_p), long_p, *long_p);
+    printf("long* size: %d addr: %p value: %ld\n", sizeof(long_p), long_p, *long_p);
     printf("double* size: %d addr: %p value: %f\n", sizeof(double_p), double_p, *double_p);
 
     printf("\n-------------------TEST INT ARRAY-------------------\n");
@@ -78,7 +78,7 @@ int main(int argc, const char *argv[])
     val_char_p = (char*)val;
     printf("val={99, 100, 102}, val_char_p is char*\n");
     for (i = 0; i < 12; i++) {
-        printf("val=%d, val addr=%p, val_char_p=%c, val_char_p addr=%d, *val_char_p=%d\n", *val, val, *val_char_p, val_char_p, *val_char_p);
+        printf("val=%d, val addr=%p, val_char_p=%c, val_char_p addr=%p, *val_char_p=%d\n", *val, val, *val_char_p, val_char_p, *val_char_p);
         val_char_p++;
     }
 
@@ -94,6 +94,8 @@ int main(int argc, const char *argv[])
     printf("str2 len: %d, str3 len: %d\n", strlen(str2), strlen(str3));
     str3[0] = 'z';
     printf("*(str2+4): %c, str3[0]: %c\n", *(str2+4), str3[0]);
+    str2 = str3;
+    printf("str3 = %s\n", str3);
 
     printf("\n-------------------TEST STRUCT-------------------\n");
     /* 该测试强制转换一个结构体的变量的地址到一个int型，然后再将其强制
@@ -107,6 +109,31 @@ int main(int argc, const char *argv[])
 
     printf("myclass size: %d, addr: %p, context=%d, class_p=%p\n", sizeof(class), &class, context, class_p);
     printf("class_p dump a=%f, b=%d, c=%d, d=%d\n", class_p->a, class_p->b, class_p->c, class_p->d);
+
+    printf("\n-------------------TEST CONST-------------------\n");
+    /* const修饰的变量分两种：
+     *      一种是修饰指针指向的变量，即(const int*) 或(int const*)。
+     *  这种形式表示指针指向的变量不可被改变。
+     *     另一种是修饰指针本身，即(int* const)。
+     *  这种形式表示指针本身不可被改变,就是说该指针不能指向其他内存地址。 */
+    int var1 = 10;
+    int var2 = 101;
+    const int *ro_i1 = &var1;   // 10
+    int const *ro_i2 = &var1;   // 10
+    int * const ro_i3 = &var2;  // 101,不能同时将一个变量的地址赋值给const修饰的两种情况
+
+    /* *ro_i1 = var2; */    // 指针引用的变量不可被改变
+    /* *ro_i2 = var2; */    // 指针引用的变量不可被改变
+    *ro_i3 = var1;   // 10
+
+    printf("T1: ro_i1 = %d, ro_i2 = %d, ro_i3 = %d\n", *ro_i1, *ro_i2, *ro_i3);
+
+    ro_i1 = &var2;  // 100
+    ro_i2 = &var2;  // 100
+    /* ro_i3 = &var2; */    // 指针本身不可被改变
+
+    printf("T2: ro_i1 = %d, ro_i2 = %d, ro_i3 = %d\n", *ro_i1, *ro_i2, *ro_i3);
+
 
     return 0;
 }

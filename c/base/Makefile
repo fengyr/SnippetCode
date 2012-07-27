@@ -20,8 +20,8 @@ endif
 C_FLAGS += $(DEBFLAGS)
 # Debug setting end
 
-EXE_TARGET = base_test
-OBJECTS = $(OBJ_DIR)main$(OBJ_EXT) $(OBJ_DIR)external$(OBJ_EXT)
+EXE_TARGET = malloc_test
+OBJECTS = $(OBJ_DIR)malloc_test$(OBJ_EXT)
 STATIC_LIB = 
 
 all: $(EXE_TARGET) $(OBJECTS)
