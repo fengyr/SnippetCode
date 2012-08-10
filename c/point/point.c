@@ -29,6 +29,19 @@ struct myclass {
     int d;
 };
 
+void create_myclass(struct myclass **myclass_p)
+{
+    /* 动态分配一个myclass结构对象 */
+    struct myclass *temp = (struct myclass*) malloc(sizeof(struct myclass));
+    temp->a = 2.0;
+    temp->b = 'a';
+    temp->c = 'b';
+    temp->d = 200;
+
+    /* 指针的指针解除一级引用，即为指针的内容 */
+    *myclass_p = temp;
+}
+
 int main(int argc, const char *argv[])
 {
     printf("\n-------------------TEST VALUE-------------------\n");
@@ -38,11 +51,13 @@ int main(int argc, const char *argv[])
     int  int_v = 10;
     long long_v = 10000L;
     double double_v = 1.9999f;
+    struct myclass class_v;
 
     printf("char size: %d addr: %p value: %c\n", sizeof(char_v), &char_v, char_v);
     printf("int size: %d addr: %p value: %d\n", sizeof(int_v), &int_v, int_v);
     printf("long size: %d addr: %p value: %ld\n", sizeof(long_v), &long_v, long_v);
     printf("double size: %d addr: %p value: %f\n", sizeof(double_v), &double_v, double_v);
+    printf("struct myclass size: %d addr: %p\n", sizeof(class_v), &class_v);
 
     printf("\n-------------------TEST POINT-------------------\n");
     /* 比较char*、int*、long*、double*变量的大小 */
@@ -51,6 +66,7 @@ int main(int argc, const char *argv[])
     int     *int_p;
     long    *long_p;
     double  *double_p;
+    struct myclass *class_point = (struct myclass*)malloc(sizeof(struct myclass));
 
     char_p = malloc(sizeof(char));
     *char_p = 'a';
@@ -65,6 +81,23 @@ int main(int argc, const char *argv[])
     printf("int* size: %d addr: %p value: %d\n", sizeof(int_p), int_p, *int_p);
     printf("long* size: %d addr: %p value: %ld\n", sizeof(long_p), long_p, *long_p);
     printf("double* size: %d addr: %p value: %f\n", sizeof(double_p), double_p, *double_p);
+    printf("struct myclass* size: %d addr: %p\n", sizeof(class_point), class_point);
+/* 
+ *     if (class_point != NULL) {
+ *         free(class_point);
+ *     }
+ *     if (char_p != NULL) {
+ *         free(char_p);
+ *     }
+ *     if (int_p != NULL) {
+ *         free(int_p);
+ *     }
+ *     if (long_p != NULL) {
+ *         free(long_p);
+ *     }
+ *     if (double_p != NULL) {
+ *         free(double_p);
+ *     } */
 
     printf("\n-------------------TEST INT ARRAY-------------------\n");
     /* 指针的偏移量大小取决于该指针的类型，本例中的数组为int型，但是
@@ -98,16 +131,16 @@ int main(int argc, const char *argv[])
     printf("str3 = %s\n", str3);
 
     printf("\n-------------------TEST STRUCT-------------------\n");
-    /* 该测试强制转换一个结构体的变量的地址到一个int型，然后再将其强制
+    /* 该测试强制转换一个结构体的变量的地址到一个long型，然后再将其强制
      * 转换成该结构体的指针，当引用这个指针时，可以还原这个结构体的原始
      * 状态。 */
 
     struct myclass class = {1.0, 2, 3, 4};
     struct myclass *class_p;
-    int     context = (int)&class;
+    long     context = (long)&class;
     class_p = (struct myclass*)context;
 
-    printf("myclass size: %d, addr: %p, context=%d, class_p=%p\n", sizeof(class), &class, context, class_p);
+    printf("myclass size: %d, addr: %p, context=%ld, class_p=%p\n", sizeof(class), &class, context, class_p);
     printf("class_p dump a=%f, b=%d, c=%d, d=%d\n", class_p->a, class_p->b, class_p->c, class_p->d);
 
     printf("\n-------------------TEST CONST-------------------\n");
@@ -134,6 +167,15 @@ int main(int argc, const char *argv[])
 
     printf("T2: ro_i1 = %d, ro_i2 = %d, ro_i3 = %d\n", *ro_i1, *ro_i2, *ro_i3);
 
+    printf("\n-------------------TEST POINT POINT-------------------\n");
+    /* 声明一个结构体指针，要求在函数中对其初始化。需要给函数传入指针的地址，
+     * 这样在函数里解除一级引用，就可以改变指针的值。 */
+    struct myclass *class_pp;
+    create_myclass(&class_pp);
+    printf("class_pp ptr = %p, a = %f, b = %c, c = %c, d = %d\n", class_pp, class_pp->a, class_pp->b, class_pp->c, class_pp->d);
+    if (class_pp != NULL) {
+        free(class_pp);
+    }
 
     return 0;
 }

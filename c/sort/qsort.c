@@ -49,7 +49,7 @@ int sort_string(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    qsort(&argv[1], argc - 1, sizeof(argv[1]), cmpstringp);
+    qsort(&argv[1], argc - 1, sizeof(argv[1]), (int (*)(const void *, const void *))cmpstringp);
 
     for (j = 1; j < argc; j++)
         puts(argv[j]);
@@ -62,7 +62,7 @@ int sort_inter(int argc, char *argv[])
     int j;
 
     if (argc < 2) {
-        fprintf(stderr, "Usage: %s <string>...\n", argv[0]);
+        fprintf(stderr, "Usage: %s <int>...\n", argv[0]);
         exit(EXIT_FAILURE);
     }
 
@@ -77,7 +77,7 @@ int sort_inter(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-    sort_inter(argc, argv);
+    /* sort_inter(argc, argv); */
 
     sort_string(argc, argv);
 
