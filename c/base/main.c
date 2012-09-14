@@ -22,6 +22,9 @@
 extern int external_var1;
 extern external_var2;       // 该形式的声明会给出warning提示，没有int类型声明
 
+extern int array[10];       // 错误的外部引用：int *array
+extern int *point;          // 错误的外部引用：int point[];
+
 /* ## 表示连接符号，将a，b两个符号进行连接，而不进行类型的判断 */
 #define test_join_func(a, b)            \
     do {                                \
@@ -41,6 +44,7 @@ int main(int argc, const char *argv[])
 {
     printf("------------------TEST EXTERN VAR--------------------\n");
     printf("external_var1 = %d, external_var2 = %d\n", external_var1, external_var2);
+    printf("array[0] = %d, *point = %d\n", array[9], *point);
 
     printf("\n------------------TEST ##--------------------\n");
     test_join_func(20, 12);
