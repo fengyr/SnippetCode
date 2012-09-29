@@ -15,6 +15,7 @@ def init_socket(serverip, serverport):
         print 'Connect video server error'
     return s
 
+
 def handle(s, msg):
     try:
         s.send(msg)
@@ -22,6 +23,7 @@ def handle(s, msg):
         print msg
     except socket.error:
         print 'send to video server error'
+
 
 def use_age():
     print './con264 [start, stop] ipaddress [5001-5006]'
