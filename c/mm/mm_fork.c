@@ -26,7 +26,7 @@ DATA* map_memory(int size)
 int main(int argc, char **argv)
 {
 	DATA *pmstr, *orgstr;
-    int size = 10*20;
+    int size = 10*22;       // 5组数据的大小为220字节
     int len = 0;
     char *str = "hello";
     int i = 0;
@@ -39,8 +39,10 @@ int main(int argc, char **argv)
         memcpy(pmstr->data1, str, 5);
         memcpy(pmstr->data2, str, 5);
         pmstr->len = i;
-        printf("i: %d\n", i);
-        len += sizeof(DATA)*(++i);
+        i++;
+        len += sizeof(DATA);
+        printf("in parent process i: %d, len: %d\n", pmstr->len, len);
+
         pmstr++;
         sleep(1);
     }
@@ -50,9 +52,9 @@ int main(int argc, char **argv)
         len = 0;
         pmstr = orgstr;
         while ( len < size) {
-            printf("data1: %s, data2: %s, len: %d\n", pmstr->data1, pmstr->data2, pmstr->len);
+            printf("in child data1: %s, data2: %s, i: %d\n", pmstr->data1, pmstr->data2, pmstr->len);
 
-            len += sizeof(DATA)*(++i);
+            len += sizeof(DATA);
             pmstr++;
         }
 
@@ -60,7 +62,7 @@ int main(int argc, char **argv)
         printf("child exit\n");
     }
     else {
-        printf("this is parent\n");
+        printf("this is parent exit\n\n");
     }
 
     return 0;

@@ -43,7 +43,7 @@ DATA* map_memory(char *filename, int size)
 int main(int argc, char **argv)
 {
 	DATA *pmstr;
-    int size = 10*10;
+    int size = 10*22;       // 5组数据的大小为220字节
     int len = 0;
     char *str = "hello";
     int i = 0;
@@ -63,8 +63,10 @@ int main(int argc, char **argv)
         memcpy(pmstr->data1, str, 5);
         memcpy(pmstr->data2, str, 5);
         pmstr->len = i;
-        printf("i: %d\n", i);
-        len += sizeof(DATA)*(++i);
+        i++;
+        len += sizeof(DATA);
+        printf("i: %d, len: %d\n", pmstr->len, len);
+
         pmstr++;
         sleep(1);
     }

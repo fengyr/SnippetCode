@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 {
 	DATA *pmstr;
 	char context[1024];
-    int size = 10*10;
+    int size = 10*22;       // 5组数据的大小为220字节
 	int i = 0;
 
 	if (argc < 2) {
@@ -53,8 +53,9 @@ int main(int argc, char **argv)
         /*memcpy(pmstr->data1, "change it", sizeof("change it"));*/
         /*memcpy(pmstr->data2, "do it", sizeof("do it"));*/
         /*pmstr->len = 20;*/
-        printf("data1: %s, data2: %s, len: %d\n", pmstr->data1, pmstr->data2, pmstr->len);
         i++;
+        printf("data1: %s, data2: %s, len: %d, i: %d\n", pmstr->data1, pmstr->data2, sizeof(DATA)*i, pmstr->len);
+
         pmstr++;
         sleep(1);
     }
