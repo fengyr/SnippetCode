@@ -1,17 +1,17 @@
 /*
  * =====================================================================================
  *
- *       Filename:  main.c
+ *       Filename:  qsort.c
  *
- *    Description:  
+ *    Description:  qsort使用示例
  *
- *        Version:  1.0
- *        Created:  
+ *        Version:  
+ *        Created:  十月 30, 2012
  *       Revision:  none
  *       Compiler:  gcc
  *
- *         Author:  Zenki
- *        Company:  
+ *         Author:  Zenki (Zenki.J.Zha), zenki2001cn@163.com
+ *   Organization:  
  *
  * =====================================================================================
  */

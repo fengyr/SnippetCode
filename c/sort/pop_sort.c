@@ -1,20 +1,21 @@
 /*
  * =====================================================================================
  *
- *       Filename:  main.c
+ *       Filename:  pop_sort.c
  *
- *    Description:  
+ *    Description:  冒泡排序
  *
- *        Version:  1.0
- *        Created:  
+ *        Version:  
+ *        Created:  十月 29, 2012
  *       Revision:  none
  *       Compiler:  gcc
  *
- *         Author:  Zenki
- *        Company:  
+ *         Author:  Zenki (Zenki.J.Zha), zenki2001cn@163.com
+ *   Organization:  
  *
  * =====================================================================================
  */
+
 
 #include <stdio.h>
 #include <unistd.h>
@@ -25,7 +26,11 @@ void pop_sort(int *array, int size)
     int tmp;
     int i, j;
 
+    // 对数组的每一个元素进行比较，0<i<size；
+    // 一次比较的结果是将最大值放置到数组的末尾，
+    // 需要比较size次将所有元素排序。
     for (i = 0; i < size; i++) {
+        // 选择除了A[i]以外的元素进行比较，将小于A[i]的元素与之交换
         for (j = i+1; j < size; j++) {
             if ( array[j] < array[i] ) {
                 tmp = array[j];
@@ -35,20 +40,3 @@ void pop_sort(int *array, int size)
         }
     }
 }
-
-int main(int argc, char *argv[])
-{
-    int i;
-    int array[] = {10, 8, 4, 9, 2, 4, 5, 3, 19, 11};
-
-    pop_sort(array, 10);
-
-    for (i = 0; i < 10; i++) {
-        printf("%d,", array[i]);
-    }
-    printf("\n");
-	
-    return 0;
-}
-
-

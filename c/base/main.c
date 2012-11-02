@@ -53,5 +53,14 @@ int main(int argc, const char *argv[])
     int r = 1;
     test_ref_func(r);
     
+    printf("\n------------------TEST va_list --------------------\n");
+    var_list_test("my name is %s, age is %d, code is %c.\n", "zenki", 30, 'Z'); 
+
+    printf("\n------------------TEST pointer_to_address --------------------\n");
+    test_pointer_to_address();
+
+    printf("\n------------------TEST little_big_endian --------------------\n");
+    test_little_big_endian();
+
     return 0;
 }
