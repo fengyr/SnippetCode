@@ -4,33 +4,46 @@
 #   $ make clean     Clean the objectives and target.
 ###############################################################################
 
-CROSS_COMPILE = 
-OPTIMIZE := -O
-WARNINGS := -Wall -Wno-unused -Wno-format
-DEFS     := 
-EXTRA_CFLAGS := -g 
+CROSS_COMPILE   = /host/linux_part/ics_51/android/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-
+# bionic的目录
+ANDROID_BIONIC  = /host/linux_part/ics_51/android/bionic/
+# 编译好的库目录，用来链接共享库
+ANDROID_LIB_DIR = /host/linux_part/ics_51/android/out/target/product/A1107/system/lib/
+OPTIMIZE        := -O
+WARNINGS        := -Wall -Wno-unused -Wno-format
+DEFS            := 
+EXTRA_CFLAGS    :=
+LDFLAGS         := -nostdlib -lc -ldl -Bdynamic -Wl,-dynamic-linker,/system/bin/linker -L$(ANDROID_LIB_DIR)
 
 # 输出目录，会自动创建
-OUT_DIR 	= out
-OBJ_DIR   	= $(OUT_DIR)/obj
+OUT_DIR 	    = out
+OBJ_DIR   	    = $(OUT_DIR)/obj
 
-# 头文件目录
-INC_DIR   		= 
+# bionic头文件目录
+INC_DIR   		=  $(ANDROID_BIONIC)/libc/include/          \
+                   $(ANDROID_BIONIC)/libc/string/           \
+                   $(ANDROID_BIONIC)/libc/stdio             \
+                   $(ANDROID_BIONIC)/libc/stdlib/           \
+                   $(ANDROID_BIONIC)/libc/arch-arm/include/ \
+                   $(ANDROID_BIONIC)/libc/kernel/common/    \
+                   $(ANDROID_BIONIC)/libc/kernel/arch-arm/
 # 源文件目录
 SRC_DIR   		= .
 # 额外包含的源文件列表
 EXTRA_SRC 		= 
 # 排除的文件列表
-EXCLUDE_FILES 	= ./qsort.c
+EXCLUDE_FILES 	= 
 # 源文件后缀
 SUFFIX 			= c cpp cc cxx
+# Android额外的动态库，可在NDK目录中找
+EXTRA_OBJECTS 	= ./extra_libs/crtbegin_dynamic.o ./extra_libs/crtend_android.o
 
 # 目标名称和类型，不需要考虑后缀名，定义多个名称实际上多个拷贝
 # 如：$(OUT_DIR)/main 
-TARGET       := main
-TARGET_TYPE  := app
-#TARGET_TYPE  := ar
-#TARGET_TYPE  := so
+TARGET          := main
+TARGET_TYPE     := app
+#TARGET_TYPE    := ar
+#TARGET_TYPE    := so
 
 
 #####################################################################################
@@ -107,7 +120,7 @@ $(TARGET): $(all_objs)
 else
 $(TARGET): LD = $(if $(strip $(src-cpp) $(src-cc) $(src-cxx)),$(G++),$(GCC))
 $(TARGET): $(all_objs)
-	$(LD) $(LDFLAGS) $(all_objs) -o $@
+	$(LD) $(LDFLAGS) $(all_objs) $(EXTRA_OBJECTS) -o $@
 endif
 
 .mkdir:
@@ -119,5 +132,4 @@ clean:
 -include $(patsubst %.o,%.o.d,$(all_objs))
 
 .PHONY: $(PHONY)
-
 

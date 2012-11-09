@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project default="build" basedir=".">
+    
+    <property name="src.dir" value="org" />
+    <property name="dist.dir" value="bin" />
+
+    <path id="classpath">
+    </path>
+
+    <target name="init">
+        <delete dir="${dist.dir}" failonerror="false" />
+
+        <mkdir dir="${dist.dir}" />
+    </target>
+
+    <target name="build" depends="init">
+        <javac srcdir="${src.dir}" destdir="${dist.dir}">
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+
+    <target name="clean">
+        <delete dir="${dist.dir}" failonerror="false" />
+    </target>
+
+</project>

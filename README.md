@@ -1,4 +1,4 @@
 SnippetCode
 ===========
 
-Snippet code about C、Python、Shell .etc
+Snippet code about C、Java、Python、Shell、 Android .etc

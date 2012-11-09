@@ -1,0 +1,1 @@
+先在命令行运行make编译，生成串口读写共享库，然后运行gcc -s -shared -fPIC test.c -lSetupSerialPort -o test.so，编译串口读写测试程序。

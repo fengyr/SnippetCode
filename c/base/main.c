@@ -61,6 +61,8 @@ int main(int argc, const char *argv[])
 
     printf("\n------------------TEST little_big_endian --------------------\n");
     test_little_big_endian();
+    test_little_big_endian2();
+    test_little_big_endian3();
 
     return 0;
 }

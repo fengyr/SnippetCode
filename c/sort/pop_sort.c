@@ -21,6 +21,14 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+/**
+ * @Synopsis 
+ *
+ * 时间复杂度：O(n^2)
+ *
+ * @Param array
+ * @Param size
+ */
 void pop_sort(int *array, int size)
 {
     int tmp;

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 ####################{}进行扩展
 #FILE=/etc/fstab

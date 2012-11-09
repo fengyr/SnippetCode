@@ -43,12 +43,15 @@ int main(int argc, char *argv[])
  *     insert_sort(nums, sizeof(nums)/sizeof(int));   
  * 
  *     printf("heap sort start ==============>\n");
- *     heap_sort(nums, sizeof(nums)/sizeof(int));      */
+ *     heap_sort(nums, sizeof(nums)/sizeof(int));       */
 
     printf("merge sort start ==============>\n");
-    merge_sort(nums, sizeof(nums)/sizeof(int));   
+    merge_sort(nums, sizeof(nums)/sizeof(int));    
 
-    output("\nafter sort", nums, sizeof(nums)/sizeof(int));
+    /* printf("shell sort start ==============>\n");
+     * shell_sort(nums, sizeof(nums)/sizeof(int)); */
+
+    output("\nfinish =>", nums, sizeof(nums)/sizeof(int));
 
 	return 0;
 }

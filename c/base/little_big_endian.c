@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <stdlib.h>
+#include <endian.h>
 
 struct little_big_endian_t {
     unsigned int a:2;
@@ -40,4 +41,27 @@ void test_little_big_endian()
     };
 
     printf("lb = %d\n", *(int*)&lb); 
+}
+
+void test_little_big_endian2()
+{
+    static const int v = 1;
+    char *endian = *(char*)&v == 1 ? "this is little endian" : "this is big endian";
+
+    printf("%s\n", endian);
+}
+
+void test_little_big_endian3()
+{
+#if BYTE_ORDER == LITTLE_ENDIAN
+    printf("this is little endian\n");
+#endif
+
+#if BYTE_ORDER == BIG_ENDIAN
+    printf("this is big endian\n");
+#endif
+
+#if BYTE_ORDER == PDP_ENDIAN
+    printf("this is pdp endian\n");
+#endif
 }

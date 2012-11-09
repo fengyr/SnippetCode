@@ -34,9 +34,17 @@
  *     }
  * } */
 
+/**
+ * @Synopsis 
+ *
+ * 时间复杂度：O(n^2)
+ *
+ * @Param array
+ * @Param len
+ */
 void insert_sort(int *array, int len)
 {
-    int i = 0;
+    int i;
     // 从第二个元素开始，按照以下的规则遍历数组，进行元素比较
     for(i = 1; i < len; ++i) {
         int j = i - 1;                          // 记录前一个元素的标号
@@ -47,6 +55,23 @@ void insert_sort(int *array, int len)
             /* output("sorting sub", array, len);  // 打印子排序结果 */
         }
         array[j+1] = key;                       // 最终空出适当的位置，放置比较对象
-        output("sorting ", array, len);         // 打印子排序结果
+        output("sorting", array, len);         // 打印子排序结果
+    }
+}
+
+void insert_sort_by_step(int *array, int len, int step)
+{
+    int i;
+
+    for(i = 1; i < len; ++i) {
+        int j = i - step;                          
+        int key = array[i];                     
+        while(j >= 0 && array[j] > key) {       
+            array[j+step] = array[j];
+            j -= step;                                
+            /* output("sorting sub", array, len);   */
+        }
+        array[j+step] = key;                      
+        output("sorting", array, len);         
     }
 }

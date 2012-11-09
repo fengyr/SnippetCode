@@ -19,30 +19,12 @@
 #include <stdio.h>
 #include <string.h>
 
-/**
- * @Synopsis 该算法的思想是将待排序的数组全部对半分，最终只有一个元素为止。
- *           然后通过递归，将所有划分的数组相互比较排序，比较的数组是按照
- *           划分的反向顺序，最终将所有划分的数组都合并起来。
- *
- * @Param array 数组指针
- * @Param len   数组长度
- */
-void merge_sort(int *array, int len)
+/* 以下代码是在两次递归返回时调用的，所以这时的数组已经开始将划分的数组
+ * 组合起来了。所以第一次比较时，数组应该有两个元素了。
+ * 比较前需要对当前一半的数组元素做一份拷贝 */
+void merge(int *array, int len)
 {
-    /* 递归结束的标识 */
-    if (len == 1) {
-        return;
-    }
-
-    /* 比较前半段元素 */
-    merge_sort(array, len/2);
-    /* 比较后半段元素 */
-    merge_sort(array + len/2, (len+1) /2);
-
-    /* 以下代码是在两次递归返回时调用的，所以这时的数组已经开始将划分的数组
-     * 组合起来了。所以第一次比较时，数组应该有两个元素了。
-     * 比较前需要对当前一半的数组元素做一份拷贝 */
-    int copy_array[len/2];
+        int copy_array[len/2];
     memcpy(copy_array, array, len/2*sizeof(int));
     output("\ncopy_array", copy_array, len/2);      // 打印子排序结果
 
@@ -75,4 +57,29 @@ void merge_sort(int *array, int len)
         array[k++] = array[j++];
         output("copy_right <", array, len);         // 打印子排序结果
     }
+}
+
+/**
+ * @Synopsis 该算法的思想是将待排序的数组进行分半，到最终只有一个元素为止。
+ *           然后通过递归，将所有分半的数组相互比较排序，再组合起来，比较的数组是按照
+ *           划分的反向顺序，最终将所有划分的数组都合并起来。
+ *
+ * 时间复杂度：Θ(n·lg(n))
+ *
+ * @Param array 数组指针
+ * @Param len   数组长度
+ */
+void merge_sort(int *array, int len)
+{
+    /* 递归结束的标识 */
+    if (len == 1) {
+        return;
+    }
+
+    /* 比较前半段元素 */
+    merge_sort(array, len/2);
+    /* 比较后半段元素 */
+    merge_sort(array + len/2, (len+1) /2);
+    
+    merge(array, len);
 } 
