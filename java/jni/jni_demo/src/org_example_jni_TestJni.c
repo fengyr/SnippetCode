@@ -14,8 +14,7 @@
 #include <stdio.h>
 
 void JNICALL Java_org_example_jni_TestJni_hello
-(JNIEnv *e, jclass c) 
-{
+(JNIEnv *e, jclass c) {
     printf("hello jni!\n");
 }
 
@@ -25,8 +24,19 @@ void JNICALL Java_org_example_jni_TestJni_hello
  * Signature: ([Ljava/lang/String;)I
  */
 jint JNICALL Java_org_example_jni_TestJni_hello2
-(JNIEnv *e, jclass c, jobjectArray a) 
-{
+(JNIEnv *env, jclass c, jobjectArray a) {
+    jsize size = (*env)->GetArrayLength(env, a);
+    int i = 0;
+    for (i = 0; i < size; i++) {
+        jobject obj = (*env)->GetObjectArrayElement(env, a, i);
+        const char *langArray = (obj != 0) ? (*env)->GetStringUTFChars(env, obj, 0) : 0;
+        printf("%s\n", langArray);
+
+        if (obj != 0) {
+            (*env)->ReleaseStringUTFChars(env, obj, langArray);
+        }
+    }
+
     return 0;
 }
 
@@ -36,8 +46,7 @@ jint JNICALL Java_org_example_jni_TestJni_hello2
  * Signature: ([Ljava/lang/String;[I)V
  */
 jboolean JNICALL Java_org_example_jni_TestJni_hello3
-(JNIEnv *e, jclass c, jobjectArray o, jintArray a) 
-{
+(JNIEnv *e, jclass c, jobjectArray o, jintArray a) {
     return 0;
 }
 
@@ -47,7 +56,6 @@ jboolean JNICALL Java_org_example_jni_TestJni_hello3
  * Signature: ([Ljava/lang/String;[II)V
  */
 jstring JNICALL Java_org_example_jni_TestJni_hello4
-(JNIEnv *e, jclass c, jobjectArray o, jintArray ia, jint i) 
-{
+(JNIEnv *e, jclass c, jobjectArray o, jintArray ia, jint i) {
     return NULL; 
 }

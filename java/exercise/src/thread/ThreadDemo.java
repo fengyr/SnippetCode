@@ -22,12 +22,12 @@ public class ThreadDemo extends Thread {
         synchronized (sumCal) {
             System.out.println(threadName + " ");
 
-           try {
+            try {
                 Thread.sleep(1000);
             }
             catch(Exception e) {
                 // todo
-           }
+            }
             sumCal.print();
             sumCal2.print();
         }

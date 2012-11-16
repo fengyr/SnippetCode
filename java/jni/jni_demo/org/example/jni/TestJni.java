@@ -1,3 +1,21 @@
+/*
+ * =====================================================================================
+ *
+ *       Filename:  TestJni.java
+ *
+ *    Description:  JNI示例
+ *
+ *        Version:  0.1
+ *        Created:  十一月 16, 2012
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Zenki (Zenki.J.Zha), zenki2001cn@163.com
+ *   Organization:  
+ *
+ * =====================================================================================
+ */
+
 package org.example.jni;
 
 public class TestJni {
@@ -15,7 +33,10 @@ public class TestJni {
         TestJni test = new TestJni();
 
         test.hello();
-        test.hello2(null);
+
+        String[] testString = {"hello zenki!", "hello world!"};
+        test.hello2(testString);
+
         test.hello3(null, null);
         test.hello4(null, null, 0);
     }
