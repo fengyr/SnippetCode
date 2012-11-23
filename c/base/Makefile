@@ -8,7 +8,7 @@ CROSS_COMPILE =
 OPTIMIZE := -O
 WARNINGS := -Wall -Wno-unused -Wno-format
 DEFS     := -DMYDEF=1 -UMYDEF2
-EXTRA_CFLAGS := 
+EXTRA_CFLAGS := -g
 
 # 输出目录
 OUT_DIR 	= out

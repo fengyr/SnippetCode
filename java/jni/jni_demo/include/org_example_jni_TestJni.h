@@ -26,18 +26,18 @@ JNIEXPORT jint JNICALL Java_org_example_jni_TestJni_hello2
 /*
  * Class:     org_example_jni_TestJni
  * Method:    hello3
- * Signature: ([Ljava/lang/String;[I)Z
+ * Signature: ([II)Ljava/lang/String;
  */
-JNIEXPORT jboolean JNICALL Java_org_example_jni_TestJni_hello3
-  (JNIEnv *, jclass, jobjectArray, jintArray);
+JNIEXPORT jstring JNICALL Java_org_example_jni_TestJni_hello3
+  (JNIEnv *, jclass, jintArray, jint);
 
 /*
  * Class:     org_example_jni_TestJni
- * Method:    hello4
- * Signature: ([Ljava/lang/String;[II)Ljava/lang/String;
+ * Method:    callInner
+ * Signature: (Lorg/example/jni/TestJni/InnerTestClass;)V
  */
-JNIEXPORT jstring JNICALL Java_org_example_jni_TestJni_hello4
-  (JNIEnv *, jclass, jobjectArray, jintArray, jint);
+JNIEXPORT void JNICALL Java_org_example_jni_TestJni_callInner
+  (JNIEnv *, jclass, jobject);
 
 #ifdef __cplusplus
 }

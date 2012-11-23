@@ -22,8 +22,8 @@
 static const JNINativeMethod gMethods[] = {
     {"hello", "()V", (void*)Java_org_example_jni_TestJni_hello},
     {"hello2", "([Ljava/lang/String;)I", (void*)Java_org_example_jni_TestJni_hello2},
-    {"hello3", "([Ljava/lang/String;[I)Z", (void*)Java_org_example_jni_TestJni_hello3},
-    {"hello4", "([Ljava/lang/String;[II)Ljava/lang/String;", (void*)Java_org_example_jni_TestJni_hello4},
+    {"hello3", "([II)Ljava/lang/String;", (void*)Java_org_example_jni_TestJni_hello3},
+    {"callInner", "(Lorg/example/jni/TestJni$InnerTestClass;)V", (void*)Java_org_example_jni_TestJni_callInner},
 };
 
 int registerMethods(JNIEnv* env) {
@@ -53,6 +53,9 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     assert(env != NULL);
  
     registerMethods(env);
+
+    /* 此处可预先获取Java层对象的信息 */
+    get_inner_class_info(env);
  
     result = JNI_VERSION_1_4;
  
