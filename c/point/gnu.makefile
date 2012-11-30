@@ -26,7 +26,7 @@ EXCLUDE_FILES 	=
 SUFFIX 			= c cpp cc cxx
 
 # 目标名称和类型
-TARGET       := $(OUT_DIR)/point.so
+TARGET       := $(OUT_DIR)/point
 TARGET_TYPE  := app
 # TARGET_TYPE  := ar
 # TARGET_TYPE  := so

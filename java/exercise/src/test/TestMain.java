@@ -9,7 +9,14 @@ import sax.SaxDemo;
 import jtest.JunitTest;
 import thread.ThreadDemo;
 import thread.SumCal;
+import concurrentTest.ExcutorEx;
+import concurrentTest.FutureTest;
+import concurrentTest.BarrierTest;
+import generalType.GenericTest;
+import generalType.GenericPatten;
+import argList.ArgListTest;
 
+import java.lang.Runnable;
 import java.nio.charset.Charset;
 import java.io.UnsupportedEncodingException;
 import java.io.File;
@@ -24,7 +31,7 @@ import java.util.regex.*;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
-public class TestGroup {
+public class TestMain {
 
     //列表测试
     static private void test_list() {
@@ -147,12 +154,12 @@ public class TestGroup {
     }
 
     // Junit测试
-    static private void testJunit() {
+    static private void test_Junit() {
         junit.textui.TestRunner.run(JunitTest.suite());
     }
 
     // 线程测试
-    static private void testThread() {
+    static private void test_Thread() {
         SumCal cal = new SumCal();
         SumCal cal2 = new SumCal();
 
@@ -162,10 +169,56 @@ public class TestGroup {
         demo1.start();
         demo2.start();
     }
+
+    // concurrent库测试
+    static private void test_Excutor() {
+        ExcutorEx ee = new ExcutorEx(10);
+        ee.prepareThreads();
+
+        try {
+            Thread.sleep(1000);
+            ee.start();
+            Thread.sleep(2000);
+            ee.shutDown();          // 此处不调用shutDown，线程不会销毁
+        } catch(Exception e) {
+        }
+    }
+
+    static private void test_Future() {
+        FutureTest ft = new FutureTest();
+        ft.submitTask();
+    }
+
+    // 泛型测试
+    static private void test_Generic() {
+        GenericTest<String> gt1 = new GenericTest<String>("hello world");
+        gt1.showObjClass();
+        gt1.showTypeInfo();
+
+        GenericTest<File> gt2 = new GenericTest<File>(new File("/home/zenki"));
+        gt2.showObjClass();
+        String info = gt2.showTypeInfo();
+        System.out.println("test_Generic gt2 info = " + info);
+    }
+
+    // 泛型通配符
+    static private void test_GenericPatten() {
+        GenericPatten gp = new GenericPatten();
+        gp.showFruit();
+    }
+
+    static private void test_Barrier() {
+        new BarrierTest(1000).start();
+        new BarrierTest(2000).start();
+    }
+
+    // 可变参数测试
+    static private void test_ArgList() {
+        ArgListTest alt = new ArgListTest();
+        alt.showArgInfo("hello", "world", 1, "!");
+    }
 	
 	public static void main(String[] argvs) throws UnsupportedEncodingException{
-        String strA = "1";
-
-        System.out.println("length: " + strA.length());
+        test_Barrier();
     }
 }

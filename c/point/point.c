@@ -154,6 +154,9 @@ int main(int argc, const char *argv[])
     const int *ro_i1 = &var1;   // 10
     int const *ro_i2 = &var1;   // 10
     int * const ro_i3 = &var2;  // 101,不能同时将一个变量的地址赋值给const修饰的两种情况
+    int array[2] = {1, 2};
+    int **pp;
+    int *p;
 
     /* *ro_i1 = var2; */    // 指针引用的变量不可被改变
     /* *ro_i2 = var2; */    // 指针引用的变量不可被改变
@@ -167,9 +170,16 @@ int main(int argc, const char *argv[])
 
     printf("T2: ro_i1 = %d, ro_i2 = %d, ro_i3 = %d\n", *ro_i1, *ro_i2, *ro_i3);
 
+    p = array;
+    pp = &p;
+    p++;                    // p指针，等同于pp解除一级引用后的值，因此**pp同样受到影响
+
+    printf("T3: *p = %d, **pp = %d\n", *p, **pp);
+
     printf("\n-------------------TEST POINT POINT-------------------\n");
     /* 声明一个结构体指针，要求在函数中对其初始化。需要给函数传入指针的地址，
-     * 这样在函数里解除一级引用，就可以改变指针的值。 */
+     * 这样在函数里解除一级引用，得到结构体的指针，使用malloc就可以为该指针
+     * 的指向分配内存。 */
     struct myclass *class_pp;
     create_myclass(&class_pp);
     printf("class_pp ptr = %p, a = %f, b = %c, c = %c, d = %d\n", class_pp, class_pp->a, class_pp->b, class_pp->c, class_pp->d);
