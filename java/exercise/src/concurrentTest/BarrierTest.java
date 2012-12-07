@@ -20,7 +20,8 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 public class BarrierTest extends Thread {
-    // CyclicBarrier对象确保在所有线程执行完成后，运行构造方法中的线程对象
+    // CyclicBarrier对象确保在所有线程执行完成后，运行构造方法中的线程对象，
+    // 因此需要设置成static类型，使两个线程同时可访问。
     private static CyclicBarrier barrier = new CyclicBarrier(2, new Thread() {
         public void run() {
             try {
@@ -35,6 +36,10 @@ public class BarrierTest extends Thread {
 
     public BarrierTest(int sleepMilSecs) {
         this.sleepMilSecs = sleepMilSecs;
+    }
+
+    public void reset() {
+        barrier.reset();
     }
 
     @Override

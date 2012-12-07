@@ -208,8 +208,14 @@ public class TestMain {
     }
 
     static private void test_Barrier() {
-        new BarrierTest(1000).start();
-        new BarrierTest(2000).start();
+        BarrierTest test1 = new BarrierTest(1000);
+        BarrierTest test2 = new BarrierTest(2000);
+
+        test1.start();
+        test2.start();
+        
+        test1.reset();
+        test2.reset();
     }
 
     // 可变参数测试
@@ -219,6 +225,6 @@ public class TestMain {
     }
 	
 	public static void main(String[] argvs) throws UnsupportedEncodingException{
-        test_Barrier();
+        test_GenericPatten();
     }
 }

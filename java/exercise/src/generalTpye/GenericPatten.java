@@ -30,23 +30,37 @@ public class GenericPatten {
     class Jonathan extends Apple {
     }
 
-    List<? super Fruit> mList;
+    List<? super Fruit>     mListSuper;
+    List<? extends Fruit>   mListExtends;
+    List<?>                 mListUnbound;
 
     public GenericPatten() {
-        mList = new ArrayList<Fruit>();
-        mList.add(new Apple());
-        mList.add(new Jonathan());
-        mList.add(new Fruit());
+        mListSuper = new ArrayList<Fruit>();
+        mListSuper.add(new Apple());
+        mListSuper.add(new Jonathan());
+        mListSuper.add(new Fruit());
+
+        mListUnbound = mListSuper;
+        // mListExtends = mListSuper;   // Error
     }
     
     public void showFruit() {
-        int len = mList.size();
+        int len = mListSuper.size();
         int i;
         for (i = 0; i < len; i++) {
-            System.out.println("item class: " + mList.get(i).getClass().getName());
+            System.out.println("List<? super Fruit> item class: " + mListSuper.get(i).getClass().getName());
         }
 
-        /* for (Object item : mList) {
+        for (i = 0; i < len; i++) {
+            System.out.println("List<?> item class: " + mListUnbound.get(i).getClass().getName());
+        }
+
+        /* Error
+         * for (i = 0; i < len; i++) {
+         *     System.out.println("List<? extends Fruit> item class: " + mListExtends.get(i).getClass().getName());
+         * } */
+
+        /* for (Object item : mListSuper) {
          *     System.out.println("item class: " + item.getClass().getName());
          * }  */
     }
