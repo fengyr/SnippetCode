@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" 
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:gravity="bottom"
+	android:background="@drawable/player_background"
+	android:id="@+id/parent">
+	<LinearLayout android:orientation="vertical" 
+		          android:layout_width="fill_parent" 
+		          android:layout_height="150dip"
+		          android:id="@+id/head"
+		          android:gravity="center"  
+		          android:layout_weight="0.95">
+		<TextView android:id="@+id/TextView1" 
+		          android:gravity="center_horizontal"
+		          android:layout_width="wrap_content" 
+			      android:layout_height="40dip"
+			      android:text="@string/app_name" 
+			      android:textSize="24px"
+		></TextView>          
+    </LinearLayout>
+	<!--动态显示界面-->
+	<LinearLayout android:orientation="vertical" 
+		          android:layout_width="fill_parent" 
+		          android:layout_height="fill_parent"
+		          android:id="@+id/body" 
+		          android:layout_weight="0.95">
+    </LinearLayout>
+	<!--底部功能菜单栏  -->
+	<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	             android:id="@+id/bottomlist"
+		         android:orientation="horizontal" 
+		         android:layout_width="fill_parent"
+		         android:layout_height="wrap_content" 
+		         android:layout_weight="0.05">		 
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			          android:orientation="vertical" 
+			          android:layout_width="wrap_content"
+			          android:layout_height="fill_parent" 
+			          android:id="@+id/player"
+		              android:layout_weight="5" 
+		              android:gravity="center_horizontal">
+			<ImageView android:background="@drawable/frame_player_normal" 
+			           android:layout_gravity="top|center" 
+			           android:layout_height="35dp" 
+			           android:layout_width="32dp" 
+			           android:layout_marginTop="4dp"/>
+			<TextView  android:layout_width="wrap_content"
+				       android:layout_height="20dp" 
+				       android:text="@string/player"	
+				/>
+		</LinearLayout> 
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			          android:orientation="vertical" 
+			          android:layout_width="wrap_content"
+			          android:layout_height="fill_parent" 
+			          android:id="@+id/localList"  
+			          android:layout_weight="5" 
+			          android:gravity="center_horizontal">
+			<ImageView android:background="@drawable/frame_player_normal" 
+			           android:layout_gravity="top|center" 
+			           android:layout_height="35dp" 
+			           android:layout_width="32dp" 
+			           android:layout_marginTop="4dp"/>
+			<TextView android:layout_width="wrap_content"
+				      android:layout_height="20dp" 
+				      android:text="@string/list"
+				/>
+		</LinearLayout>
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			          android:orientation="vertical" 
+			          android:layout_width="wrap_content"
+			          android:id="@+id/onlineList" 
+			          android:layout_height="fill_parent"
+			          android:layout_weight="5" 
+			          android:gravity="center_horizontal">
+			<ImageView android:background="@drawable/frame_player_normal" 
+			          android:layout_gravity="top|center" 
+			          android:layout_height="35dp" 
+			          android:layout_width="32dp" 
+			          android:layout_marginTop="4dp"
+			 />
+			<TextView android:layout_width="wrap_content"
+				      android:layout_height="20dp"
+			          android:text="@string/online"
+			/>
+		</LinearLayout>
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			         android:orientation="vertical" 
+			         android:layout_width="wrap_content"
+			         android:id="@+id/menu" 
+			         android:layout_height="fill_parent"
+			         android:layout_weight="5" 
+			         android:gravity="center_horizontal">
+			<ImageView android:background="@drawable/frame_player_normal" 
+			         android:layout_gravity="top|center" 
+			         android:layout_height="35dp" 
+			         android:layout_width="32dp" 
+			         android:layout_marginTop="4dp"
+			   />
+			<TextView android:layout_width="wrap_content"
+				     android:layout_height="20dp" 
+				     android:text="@string/menu"
+				/>
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>

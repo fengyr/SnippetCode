@@ -1,0 +1,10 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+AndroidManifest.xml	../AndroidManifest.xml	1
+MyTab.java	../src/zyf/tab/test/MyTab.java	1
+R.java	../gen/zyf/tab/test/R.java	1
+a_menu.xml	../res/menu/a_menu.xml	1
+b_menu.xml	../res/menu/b_menu.xml	1
+c_menu.xml	../res/menu/c_menu.xml	1
+main.xml	../res/layout/main.xml	1
+quick_gen_project_entry_autogen.sh	../quick_gen_project_entry_autogen.sh	1
+strings.xml	../res/values/strings.xml	1

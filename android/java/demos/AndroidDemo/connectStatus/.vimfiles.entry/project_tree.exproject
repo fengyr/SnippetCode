@@ -1,0 +1,23 @@
+file filter = c,C,c++,cc,cp,cpp,cxx,h,H,h++,hh,hp,hpp,hxx,inl,ipp,cs,java,hlsl,vsh,psh,fx,fxh,cg,shd,glsl,py,pyw,pyx,pxd,vim,uc,m,wiki,ini,cfg,mak,mk,Makefile,makefile,sh,SH,bsh,bash,ksh,zsh,bat,log,err,exe,qrc,pro,pri,xml
+dir filter = 
+
+-[F]connectStatus {
+ |-[F]res {
+ | |-[F]layout {
+ | | |-[x]main.xml }
+ | |
+ | |-[F]values {
+ |   |-[x]strings.xml } }
+ |
+ |-[F]src {
+ | |-[F]org {
+ |   |-[F]example {
+ |     |-[F]test {
+ |       |-[j]ConnectionStatus.java
+ |       |-[j]MyTest.java } } } }
+ |
+ |-[x]AndroidManifest.xml
+ |-[x]build.xml
+ |-[s]quick_gen_project_entry_autogen.sh }
+
+

@@ -1,0 +1,23 @@
+digraph G {
+    subgraph cluster_0 {
+        Init_config[label="Init Config", shape="box", style="filled", color="skyblue"];     
+        Init_render[label="Init Render", shape="box", style="filled", color="skyblue"];     
+        Init_recorder[label="Init Recorder", shape="box", style="filled", color="skyblue"];     
+        Init_error_handler[label="Init Error Handler", shape="box", style="filled", color="skyblue"];     
+    }
+
+    subgraph cluster_1 {
+        Init_erengine[label="Init Erengine", shape="box", style="filled", color="skyblue", width=6];
+    }
+
+    subgraph cluster_2 {
+        Init_create_book[label="Init Create Book", shape="box", style="filled", color="skyblue", width=6];
+    }
+
+    Init_config->Init_erengine [arrowhead=none, arrowtail=none, color="transparent"];
+    Init_render->Init_erengine [arrowhead=none, arrowtail=none, color="transparent"];
+    Init_recorder->Init_erengine [arrowhead=none, arrowtail=none, color="transparent"];
+    Init_error_handler->Init_erengine [arrowhead=none, arrowtail=none, color="transparent"];
+
+    Init_erengine->Init_create_book 
+}

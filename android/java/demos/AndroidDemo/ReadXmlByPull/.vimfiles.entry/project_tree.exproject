@@ -1,0 +1,40 @@
+file filter = c,C,c++,cc,cp,cpp,cxx,h,H,h++,hh,hp,hpp,hxx,inl,ipp,cs,java,hlsl,vsh,psh,fx,fxh,cg,shd,glsl,py,pyw,pyx,pxd,vim,uc,m,wiki,ini,cfg,mak,mk,Makefile,makefile,sh,SH,bsh,bash,ksh,zsh,bat,log,err,exe,qrc,pro,pri,xml
+dir filter = 
+
+-[F]ReadXmlByPull {
+ |-[F]bin {
+ | |-[x]NewFile.xml }
+ |
+ |-[F]gen {
+ | |-[F]com {
+ |   |-[F]leequer {
+ |     |-[F]readxml {
+ |       |-[j]R.java } } } }
+ |
+ |-[F]res {
+ | |-[F]layout {
+ | | |-[x]main.xml }
+ | |
+ | |-[F]values {
+ |   |-[x]strings.xml } }
+ |
+ |-[F]src {
+ | |-[F]com {
+ | | |-[F]leequer {
+ | |   |-[F]Doem {
+ | |   | |-[j]Person.java }
+ | |   |
+ | |   |-[F]readxml {
+ | |   | |-[j]ReadXmlByPull.java }
+ | |   |
+ | |   |-[F]Service {
+ | |     |-[j]ReadXmlByPullService.java
+ | |     |-[j]Test.java } } }
+ | |
+ | |-[x]NewFile.xml }
+ |
+ |-[x]AndroidManifest.xml
+ |-[x]build.xml
+ |-[s]quick_gen_project_entry_autogen.sh }
+
+

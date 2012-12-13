@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, MainView!</string>
+    <string name="app_name">ActivityGroup</string>
+    <string name="menu">menu</string> 
+    <string name="player">player</string>
+    <string name="list">list</string>
+    <string name="online">online</string>
+    <string name="download">download</string>
+    <string name="preview">preview</string>
+</resources>

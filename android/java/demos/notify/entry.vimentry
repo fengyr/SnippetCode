@@ -1,0 +1,45 @@
+-- auto-gen settings (DO NOT MODIFY) --
+
+CWD=/home/zenki/workspace/demos/notify
+Version=24
+VimEntryName=entry
+VimfilesDirName=.vimfiles.entry
+
+-- ex-plugins File Settings --
+
+LangType=auto
+Project=./.vimfiles.entry/project_tree.exproject
+FilenameList=./.vimfiles.entry/filenamelist
+Tag=./.vimfiles.entry/tags
+ID=./.vimfiles.entry/ID
+Symbol=./.vimfiles.entry/symbol
+Macro=./.vimfiles.entry/macro
+Cscope=./.vimfiles.entry/cscope.out
+Inherits=./.vimfiles.entry/inherits
+Bookmarks=./.vimfiles.entry/bookmarks
+
+vimentryRefs+=
+
+-- ex-plugins Behavior Settings --
+
+RestoreBuffers=false
+AskForRestoration=true
+RestoreInfo=./.vimfiles.entry/restore_info
+
+-- LookupFile Settings --
+
+LookupFileTag=./.vimfiles.entry/filenametags
+
+-- Visual Studio Settings --
+
+vsTaskList=./.vimfiles.entry/vs_task_list
+vsOutput=./.vimfiles.entry/vs_output
+vsFindResult1=./.vimfiles.entry/vs_find_results_1
+vsFindResult2=./.vimfiles.entry/vs_find_results_2
+
+-- vimwiki Settings --
+
+wikiHome=./_doc
+wikiHomeHtml=./_doc/wiki_html
+wikiHtmlHeader=./_doc/template/header.tpl
+

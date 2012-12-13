@@ -1,5 +1,0 @@
-if [ $1 = "clean" ]; then
-	rm -rf *.pyc *.pyo
-else
-	python -O -OO -c "import $1"
-fi

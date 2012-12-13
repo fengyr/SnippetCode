@@ -59,6 +59,13 @@ void insert_sort(int *array, int len)
     }
 }
 
+/**
+ * @Synopsis 给"shell sort"使用的版本
+ *
+ * @Param array
+ * @Param len
+ * @Param step
+ */
 void insert_sort_by_step(int *array, int len, int step)
 {
     int i;

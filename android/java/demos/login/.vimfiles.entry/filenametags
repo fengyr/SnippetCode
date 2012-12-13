@@ -1,0 +1,18 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+AndroidManifest.xml	../AndroidManifest.xml	1
+HttpUtils.java	../src/fank/android/utils/HttpUtils.java	1
+IndexPage.java	../src/siwi/map/android/IndexPage.java	1
+Login.java	../src/siwi/map/android/Login.java	1
+R.java	../gen/siwi/map/android/R.java	1
+Register.java	../src/siwi/map/android/Register.java	1
+RequestThread.java	../src/siwi/map/android/RequestThread.java	1
+build.xml	../build.xml	1
+indexpage.xml	../res/layout/indexpage.xml	1
+indexpage.xml	../res/values/indexpage.xml	1
+login.xml	../res/layout/login.xml	1
+login.xml	../res/values/login.xml	1
+main.xml	../res/layout/main.xml	1
+quick_gen_project_entry_autogen.sh	../quick_gen_project_entry_autogen.sh	1
+register.xml	../res/layout/register.xml	1
+register.xml	../res/values/register.xml	1
+strings.xml	../res/values/strings.xml	1

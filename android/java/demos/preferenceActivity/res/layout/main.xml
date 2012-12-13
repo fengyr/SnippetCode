@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="Settings">
+    <CheckBoxPreference android:title="android with google" android:key="android"></CheckBoxPreference>
+
+    <PreferenceCategory android:title="eoe">
+        <ListPreference android:title="eoeList"
+            android:summary="Set eoe Options" android:key="eoe"
+            android:dialogTitle="Choose eoe Options" 
+            android:entries="@array/androidBook"
+            android:entryValues="@array/androidBook">
+        </ListPreference>
+    </PreferenceCategory>
+</PreferenceScreen>

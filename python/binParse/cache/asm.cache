@@ -1,0 +1,599 @@
+
+./main:     file format elf32-i386
+
+
+Disassembly of section .init:
+
+08048318 <_init>:
+ 8048318:	55                   	push   %ebp
+ 8048319:	89 e5                	mov    %esp,%ebp
+ 804831b:	53                   	push   %ebx
+ 804831c:	83 ec 04             	sub    $0x4,%esp
+ 804831f:	e8 00 00 00 00       	call   8048324 <_init+0xc>
+ 8048324:	5b                   	pop    %ebx
+ 8048325:	81 c3 d0 1c 00 00    	add    $0x1cd0,%ebx
+ 804832b:	8b 93 fc ff ff ff    	mov    -0x4(%ebx),%edx
+ 8048331:	85 d2                	test   %edx,%edx
+ 8048333:	74 05                	je     804833a <_init+0x22>
+ 8048335:	e8 1e 00 00 00       	call   8048358 <__gmon_start__@plt>
+ 804833a:	e8 11 01 00 00       	call   8048450 <frame_dummy>
+ 804833f:	e8 7c 04 00 00       	call   80487c0 <__do_global_ctors_aux>
+ 8048344:	58                   	pop    %eax
+ 8048345:	5b                   	pop    %ebx
+ 8048346:	c9                   	leave  
+ 8048347:	c3                   	ret    
+
+Disassembly of section .plt:
+
+08048348 <__gmon_start__@plt-0x10>:
+ 8048348:	ff 35 f8 9f 04 08    	pushl  0x8049ff8
+ 804834e:	ff 25 fc 9f 04 08    	jmp    *0x8049ffc
+ 8048354:	00 00                	add    %al,(%eax)
+	...
+
+08048358 <__gmon_start__@plt>:
+ 8048358:	ff 25 00 a0 04 08    	jmp    *0x804a000
+ 804835e:	68 00 00 00 00       	push   $0x0
+ 8048363:	e9 e0 ff ff ff       	jmp    8048348 <_init+0x30>
+
+08048368 <__printf_chk@plt>:
+ 8048368:	ff 25 04 a0 04 08    	jmp    *0x804a004
+ 804836e:	68 08 00 00 00       	push   $0x8
+ 8048373:	e9 d0 ff ff ff       	jmp    8048348 <_init+0x30>
+
+08048378 <putchar@plt>:
+ 8048378:	ff 25 08 a0 04 08    	jmp    *0x804a008
+ 804837e:	68 10 00 00 00       	push   $0x10
+ 8048383:	e9 c0 ff ff ff       	jmp    8048348 <_init+0x30>
+
+08048388 <__libc_start_main@plt>:
+ 8048388:	ff 25 0c a0 04 08    	jmp    *0x804a00c
+ 804838e:	68 18 00 00 00       	push   $0x18
+ 8048393:	e9 b0 ff ff ff       	jmp    8048348 <_init+0x30>
+
+08048398 <printf@plt>:
+ 8048398:	ff 25 10 a0 04 08    	jmp    *0x804a010
+ 804839e:	68 20 00 00 00       	push   $0x20
+ 80483a3:	e9 a0 ff ff ff       	jmp    8048348 <_init+0x30>
+
+080483a8 <puts@plt>:
+ 80483a8:	ff 25 14 a0 04 08    	jmp    *0x804a014
+ 80483ae:	68 28 00 00 00       	push   $0x28
+ 80483b3:	e9 90 ff ff ff       	jmp    8048348 <_init+0x30>
+
+Disassembly of section .text:
+
+080483c0 <_start>:
+ 80483c0:	31 ed                	xor    %ebp,%ebp
+ 80483c2:	5e                   	pop    %esi
+ 80483c3:	89 e1                	mov    %esp,%ecx
+ 80483c5:	83 e4 f0             	and    $0xfffffff0,%esp
+ 80483c8:	50                   	push   %eax
+ 80483c9:	54                   	push   %esp
+ 80483ca:	52                   	push   %edx
+ 80483cb:	68 50 87 04 08       	push   $0x8048750
+ 80483d0:	68 60 87 04 08       	push   $0x8048760
+ 80483d5:	51                   	push   %ecx
+ 80483d6:	56                   	push   %esi
+ 80483d7:	68 d0 84 04 08       	push   $0x80484d0
+ 80483dc:	e8 a7 ff ff ff       	call   8048388 <__libc_start_main@plt>
+ 80483e1:	f4                   	hlt    
+ 80483e2:	90                   	nop
+ 80483e3:	90                   	nop
+ 80483e4:	90                   	nop
+ 80483e5:	90                   	nop
+ 80483e6:	90                   	nop
+ 80483e7:	90                   	nop
+ 80483e8:	90                   	nop
+ 80483e9:	90                   	nop
+ 80483ea:	90                   	nop
+ 80483eb:	90                   	nop
+ 80483ec:	90                   	nop
+ 80483ed:	90                   	nop
+ 80483ee:	90                   	nop
+ 80483ef:	90                   	nop
+
+080483f0 <__do_global_dtors_aux>:
+ 80483f0:	55                   	push   %ebp
+ 80483f1:	89 e5                	mov    %esp,%ebp
+ 80483f3:	53                   	push   %ebx
+ 80483f4:	83 ec 04             	sub    $0x4,%esp
+ 80483f7:	80 3d 8c a0 04 08 00 	cmpb   $0x0,0x804a08c
+ 80483fe:	75 3f                	jne    804843f <__do_global_dtors_aux+0x4f>
+ 8048400:	a1 90 a0 04 08       	mov    0x804a090,%eax
+ 8048405:	bb 20 9f 04 08       	mov    $0x8049f20,%ebx
+ 804840a:	81 eb 1c 9f 04 08    	sub    $0x8049f1c,%ebx
+ 8048410:	c1 fb 02             	sar    $0x2,%ebx
+ 8048413:	83 eb 01             	sub    $0x1,%ebx
+ 8048416:	39 d8                	cmp    %ebx,%eax
+ 8048418:	73 1e                	jae    8048438 <__do_global_dtors_aux+0x48>
+ 804841a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+ 8048420:	83 c0 01             	add    $0x1,%eax
+ 8048423:	a3 90 a0 04 08       	mov    %eax,0x804a090
+ 8048428:	ff 14 85 1c 9f 04 08 	call   *0x8049f1c(,%eax,4)
+ 804842f:	a1 90 a0 04 08       	mov    0x804a090,%eax
+ 8048434:	39 d8                	cmp    %ebx,%eax
+ 8048436:	72 e8                	jb     8048420 <__do_global_dtors_aux+0x30>
+ 8048438:	c6 05 8c a0 04 08 01 	movb   $0x1,0x804a08c
+ 804843f:	83 c4 04             	add    $0x4,%esp
+ 8048442:	5b                   	pop    %ebx
+ 8048443:	5d                   	pop    %ebp
+ 8048444:	c3                   	ret    
+ 8048445:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+ 8048449:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+08048450 <frame_dummy>:
+ 8048450:	55                   	push   %ebp
+ 8048451:	89 e5                	mov    %esp,%ebp
+ 8048453:	83 ec 18             	sub    $0x18,%esp
+ 8048456:	a1 24 9f 04 08       	mov    0x8049f24,%eax
+ 804845b:	85 c0                	test   %eax,%eax
+ 804845d:	74 12                	je     8048471 <frame_dummy+0x21>
+ 804845f:	b8 00 00 00 00       	mov    $0x0,%eax
+ 8048464:	85 c0                	test   %eax,%eax
+ 8048466:	74 09                	je     8048471 <frame_dummy+0x21>
+ 8048468:	c7 04 24 24 9f 04 08 	movl   $0x8049f24,(%esp)
+ 804846f:	ff d0                	call   *%eax
+ 8048471:	c9                   	leave  
+ 8048472:	c3                   	ret    
+ 8048473:	90                   	nop
+
+08048474 <test_little_big_endian>:
+
+/**
+ * @Synopsis 11110001 => 241, 小端模式会按照a,b,c,d的顺序从低到高存储数据。
+ */
+void test_little_big_endian()
+{
+ 8048474:	55                   	push   %ebp
+ 8048475:	89 e5                	mov    %esp,%ebp
+ 8048477:	83 ec 18             	sub    $0x18,%esp
+}
+
+__extern_always_inline int
+printf (__const char *__restrict __fmt, ...)
+{
+  return __printf_chk (__USE_FORTIFY_LEVEL - 1, __fmt, __va_arg_pack ());
+ 804847a:	c7 44 24 08 f1 00 00 	movl   $0xf1,0x8(%esp)
+ 8048481:	00 
+ 8048482:	c7 44 24 04 10 88 04 	movl   $0x8048810,0x4(%esp)
+ 8048489:	08 
+ 804848a:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
+ 8048491:	e8 d2 fe ff ff       	call   8048368 <__printf_chk@plt>
+        .c = 111,
+        .d = 1
+    };
+
+    printf("lb = %d\n", *(int*)&lb); 
+}
+ 8048496:	c9                   	leave  
+ 8048497:	c3                   	ret    
+
+08048498 <test_little_big_endian2>:
+
+void test_little_big_endian2()
+{
+ 8048498:	55                   	push   %ebp
+ 8048499:	89 e5                	mov    %esp,%ebp
+ 804849b:	83 ec 18             	sub    $0x18,%esp
+    static const int v = 1;
+    char *endian = *(char*)&v == 1 ? "this is little endian" : "this is big endian";
+ 804849e:	80 3d 44 88 04 08 01 	cmpb   $0x1,0x8048844
+ 80484a5:	b8 19 88 04 08       	mov    $0x8048819,%eax
+ 80484aa:	ba 2f 88 04 08       	mov    $0x804882f,%edx
+ 80484af:	0f 45 c2             	cmovne %edx,%eax
+ 80484b2:	89 04 24             	mov    %eax,(%esp)
+ 80484b5:	e8 ee fe ff ff       	call   80483a8 <puts@plt>
+
+    printf("%s\n", endian);
+}
+ 80484ba:	c9                   	leave  
+ 80484bb:	c3                   	ret    
+
+080484bc <test_little_big_endian3>:
+
+void test_little_big_endian3()
+{
+ 80484bc:	55                   	push   %ebp
+ 80484bd:	89 e5                	mov    %esp,%ebp
+ 80484bf:	83 ec 18             	sub    $0x18,%esp
+ 80484c2:	c7 04 24 19 88 04 08 	movl   $0x8048819,(%esp)
+ 80484c9:	e8 da fe ff ff       	call   80483a8 <puts@plt>
+#endif
+
+#if BYTE_ORDER == PDP_ENDIAN
+    printf("this is pdp endian\n");
+#endif
+}
+ 80484ce:	c9                   	leave  
+ 80484cf:	c3                   	ret    
+
+080484d0 <main>:
+        int va = 10;                    \
+        printf("var = %d\n", va##a);         \
+    } while (0);
+
+int main(int argc, const char *argv[])
+{
+ 80484d0:	55                   	push   %ebp
+ 80484d1:	89 e5                	mov    %esp,%ebp
+ 80484d3:	83 e4 f0             	and    $0xfffffff0,%esp
+ 80484d6:	83 ec 10             	sub    $0x10,%esp
+ 80484d9:	c7 04 24 48 88 04 08 	movl   $0x8048848,(%esp)
+ 80484e0:	e8 c3 fe ff ff       	call   80483a8 <puts@plt>
+ 80484e5:	a1 44 a0 04 08       	mov    0x804a044,%eax
+ 80484ea:	89 44 24 0c          	mov    %eax,0xc(%esp)
+ 80484ee:	a1 40 a0 04 08       	mov    0x804a040,%eax
+ 80484f3:	89 44 24 08          	mov    %eax,0x8(%esp)
+ 80484f7:	c7 44 24 04 80 88 04 	movl   $0x8048880,0x4(%esp)
+ 80484fe:	08 
+ 80484ff:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
+ 8048506:	e8 5d fe ff ff       	call   8048368 <__printf_chk@plt>
+    printf("------------------TEST EXTERN VAR--------------------\n");
+    printf("external_var1 = %d, external_var2 = %d\n", external_var1, external_var2);
+    printf("array[0] = %d, *point = %d\n", array[9], *point);
+ 804850b:	a1 88 a0 04 08       	mov    0x804a088,%eax
+ 8048510:	8b 00                	mov    (%eax),%eax
+ 8048512:	89 44 24 0c          	mov    %eax,0xc(%esp)
+ 8048516:	a1 84 a0 04 08       	mov    0x804a084,%eax
+ 804851b:	89 44 24 08          	mov    %eax,0x8(%esp)
+ 804851f:	c7 44 24 04 e7 89 04 	movl   $0x80489e7,0x4(%esp)
+ 8048526:	08 
+ 8048527:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
+ 804852e:	e8 35 fe ff ff       	call   8048368 <__printf_chk@plt>
+ 8048533:	c7 04 24 a8 88 04 08 	movl   $0x80488a8,(%esp)
+ 804853a:	e8 69 fe ff ff       	call   80483a8 <puts@plt>
+ 804853f:	c7 44 24 0c 0c 00 00 	movl   $0xc,0xc(%esp)
+ 8048546:	00 
+ 8048547:	c7 44 24 08 14 00 00 	movl   $0x14,0x8(%esp)
+ 804854e:	00 
+ 804854f:	c7 44 24 04 03 8a 04 	movl   $0x8048a03,0x4(%esp)
+ 8048556:	08 
+ 8048557:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
+ 804855e:	e8 05 fe ff ff       	call   8048368 <__printf_chk@plt>
+ 8048563:	c7 44 24 08 dc 07 00 	movl   $0x7dc,0x8(%esp)
+ 804856a:	00 
+ 804856b:	c7 44 24 04 0f 8a 04 	movl   $0x8048a0f,0x4(%esp)
+ 8048572:	08 
+ 8048573:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
+ 804857a:	e8 e9 fd ff ff       	call   8048368 <__printf_chk@plt>
+ 804857f:	c7 04 24 d8 88 04 08 	movl   $0x80488d8,(%esp)
+ 8048586:	e8 1d fe ff ff       	call   80483a8 <puts@plt>
+ 804858b:	c7 44 24 08 64 00 00 	movl   $0x64,0x8(%esp)
+ 8048592:	00 
+ 8048593:	c7 44 24 04 1b 8a 04 	movl   $0x8048a1b,0x4(%esp)
+ 804859a:	08 
+ 804859b:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
+ 80485a2:	e8 c1 fd ff ff       	call   8048368 <__printf_chk@plt>
+ 80485a7:	c7 04 24 08 89 04 08 	movl   $0x8048908,(%esp)
+ 80485ae:	e8 f5 fd ff ff       	call   80483a8 <puts@plt>
+    printf("\n------------------TEST #--------------------\n");
+    int r = 1;
+    test_ref_func(r);
+    
+    printf("\n------------------TEST va_list --------------------\n");
+    var_list_test("my name is %s, age is %d, code is %c.\n", "zenki", 30, 'Z'); 
+ 80485b3:	c7 44 24 0c 5a 00 00 	movl   $0x5a,0xc(%esp)
+ 80485ba:	00 
+ 80485bb:	c7 44 24 08 1e 00 00 	movl   $0x1e,0x8(%esp)
+ 80485c2:	00 
+ 80485c3:	c7 44 24 04 25 8a 04 	movl   $0x8048a25,0x4(%esp)
+ 80485ca:	08 
+ 80485cb:	c7 04 24 40 89 04 08 	movl   $0x8048940,(%esp)
+ 80485d2:	e8 79 00 00 00       	call   8048650 <var_list_test>
+ 80485d7:	c7 04 24 68 89 04 08 	movl   $0x8048968,(%esp)
+ 80485de:	e8 c5 fd ff ff       	call   80483a8 <puts@plt>
+
+    printf("\n------------------TEST pointer_to_address --------------------\n");
+    test_pointer_to_address();
+ 80485e3:	e8 24 00 00 00       	call   804860c <test_pointer_to_address>
+ 80485e8:	c7 04 24 a8 89 04 08 	movl   $0x80489a8,(%esp)
+ 80485ef:	e8 b4 fd ff ff       	call   80483a8 <puts@plt>
+
+    printf("\n------------------TEST little_big_endian --------------------\n");
+    test_little_big_endian();
+ 80485f4:	e8 7b fe ff ff       	call   8048474 <test_little_big_endian>
+    test_little_big_endian2();
+ 80485f9:	e8 9a fe ff ff       	call   8048498 <test_little_big_endian2>
+ 80485fe:	66 90                	xchg   %ax,%ax
+    test_little_big_endian3();
+ 8048600:	e8 b7 fe ff ff       	call   80484bc <test_little_big_endian3>
+
+    return 0;
+}
+ 8048605:	b8 00 00 00 00       	mov    $0x0,%eax
+ 804860a:	c9                   	leave  
+ 804860b:	c3                   	ret    
+
+0804860c <test_pointer_to_address>:
+ *
+ * =====================================================================================
+ */
+
+void test_pointer_to_address()
+{
+ 804860c:	55                   	push   %ebp
+ 804860d:	89 e5                	mov    %esp,%ebp
+ 804860f:	83 ec 28             	sub    $0x28,%esp
+    int *ptr1 = (int*) (&a + 1) - 1;    // 1
+    int *ptr2 = (int*) (&a + 1) - 2;    // 2
+    int *ptr3 = (int*) (&a + 1) - 3;    // 3
+    int *ptr4 = (int*) (&a + 1) - 4;    // 4
+    int *ptr5 = (int*) (&a + 1) - 5;    // 5
+    printf("ptr1 = %d, ptr2 = %d, ptr3 = %d, ptr4 = %d, ptr5 = %d\n", *ptr1, *ptr2, *ptr3, *ptr4, *ptr5);
+ 8048612:	c7 44 24 14 01 00 00 	movl   $0x1,0x14(%esp)
+ 8048619:	00 
+ 804861a:	c7 44 24 10 02 00 00 	movl   $0x2,0x10(%esp)
+ 8048621:	00 
+ 8048622:	c7 44 24 0c 03 00 00 	movl   $0x3,0xc(%esp)
+ 8048629:	00 
+ 804862a:	c7 44 24 08 04 00 00 	movl   $0x4,0x8(%esp)
+ 8048631:	00 
+ 8048632:	c7 44 24 04 05 00 00 	movl   $0x5,0x4(%esp)
+ 8048639:	00 
+ 804863a:	c7 04 24 2c 8a 04 08 	movl   $0x8048a2c,(%esp)
+ 8048641:	e8 52 fd ff ff       	call   8048398 <printf@plt>
+}
+ 8048646:	c9                   	leave  
+ 8048647:	c3                   	ret    
+ 8048648:	90                   	nop
+ 8048649:	90                   	nop
+ 804864a:	90                   	nop
+ 804864b:	90                   	nop
+ 804864c:	90                   	nop
+ 804864d:	90                   	nop
+ 804864e:	90                   	nop
+ 804864f:	90                   	nop
+
+08048650 <var_list_test>:
+
+#include <stdarg.h>
+#include <stdio.h>
+
+int var_list_test(const char *fmt, ...) 
+{
+ 8048650:	55                   	push   %ebp
+ 8048651:	89 e5                	mov    %esp,%ebp
+ 8048653:	57                   	push   %edi
+ 8048654:	56                   	push   %esi
+ 8048655:	53                   	push   %ebx
+ 8048656:	83 ec 1c             	sub    $0x1c,%esp
+ 8048659:	8b 5d 08             	mov    0x8(%ebp),%ebx
+ 804865c:	89 5c 24 08          	mov    %ebx,0x8(%esp)
+ 8048660:	c7 44 24 04 64 8a 04 	movl   $0x8048a64,0x4(%esp)
+ 8048667:	08 
+ 8048668:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
+ 804866f:	e8 f4 fc ff ff       	call   8048368 <__printf_chk@plt>
+    char c, *s;
+    int mark = 0;
+
+    printf("Origin string fmt = %s\n", fmt);
+
+    va_start(ap, fmt);
+ 8048674:	8d 7d 0c             	lea    0xc(%ebp),%edi
+    while (*fmt) {
+ 8048677:	0f b6 03             	movzbl (%ebx),%eax
+ 804867a:	84 c0                	test   %al,%al
+ 804867c:	0f 84 b3 00 00 00    	je     8048735 <var_list_test+0xe5>
+int var_list_test(const char *fmt, ...) 
+{
+    va_list ap;
+    int d;
+    char c, *s;
+    int mark = 0;
+ 8048682:	be 00 00 00 00       	mov    $0x0,%esi
+
+    printf("Origin string fmt = %s\n", fmt);
+
+    va_start(ap, fmt);
+    while (*fmt) {
+        switch (*fmt) {
+ 8048687:	3c 64                	cmp    $0x64,%al
+ 8048689:	74 45                	je     80486d0 <var_list_test+0x80>
+ 804868b:	3c 64                	cmp    $0x64,%al
+ 804868d:	7f 13                	jg     80486a2 <var_list_test+0x52>
+ 804868f:	3c 25                	cmp    $0x25,%al
+ 8048691:	0f 84 8b 00 00 00    	je     8048722 <var_list_test+0xd2>
+ 8048697:	3c 63                	cmp    $0x63,%al
+ 8048699:	75 7a                	jne    8048715 <var_list_test+0xc5>
+ 804869b:	90                   	nop
+ 804869c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+ 80486a0:	eb 58                	jmp    80486fa <var_list_test+0xaa>
+ 80486a2:	3c 73                	cmp    $0x73,%al
+ 80486a4:	75 6f                	jne    8048715 <var_list_test+0xc5>
+            case '%':
+                mark = 1;
+                break;
+            case 's':	      /* string */
+                if (mark) {
+ 80486a6:	85 f6                	test   %esi,%esi
+ 80486a8:	74 6b                	je     8048715 <var_list_test+0xc5>
+                    s = (char*) va_arg(ap, char *);
+ 80486aa:	89 f8                	mov    %edi,%eax
+ 80486ac:	83 c7 04             	add    $0x4,%edi
+ 80486af:	8b 00                	mov    (%eax),%eax
+ 80486b1:	89 44 24 08          	mov    %eax,0x8(%esp)
+ 80486b5:	c7 44 24 04 7c 8a 04 	movl   $0x8048a7c,0x4(%esp)
+ 80486bc:	08 
+ 80486bd:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
+ 80486c4:	e8 9f fc ff ff       	call   8048368 <__printf_chk@plt>
+                    printf("%s", s);
+                    mark = 0;
+ 80486c9:	be 00 00 00 00       	mov    $0x0,%esi
+                    break;
+ 80486ce:	eb 57                	jmp    8048727 <var_list_test+0xd7>
+                }
+            case 'd':	      /* int */
+                if (mark) {
+ 80486d0:	85 f6                	test   %esi,%esi
+ 80486d2:	74 41                	je     8048715 <var_list_test+0xc5>
+                    d = va_arg(ap, int);
+ 80486d4:	89 f8                	mov    %edi,%eax
+ 80486d6:	83 c7 04             	add    $0x4,%edi
+ 80486d9:	8b 00                	mov    (%eax),%eax
+ 80486db:	89 44 24 08          	mov    %eax,0x8(%esp)
+ 80486df:	c7 44 24 04 7f 8a 04 	movl   $0x8048a7f,0x4(%esp)
+ 80486e6:	08 
+ 80486e7:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
+ 80486ee:	e8 75 fc ff ff       	call   8048368 <__printf_chk@plt>
+                    printf("%d", d);
+                    mark = 0;
+ 80486f3:	be 00 00 00 00       	mov    $0x0,%esi
+                    break;
+ 80486f8:	eb 2d                	jmp    8048727 <var_list_test+0xd7>
+                }
+            case 'c':	      /* char */
+                if (mark) {
+ 80486fa:	85 f6                	test   %esi,%esi
+ 80486fc:	74 17                	je     8048715 <var_list_test+0xc5>
+                    c = (char) va_arg(ap, int);
+ 80486fe:	8d 77 04             	lea    0x4(%edi),%esi
+                    printf("%c", c);
+ 8048701:	0f be 07             	movsbl (%edi),%eax
+ 8048704:	89 04 24             	mov    %eax,(%esp)
+ 8048707:	e8 6c fc ff ff       	call   8048378 <putchar@plt>
+                    mark = 0;
+                    break;
+                }
+            case 'c':	      /* char */
+                if (mark) {
+                    c = (char) va_arg(ap, int);
+ 804870c:	89 f7                	mov    %esi,%edi
+                    printf("%c", c);
+                    mark = 0;
+ 804870e:	be 00 00 00 00       	mov    $0x0,%esi
+                    break;
+ 8048713:	eb 12                	jmp    8048727 <var_list_test+0xd7>
+                }
+            default:
+                printf("%c", *fmt);
+ 8048715:	0f be c0             	movsbl %al,%eax
+ 8048718:	89 04 24             	mov    %eax,(%esp)
+ 804871b:	e8 58 fc ff ff       	call   8048378 <putchar@plt>
+ 8048720:	eb 05                	jmp    8048727 <var_list_test+0xd7>
+
+    va_start(ap, fmt);
+    while (*fmt) {
+        switch (*fmt) {
+            case '%':
+                mark = 1;
+ 8048722:	be 01 00 00 00       	mov    $0x1,%esi
+            default:
+                printf("%c", *fmt);
+                break;
+        }
+
+        fmt++;
+ 8048727:	83 c3 01             	add    $0x1,%ebx
+    int mark = 0;
+
+    printf("Origin string fmt = %s\n", fmt);
+
+    va_start(ap, fmt);
+    while (*fmt) {
+ 804872a:	0f b6 03             	movzbl (%ebx),%eax
+ 804872d:	84 c0                	test   %al,%al
+ 804872f:	0f 85 52 ff ff ff    	jne    8048687 <var_list_test+0x37>
+ 8048735:	c7 04 24 0a 00 00 00 	movl   $0xa,(%esp)
+ 804873c:	e8 37 fc ff ff       	call   8048378 <putchar@plt>
+
+    printf("\n");
+    va_end(ap);
+
+    return 0;
+}
+ 8048741:	b8 00 00 00 00       	mov    $0x0,%eax
+ 8048746:	83 c4 1c             	add    $0x1c,%esp
+ 8048749:	5b                   	pop    %ebx
+ 804874a:	5e                   	pop    %esi
+ 804874b:	5f                   	pop    %edi
+ 804874c:	5d                   	pop    %ebp
+ 804874d:	c3                   	ret    
+ 804874e:	90                   	nop
+ 804874f:	90                   	nop
+
+08048750 <__libc_csu_fini>:
+ 8048750:	55                   	push   %ebp
+ 8048751:	89 e5                	mov    %esp,%ebp
+ 8048753:	5d                   	pop    %ebp
+ 8048754:	c3                   	ret    
+ 8048755:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+ 8048759:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+08048760 <__libc_csu_init>:
+ 8048760:	55                   	push   %ebp
+ 8048761:	89 e5                	mov    %esp,%ebp
+ 8048763:	57                   	push   %edi
+ 8048764:	56                   	push   %esi
+ 8048765:	53                   	push   %ebx
+ 8048766:	e8 4f 00 00 00       	call   80487ba <__i686.get_pc_thunk.bx>
+ 804876b:	81 c3 89 18 00 00    	add    $0x1889,%ebx
+ 8048771:	83 ec 1c             	sub    $0x1c,%esp
+ 8048774:	e8 9f fb ff ff       	call   8048318 <_init>
+ 8048779:	8d bb 20 ff ff ff    	lea    -0xe0(%ebx),%edi
+ 804877f:	8d 83 20 ff ff ff    	lea    -0xe0(%ebx),%eax
+ 8048785:	29 c7                	sub    %eax,%edi
+ 8048787:	c1 ff 02             	sar    $0x2,%edi
+ 804878a:	85 ff                	test   %edi,%edi
+ 804878c:	74 24                	je     80487b2 <__libc_csu_init+0x52>
+ 804878e:	31 f6                	xor    %esi,%esi
+ 8048790:	8b 45 10             	mov    0x10(%ebp),%eax
+ 8048793:	89 44 24 08          	mov    %eax,0x8(%esp)
+ 8048797:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 804879a:	89 44 24 04          	mov    %eax,0x4(%esp)
+ 804879e:	8b 45 08             	mov    0x8(%ebp),%eax
+ 80487a1:	89 04 24             	mov    %eax,(%esp)
+ 80487a4:	ff 94 b3 20 ff ff ff 	call   *-0xe0(%ebx,%esi,4)
+ 80487ab:	83 c6 01             	add    $0x1,%esi
+ 80487ae:	39 fe                	cmp    %edi,%esi
+ 80487b0:	72 de                	jb     8048790 <__libc_csu_init+0x30>
+ 80487b2:	83 c4 1c             	add    $0x1c,%esp
+ 80487b5:	5b                   	pop    %ebx
+ 80487b6:	5e                   	pop    %esi
+ 80487b7:	5f                   	pop    %edi
+ 80487b8:	5d                   	pop    %ebp
+ 80487b9:	c3                   	ret    
+
+080487ba <__i686.get_pc_thunk.bx>:
+ 80487ba:	8b 1c 24             	mov    (%esp),%ebx
+ 80487bd:	c3                   	ret    
+ 80487be:	90                   	nop
+ 80487bf:	90                   	nop
+
+080487c0 <__do_global_ctors_aux>:
+ 80487c0:	55                   	push   %ebp
+ 80487c1:	89 e5                	mov    %esp,%ebp
+ 80487c3:	53                   	push   %ebx
+ 80487c4:	83 ec 04             	sub    $0x4,%esp
+ 80487c7:	a1 14 9f 04 08       	mov    0x8049f14,%eax
+ 80487cc:	83 f8 ff             	cmp    $0xffffffff,%eax
+ 80487cf:	74 13                	je     80487e4 <__do_global_ctors_aux+0x24>
+ 80487d1:	bb 14 9f 04 08       	mov    $0x8049f14,%ebx
+ 80487d6:	66 90                	xchg   %ax,%ax
+ 80487d8:	83 eb 04             	sub    $0x4,%ebx
+ 80487db:	ff d0                	call   *%eax
+ 80487dd:	8b 03                	mov    (%ebx),%eax
+ 80487df:	83 f8 ff             	cmp    $0xffffffff,%eax
+ 80487e2:	75 f4                	jne    80487d8 <__do_global_ctors_aux+0x18>
+ 80487e4:	83 c4 04             	add    $0x4,%esp
+ 80487e7:	5b                   	pop    %ebx
+ 80487e8:	5d                   	pop    %ebp
+ 80487e9:	c3                   	ret    
+ 80487ea:	90                   	nop
+ 80487eb:	90                   	nop
+
+Disassembly of section .fini:
+
+080487ec <_fini>:
+ 80487ec:	55                   	push   %ebp
+ 80487ed:	89 e5                	mov    %esp,%ebp
+ 80487ef:	53                   	push   %ebx
+ 80487f0:	83 ec 04             	sub    $0x4,%esp
+ 80487f3:	e8 00 00 00 00       	call   80487f8 <_fini+0xc>
+ 80487f8:	5b                   	pop    %ebx
+ 80487f9:	81 c3 fc 17 00 00    	add    $0x17fc,%ebx
+ 80487ff:	e8 ec fb ff ff       	call   80483f0 <__do_global_dtors_aux>
+ 8048804:	59                   	pop    %ecx
+ 8048805:	5b                   	pop    %ebx
+ 8048806:	c9                   	leave  
+ 8048807:	c3                   	ret    

@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.yattasolutions.uml.diagrams.classifier:ClassDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.yattasolutions.uml.diagrams.classifier="http://ns.yatta-solutions.com/umllab/diagrams/classifier/0.9.0" xmi:id="_Xkx2IIKHEeCkvKzhM49_UA">
+  <modelElement href="TestProvider.uml#_RtMXsIKHEeCkvKzhM49_UA"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:ConnectionVisual" xmi:id="_XyOcQIKHEeCkvKzhM49_UA" sourceItem="_XxI3IIKHEeCkvKzhM49_UA" targetItem="_XySGoIKHEeCkvKzhM49_UA"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:ConnectionVisual" xmi:id="_XykagIKHEeCkvKzhM49_UA" sourceItem="_XyUi4IKHEeCkvKzhM49_UA" targetItem="_XysWUIKHEeCkvKzhM49_UA"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_XzH0IIKHEeCkvKzhM49_UA">
+    <modelElement href="TestProvider.uml#_SpCU4IKHEeCkvKzhM49_UA"/>
+    <visualProperties xmi:id="_XzMsoIKHEeCkvKzhM49_UA"/>
+    <nameVisual xmi:id="_XzH0IYKHEeCkvKzhM49_UA" text=""/>
+    <stereotypes xmi:id="_XzH0IoKHEeCkvKzhM49_UA" name="Reference">
+      <modelElement href="TestProvider.uml#_SpC78IKHEeCkvKzhM49_UA"/>
+    </stereotypes>
+    <sourceRole xmi:id="_XzH0I4KHEeCkvKzhM49_UA" name="">
+      <modelElement href="TestProvider.uml#_SpCU4YKHEeCkvKzhM49_UA"/>
+      <visibility xmi:id="_XzH0JIKHEeCkvKzhM49_UA" label="+"/>
+      <cardinality xmi:id="_XzH0JYKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_XzH0JoKHEeCkvKzhM49_UA" name="CONTENT_URI" navigable="true">
+      <modelElement href="TestProvider.uml#_SogwcYKHEeCkvKzhM49_UA"/>
+      <stereotypes xmi:id="_XzH0J4KHEeCkvKzhM49_UA" name="StyledElement">
+        <modelElement href="TestProvider.uml#_SohXgYKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_XzH0KIKHEeCkvKzhM49_UA" label="+"/>
+      <cardinality xmi:id="_XzH0KYKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_XzN6wIKHEeCkvKzhM49_UA" source="_XysWUIKHEeCkvKzhM49_UA">
+    <modelElement href="TestProvider.uml#_SpC78YKHEeCkvKzhM49_UA"/>
+    <visualProperties xmi:id="_XzN6yYKHEeCkvKzhM49_UA"/>
+    <nameVisual xmi:id="_XzN6wYKHEeCkvKzhM49_UA" text=""/>
+    <stereotypes xmi:id="_XzN6woKHEeCkvKzhM49_UA" name="Reference">
+      <modelElement href="TestProvider.uml#_SpDjAIKHEeCkvKzhM49_UA"/>
+    </stereotypes>
+    <sourceRole xmi:id="_XzN6w4KHEeCkvKzhM49_UA" name="">
+      <modelElement href="TestProvider.uml#_SpC78oKHEeCkvKzhM49_UA"/>
+      <visibility xmi:id="_XzN6xIKHEeCkvKzhM49_UA" label="+"/>
+      <cardinality xmi:id="_XzN6xYKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_XzN6xoKHEeCkvKzhM49_UA" name="mUriMatcher" navigable="true">
+      <modelElement href="TestProvider.uml#_SomQAIKHEeCkvKzhM49_UA"/>
+      <visibility xmi:id="_XzN6x4KHEeCkvKzhM49_UA" label="-"/>
+      <cardinality xmi:id="_XzN6yIKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_XzPI4YKHEeCkvKzhM49_UA" source="_XysWUIKHEeCkvKzhM49_UA">
+    <modelElement href="TestProvider.uml#_SpDjAYKHEeCkvKzhM49_UA"/>
+    <visualProperties xmi:id="_XzPv8IKHEeCkvKzhM49_UA"/>
+    <nameVisual xmi:id="_XzPI4oKHEeCkvKzhM49_UA" text=""/>
+    <stereotypes xmi:id="_XzPI44KHEeCkvKzhM49_UA" name="Reference">
+      <modelElement href="TestProvider.uml#_SpEKEIKHEeCkvKzhM49_UA"/>
+    </stereotypes>
+    <sourceRole xmi:id="_XzPI5IKHEeCkvKzhM49_UA" name="">
+      <modelElement href="TestProvider.uml#_SpDjAoKHEeCkvKzhM49_UA"/>
+      <visibility xmi:id="_XzPI5YKHEeCkvKzhM49_UA" label="+"/>
+      <cardinality xmi:id="_XzPI5oKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_XzPI54KHEeCkvKzhM49_UA" name="mDbHelper" navigable="true">
+      <modelElement href="TestProvider.uml#_SoneIYKHEeCkvKzhM49_UA"/>
+      <visibility xmi:id="_XzPI6IKHEeCkvKzhM49_UA" label="-"/>
+      <cardinality xmi:id="_XzPI6YKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_XxFz0IKHEeCkvKzhM49_UA" name="R">
+    <modelElement href="TestProvider.uml#_ShwoMIKHEeCkvKzhM49_UA"/>
+    <visualProperties xmi:id="_XxHB8IKHEeCkvKzhM49_UA"/>
+    <visibility xmi:id="_XxFz0YKHEeCkvKzhM49_UA" label="+"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:CommentVisual" xmi:id="_XxI3IIKHEeCkvKzhM49_UA" item="_XySGoIKHEeCkvKzhM49_UA" sourceConnectionVisual="_XyOcQIKHEeCkvKzhM49_UA" text="*">
+    <modelElement href="TestProvider.uml#_So81UIKHEeCkvKzhM49_UA"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_XySGoIKHEeCkvKzhM49_UA" comments="_XxI3IIKHEeCkvKzhM49_UA" targetConnectionVisual="_XyOcQIKHEeCkvKzhM49_UA" name="MyDatabase">
+    <modelElement href="TestProvider.uml#_SiavgIKHEeCkvKzhM49_UA"/>
+    <visualProperties xmi:id="_XySGqIKHEeCkvKzhM49_UA"/>
+    <visibility xmi:id="_XySGoYKHEeCkvKzhM49_UA" label="+"/>
+    <operations xmi:id="_XySGooKHEeCkvKzhM49_UA" name="MyDatabase">
+      <modelElement href="TestProvider.uml#_Sib9oIKHEeCkvKzhM49_UA"/>
+      <keywords xmi:id="_XySGo4KHEeCkvKzhM49_UA" keyword="create"/>
+      <stereotypes xmi:id="_XySGpIKHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_SidLwIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_XySGpYKHEeCkvKzhM49_UA" label="-"/>
+      <outParameters xmi:id="_XySGpoKHEeCkvKzhM49_UA">
+        <modelElement href="TestProvider.uml#_Sidy0IKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XySGp4KHEeCkvKzhM49_UA" name="MyDatabase">
+          <modelElement href="TestProvider.uml#_SiavgIKHEeCkvKzhM49_UA"/>
+        </type>
+      </outParameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:CommentVisual" xmi:id="_XyUi4IKHEeCkvKzhM49_UA" item="_XysWUIKHEeCkvKzhM49_UA" sourceConnectionVisual="_XykagIKHEeCkvKzhM49_UA" text="*">
+    <modelElement href="TestProvider.uml#_So81UYKHEeCkvKzhM49_UA"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_XysWUIKHEeCkvKzhM49_UA" comments="_XyUi4IKHEeCkvKzhM49_UA" targetConnectionVisual="_XykagIKHEeCkvKzhM49_UA" name="MyProvider" associationsOut="_XzN6wIKHEeCkvKzhM49_UA _XzPI4YKHEeCkvKzhM49_UA">
+    <modelElement href="TestProvider.uml#_SiluoIKHEeCkvKzhM49_UA"/>
+    <visualProperties xmi:id="_XyuykIKHEeCkvKzhM49_UA"/>
+    <visibility xmi:id="_XysWUYKHEeCkvKzhM49_UA" label="+"/>
+    <attributes xmi:id="_XysWUoKHEeCkvKzhM49_UA" defaultValue="&quot;MyProvider&quot;" name="TAG" staticAttribute="true">
+      <modelElement href="TestProvider.uml#_SojzwIKHEeCkvKzhM49_UA"/>
+      <stereotypes xmi:id="_XysWU4KHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_Soka0IKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_XysWVIKHEeCkvKzhM49_UA" label="-"/>
+      <cardinality xmi:id="_XysWVYKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+      <type xmi:id="_XysWVoKHEeCkvKzhM49_UA" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_XysWV4KHEeCkvKzhM49_UA" defaultValue="&quot;myprovider&quot;" name="DATABASE_NAME" staticAttribute="true">
+      <modelElement href="TestProvider.uml#_Soka0YKHEeCkvKzhM49_UA"/>
+      <visibility xmi:id="_XysWWIKHEeCkvKzhM49_UA" label="-"/>
+      <cardinality xmi:id="_XysWWYKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+      <type xmi:id="_XysWWoKHEeCkvKzhM49_UA" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_XysWW4KHEeCkvKzhM49_UA" defaultValue="1" name="DATABASE_VERSION" staticAttribute="true">
+      <modelElement href="TestProvider.uml#_SolB4IKHEeCkvKzhM49_UA"/>
+      <visibility xmi:id="_XysWXIKHEeCkvKzhM49_UA" label="-"/>
+      <cardinality xmi:id="_XysWXYKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+      <type xmi:id="_XysWXoKHEeCkvKzhM49_UA" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_XysWX4KHEeCkvKzhM49_UA" defaultValue="&quot;mytable&quot;" name="TABLE_NAME" staticAttribute="true">
+      <modelElement href="TestProvider.uml#_SolB4oKHEeCkvKzhM49_UA"/>
+      <visibility xmi:id="_XysWYIKHEeCkvKzhM49_UA" label="-"/>
+      <cardinality xmi:id="_XysWYYKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+      <type xmi:id="_XysWYoKHEeCkvKzhM49_UA" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_XysWY4KHEeCkvKzhM49_UA" defaultValue="new UriMatcher(&#xA;&#x9;&#x9;&#x9;UriMatcher.NO_MATCH)" name="mUriMatcher" staticAttribute="true">
+      <modelElement href="TestProvider.uml#_SomQAIKHEeCkvKzhM49_UA"/>
+      <visibility xmi:id="_XysWZIKHEeCkvKzhM49_UA" label="-"/>
+      <cardinality xmi:id="_XysWZYKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+      <type xmi:id="_XysWZoKHEeCkvKzhM49_UA" name="UriMatcher">
+        <modelElement href="TestProvider.uml#_SnsREIKHEeCkvKzhM49_UA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_XysWZ4KHEeCkvKzhM49_UA" defaultValue="1" name="MYDATABASE" staticAttribute="true">
+      <modelElement href="TestProvider.uml#_SomQAoKHEeCkvKzhM49_UA"/>
+      <visibility xmi:id="_XysWaIKHEeCkvKzhM49_UA" label="-"/>
+      <cardinality xmi:id="_XysWaYKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+      <type xmi:id="_XysWaoKHEeCkvKzhM49_UA" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_XysWa4KHEeCkvKzhM49_UA" defaultValue="2" name="MYDATABASE_ID" staticAttribute="true">
+      <modelElement href="TestProvider.uml#_Som3EIKHEeCkvKzhM49_UA"/>
+      <visibility xmi:id="_XysWbIKHEeCkvKzhM49_UA" label="-"/>
+      <cardinality xmi:id="_XysWbYKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+      <type xmi:id="_XysWboKHEeCkvKzhM49_UA" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_XysWb4KHEeCkvKzhM49_UA" defaultValue="&quot;com.zenki.myprovider&quot;" name="AUTHORITY" staticAttribute="true">
+      <modelElement href="TestProvider.uml#_Som3EoKHEeCkvKzhM49_UA"/>
+      <visibility xmi:id="_XysWcIKHEeCkvKzhM49_UA" label="-"/>
+      <cardinality xmi:id="_XysWcYKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+      <type xmi:id="_XysWcoKHEeCkvKzhM49_UA" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_XysWc4KHEeCkvKzhM49_UA" defaultValue="null" name="mDbHelper">
+      <modelElement href="TestProvider.uml#_SoneIYKHEeCkvKzhM49_UA"/>
+      <stereotypes xmi:id="_XysWdIKHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_SooFMIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <stereotypes xmi:id="_XzPI4IKHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_SooFMIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_XysWdYKHEeCkvKzhM49_UA" label="-"/>
+      <cardinality xmi:id="_XysWdoKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+      <type xmi:id="_XysWd4KHEeCkvKzhM49_UA" name="DatabaseHelper">
+        <modelElement href="TestProvider.uml#_SipZAYKHEeCkvKzhM49_UA"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_XysWeIKHEeCkvKzhM49_UA" name="_initializer1" staticOperation="true">
+      <modelElement href="TestProvider.uml#_Siox8IKHEeCkvKzhM49_UA"/>
+      <keywords xmi:id="_XysWeYKHEeCkvKzhM49_UA" keyword="init"/>
+      <stereotypes xmi:id="_XysWeoKHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_SipZAIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_XysWe4KHEeCkvKzhM49_UA" label="+"/>
+    </operations>
+    <operations xmi:id="_XysWfIKHEeCkvKzhM49_UA" name="MyProvider">
+      <modelElement href="TestProvider.uml#_SitDYIKHEeCkvKzhM49_UA"/>
+      <keywords xmi:id="_XysWfYKHEeCkvKzhM49_UA" keyword="create"/>
+      <stereotypes xmi:id="_XysWfoKHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_SitqcYKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_XysWf4KHEeCkvKzhM49_UA" label="+"/>
+      <outParameters xmi:id="_XysWgIKHEeCkvKzhM49_UA">
+        <modelElement href="TestProvider.uml#_SitqcoKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWgYKHEeCkvKzhM49_UA" name="MyProvider">
+          <modelElement href="TestProvider.uml#_SiluoIKHEeCkvKzhM49_UA"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_XysWgoKHEeCkvKzhM49_UA" name="onCreate">
+      <modelElement href="TestProvider.uml#_SiuRgIKHEeCkvKzhM49_UA"/>
+      <stereotypes xmi:id="_XysWg4KHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_SivfoIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <stereotypes xmi:id="_XysWhIKHEeCkvKzhM49_UA" name="Annotations">
+        <modelElement href="TestProvider.uml#_SiwtwIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_XysWhYKHEeCkvKzhM49_UA" label="+"/>
+      <outParameters xmi:id="_XysWhoKHEeCkvKzhM49_UA">
+        <modelElement href="TestProvider.uml#_SivfoYKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWh4KHEeCkvKzhM49_UA" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_XysWiIKHEeCkvKzhM49_UA" name="insert">
+      <modelElement href="TestProvider.uml#_SoErkYKHEeCkvKzhM49_UA"/>
+      <stereotypes xmi:id="_XysWiYKHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_SoF5sIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <stereotypes xmi:id="_XysWioKHEeCkvKzhM49_UA" name="Annotations">
+        <modelElement href="TestProvider.uml#_SoGgwIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_XysWi4KHEeCkvKzhM49_UA" label="+"/>
+      <outParameters xmi:id="_XysWjIKHEeCkvKzhM49_UA">
+        <modelElement href="TestProvider.uml#_SoF5sYKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWjYKHEeCkvKzhM49_UA" name="Uri">
+          <modelElement href="TestProvider.uml#_SnmxgIKHEeCkvKzhM49_UA"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_XysWjoKHEeCkvKzhM49_UA" name="arg0">
+        <modelElement href="TestProvider.uml#_SoErkoKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWj4KHEeCkvKzhM49_UA" name="Uri">
+          <modelElement href="TestProvider.uml#_SnmxgIKHEeCkvKzhM49_UA"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_XysWkIKHEeCkvKzhM49_UA" name="arg1">
+        <modelElement href="TestProvider.uml#_SoErk4KHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWkYKHEeCkvKzhM49_UA" name="ContentValues">
+          <modelElement href="TestProvider.uml#_SoC2YIKHEeCkvKzhM49_UA"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_XysWkoKHEeCkvKzhM49_UA" name="delete">
+      <modelElement href="TestProvider.uml#_SoHH0IKHEeCkvKzhM49_UA"/>
+      <stereotypes xmi:id="_XysWk4KHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_SoHu4IKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <stereotypes xmi:id="_XysWlIKHEeCkvKzhM49_UA" name="Annotations">
+        <modelElement href="TestProvider.uml#_SoIV8IKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_XysWlYKHEeCkvKzhM49_UA" label="+"/>
+      <outParameters xmi:id="_XysWloKHEeCkvKzhM49_UA">
+        <modelElement href="TestProvider.uml#_SoHu4YKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWl4KHEeCkvKzhM49_UA" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_XysWmIKHEeCkvKzhM49_UA" name="arg0">
+        <modelElement href="TestProvider.uml#_SoHH0YKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWmYKHEeCkvKzhM49_UA" name="Uri">
+          <modelElement href="TestProvider.uml#_SnmxgIKHEeCkvKzhM49_UA"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_XysWmoKHEeCkvKzhM49_UA" name="arg1">
+        <modelElement href="TestProvider.uml#_SoHH0oKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWm4KHEeCkvKzhM49_UA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_XysWnIKHEeCkvKzhM49_UA" name="arg2">
+        <modelElement href="TestProvider.uml#_SoHH04KHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWnYKHEeCkvKzhM49_UA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_XysWnoKHEeCkvKzhM49_UA" name="query">
+      <modelElement href="TestProvider.uml#_SoKyMIKHEeCkvKzhM49_UA"/>
+      <stereotypes xmi:id="_XysWn4KHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_SoLZRIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <stereotypes xmi:id="_XysWoIKHEeCkvKzhM49_UA" name="Annotations">
+        <modelElement href="TestProvider.uml#_SoMnYIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_XysWoYKHEeCkvKzhM49_UA" label="+"/>
+      <outParameters xmi:id="_XysWooKHEeCkvKzhM49_UA">
+        <modelElement href="TestProvider.uml#_SoMAUIKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWo4KHEeCkvKzhM49_UA" name="Cursor">
+          <modelElement href="TestProvider.uml#_SoI9AIKHEeCkvKzhM49_UA"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_XysWpIKHEeCkvKzhM49_UA" name="arg0">
+        <modelElement href="TestProvider.uml#_SoKyMYKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWpYKHEeCkvKzhM49_UA" name="Uri">
+          <modelElement href="TestProvider.uml#_SnmxgIKHEeCkvKzhM49_UA"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_XysWpoKHEeCkvKzhM49_UA" name="arg1">
+        <modelElement href="TestProvider.uml#_SoLZQIKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWp4KHEeCkvKzhM49_UA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_XysWqIKHEeCkvKzhM49_UA" name="arg2">
+        <modelElement href="TestProvider.uml#_SoLZQYKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWqYKHEeCkvKzhM49_UA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_XysWqoKHEeCkvKzhM49_UA" name="arg3">
+        <modelElement href="TestProvider.uml#_SoLZQoKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWq4KHEeCkvKzhM49_UA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_XysWrIKHEeCkvKzhM49_UA" name="arg4">
+        <modelElement href="TestProvider.uml#_SoLZQ4KHEeCkvKzhM49_UA"/>
+        <type xmi:id="_XysWrYKHEeCkvKzhM49_UA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_XysWroKHEeCkvKzhM49_UA" name="update">
+      <modelElement href="TestProvider.uml#_SoNOcIKHEeCkvKzhM49_UA"/>
+      <stereotypes xmi:id="_XysWr4KHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_SoOckIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <stereotypes xmi:id="_XysWsIKHEeCkvKzhM49_UA" name="Annotations">
+        <modelElement href="TestProvider.uml#_SoPqsIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_XysWsYKHEeCkvKzhM49_UA" label="+"/>
+      <outParameters xmi:id="_Xys9YIKHEeCkvKzhM49_UA">
+        <modelElement href="TestProvider.uml#_SoOckYKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_Xys9YYKHEeCkvKzhM49_UA" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_Xys9YoKHEeCkvKzhM49_UA" name="arg0">
+        <modelElement href="TestProvider.uml#_SoNOcYKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_Xys9Y4KHEeCkvKzhM49_UA" name="Uri">
+          <modelElement href="TestProvider.uml#_SnmxgIKHEeCkvKzhM49_UA"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_Xys9ZIKHEeCkvKzhM49_UA" name="arg1">
+        <modelElement href="TestProvider.uml#_SoNOcoKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_Xys9ZYKHEeCkvKzhM49_UA" name="ContentValues">
+          <modelElement href="TestProvider.uml#_SoC2YIKHEeCkvKzhM49_UA"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_Xys9ZoKHEeCkvKzhM49_UA" name="arg2">
+        <modelElement href="TestProvider.uml#_SoN1gIKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_Xys9Z4KHEeCkvKzhM49_UA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_Xys9aIKHEeCkvKzhM49_UA" name="arg3">
+        <modelElement href="TestProvider.uml#_SoN1gYKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_Xys9aYKHEeCkvKzhM49_UA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_Xys9aoKHEeCkvKzhM49_UA" name="getType">
+      <modelElement href="TestProvider.uml#_SoQRwIKHEeCkvKzhM49_UA"/>
+      <stereotypes xmi:id="_Xys9a4KHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_SoQRwoKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <stereotypes xmi:id="_Xys9bIKHEeCkvKzhM49_UA" name="Annotations">
+        <modelElement href="TestProvider.uml#_SoQ40YKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_Xys9bYKHEeCkvKzhM49_UA" label="+"/>
+      <outParameters xmi:id="_Xys9boKHEeCkvKzhM49_UA">
+        <modelElement href="TestProvider.uml#_SoQ40IKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_Xys9b4KHEeCkvKzhM49_UA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_Xys9cIKHEeCkvKzhM49_UA" name="arg0">
+        <modelElement href="TestProvider.uml#_SoQRwYKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_Xys9cYKHEeCkvKzhM49_UA" name="Uri">
+          <modelElement href="TestProvider.uml#_SnmxgIKHEeCkvKzhM49_UA"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_Xyx14IKHEeCkvKzhM49_UA" name="TestProvider">
+    <modelElement href="TestProvider.uml#_SjS5QIKHEeCkvKzhM49_UA"/>
+    <visualProperties xmi:id="_XzEw0IKHEeCkvKzhM49_UA"/>
+    <visibility xmi:id="_Xyx14YKHEeCkvKzhM49_UA" label="+"/>
+    <attributes xmi:id="_Xyx14oKHEeCkvKzhM49_UA" defaultValue="&quot;TestProvider&quot;" name="TAG" staticAttribute="true">
+      <modelElement href="TestProvider.uml#_SopTUIKHEeCkvKzhM49_UA"/>
+      <stereotypes xmi:id="_Xyx144KHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_Sop6YIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_Xyx15IKHEeCkvKzhM49_UA" label="-"/>
+      <cardinality xmi:id="_Xyx15YKHEeCkvKzhM49_UA" label="1" max="1" min="1"/>
+      <type xmi:id="_Xyx15oKHEeCkvKzhM49_UA" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_Xyx154KHEeCkvKzhM49_UA" name="onUserInteraction">
+      <modelElement href="TestProvider.uml#_SjVVgIKHEeCkvKzhM49_UA"/>
+      <stereotypes xmi:id="_Xyx16IKHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_SjV8kIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <stereotypes xmi:id="_Xyx16YKHEeCkvKzhM49_UA" name="Annotations">
+        <modelElement href="TestProvider.uml#_SjWjoIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_Xyx16oKHEeCkvKzhM49_UA" label="+"/>
+    </operations>
+    <operations xmi:id="_Xyx164KHEeCkvKzhM49_UA" name="onUserLeaveHint">
+      <modelElement href="TestProvider.uml#_SjWjooKHEeCkvKzhM49_UA"/>
+      <stereotypes xmi:id="_Xyx17IKHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_SjXKsIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <stereotypes xmi:id="_Xyx17YKHEeCkvKzhM49_UA" name="Annotations">
+        <modelElement href="TestProvider.uml#_SjXxwIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_Xyx17oKHEeCkvKzhM49_UA" label="#"/>
+    </operations>
+    <operations xmi:id="_Xyx174KHEeCkvKzhM49_UA" name="onCreate">
+      <modelElement href="TestProvider.uml#_SoY0oIKHEeCkvKzhM49_UA"/>
+      <stereotypes xmi:id="_Xyx18IKHEeCkvKzhM49_UA" name="LegacyStyledElement">
+        <modelElement href="TestProvider.uml#_SoY0ooKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <stereotypes xmi:id="_Xyx18YKHEeCkvKzhM49_UA" name="Annotations">
+        <modelElement href="TestProvider.uml#_SoZbsIKHEeCkvKzhM49_UA"/>
+      </stereotypes>
+      <visibility xmi:id="_Xyx18oKHEeCkvKzhM49_UA" label="+"/>
+      <parameters xmi:id="_Xyx184KHEeCkvKzhM49_UA" name="savedInstanceState">
+        <modelElement href="TestProvider.uml#_SoY0oYKHEeCkvKzhM49_UA"/>
+        <type xmi:id="_Xyx19IKHEeCkvKzhM49_UA" name="Bundle">
+          <modelElement href="TestProvider.uml#_SoXmgYKHEeCkvKzhM49_UA"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+</com.yattasolutions.uml.diagrams.classifier:ClassDiagram>

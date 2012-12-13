@@ -1,0 +1,39 @@
+digraph G {
+    size = "4, 4";
+    node[shape = "box", style = "solid", color = "blue"];
+    edge[shape = "normal", style = "dashed", color = "red"];
+    fontsize="10";
+    
+    s_c[shape="record", width=.1, height=2.0, label="{<f0> |<f1> |<f2> |<f3> |<f4>}"]; 
+    s_c:f0->a;
+    s_c:f4->c:e[label="reference", style="solid", color="blue"]
+
+    module1[label="module1"];
+    module2[label="module2"];
+    module3[label="module3"];
+
+    "Test dot"[shape="plaintext"];
+
+    subgraph cluster_0 {
+        label="subgraph 0";
+        bgcolor="mintcream";
+
+        a;
+        b;
+        c[label="node_c", shape = "polygon", sides = "5", peripheries = "3", color = "lightblue", style = "filled"];
+        s_a[shape="record", width=1.5, height=.1, label="<f0> left|<f1> middle|<f2> right"]; 
+        s_b[shape="record", width=1.5, height=.1, label="<f0> |<f1> mid dle|<f2> "]; 
+
+        a->b;
+        a->c;
+        b->c:w;
+        c->s_a;
+        s_a:f2->s_b;
+    }
+
+    subgraph cluster_1 {
+        module1 -> module2; 
+        module2 -> module3; 
+        module1 -> module3; 
+    }
+}

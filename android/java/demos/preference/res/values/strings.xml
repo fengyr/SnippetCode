@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyTest</string>
+    <string name="check_title">checkbox</string>
+    <string name="check_summary">checkbox summary</string>
+    <string name="attr">preference attr</string>
+    <string name="edit_title">edit</string>
+    <string name="edit_summary">edit summary</string>
+    <string name="edit_dialog_title">edit dialog</string>
+    <string name="list_title">list</string>
+    <string name="list_summary">list summary</string>
+    <string name="list_dialog_title">list dialog</string>
+    <string name="text_view">text view</string>
+    <string name="text_button">text button</string>
+</resources>

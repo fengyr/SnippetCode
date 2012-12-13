@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Repeat Suspend/Wakeup</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="exit">Exit</string>
+    <string name="_15_sec">20 s</string>
+    <string name="_30_sec">30 s</string>
+    <string name="_45_sec">45 s</string>
+    <string name="_1_min">1 min.</string>
+    <string name="_2_min">2 min.</string>
+    <string name="_3_min">3 min.</string>
+    <string name="on_text">"Time of device on : "</string>
+    <string name="suspend_text">"Time of device suspend : "</string>
+    <string name="number">"1111111"</string>
+</resources>

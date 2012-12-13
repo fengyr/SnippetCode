@@ -24,7 +24,7 @@
  * 比较前需要对当前一半的数组元素做一份拷贝 */
 void merge(int *array, int len)
 {
-        int copy_array[len/2];
+    int copy_array[len/2];
     memcpy(copy_array, array, len/2*sizeof(int));
     output("\ncopy_array", copy_array, len/2);      // 打印子排序结果
 

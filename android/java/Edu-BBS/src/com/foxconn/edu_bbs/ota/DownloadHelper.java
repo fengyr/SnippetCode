@@ -14,23 +14,21 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 
 import com.foxconn.edu_bbs.utils.BBSUtilities;
+import com.foxconn.edu_bbs.utils.TransConfig;
 
 import android.util.Log;
-import android.widget.Toast;
 
 public class DownloadHelper {
 	private String TAG = "DownloadHelper";
-	private static int BUFFER_SIZE = 8096;
-	private String address = "http://tst.skyonebook.com/dzggb/index.php?uid=";
-//	private String zipFilePath = "/data/data/com.foxconn.edu_bbs.ota/files/";
-	private String zipFilePath = "/sdcard";
+	private TransConfig mConfig = TransConfig.getInstance();
+	private static int BUFFER_SIZE = 8192;
+	private String dataAddress = "http://tst.skyonebook.com/dzggb/index.php?uid=";
+	private String statusAddress = "http://tst.skyonebook.com/dzggb/status.php?uid=";
+	private String targetFileDir = mConfig.getTargetDir();
+	private String zipFileDir = mConfig.getDownloadDir();
 	private String zipFileName;
 	private String urlFileName;
-//	private String targetFileDir = "/data/data/com.foxconn.edu_bbs.ota/files/unzip_files" ;
-	private String targetFileDir = "/sdcard/files" ;
 	private String device_uid = null;
-//	private String device_uid = "aa01";			//dummy
-	private String device_status = "11111111";	//dummy
 	private String latestVersion;
 	private String dataUrl;
 	private String requestTime = null;
@@ -55,8 +53,20 @@ public class DownloadHelper {
 //		marg1 = arg1;
 //    }
 	
+	public DownloadHelper() {
+		assertDownloadDir();
+	}
+	
 	public String getLastDownloadFile() {
 		return mLastDownloadFile;
+	}
+	
+	private void assertDownloadDir() {
+		File zipdir = new File(zipFileDir);
+		if (!zipdir.exists()) {
+			zipdir.mkdirs();
+			zipdir = null;
+		}
 	}
 	
 	/*
@@ -69,40 +79,29 @@ public class DownloadHelper {
 			Log.e(TAG, "Failed while requesting data, uid unknown!");
 			return null;
 		}
-		String requestUrl = address + device_uid + "&getdata=" + version ;
+		String requestUrl = dataAddress + device_uid + "&getdata=" + version ;
 		dataUrl = getUrl(requestUrl);
 		
-		Log.i(TAG, "Request URL: " + requestUrl);
-		Log.i(TAG, "Return URL: " + dataUrl);
+		Log.i(TAG, "requestData Request URL: " + requestUrl);
+		Log.i(TAG, "requestData Return URL: " + dataUrl);
 		
 		if (dataUrl == null || dataUrl.equalsIgnoreCase("no")) {
 			return dataUrl;
 		} else {
 			urlFileName = parseParams(dataUrl, "filename");
-			zipFileName = urlFileName.substring(0, urlFileName.lastIndexOf(".")) + "-1.zip";
+			zipFileName = urlFileName.substring(0, urlFileName.lastIndexOf(".")) + "-0.zip";
 			latestVersion = parseParams(dataUrl, "version");
 			requestTime = parseParams(dataUrl, "time");
 			fileSize = parseParams(dataUrl, "size");
 			showAll = parseParams(dataUrl, "showall");
-			mLastDownloadFile = zipFilePath + "/" + zipFileName;
+			mLastDownloadFile = zipFileDir + "/" + zipFileName;
 			Log.i(TAG, "FileName(" + zipFileName + ") Version(" + latestVersion + ") Time(" + requestTime + ") Size(" + fileSize + ") ShowAll(" + showAll + ")");
 			
-//			if (!requestTime.equalsIgnoreCase("30")) {
-//				SharedPreferences.Editor editor = sp.edit();
-//				editor.putLong("requestTime", Integer.valueOf(requestTime) * 1000);
-//				editor.commit();
-//				Message mMessage = mServiceHandler.obtainMessage();
-//				mMessage.what = 2;
-//				mMessage.arg1 = Integer.valueOf(requestTime) * 1000;
-//				mServiceHandler.sendMessage(mMessage);	
-//			}
+			deleteOldFile();
 			
 			if (downloadNewFile(dataUrl.substring(0, dataUrl.lastIndexOf('/') + 1) + urlFileName)) {
 				if (unZip()) {
-					// FIXME: do not delete file, until trans it to slave
-//					if (deleteOldFile()) {
-						return latestVersion;
-//					}				
+					return latestVersion;
 				}
 			}
 		}
@@ -142,7 +141,10 @@ public class DownloadHelper {
 	
 	/*
 	 * Send URL like this
-	 * http://tst.skyonebook.com/dzggb/index.php?uid=aa01&status=11111111
+	 * http://tst.skyonebook.com/dzggb/status.php?uid=aa01&status=11111111
+	 * 
+	 * Response URL like this
+	 * http://tst.skyonebook.com/dzggb/devicestatus.html
 	 */
 	public void responseStatus(String status) {
 		device_uid = new BBSUtilities().getMasterID();
@@ -150,24 +152,11 @@ public class DownloadHelper {
 			Log.e(TAG, "Failed while responsing status, uid unknown!");
 			return;
 		}
-		String responseUrl = address + device_uid + "&status=" + status;
-		Log.i(TAG, "Response URL: " + responseUrl);
-		HttpURLConnection httpUrl = null;
-		try {
-			URL url = new URL(responseUrl);
-			httpUrl =(HttpURLConnection) url.openConnection();
-			httpUrl.connect();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (httpUrl != null) {
-					httpUrl.disconnect();
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}				
+		String requestUrl = statusAddress + device_uid + "&status=" + status;
+		String rtn = getUrl(requestUrl);
+		
+		Log.i(TAG, "responseStatus Request URL: " + requestUrl);
+		Log.i(TAG, "responseStatus Return URL: " + rtn);		
 	}
 
 	/*
@@ -205,9 +194,12 @@ public class DownloadHelper {
 	 * Delete overdue files, like bbs-aa01-6.zip
 	 */
 	public boolean deleteOldFile() {
-		File file = new File(zipFilePath + "/" + zipFileName);
-		file.delete();
-		Log.i(TAG, "Delete the expirement ZIP file!");
+		File file = new File(zipFileDir + "/" + zipFileName);
+		if (file.exists()) {
+			file.delete();
+			Log.i(TAG, "Delete the expirement ZIP file!");
+		}
+		
 		return true;
 	}
 	
@@ -223,12 +215,14 @@ public class DownloadHelper {
 		int size = 0;
 		long hasDownload = 0L;
 		
+		assertDownloadDir();
+		
 		try {
 			url = new URL(mUrl);
 			httpUrl =(HttpURLConnection) url.openConnection();
 			httpUrl.connect();
 			bis = new BufferedInputStream(httpUrl.getInputStream());
-			fos = new FileOutputStream (zipFilePath + "/" + zipFileName);
+			fos = new FileOutputStream (zipFileDir + "/" + zipFileName);
 			while ((size = bis.read(buf)) != -1) {
 				fos.write(buf, 0, size);
 				
@@ -245,7 +239,7 @@ public class DownloadHelper {
 					String str = getFileSize();
 					downloadPercent = (int) (secondSize / (long) Integer.valueOf(str));
 					//Toast.makeText(this, "WIFI speed: " + downloadRate + "kb/s, Finished percentange: " + downloadPercent + "%.", Toast.LENGTH_SHORT).show();
-					Log.i(TAG, downloadRate + "  asdf " + downloadPercent);
+					Log.i(TAG, downloadRate + " % " + downloadPercent);
 				}				
 				
 			}
@@ -280,7 +274,7 @@ public class DownloadHelper {
 		boolean flag = false;
 		File file = null;
 		ZipFile zipFile = null;
-		file = new File(zipFilePath + "/" + zipFileName);
+		file = new File(zipFileDir + "/" + zipFileName);
 		if (false == file.exists()) {
 			return false;
 		} else if (0 == file.length()) {
