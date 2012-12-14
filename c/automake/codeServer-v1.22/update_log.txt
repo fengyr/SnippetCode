@@ -1,5 +1,0 @@
-
-2006-02-21 update to v1.11
-before this version, the program can't encode the videos according to the NMS file. It use the 5th,6th Hik card to encode 16 D1 videos. and the 7th, 8th didn't work. it's because of a small bug of using memset.  
-MAT:modify it, use for loop instead of memset.
-and now,

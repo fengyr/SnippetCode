@@ -1,3 +1,0 @@
-AUTOMAKE_OPTIONS=foreign
-bin_PROGRAMS=dm642server
-dm642server_SOURCES=dm642server.c agent_api.c readdeploy.c
