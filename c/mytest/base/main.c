@@ -64,5 +64,8 @@ int main(int argc, const char *argv[])
     test_little_big_endian2();
     test_little_big_endian3();
 
+    printf("\n------------------TEST aligned --------------------\n");
+    test_aligned();
+
     return 0;
 }
