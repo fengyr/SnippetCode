@@ -38,50 +38,38 @@ import com.foxconn.supernote.email.database.AccountInfo;
  * 
  */
 public interface IAccountManagerHelper {
-	/*
-	 * 提供新增一个用戶,调用该方法
-	 *  
-	 * 
-	 * @return true-success;false-fail;
-	 */
-	public boolean addUser(AccountInfo info);
+    /*
+     * 提供新增一个用戶,调用该方法
+     *  
+     * 
+     * @return true-success;false-fail;
+     */
+    public boolean addUser(AccountInfo info);
 
-	/*
-	 * 删除指定用戶
-	 * 
-	 * @return true-success;false-fail;
-	 */
-	public boolean deleteUser(AccountInfo info);
+    /*
+     * 删除指定用戶
+     * 
+     * @return true-success;false-fail;
+     */
+    public boolean deleteUser(AccountInfo info);
 
-	/*查詢所有用戶
-	 *
-	 *
-	 * @return null-当前用戶數据表为空, List<AccountInfo>-返回类型为所有用戶信息对象的数组
-	 */
+    /*查詢所有用戶
+     *
+     *
+     * @return null-当前用戶數据表为空, List<AccountInfo>-返回类型为所有用戶信息对象的数组
+     */
+    public List<AccountInfo> queryAllUsers();
 
-	public List<AccountInfo> queryAllUsers();
+    /*查詢出最近设置的用戶
+     * 
+     *  @return null-当前用戶數据表为空, AccountInfo-返回一个包含最近用戶信息的对象
+     */
+    public AccountInfo getLastUser();
 
-	/*查詢出最近设置的用戶
-	 * 
-	 *  @return null-当前用戶數据表为空, AccountInfo-返回一个包含最近用戶信息的对象
-	 */
-
-	public AccountInfo getLastUser();
-
-	/*指定一个用戶,保存为最近用戶
-	 * 
-	 * @return false- fail; true-  sucess;
-	 */
-	public boolean setLastUser(AccountInfo info);
-
-
-	 
+    /*指定一个用戶,保存为最近用戶
+     * 
+     * @return false- fail; true-  sucess;
+     */
+    public boolean setLastUser(AccountInfo info);
 }
-
-
-
-
-
-
-
 

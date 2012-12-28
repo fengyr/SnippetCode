@@ -31,6 +31,5 @@ public class AccountInfo {
 	 */
 	public int nType;
 	public long nLastLogin;
-	
 }
 
