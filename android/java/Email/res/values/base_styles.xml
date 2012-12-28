@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="EmailButtonControl">
+        <item name="android:background">@drawable/base_emailbutton_selector</item>
+    </style>
+    
+    <style name="CancelButtonControl">
+        <item name="android:background">@drawable/base_cancelbutton_selector</item>
+    </style>
+
+    <style name="CaptureButtonControl">
+        <item name="android:background">@drawable/base_capturebutton_selector</item>
+    </style>
+    
+    <style name="SureButtonControl">
+        <item name="android:background">@drawable/base_surebutton_selector</item>
+    </style>
+    
+    <style name="MenuBookControl">
+        <item name="android:background">@drawable/base_menubook_selector</item>
+    </style>
+    
+    <style name="MenuSwitchControl">
+        <item name="android:background">@drawable/base_menuswitch_selector</item>
+    </style>
+    
+    <style name="MenuPaperControl">
+        <item name="android:background">@drawable/base_menupaper_selector</item>
+    </style>
+</resources>

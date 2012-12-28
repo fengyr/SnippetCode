@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/email_bg">
+
+     <RelativeLayout android:id="@+id/TitleBG"
+		android:layout_width="fill_parent"
+		android:layout_height="@dimen/mbarHeight"
+		android:background="@drawable/page_bar">
+		
+		<Button android:id="@+id/mLogout" 
+		        android:layout_width="@dimen/mbLayout_Width"
+			    android:layout_height="@dimen/mbLayout_Height" 
+			    android:textSize="14px"
+			    style="@style/WebButtonControl"
+			    android:text="@string/back" 
+			    android:textColor="@drawable/color_black"
+			    android:layout_marginTop="@dimen/mbMargininTop" 
+			    android:layout_marginLeft="@dimen/mbMargininLeft"
+			    android:layout_alignParentLeft="true" />
+			
+	    <Button android:id="@+id/mExhtml" 
+	           android:layout_width="@dimen/mbLayout_Width"
+		       android:layout_height="@dimen/mbLayout_Height" 
+		       android:textSize="14px"
+		       style="@style/WebButtonControl"
+		       android:text="@string/exporthtml" 
+		       android:textColor="@drawable/color_black"
+		       android:layout_marginTop="@dimen/mbMargininTop" 
+		       android:layout_marginLeft="95dp"
+		       android:layout_toRightOf="@id/mLogout" />
+		       
+	    <Button android:id="@+id/mExpng" 
+	           android:layout_width="@dimen/mbLayout_Width"
+		       android:layout_height="@dimen/mbLayout_Height" 
+		       android:textSize="14px"
+		       style="@style/WebButtonControl"
+		       android:text="@string/exportpng" 
+		       android:textColor="@drawable/color_black"
+		       android:layout_marginTop="@dimen/mbMargininTop" 
+		       android:layout_marginLeft="100dp"
+		       android:layout_toRightOf="@id/mExhtml" />
+	</RelativeLayout>
+	
+	<RelativeLayout android:id="@+id/mAddress" 
+	    android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+		android:layout_below="@id/TitleBG" >
+		
+	    <TextView android:id="@+id/mTextUrl"
+				android:layout_width="@dimen/mWebUrl_Width" 
+				android:layout_height="@dimen/mWebUrl_Height"
+				android:textSize="14px" 
+				android:layout_marginTop="@dimen/mSendAddr_MargininTop" 
+				android:layout_marginLeft="@dimen/mSendAddr_MargininLeft"
+				android:textStyle="bold"
+				android:text="@string/urladd"  
+				android:textColor="@drawable/color_black" />
+	      
+	    <EditText android:id="@+id/mEditUrl"
+		        android:layout_width="450px"
+			    android:layout_height="@dimen/mWebUrl_Height"
+		        android:singleLine="true"
+		        android:background="@drawable/box03"
+		        android:layout_toRightOf="@id/mTextUrl" />
+		        
+	    <View android:id="@+id/mView3" 
+		      android:layout_width="5px"
+		      android:layout_height="@dimen/mWebUrl_Height"
+			  android:layout_toRightOf="@id/mEditUrl"/> 	
+
+	    <Button android:id="@+id/mGo" 
+		      android:layout_width="@dimen/mbGo_Width"
+		      android:layout_height="@dimen/mWebUrl_Height" 
+		      android:textSize="14px"
+		      style="@style/WebButtonControl"
+		      android:text="@string/go" 
+		      android:textColor="@drawable/color_black"
+		      android:layout_toRightOf="@id/mView3" />
+   </RelativeLayout>
+    <!-- webmail 區 -->
+    
+	<com.foxconn.supernote.websee.widget.WebBrowserView
+		android:id="@+id/WebViewContent" 
+		android:layout_width="fill_parent"
+		android:layout_height="@dimen/MailView_Height"
+		android:layout_marginTop="0px" 
+		android:layout_below="@id/mAddress" />
+		
+</LinearLayout>

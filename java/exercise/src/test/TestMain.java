@@ -7,6 +7,7 @@ import sort.SortExample;
 import sort.SortExample2;
 import sax.SaxDemo;
 import jtest.JunitTest;
+import jtest.JunitTestSuite;
 import thread.ThreadDemo;
 import thread.SumCal;
 import concurrentTest.ExcutorEx;
@@ -155,7 +156,8 @@ public class TestMain {
 
     // Junit测试
     static private void test_Junit() {
-        junit.textui.TestRunner.run(JunitTest.suite());
+        TestSuite suite = JunitTestSuite.getTestSuite();
+        TestRunner.run(suite);
     }
 
     // 线程测试
@@ -225,6 +227,6 @@ public class TestMain {
     }
 	
 	public static void main(String[] argvs) throws UnsupportedEncodingException{
-        test_GenericPatten();
+        test_Junit();
     }
 }

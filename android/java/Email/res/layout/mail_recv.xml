@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/email_bg">
+
+     <RelativeLayout android:id="@+id/TitleBG"
+		android:layout_width="fill_parent"
+		android:layout_height="@dimen/mbarHeight"
+		android:background="@drawable/page_bar">
+		
+		<Button android:id="@+id/mLogout" 
+		    android:layout_width="@dimen/mButtonMenuWidth"
+			android:layout_height="@dimen/mButtonMenuHeight" 
+			style="@style/CancelButtonControl" 
+			android:layout_marginTop="@dimen/mbMargininTop"
+			android:layout_marginBottom="@dimen/mbMargininTop"
+			android:layout_marginLeft="@dimen/mbMargininLeft"
+			android:layout_alignParentLeft="true" />
+			
+	   <Button android:id="@+id/mCapture" 
+	        android:layout_width="@dimen/mButtonMenuWidth"
+			android:layout_height="@dimen/mButtonMenuHeight" 
+			style="@style/CaptureButtonControl" 
+			android:layout_marginTop="@dimen/mbMargininTop"
+			android:layout_marginBottom="@dimen/mbMargininTop"
+			android:layout_marginRight="@dimen/mbMargininLeft" 
+			android:layout_alignParentRight="true" />
+	</RelativeLayout>
+
+    <!-- webmail 區 -->
+    
+	<com.foxconn.supernote.email.widget.MailView
+		android:id="@+id/MailViewContent" 
+		android:layout_width="fill_parent"
+		android:layout_height="@dimen/MailView_Height"
+		android:layout_marginTop="0dp" 
+		android:layout_below="@id/TitleBG" />
+		
+</LinearLayout>

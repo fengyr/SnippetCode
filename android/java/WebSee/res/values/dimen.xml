@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="MailView_Height">1000px</dimen>
+	<dimen name="mbMargininTop">2dp</dimen>
+	<dimen name="mbMargininLeft">35dp</dimen>
+	<dimen name="mWebUrl_Width">55px</dimen>
+	<dimen name="mWebUrl_Height">40px</dimen>
+	<dimen name="mSendAddr_MargininTop">10px</dimen>
+	<dimen name="mSendAddr_MargininLeft">20px</dimen>
+	<dimen name="FontSize_Small">17px</dimen>
+	<dimen name="mbGo_Width">50px</dimen>
+	<dimen name="mbarHeight">35dp</dimen>
+	<dimen name="mbLayout_Width">45dp</dimen>
+	<dimen name="mbLayout_Height">28dp</dimen>
+	
+
+</resources>

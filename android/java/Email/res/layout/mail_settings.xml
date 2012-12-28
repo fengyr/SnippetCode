@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/email_bg">
+
+     <RelativeLayout android:id="@+id/TitleBG"
+		android:layout_width="fill_parent"
+		android:layout_height="@dimen/mbarHeight"
+		android:background="@drawable/page_bar">
+		
+		<Button android:id="@+id/mCancel" 
+		    android:layout_width="@dimen/mButtonMenuWidth"
+			android:layout_height="@dimen/mButtonMenuHeight" 
+			style="@style/CancelButtonControl" 
+			android:layout_marginTop="@dimen/mbMargininTop"
+			android:layout_marginBottom="@dimen/mbMargininTop"
+			android:layout_marginLeft="@dimen/mbMargininLeft"
+			android:layout_alignParentLeft="true" />
+
+	   <Button android:id="@+id/mSure" 
+	        android:layout_width="@dimen/mButtonMenuWidth"
+			android:layout_height="@dimen/mButtonMenuHeight" 
+			style="@style/SureButtonControl" 
+			android:layout_marginTop="@dimen/mbMargininTop"
+			android:layout_marginBottom="@dimen/mbMargininTop"
+			android:layout_marginRight="@dimen/mbMargininLeft"
+			android:layout_alignParentRight="true" />
+	</RelativeLayout>
+			      
+    <TextView android:id="@+id/mSwitchTitle"
+			  android:layout_width="fill_parent" 
+			  android:layout_height="@dimen/mSwitchTitle_Height"
+			  android:textSize="32px" 
+			  android:gravity="center_vertical|center_horizontal"
+			  android:text="@string/menuswitchuser" 
+			  android:textStyle="bold" 
+			  android:textColor="@drawable/color_black" />
+	
+		<TextView android:id="@+id/mTextUserName"
+				android:layout_width="fill_parent" 
+				android:layout_height="@dimen/mTextUserName_Height"
+				android:textSize="18px" 
+				android:layout_marginLeft="@dimen/mtMargininLeft"
+				android:gravity="center_vertical|left"
+				android:text="@string/musername" 
+				android:textStyle="bold" 
+				android:layout_below="@id/mSwitchTitle"
+				android:textColor="@drawable/color_black" />
+				
+	<!-- 用戶名編輯佈局  -->			
+	<RelativeLayout android:id="@+id/mEditSetting"
+	    android:layout_width="fill_parent"
+		android:layout_height="@dimen/mEditSetting_Height">
+		<!-- 用戶名編輯框  -->
+	    <EditText android:id="@+id/mEditUserName"
+				android:layout_width="@dimen/mEditUserName_Width"
+				android:layout_height="@dimen/mEditUserName_Height"
+		        android:singleLine="true"
+		        android:layout_marginLeft="@dimen/mtMargininLeft"
+		        android:layout_alignParentTop="true"
+		        android:background="@drawable/box03"/>
+		<!-- @符  -->		    
+		<TextView android:id="@+id/mStrAt"
+				android:layout_width="20dp" 
+				android:layout_height="@dimen/mAt_Height"
+				android:textSize="18px" 
+	            android:layout_toRightOf="@id/mEditUserName"
+	            android:layout_alignTop="@id/mEditUserName"
+				android:gravity="center"
+				android:text="@string/mat" 
+				android:textStyle="bold"
+				android:textColor="@drawable/color_black" />
+	   <!-- 默認郵箱編輯框  -->			
+	   <TextView android:id="@+id/mEditEmailAddrDefaul"
+					android:layout_width="@dimen/mEditEmailAddr_Width"
+					android:layout_height="@dimen/mEditUserName_Height"
+					android:layout_toRightOf="@id/mStrAt"
+					android:layout_alignTop="@id/mEditUserName"
+					android:gravity="center_vertical|center_horizontal"
+					android:background="@drawable/box06"
+			        android:text="@string/gmailaddress"
+			        android:textSize="18px" 
+			        android:textColor="@drawable/color_black"/>
+	
+		<View android:id="@+id/mView2" 
+			      android:layout_width="5dp"
+			      android:layout_height="@dimen/mEditUserName_Height" 
+			      android:layout_toRightOf="@id/mEditEmailAddrDefaul"/>	
+
+		<!-- 下拉按鈕  -->	
+			
+		<Button android:id="@+id/mbtSelectEmail" 
+		        android:layout_width="@dimen/mButtonMenuWidth"
+				android:layout_height="@dimen/mEditUserName_Height"
+				android:layout_alignParentTop="true"
+				android:background="@drawable/button02" 
+				android:layout_toRightOf="@id/mView2"/>
+
+	</RelativeLayout> 
+	
+	
+	<!-- 密碼和下拉列表框佈局 -->	
+	<LinearLayout android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+		android:orientation="horizontal"
+		android:layout_below="@id/mEditSetting" >
+		  <!-- 密碼文本顯示  -->
+		  <TextView android:id="@+id/mTextPassword"
+					android:layout_width="@dimen/mTextPassword_Width" 
+					android:layout_height="@dimen/mTextPassword_Height"
+					android:textSize="18px" 
+					android:layout_marginLeft="@dimen/mtMargininLeft"
+					android:gravity="left|bottom"
+					android:text="@string/muserpassword" 
+					android:textStyle="bold" 
+					android:layout_below="@id/mEditUserName"
+					android:textColor="@drawable/color_black" />
+					
+		<!-- 下拉列表框佈局 -->	
+		  <LinearLayout android:id="@+id/mEditEmailAddr"
+		                android:layout_width="fill_parent"
+			            android:layout_height="wrap_content" 
+			            android:orientation="vertical">
+			            			
+			<Button android:id="@+id/mEditGoogleEmail"
+						android:layout_width="@dimen/mEditEmailAddr_Width"
+						android:layout_height="@dimen/mEditEmailAddr_Height"
+						android:gravity="center_vertical|center_horizontal"
+						android:text="@string/gmailaddress"
+						android:background="@drawable/box05"
+				        android:textSize="18px" 
+				        android:textColor="@drawable/color_black"/>
+						
+			<Button android:id="@+id/mEditNeteaseEmail"
+						android:layout_width="@dimen/mEditEmailAddr_Width"
+						android:layout_height="@dimen/mEditEmailAddr_Height"
+						android:gravity="center_vertical|center_horizontal"
+						android:text="@string/neteaseaddress"
+						android:background="@drawable/box05"
+				        android:textSize="18px" 
+				        android:textColor="@drawable/color_black"
+						android:layout_below="@id/mEditGoogleEmail" />  
+						
+		   <Button android:id="@+id/mEditSinaEmail"
+						android:layout_width="@dimen/mEditEmailAddr_Width"
+						android:layout_height="@dimen/mEditEmailAddr_Height"
+						android:gravity="center_vertical|center_horizontal"
+						android:text="@string/sinaaddress"
+						android:background="@drawable/box05"
+				        android:textSize="18px" 
+				        android:textColor="@drawable/color_black"
+						android:layout_below="@id/mEditNeteaseEmail" />   			
+		</LinearLayout>
+	
+	</LinearLayout>
+	
+	<View android:id="@+id/mView3" 
+		      android:layout_width="@dimen/mTextPassword_Width"
+		      android:layout_height="3dp"/>	
+	  
+	  <EditText android:id="@+id/mEditPassword"
+				android:layout_width="@dimen/mEditUserName_Width"
+				android:layout_height="@dimen/mEditUserName_Height"
+		        android:singleLine="true"
+		        android:layout_marginLeft="@dimen/mtMargininLeft"
+		        android:layout_alignLeft="@id/mTextUserName"
+		        android:background="@drawable/box03"
+				android:layout_below="@id/mTextPassword" />
+				
+	  <View android:id="@+id/mView1" 
+		      android:layout_width="fill_parent"
+		      android:layout_height="20dp" 
+		      android:layout_alignLeft="@id/mTextUserName"
+		      android:layout_below="@id/mEditPassword" />	
+		      		
+	  <Button android:id="@+id/mAddUser" 
+		     android:layout_width="@dimen/mbtAddUser_Width"
+		     android:layout_height="@dimen/mbtAddUser_height" 
+			 android:textSize="20px"
+			 style="@style/EmailButtonControl"
+			 android:layout_marginLeft="@dimen/mtMargininLeft"
+			 android:text="@string/adduser" 
+			 android:textColor="@drawable/color_black"
+			 android:layout_alignLeft="@id/mTextUserName"
+			 android:layout_below="@id/mView1" />
+	
+	 <TextView android:id="@+id/mTextSaveUser"
+				android:layout_width="fill_parent" 
+				android:layout_height="@dimen/mTextUserName_Height"
+				android:layout_marginLeft="@dimen/mtMargininLeft"
+				android:textSize="18px" 
+				android:layout_alignLeft="@id/mTextUserName"
+				android:gravity="center_vertical|left"
+				android:text="@string/mtextsaveuser" 
+				android:textStyle="bold" 
+				android:layout_below="@id/mAddUser"
+				android:textColor="@drawable/color_black" />
+				
+	<View android:id="@+id/mView3" 
+		      android:layout_width="fill_parent"
+		      android:layout_height="8dp"/>	
+			
+	 <ListView
+	         android:id="@+id/mUserList"
+             android:layout_width="@dimen/mUserList_Width"
+             android:layout_height="wrap_content"
+             android:layout_below="@id/mTextSaveUser"
+             android:layout_marginLeft="@dimen/mtMargininLeft"
+             android:divider="@null"
+             android:focusableInTouchMode="false"
+	         android:focusable="false"/> 
+    
+</LinearLayout>

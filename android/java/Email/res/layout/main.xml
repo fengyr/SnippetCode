@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/email_bg">
+    
+    <RelativeLayout android:id="@+id/TitleBG"
+		android:layout_width="fill_parent"
+		android:layout_height="@dimen/mbarHeight"
+		android:background="@drawable/page_bar">
+		
+		<Button android:id="@+id/mCancel" 
+		    android:layout_width="@dimen/mButtonMenuWidth"
+			android:layout_height="@dimen/mButtonMenuHeight" 
+			style="@style/CancelButtonControl" 
+			android:layout_marginTop="@dimen/mbMargininTop"
+			android:layout_marginBottom="@dimen/mbMargininTop"
+			android:layout_marginLeft="@dimen/mbMargininLeft"
+			android:layout_alignParentLeft="true" />
+	</RelativeLayout>
+			
+		      
+  <LinearLayout android:id="@+id/buttongoogle"
+		android:layout_width="@dimen/mButtonWidth"
+		android:layout_height="@dimen/mButtonHeight"
+		android:orientation="horizontal"
+		style="@style/EmailButtonControl" 
+		android:layout_marginTop="@dimen/mMarginTopBt01"
+		android:layout_marginLeft="@dimen/mibMargininLeft">
+		
+	  <ImageView android:id="@+id/mGmail"
+				   android:layout_width="@dimen/mButtonImageWidth" 
+				   android:layout_height="wrap_content"
+				   android:src="@drawable/gmail"/>
+				   
+	  <View android:id="@+id/mView01" 
+		    android:layout_width="@dimen/mButtonViewWidth"
+		    android:layout_height="@dimen/mButtonHeight" 
+		    android:layout_toRightOf="@id/mGmail" />		
+	 
+	 <TextView android:id="@+id/mTextGmail"
+				   android:layout_width="wrap_content" 
+				   android:layout_height="@dimen/mButtonHeight"
+				   android:layout_toRightOf="@id/mView01"
+				   android:gravity="center_vertical|center_horizontal"
+				   android:textColor="@drawable/color_black"
+				   android:text="@string/textgmail" 
+				   android:textSize="26dp"/>
+  
+  </LinearLayout>		      	
+   
+			   
+  <View android:id="@+id/mView2" 
+		      android:layout_width="fill_parent"
+		      android:layout_height="@dimen/mMarginTopBt02" 
+		      android:layout_marginLeft="@dimen/mibMargininLeft"
+		      android:layout_below="@id/buttongoogle" />
+		      
+    <LinearLayout android:id="@+id/buttonnetease"
+		android:layout_width="@dimen/mButtonWidth"
+		android:layout_height="@dimen/mButtonHeight"
+		android:orientation="horizontal"
+        android:layout_below="@id/mView2"
+		android:layout_marginLeft="@dimen/mibMargininLeft"
+		style="@style/EmailButtonControl">
+		
+	  <ImageView android:id="@+id/mNetease"
+				   android:layout_width="@dimen/mButtonImageWidth" 
+				   android:layout_height="wrap_content"
+				   android:src="@drawable/netease"/>
+				   
+	  <View android:id="@+id/mView02" 
+		    android:layout_width="@dimen/mButtonViewWidth"
+		    android:layout_height="@dimen/mButtonHeight" 
+		    android:layout_toRightOf="@id/mNetease" />		
+	 
+	 <TextView android:id="@+id/mTextNetease"
+				   android:layout_width="wrap_content" 
+				   android:layout_height="@dimen/mButtonHeight"
+				   android:layout_toRightOf="@id/mView02"
+				   android:gravity="center_vertical"
+				   android:textColor="@drawable/color_black"
+				   android:text="@string/textnetease" 
+				   android:textSize="26dp"/>
+  
+  </LinearLayout>
+			   
+
+			   
+  <View android:id="@+id/mView3" 
+		      android:layout_width="fill_parent"
+		      android:layout_height="@dimen/mMarginTopBt02" 
+		      android:layout_marginLeft="@dimen/mibMargininLeft"
+		      android:layout_below="@id/buttonnetease" />
+		      
+  <LinearLayout android:id="@+id/buttonsina"
+		android:layout_width="@dimen/mButtonWidth"
+		android:layout_height="@dimen/mButtonHeight"
+		android:orientation="horizontal"
+        android:layout_below="@id/mView3"
+		android:layout_marginLeft="@dimen/mibMargininLeft"
+		style="@style/EmailButtonControl">
+		
+	  <ImageView android:id="@+id/mSina"
+				   android:layout_width="@dimen/mButtonImageWidth" 
+				   android:layout_height="wrap_content"
+				   android:src="@drawable/sina"/>
+				   
+	  <View android:id="@+id/mView03" 
+		    android:layout_width="@dimen/mButtonViewWidth"
+		    android:layout_height="@dimen/mButtonHeight" 
+		    android:layout_toRightOf="@id/mSina" />		
+	 
+	 <TextView android:id="@+id/mTextSina"
+				   android:layout_width="wrap_content" 
+				   android:layout_height="@dimen/mButtonHeight"
+				   android:layout_toRightOf="@id/mView03"
+				   android:gravity="center_vertical"
+				   android:textColor="@drawable/color_black"
+				   android:text="@string/textsina" 
+				   android:textSize="26dp"/>
+  
+  </LinearLayout>	      
+
+</LinearLayout>

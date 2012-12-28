@@ -9,13 +9,17 @@ import string.Contain;
 public class JunitTest extends TestCase {
 
     Contain contain = null;
-    static TestSuite suite = new TestSuite();
 
     public JunitTest(String args) {
         super(args);
     }
 
     protected void setUp() {
+        try {
+            super.setUp();
+        } catch(Exception e) {
+        }
+
         System.out.println("JunitTest setUp");
 
         contain = new Contain();
@@ -25,14 +29,11 @@ public class JunitTest extends TestCase {
         System.out.println("JunitTest tearDown");
 
         contain = null;
-    }
 
-    public static Test suite() {
-        //suite.addTestSuite(JunitTest.class);
-
-        suite.addTest(new JunitTest("testContainIt"));
-
-        return suite;
+        try {
+            super.tearDown();
+        } catch(Exception e) {
+        }
     }
 
     public void testContainIt() {

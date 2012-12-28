@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, EmailSelector!</string>
+    <string name="app_name">Email</string>
+    
+    <string name="back">退出</string>
+    <string name="cancel">返回</string>
+    <string name="logout">登出</string>
+    <string name="sure">確定</string>
+    <string name="to">To :   </string>
+    <string name="subject">Subject :   </string>
+    <string name="re">Re: </string>
+    <string name="menubook">全本</string>
+    <string name="menuswitchuser">設置帳戶</string>
+    <string name="menupaper">單頁</string>
+    <string name="content">Content:</string>
+    <string name="mess_screencapture">截屏失敗請重新嘗試</string>
+    <string name="mess_swithcuser">請修改發件人信息</string>
+    <string name="mess_settingsuserinfo">請輸入用戶名稱和密碼</string>
+    <string name="mess_sendmail">請設置發送者郵箱</string>
+    <string name="mess_receivemail">請輸入收件人地址</string>
+    <string name="musername">用戶名  :</string>
+    <string name="muserpassword">密碼   :</string>
+    <string name="mat">\@</string>
+    <string name="capturer">截屏</string>
+    <string name="adduser">添加</string>
+	<string name="mtextsaveuser">已保存帳戶：</string>
+	<string name="mcount"></string>
+	<string name="ask_delete_info">是否刪除此帳戶?</string>
+	<string name="sendmail">發送</string>
+	<string name="mess_sendingmail">發送中……</string>
+	<string name="mess_sendsuccess">Success!</string>
+	<string name="mess_sendfail">發送失敗</string>
+	<string name="mess_sendtimeout">發送超時</string>
+	<string name="textgmail">Gmail</string>
+	<string name="textnetease">網易郵箱</string>
+	<string name="textsina">新浪郵箱</string>
+    <string name="gmailaddress">Gmail.com</string>
+    <string name="neteaseaddress">163.com</string>
+    <string name="sinaaddress">sina.com</string>
+</resources>

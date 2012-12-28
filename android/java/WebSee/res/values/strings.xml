@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, WebSeeActivity!</string>
+    <string name="app_name">WebSee</string>
+    
+    <string name="back">退出</string>
+    <string name="exporthtml">導出Html</string>
+    <string name="exportpng">導出PNG</string>
+    <string name="urladd">地址：</string>
+    <string name="go">go</string>
+    <string name="mess_screencapturefail">導出PNG失敗</string>
+    <string name="mess_screencapturesuccess">導出文件到：</string>
+    <string name="mess_urlisnull">請輸入網址</string>
+    <string name="mess_geturlfail">獲取網址url失敗</string>
+    
+</resources>

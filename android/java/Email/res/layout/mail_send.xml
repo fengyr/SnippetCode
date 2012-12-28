@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/email_bg">
+
+     <RelativeLayout android:id="@+id/TitleBG"
+		android:layout_width="fill_parent"
+		android:layout_height="@dimen/mbarHeight"
+		android:background="@drawable/page_bar">
+		
+		<Button android:id="@+id/mCancel" 
+		    android:layout_width="@dimen/mButtonMenuWidth"
+			android:layout_height="@dimen/mButtonMenuHeight" 
+			style="@style/CancelButtonControl" 
+			android:layout_marginTop="@dimen/mbMargininTop"
+			android:layout_marginBottom="@dimen/mbMargininTop"
+			android:layout_marginLeft="@dimen/mbMargininLeft"
+			android:layout_alignParentLeft="true" />
+
+	   <Button android:id="@+id/mSure" 
+	        android:layout_width="@dimen/mButtonMenuWidth"
+			android:layout_height="@dimen/mButtonMenuHeight" 
+			style="@style/SureButtonControl" 
+			android:layout_marginTop="@dimen/mbMargininTop"
+			android:layout_marginBottom="@dimen/mbMargininTop"
+			android:layout_marginRight="@dimen/mbMargininLeft" 
+			android:layout_alignParentRight="true"/>
+			
+		<TextView android:id="@+id/mSuccess"
+			android:layout_width="100dp" 
+			android:layout_height="wrap_content"
+			android:textSize="17px" 
+			android:layout_marginTop="10dp" 
+			android:layout_toLeftOf="@id/mSure"
+			android:gravity="right"
+			android:text=""
+			android:textStyle="bold" 
+			android:textColor="@drawable/color_black" />
+	</RelativeLayout>
+	
+	<!-- 地址顯示區 -->
+	<RelativeLayout android:id="@+id/SendMessBG"
+		android:layout_width="fill_parent"
+		android:layout_height="@dimen/mSendmessBGHeight">
+	    <!-- 發送者 -->
+		<TextView android:id="@+id/mSendAddr"
+				android:layout_width="@dimen/mSendAddr_Width" 
+				android:layout_height="@dimen/mSendAddr_Height"
+				android:textSize="14px" 
+				android:layout_marginTop="@dimen/mSendAddr_MargininTop" 
+				android:layout_marginLeft="@dimen/mSendAddr_MargininLeft"
+				android:layout_below="@id/TitleBG"
+				android:textStyle="bold" 
+				android:textColor="@drawable/color_black" />
+				
+		<TextView android:id="@+id/mSendTime"
+				android:layout_width="@dimen/mSendAddr_Width" 
+				android:layout_height="@dimen/mSendAddr_Height"
+				android:textSize="14px" 
+				android:layout_marginLeft="@dimen/mSendAddr_MargininLeft"
+				android:layout_below="@id/mSendAddr"
+				android:textStyle="bold" 
+				android:text=""
+				android:textColor="@drawable/color_black" />
+					
+		<ImageView android:id="@+id/mIcon_image"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="wrap_content"
+			    android:layout_toRightOf="@id/mSendAddr" 
+			    android:layout_centerVertical="true"
+			    android:src="@drawable/line" />
+			    
+	    <TextView android:id="@+id/mAddressee"
+				android:layout_width="@dimen/mddressee_Width" 
+				android:layout_height="@dimen/mddressee_Height"
+				android:textSize="18px" 
+				android:layout_marginTop="12dp"
+				android:gravity="center_vertical|right"
+				android:layout_toRightOf="@id/mIcon_image" 
+				android:layout_below="@id/TitleBG"
+				android:textStyle="bold"
+				android:text="@string/to" 
+				android:textColor="@drawable/color_black" />
+		<!-- 接收者 --> 	    
+	    <EditText android:id="@+id/mEditAddr"
+			    android:layout_width="wrap_content"
+			    android:layout_height="@dimen/mEditSendAddr_Height"
+			    android:layout_marginTop="12dp"
+	            android:layout_marginRight="20dp"
+	            android:singleLine="true"
+	            android:background="@drawable/box03"
+	            android:layout_toRightOf="@id/mAddressee" 
+			    android:layout_below="@id/TitleBG" />
+		
+		<View android:id="@+id/mView" 
+		      android:layout_width="100dp"
+		      android:layout_height="5dp" 
+		      android:layout_toRightOf="@id/mIcon_image" 
+		      android:layout_below="@id/mAddressee" />	
+		      	
+		<TextView android:id="@+id/mSubject"
+				android:layout_width="@dimen/mddressee_Width" 
+				android:layout_height="@dimen/mddressee_Height"
+				android:textSize="18px" 
+				android:gravity="center_vertical|right"
+				android:layout_toRightOf="@id/mIcon_image" 
+				android:layout_below="@id/mView"
+				android:textStyle="bold"
+				android:text="@string/subject" 
+				android:textColor="@drawable/color_black" />
+		
+		<!-- 標題 -->
+		<EditText android:id="@+id/mEditSub"
+			    android:layout_width="wrap_content"
+			    android:layout_height="@dimen/mEditSendAddr_Height"
+	            android:layout_marginRight="18dp"
+	            android:singleLine="true"
+	            android:layout_below="@id/mView"
+	            android:background="@drawable/box03"
+	            android:layout_toRightOf="@id/mSubject" />
+			    
+	</RelativeLayout>
+	
+	<!-- Content 和 Re 區 -->
+	<RelativeLayout android:id="@+id/mSendContent"
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:background="@drawable/box_content">
+		
+		<TextView android:id="@+id/mContent"
+			    android:layout_width="wrap_content" 
+			    android:layout_height="wrap_content"
+			    android:textSize="18px" 
+				android:textStyle="bold"
+				android:text="@string/content"
+				android:textColor="@drawable/color_black"
+				android:layout_below="@id/TitleBG"  />
+		
+		<!-- AttachmentView 區 -->
+	    <com.foxconn.supernote.email.widget.AttachmentView
+		    android:id="@+id/AttachmentViewContent" 
+		    android:layout_width="fill_parent"
+		    android:layout_height="@dimen/AttachmentViewHeight"
+		    android:layout_below="@id/mContent" /> 
+		
+		<EditText android:id="@+id/mEditRe"
+			    android:layout_width="fill_parent"
+			    android:layout_height="@dimen/EditRe_Height"
+	            android:layout_below="@id/AttachmentViewContent"
+	            android:hint="@string/re"
+	            android:gravity="top" 
+	            android:singleLine="false" />
+	            
+	    <!-- 菜單佈局  -->     
+	    <LinearLayout android:id="@+id/mMenuBG"
+		         android:layout_width="wrap_content" 
+		         android:layout_height="wrap_content"
+		         android:orientation="horizontal"
+		         android:background="@drawable/box02"
+		         android:layout_alignBottom="@id/mEditRe">
+		         
+		         <!-- 全本菜單 -->
+		         <LinearLayout android:id="@+id/mMenuBook"
+			         android:layout_width="@dimen/MenuBookWidth" 
+			         android:layout_height="@dimen/MenuBookHeight"
+			         android:orientation="vertical" 
+			         android:layout_alignParentLeft="true">
+
+			         <ImageView android:id="@+id/mIconMenuBook"
+			             android:layout_width="wrap_content" 
+		                 android:layout_height="wrap_content"
+		                 android:layout_marginTop="@dimen/mMenuIconBook_MargininTop"
+		                 android:layout_marginLeft="@dimen/mMenuIconBook_MargininLeft"
+		                 style="@style/MenuBookControl"/>
+  
+			        <TextView android:id="@+id/mTextMenuBook"
+			             android:layout_width="wrap_content" 
+			             android:layout_height="wrap_content"
+			             android:textSize="20px" 
+			             android:layout_marginLeft="@dimen/mMenuTextBook_MargininLeft"
+				         android:text="@string/menubook"
+				         android:textColor="@drawable/color_black"
+				         android:layout_below="@id/mMenuBook"  />
+			     </LinearLayout>
+			     
+			      <!-- 切換帳戶菜單 -->
+			      <LinearLayout android:id="@+id/mMenuSwitchUser"
+			         android:layout_width="@dimen/MenuSwitchWidth" 
+			         android:layout_height="@dimen/MenuBookHeight"
+			         android:orientation="vertical" 
+			         android:layout_toRightOf="@id/mMenuBook">
+			         
+			         <ImageView android:id="@+id/mIconMenuSwitch"
+			             android:layout_width="wrap_content" 
+		                 android:layout_height="wrap_content"
+		                 android:layout_marginTop="@dimen/mMenuIconBook_MargininTop"
+		                 android:layout_marginLeft="@dimen/mMenuIconSwitch_MargininLeft"
+		                 style="@style/MenuSwitchControl"/>
+		                 
+			        <TextView android:id="@+id/mTextMenuSwitch"
+			             android:layout_width="wrap_content" 
+			             android:layout_height="wrap_content"
+			             android:textSize="20px" 
+			             android:layout_marginLeft="@dimen/mMenuTextSwitch_MargininLeft"
+				         android:text="@string/menuswitchuser"
+				         android:textColor="@drawable/color_black"
+				         android:layout_below="@id/mIconMenuSwitch"  />
+			     </LinearLayout>
+		         
+		         <!-- 單頁菜單 -->
+			      <LinearLayout android:id="@+id/mMenuPaper"
+			         android:layout_width="@dimen/MenuBookWidth" 
+			         android:layout_height="@dimen/MenuBookHeight"
+			         android:orientation="vertical" 
+			         android:layout_alignParentLeft="true">
+			         
+			         <ImageView android:id="@+id/mIconMenuPaper"
+			             android:layout_width="wrap_content" 
+		                 android:layout_height="wrap_content"
+		                 android:layout_marginTop="@dimen/mMenuIconBook_MargininTop"
+		                 android:layout_marginLeft="@dimen/mMenuIconBook_MargininLeft"
+		                 style="@style/MenuPaperControl"/>
+		                 
+			        <TextView android:id="@+id/mTextMenuPaper"
+			             android:layout_width="wrap_content" 
+			             android:layout_height="wrap_content"
+			             android:textSize="20px" 
+			             android:layout_marginLeft="@dimen/mMenuTextBook_MargininLeft"
+				         android:text="@string/menupaper"
+				         android:textColor="@drawable/color_black"
+				         android:layout_below="@id/mIconMenuPaper"  />
+			          
+			     </LinearLayout>
+	    
+	    </LinearLayout>
+	    
+	</RelativeLayout>
+			
+</LinearLayout>

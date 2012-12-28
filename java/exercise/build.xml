@@ -6,7 +6,7 @@
     <property name="dist.dir" value="bin" />
 
     <path id="classpath">
-        <!--<pathelement path="${java.home}/jre/lib/junit.jar"/>-->
+        <pathelement path="${java.home}/jre/lib/junit.jar"/>
     </path>
 
     <target name="init">

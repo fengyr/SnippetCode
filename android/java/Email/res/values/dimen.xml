@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="mibMargininLeft">130px</dimen>
+	<dimen name="MailView_Height">1000dp</dimen>
+	<dimen name="mbMargininTop">5dp</dimen>
+	<dimen name="mbMargininLeft">20dp</dimen>
+	<dimen name="mbLayout_Height">40dp</dimen>
+	<dimen name="mSendAddr_Height">30dp</dimen>
+	<dimen name="mSendAddr_Width">120dp</dimen>
+	<dimen name="mSendAddr_MargininTop">10dp</dimen>
+	<dimen name="mSendAddr_MargininLeft">20dp</dimen>
+	<dimen name="mddressee_Width">55dp</dimen>
+	<dimen name="mddressee_Height">26dp</dimen>
+	<dimen name="FontSize_Small">17dp</dimen>
+	<dimen name="mSwitchTitle">40dp</dimen>
+	<dimen name="mTextUserName_Width">80dp</dimen>
+	<dimen name="mTextUserName_Height">28dp</dimen>
+	<dimen name="mEditUserName_Width">180dp</dimen>
+	<dimen name="EditRe_Height">257dp</dimen>
+	<dimen name="mtMargininLeft">40dp</dimen>
+	<dimen name="mbarHeight">35dp</dimen>
+	<dimen name="mButtonMenuWidth">32dp</dimen>
+	<dimen name="mButtonMenuHeight">22dp</dimen>
+	<dimen name="mButtonViewWidth">8dp</dimen>
+	<dimen name="mMarginTopBt01">134px</dimen>
+	<dimen name="mMarginTopBt02">86px</dimen>
+	<dimen name="mButtonWidth">226dp</dimen>
+	<dimen name="mButtonHeight">76dp</dimen>
+	<dimen name="mButtonImageWidth">100dp</dimen>
+	<dimen name="mSendmessBGHeight">80dp</dimen>
+	<dimen name="MenuBookWidth">100dp</dimen>
+	<dimen name="MenuBookHeight">110dp</dimen>
+	<dimen name="mMenuIconBook_MargininTop">25dp</dimen>
+	<dimen name="mMenuIconBook_MargininLeft">30dp</dimen>
+	<dimen name="mMenuTextBook_MargininLeft">37dp</dimen>
+	<dimen name="MenuSwitchWidth">200dp</dimen>
+	<dimen name="mMenuIconSwitch_MargininLeft">77dp</dimen>
+	<dimen name="mMenuTextSwitch_MargininLeft">75dp</dimen>
+	<dimen name="AttachmentViewHeight">298dp</dimen>
+	<dimen name="mSwitchTitle_Height">80dp</dimen>
+	<dimen name="mSetUserList_Width">280dp</dimen>
+	<dimen name="mEditEmailAddr_Width">65dp</dimen>
+	<dimen name="mEditUserName_Height">23dp</dimen>
+	<dimen name="mAt_Height">22dp</dimen>
+	<dimen name="mUserList_Width">320dp</dimen>
+	<dimen name="mEditEmailAddr_Height">15dp</dimen>
+	<dimen name="mTextPassword_Width">200dp</dimen>
+	<dimen name="mTextPassword_Height">45dp</dimen>
+	<dimen name="mEditSetting_Height">23dp</dimen>
+	<dimen name="mbtAddUser_Width">70dp</dimen>
+	<dimen name="mbtAddUser_height">40dp</dimen>
+	<dimen name="mEditSendAddr_Height">25dp</dimen>
+	
+	
+	
+
+</resources>
