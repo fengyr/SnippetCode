@@ -5,8 +5,10 @@
 File: binParse.py
 Author: Zenki (Zenki.J.Zha), zenki2001cn@163.com
 Description:
-Version:
-Last Modified: 十二月 05, 2012
+Version: 0.2
+Last Modified: 2012-12-30 14:59:03
+    0.2:
+        1. 添加注释
 '''
 
 import config
@@ -36,6 +38,8 @@ def main():
 
     asm_table_builder = AsmTableBuilder(asm_cache_path)
     symbol_table_builder = SymbolTableBuilder(syms_cache_path)
+
+    # 遍历.text段的符号，并根据该符号，查找对应的汇编代码
     for table in symbol_table_builder.getTableForSymfield('.text'):
         symbol_name = table.getName()
         print '****** ', symbol_name

@@ -5,6 +5,11 @@
 File: symbolTable.py
 Author: Zenki (Zenki.J.Zha), zenki2001cn@163.com
 Description:
+    SymbolTable:
+        描述了ELF文件中所有的符号，包括该符号所在的段和偏移位置等信息。
+
+    SymbolTableBuilder:
+        该类是辅助类，解析cache文件，并构建了SymbolTable对象列表。
 Version:
 Last Modified: 十二月 05, 2012
 '''
