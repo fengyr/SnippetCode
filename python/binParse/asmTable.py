@@ -5,6 +5,11 @@
 File: asmTable.py
 Author: Zenki (Zenki.J.Zha), zenki2001cn@163.com
 Description:
+    AsmTable:
+        以section为单位，包含该section中的符号和汇编代码。
+
+    AsmTableBuilder:
+        该类为辅助类，解析cache文件，并帮助构建了一组AsmTable对象。
 Version:
 Last Modified: 十二月 05, 2012
 '''
