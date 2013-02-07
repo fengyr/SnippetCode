@@ -16,6 +16,7 @@ import concurrentTest.BarrierTest;
 import generalType.GenericTest;
 import generalType.GenericPatten;
 import argList.ArgListTest;
+import reference.ReferenceTest;
 
 import java.lang.Runnable;
 import java.nio.charset.Charset;
@@ -225,8 +226,13 @@ public class TestMain {
         ArgListTest alt = new ArgListTest();
         alt.showArgInfo("hello", "world", 1, "!");
     }
+
+    static private void test_reference() {
+        ReferenceTest test = new ReferenceTest();
+        test.testReferenceQueue();
+    }
 	
 	public static void main(String[] argvs) throws UnsupportedEncodingException{
-        test_Junit();
+        test_reference();
     }
 }
