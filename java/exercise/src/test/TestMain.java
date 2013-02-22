@@ -6,6 +6,8 @@ import sort.SortElement;
 import sort.SortExample;
 import sort.SortExample2;
 import sax.SaxDemo;
+import generaltpye.GenericPatten;
+import generaltpye.GenericTest;
 import jtest.JunitTest;
 import jtest.JunitTestSuite;
 import thread.ThreadDemo;
@@ -13,13 +15,10 @@ import thread.SumCal;
 import concurrentTest.ExcutorEx;
 import concurrentTest.FutureTest;
 import concurrentTest.BarrierTest;
-import generalType.GenericTest;
-import generalType.GenericPatten;
 import argList.ArgListTest;
 import reference.ReferenceTest;
+import reflection.ReflectionTest;
 
-import java.lang.Runnable;
-import java.nio.charset.Charset;
 import java.io.UnsupportedEncodingException;
 import java.io.File;
 
@@ -231,8 +230,36 @@ public class TestMain {
         ReferenceTest test = new ReferenceTest();
         test.testReferenceQueue();
     }
+    
+    static private void test_reflection() {
+    	ReflectionTest reflection = new ReflectionTest();
+    	
+    	try {
+    		// 反射类实例
+    		String className = "string.Contain";
+    		Object owner = reflection.newInstance(className, null);
+    		
+    		// 反射共用属性
+			Object result = reflection.getProperty(owner, "mStr");
+			System.out.println("getProperty: " + owner.getClass().getName() + ".mStr = " + result);
+			
+			// 反射静态属性
+			result = reflection.getStaticProperty(className, "TAG");
+			System.out.println("getStaticProperty: " + owner.getClass().getName() + ".TAG = " + result);
+			
+			// 反射共用方法
+			result = reflection.invokeMethod(owner, "containIt", new Object[]{";"});
+			System.out.println("invokeMethod: " + owner.getClass().getName() + ".containIt(';') = " + result);
+			
+			// 反射静态方法
+			result = reflection.invokeStaticMethod(className, "printTag", null);
+			System.out.println("invokeStaticMethod: " + owner.getClass().getName() + ".printTag() = " + result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
 	
-	public static void main(String[] argvs) throws UnsupportedEncodingException{
-        test_reference();
+	public static void main(String[] argvs) throws UnsupportedEncodingException {
+		test_reflection();
     }
 }

@@ -54,8 +54,8 @@ void* thread_loop(void *data)
     printf("thread loop set_key_rc = %d, key value = %d\n", set_key_rc, *g_key_data);
 
     /* 等待主线程改变全局变量的值 */
+    printf("Wait for main thread chang value\n");
     while (!g_loop_quit) {
-        printf("Wait for main thread chang value\n");
         sleep(1);
     }
 

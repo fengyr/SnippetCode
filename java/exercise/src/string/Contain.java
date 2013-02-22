@@ -1,7 +1,8 @@
 package string;
 
 public class Contain {
-    String mStr;
+	static public String TAG = "ContainTag";
+	public String mStr;
 
     public Contain() {
         mStr = new String("，。！？《》（）");
@@ -13,5 +14,11 @@ public class Contain {
         }
 
         return false;
+    }
+    
+    static public String printTag() {
+        System.out.println(TAG);
+        
+        return "printTag invoke success";
     }
 }
