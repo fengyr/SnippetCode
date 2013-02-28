@@ -7,9 +7,10 @@
 
     <path id="classpath">
         <!-- <pathelement path="${java.home}/jre/lib/junit.jar"/> -->
+
         <fileset dir="${basedir}/../libs/">
             <include name="*.jar"/>
-        </fileset>
+        </fileset> 
     </path>
 
     <target name="init">
