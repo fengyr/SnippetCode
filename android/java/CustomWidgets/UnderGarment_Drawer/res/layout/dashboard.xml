@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/ll_dashboard_top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/dashboard_header_background"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="8dp" >
+
+            <EditText
+                android:id="@+id/et_search"
+                style="@style/WhiteHouse_Search_EditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/search_hint"
+                android:paddingRight="15dp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/fl_list_holder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dashboard_background"
+            android:paddingBottom="24dp" >
+
+            <ListView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="248dp"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:paddingRight="48dp"
+        android:src="@drawable/presidential_seal" />
+
+</RelativeLayout>
