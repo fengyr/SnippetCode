@@ -1,14 +1,14 @@
 package com.example.viewpagetest;
 
+import de.inovex.android.widgets.ViewPager3D;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.Menu;
 
 public class MainActivity extends FragmentActivity {
 
-	ViewPager mPager;
+	ViewPager3D mPager;
 	PagerAdapter mAdapter;
 	
 	@Override
@@ -18,7 +18,7 @@ public class MainActivity extends FragmentActivity {
 		
 		mAdapter = new MyFragmentAdapter(getSupportFragmentManager());
 
-        mPager = (ViewPager)findViewById(R.id.pager);
+        mPager = (ViewPager3D)findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
 	}
 
