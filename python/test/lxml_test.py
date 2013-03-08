@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #!encoding=utf8
 
 from lxml import etree
@@ -25,13 +26,17 @@ root.append(etree.Entity('#1234'))
 root.append(etree.Comment('some comment'))
 
 #etree.tostring,可选参数
+print '---------------------create tree------------------------'
 print etree.tostring(root, pretty_print=True)
+print '---------------------print content------------------------'
 print etree.tostring(root, pretty_print=True, with_tail=False, method='text')
+print
 
 #通过XPath,来查找内容
+print '---------------------read tree------------------------'
 text_str = root.xpath('string()')
 print text_str
-text_text =  root.xpath('//text()')
+text_text = root.xpath('//text()')
 print text_text
 #XPath,查找的内容可以智能识别其父节点信息
 for text in text_text:

@@ -1,12 +1,17 @@
+#!/usr/bin/env python
+#!encoding=utf8
+
 import sys
 import doctest
 
+
 def info(obj):
-    list = [ i for i in dir(obj) if callable(getattr(obj, i))]
+    list = [i for i in dir(obj) if callable(getattr(obj, i))]
     for i in list:
         print i, "--------->", getattr(obj, i).__doc__
 
 #info(sys)
+
 
 class Person:
     def __init__(self):
@@ -18,6 +23,7 @@ class Person:
         'zenki talk'
         """
         return self.name, "talk"
+
 
 class Student(Person):
 
@@ -36,4 +42,4 @@ class Student(Person):
 if __name__ == '__main__':
     u = Student()
     u.tallname()
-    u+'hello'
+    u + 'hello'

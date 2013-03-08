@@ -1,4 +1,8 @@
-import urllib2, httplib
+#!/usr/bin/env python
+#!encoding=utf8
+
+import urllib2
+import httplib
 
 urllib2.httplib.HTTPConnection.debuglevel = 1
 request = urllib2.Request('http://127.0.0.1')

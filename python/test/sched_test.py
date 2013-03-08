@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+#!encoding=utf8
+
 import sched
 import time
 

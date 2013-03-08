@@ -4,6 +4,7 @@
 import threading
 import time
 
+
 class TestThread(threading.Thread):
     def __init__(self):
         #初始化event变量
@@ -28,4 +29,3 @@ if __name__ == '__main__':
     time.sleep(1)
 
     test.join(2)
-            

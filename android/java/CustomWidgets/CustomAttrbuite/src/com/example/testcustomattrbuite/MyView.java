@@ -33,7 +33,6 @@ public class MyView extends View {
 	 */
 	public MyView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		// TODO Auto-generated constructor stub
 		initResource(context, attrs);
 	}
 
@@ -42,7 +41,6 @@ public class MyView extends View {
 	 */
 	public MyView(Context context) {
 		super(context);
-		// TODO Auto-generated constructor stub
 	}
 
 	static private final String TAG = "MyView";

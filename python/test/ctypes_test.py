@@ -1,4 +1,6 @@
+#!/usr/bin/env python
 #!encoding=utf8
+
 from ctypes import *
 
 #cdll.LoadLibrary(module_name)
@@ -71,7 +73,7 @@ for ii in range(len(i)):
 #类型转换
 #cast(to_type, from_type)
 class Bar(Structure):
-    _fields_ = [("count", c_int), 
+    _fields_ = [("count", c_int),
                 ("values", POINTER(c_int))
     ]
 
@@ -86,7 +88,7 @@ print bar.count, bar.values[2]
 class cell(Structure):
     pass
 
-cell._fields_ = [("name", c_char_p), 
+cell._fields_ = [("name", c_char_p),
                  ("next", POINTER(cell))]
 
 #回调函数定义

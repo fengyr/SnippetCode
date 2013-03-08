@@ -1,12 +1,15 @@
+#!/usr/bin/env python
+#!encoding=utf8
+
 import signal
 import time
 import sys
 
-import signal, os
 
 def handler(signum, frame):
     print 'Signal handler called with signal', signum
-    raise IOError, "Couldn't open device!"
+    raise IOError("Couldn't open device!")
+
 
 def inter(signum, frame):
     print 'Interrupt signal', signum

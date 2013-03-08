@@ -1,4 +1,6 @@
+#!/usr/bin/env python
 #!encoding=utf8
+
 import struct
 
 """
@@ -33,7 +35,7 @@ def d2b(num, limit=5):
         res2.append(str(n))
         if (m - n) == 0:
             break
-        
+
     return ''.join(res) + '.' + ''.join(res2)
 
 """
@@ -45,13 +47,12 @@ def b2d(binary):
     res = 0
     ml = enumerate([i for i in m][::-1])
     for id, num in ml:
-        res = res + int(num)*(2**id)
-
+        res = res + int(num) * (2 ** id)
 
     res2 = 0
     nl = enumerate([i for i in n])
     for id, num in nl:
-        res2 = res2 + int(num)*(2**(0-id-1))
+        res2 = res2 + int(num) * (2 ** (0 - id - 1))
 
     return str(res + res2)
 
@@ -64,29 +65,29 @@ def b2o(binary):
     res = []
     ml = len(m)
     if ml % 3 != 0:
-        mlt = (ml / 3)+1
-        ml = mlt *3
+        mlt = (ml / 3) + 1
+        ml = mlt * 3
 
     m = m.rjust(ml, '0')
     start = 0
-    for i in range(len(m)/3):
-        res.append(str(int(float(b2d(int(m[start:start+3]))))))
+    for i in range(len(m) / 3):
+        res.append(str(int(float(b2d(int(m[start:start + 3]))))))
         start = start + 3
 
     res2 = []
     nl = len(n)
     if nl % 3 != 0:
-        nlt = (nl / 3)+1
+        nlt = (nl / 3) + 1
         nl = nlt * 3
 
     n = n.ljust(nl, '0')
     start = 0
-    for i in range(len(n)/3):
-        res2.append(str(int(float(b2d(int(n[start:start+3]))))))
+    for i in range(len(n) / 3):
+        res2.append(str(int(float(b2d(int(n[start:start + 3]))))))
         start = start + 3
 
     return ''.join(res) + '.' + ''.join(res2)
-        
+
 """
 八进制转二进制
 """

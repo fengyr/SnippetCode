@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #!encoding=utf8
 
 import threading
@@ -15,7 +16,7 @@ def test(*arg):
             info += 1
         else:
             info -= 1
-            
+
         print arg[0], info
         time.sleep(1)
 

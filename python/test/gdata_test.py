@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+#!encoding=utf8
+
 import gdata.docs.service
 
 # Create a client class which will make HTTP requests with Google Docs server.
