@@ -16,5 +16,11 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
+    <style name="MyViewDefaultStyle">
+        <item name="TextAttrExt">@string/hello_world</item>
+        <item name="OrientalAttrExt">Horizontal</item>
+        <item name="BackgroundAttrExt">@drawable/my_view_background</item> 
+    </style>
 
 </resources>

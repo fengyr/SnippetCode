@@ -5,7 +5,7 @@ import sys
 
 
 def init_socket(serverip, serverport):
-    #import pdb;pdb.set_trace()
+    # import pdb;pdb.set_trace()
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         addr = (serverip, int(serverport))
@@ -42,7 +42,7 @@ if __name__ == '__main__':
     cmd, ip, port = sys.argv[1:4]
     print cmd, ip, port
     s = init_socket(ip, 8800)
-    #for i in [5001, 5002, 5003, 5004, 5005, 5006]:
+    # for i in [5001, 5002, 5003, 5004, 5005, 5006]:
     #   handle(s, 'stop:%d\r' % i)
     #   print 'stop:%d\r' % i
     if cmd == 'start':

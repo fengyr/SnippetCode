@@ -39,6 +39,14 @@ public class TestPaintView extends View {
 	private float mX = -1;
 	private float mY = -1;
 	
+	// 圆心坐标点
+	private float mCenterPointX = 50;
+	private float mCenterPointY = 200;
+	// 扇区数量
+	private int mAngleNum = 5;
+	// 半径大小
+	private int mRound = 200;
+	
 	public TestPaintView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		
@@ -53,9 +61,30 @@ public class TestPaintView extends View {
 		mPaint.setStyle(Paint.Style.STROKE);
 		mPaint.setStrokeJoin(Paint.Join.ROUND);
 		mPaint.setStrokeCap(Paint.Cap.ROUND);
-		mPaint.setStrokeWidth(10);
+		mPaint.setStrokeWidth(2);
 		
 		mCanvas = new Canvas(mBitmap);
+	}
+	
+	public void displayAngle() {
+		// 每份扇区的弧度
+		double angle = Math.PI * (90 / mAngleNum) / 180;
+		// 终点坐标
+		double endX;
+		double endY;
+		
+		for (int i = 0; i < mAngleNum; i++) {
+			// 坐标系原点在左上角，需要依次减去得到的Y轴长
+			endY = mCenterPointY - mRound * Math.sin(angle*i);
+			// X轴需要加上偏移量
+			endX = mCenterPointX + mRound * Math.cos(angle*i);
+			
+			mPath.reset();
+			mPath.moveTo(mCenterPointX, mCenterPointY);
+			mPath.lineTo((float)endX, (float)endY);
+			mCanvas.drawPath(mPath, mPaint);
+			invalidate();
+		}
 	}
 	
 	public boolean saveBitmap() {
@@ -70,14 +99,10 @@ public class TestPaintView extends View {
 //			} catch (Exception e) {
 //				Log.v(TAG, "saveBitmap" + e);
 //			}
-			invalidate();
 		}
 		return ret;
 	}
 	
-	/* (non-Javadoc)
-	 * @see android.view.View#onDraw(android.graphics.Canvas)
-	 */
 	@Override
 	protected void onDraw(Canvas canvas) {
 		if (!mBitmap.isRecycled()) {
@@ -87,9 +112,6 @@ public class TestPaintView extends View {
 //		super.onDraw(canvas);
 	}
 	
-	/* (non-Javadoc)
-	 * @see android.view.View#onTouchEvent(android.view.MotionEvent)
-	 */
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		float x = event.getX();
@@ -109,11 +131,14 @@ public class TestPaintView extends View {
 		default:
 			break;
 		}
+		
+		invalidate();
+		
 		return true;
 	}
 	
 	private void touchStart(float x, float y) {
-		Log.v(TAG, "touchStart: " + x + y);
+		Log.v(TAG, "touchStart: x=" + x + " y=" + y);
 		mPath.reset();
 		mPath.moveTo(x, y);
     	mX = x;
@@ -121,7 +146,7 @@ public class TestPaintView extends View {
 	}
 	
 	private void touchMove(float x, float y) {
-		Log.v(TAG, "touchMove" + x + y);
+		Log.v(TAG, "touchMove: x=" + x + " y=" + y);
 //    	float dx = Math.abs(x - mX);
 //    	float dy = Math.abs(y - mY);
 //    	if (dx >= 0 || dy >= 0) {
@@ -135,7 +160,7 @@ public class TestPaintView extends View {
 	}
 	
 	private void touchEnd(float x, float y) {
-		Log.v(TAG, "touchEnd" + x + y);
+		Log.v(TAG, "touchEnd: x=" + x + " y=" + y);
 		mPath.lineTo(x, y);
 		mCanvas.drawPath(mPath, mPaint);
 		mPath.reset();

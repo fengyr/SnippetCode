@@ -26,7 +26,7 @@ public class TestBitmapDraw extends Activity {
         mBtnSave.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mPaintView.saveBitmap();
+				mPaintView.displayAngle();
 			}
 		});
     }

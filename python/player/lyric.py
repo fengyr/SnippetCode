@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 #!encoding=utf8
 
-import os
-import sys
 import re
 from config import *
 
@@ -17,7 +15,7 @@ def set_widget(w):
 
 
 def get_lyric(filename):
-    #import pdb;pdb.set_trace()
+    # import pdb;pdb.set_trace()
     tv = widget['lyric']
     fn = filename[:-3] + 'lrc'
 
@@ -45,3 +43,5 @@ class lyric:
         win = widget['songtext']
         win.hide()
         print 'lyric closed'
+
+        return True

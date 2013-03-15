@@ -18,7 +18,7 @@ import android.test.suitebuilder.annotation.MediumTest;
 import android.util.Log;
 
 /**
- *
+ *	测试Activity的创建和执行
  */
 public class MyActivityTest extends ActivityUnitTestCase<TestBitmapDraw> {
 
@@ -38,7 +38,7 @@ public class MyActivityTest extends ActivityUnitTestCase<TestBitmapDraw> {
 	@Override  
 	protected void setUp() throws Exception {  
 		super.setUp();  
-		mStartIntent = new Intent(Intent.ACTION_MAIN);  
+		mStartIntent = new Intent(Intent.ACTION_MAIN);
 	}
 
 	@MediumTest

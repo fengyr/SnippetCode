@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#encoding=utf8
+# encoding=utf8
 
 # pygtk需要的库
 import pygtk
@@ -24,7 +24,7 @@ class widget:
     def __getitem__(self, key):
         return self.wid.get_widget(key)
 
-    # 进入事件循环
+    # 进入gtk事件循环
     def run(self):
         gtk.main()
 

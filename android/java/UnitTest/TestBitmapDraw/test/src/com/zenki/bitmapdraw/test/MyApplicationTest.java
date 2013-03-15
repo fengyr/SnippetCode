@@ -17,7 +17,7 @@ import android.test.suitebuilder.annotation.MediumTest;
 import android.util.Log;
 
 /**
- *
+ *	测试Application的创建和执行
  */
 public class MyApplicationTest extends ApplicationTestCase<TestBitmapDrawApplication>{
 

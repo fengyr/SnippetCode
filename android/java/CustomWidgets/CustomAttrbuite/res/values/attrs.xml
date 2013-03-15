@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+    <attr name="myViewStyle" format="reference" />
     <declare-styleable name="MyView">
         <attr name="TextAttrExt" format="reference|string"></attr>
         <attr name="OrientalAttrExt">

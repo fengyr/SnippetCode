@@ -1,6 +1,6 @@
-#encoding=utf8
-import os, sys
-import thread
+# encoding=utf8
+import os
+import sys
 
 PLAYER = "/usr/bin/mplayer"
 
@@ -33,12 +33,12 @@ class XPlayer:
             os.wait()
 
         return os.path.basename(self.filename)
-    
+
     def resume(self):
         if self.filename == '':
             return
         else:
             return self.play(self.filename)
-    
+
     def __del__(self):
         pass
