@@ -10,7 +10,7 @@ from config import *
 from mpplayer import *
 # from sdlplayer import *
 
-# 设置gtk
+# 设置gtk.glade.XML对象，作为该模块的全局变量
 def set_widget(w):
     global widget
     global Player
@@ -84,7 +84,7 @@ def read_mp3_info():
             print "read file info err"
             continue
 
-
+# 主窗口相关的类，该类负责处理UI的事件响应
 class win:
     def on_window1_delete_event(obj, event):
         Player.clear()
@@ -129,7 +129,7 @@ class win:
         except:
             print 'lyric error'
 
-
+# 文件选择窗口相关类，负责事件响应
 class FileSelect:
     def on_ok_button1_clicked(obj):
         fs = widget['fileselection1']
