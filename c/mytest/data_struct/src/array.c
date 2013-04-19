@@ -26,8 +26,8 @@ void add_object_array(struct object *obj, const char *name , struct object_array
     unsigned int alloc = array->alloc;
     struct object_array_entry *objects = array->objects;
 
-    if (nr > alloc) {
-        alloc = alloc * 2;
+    if (nr >= alloc) {
+        alloc = (alloc + 32) * 2;
         objects = realloc(objects, alloc * sizeof(*objects));
         array->alloc = alloc;
         array->objects = objects;
@@ -36,7 +36,7 @@ void add_object_array(struct object *obj, const char *name , struct object_array
     printf("sizeof(objects)=%d\n", sizeof(*objects));
 
     objects[nr].item = obj;
-    array->nr = nr++;
+    array->nr = ++nr;
 }
 
 void dump_object_array(struct object_array *array)

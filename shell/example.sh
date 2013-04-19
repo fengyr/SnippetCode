@@ -33,13 +33,3 @@ echo $1
 #echo $*
 #echo $@
 
-i=0
-ls | while read line
-do
-    echo $line
-    let i++
-done  
-
-echo $i
-
-echo "hello"

@@ -26,7 +26,11 @@ int main(int argc, const char *argv[])
     obj->name = "zenki";
 
     dump_object_array(&g_obj_array); 
-    add_object_array(obj, "hello", &g_obj_array);
+
+    int i;
+    for (i = 0; i < 10; i++) {
+        add_object_array(obj, "hello", &g_obj_array);
+    }
     dump_object_array(&g_obj_array);    
 
     return 0;
