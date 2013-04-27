@@ -21,16 +21,19 @@ struct object_array g_obj_array = OBJECT_ARRAY_INIT;
 
 int main(int argc, const char *argv[])
 {
-    struct object *obj = malloc(sizeof(struct object));
-    obj->id = 1;
-    obj->name = "zenki";
+    const char *obj_name = "zenki";
 
+    /* 添加数据前，打印数组信息 */
     dump_object_array(&g_obj_array); 
-
     int i;
-    for (i = 0; i < 10; i++) {
-        add_object_array(obj, "hello", &g_obj_array);
+    char array_name[16];
+    for (i = 0; i < 1000; i++) {
+        sprintf(array_name, "array:%d", i);
+        struct object *obj = create_object(obj_name, i);
+
+        add_object_array(obj, array_name, &g_obj_array);
     }
+    /* 添加数据后，打印数组信息 */
     dump_object_array(&g_obj_array);    
 
     return 0;

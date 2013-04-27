@@ -33,14 +33,16 @@ struct object_array {
     unsigned int nr;
     unsigned int alloc;
     struct object_array_entry {
-        struct object *item
+        struct object *item;
+        char *array_name;
     } *objects;
 };
 
+/* 初始化对象数组结构体的宏 */
 #define OBJECT_ARRAY_INIT {0, 0, NULL}
 
-
-void add_object_array(struct object *obj, const char *name, struct object_array *array);
+void add_object_array(struct object *obj, const char *array_name, struct object_array *array);
 void dump_object_array(struct object_array *array);
+void* create_object(const char *obj_name, int obj_id);
 
 #endif /* end of include guard: _array_H_ */

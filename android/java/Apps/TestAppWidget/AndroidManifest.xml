@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.testappwidget"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="15" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.testappwidget.OneCallWidget"
+            android:label="onecall" >
+        </activity>
+        
+        <activity
+            android:name="com.example.testappwidget.ContractWidget"
+            android:label="contract" >
+        </activity>
+        
+        <activity
+            android:name="com.example.testappwidget.AirConditionWidget"
+            android:label="aircondition" >
+        </activity>
+        
+        <receiver android:name=".OneCallWidget" android:label="onecall">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/onecall_widget" />
+        </receiver> 
+        
+        <receiver android:name=".ContractWidget" android:label="contract">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/contract_widget" />
+        </receiver>
+        
+        <receiver android:name=".AirConditionWidget" android:label="air">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/air_widget" />
+        </receiver>
+        
+        <activity
+            android:name="com.example.testappwidget.MessageWidget"
+            android:label="message" >
+        </activity>
+        
+        <receiver android:name=".MessageWidget" android:label="message">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/message_widget" />
+        </receiver>
+        
+        <activity
+            android:name="com.example.testappwidget.SettingsWidget"
+            android:label="settings" >
+        </activity>
+        
+        <receiver android:name=".SettingsWidget" android:label="settings">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/settings_widget" />
+        </receiver>
+        
+        <activity
+            android:name="com.example.testappwidget.MusicWidget"
+            android:label="music" >
+        </activity>
+        
+        <receiver android:name=".MusicWidget" android:label="music">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/music_widget" />
+        </receiver>
+        
+        <activity
+            android:name="com.example.testappwidget.WeatherWidget"
+            android:label="weather" >
+        </activity>
+        
+        <receiver android:name=".WeatherWidget" android:label="weather">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/weather_widget" />
+        </receiver>
+    </application>
+
+</manifest>
