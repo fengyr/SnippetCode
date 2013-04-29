@@ -1,0 +1,93 @@
+==5520== Memcheck, a memory error detector
+==5520== Copyright (C) 2002-2009, and GNU GPL'd, by Julian Seward et al.
+==5520== Using Valgrind-3.6.0.SVN-Debian and LibVEX; rerun with -h for copyright info
+==5520== Command: ./main
+==5520== Parent PID: 4024
+==5520== 
+--5520-- 
+--5520-- Valgrind options:
+--5520--    --suppressions=/usr/lib/valgrind/debian-libc6-dbg.supp
+--5520--    --tool=memcheck
+--5520--    --trace-children=yes
+--5520--    --track-fds=yes
+--5520--    --leak-check=full
+--5520--    --show-reachable=yes
+--5520--    --log-file=mem_debug
+--5520--    --track-origins=yes
+--5520--    -v
+--5520-- Contents of /proc/version:
+--5520--   Linux version 3.0.0-14-generic (buildd@vernadsky) (gcc version 4.4.3 (Ubuntu 4.4.3-4ubuntu5) ) #23~lucid1-Ubuntu SMP Thu Dec 8 13:06:17 UTC 2011
+--5520-- Arch and hwcaps: X86, x86-sse1-sse2
+--5520-- Page sizes: currently 4096, max supported 4096
+--5520-- Valgrind library directory: /usr/lib/valgrind
+--5520-- Reading syms from /lib/ld-2.11.1.so (0x4000000)
+--5520-- Reading debug info from /lib/ld-2.11.1.so ..
+--5520-- .. CRC mismatch (computed 45f50ae1 wanted 137bc614)
+--5520-- Reading debug info from /usr/lib/debug/lib/ld-2.11.1.so ..
+--5520-- Reading syms from /media/Data/Ubuntu_10_04/home/sourcecode/snippet_code/c/mytest/data_struct/main (0x8048000)
+--5520-- Reading syms from /usr/lib/valgrind/memcheck-x86-linux (0x38000000)
+--5520--    object doesn't have a dynamic symbol table
+--5520-- Reading suppressions file: /usr/lib/valgrind/debian-libc6-dbg.supp
+--5520-- Reading suppressions file: /usr/lib/valgrind/default.supp
+--5520-- REDIR: 0x40160b0 (index) redirected to 0x3803e9b3 (vgPlain_x86_linux_REDIR_FOR_index)
+--5520-- Reading syms from /usr/lib/valgrind/vgpreload_core-x86-linux.so (0x401f000)
+--5520-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so (0x4022000)
+==5520== WARNING: new redirection conflicts with existing -- ignoring it
+--5520--     new: 0x040160b0 (index               ) R-> 0x04025c30 index
+--5520-- REDIR: 0x4016290 (strlen) redirected to 0x4026070 (strlen)
+--5520-- Reading syms from /lib/tls/i686/cmov/libc-2.11.1.so (0x4046000)
+--5520-- Reading debug info from /lib/tls/i686/cmov/libc-2.11.1.so ..
+--5520-- .. CRC mismatch (computed 2236eb0a wanted a071c0c3)
+--5520-- Reading debug info from /usr/lib/debug/lib/tls/i686/cmov/libc-2.11.1.so ..
+--5520-- REDIR: 0x40b9b10 (rindex) redirected to 0x4025ae0 (rindex)
+--5520-- REDIR: 0x40bc2b0 (strchrnul) redirected to 0x4027510 (strchrnul)
+--5520-- REDIR: 0x40b5f40 (malloc) redirected to 0x4024e9b (malloc)
+--5520-- REDIR: 0x40b9200 (strcpy) redirected to 0x40260b0 (strcpy)
+--5520-- REDIR: 0x40b6ec0 (realloc) redirected to 0x4024f4a (realloc)
+--5520-- REDIR: 0x40b5e60 (free) redirected to 0x4024ab5 (free)
+==5520== 
+==5520== FILE DESCRIPTORS: 6 open at exit.
+==5520== Open file descriptor 13:
+==5520==    <inherited from parent>
+==5520== 
+==5520== Open file descriptor 12:
+==5520==    <inherited from parent>
+==5520== 
+==5520== Open file descriptor 3: /media/Data/Ubuntu_10_04/home/sourcecode/snippet_code/c/mytest/data_struct/mem_debug
+==5520==    <inherited from parent>
+==5520== 
+==5520== Open file descriptor 2: /dev/pts/3
+==5520==    <inherited from parent>
+==5520== 
+==5520== Open file descriptor 1: /dev/pts/3
+==5520==    <inherited from parent>
+==5520== 
+==5520== Open file descriptor 0: /dev/pts/3
+==5520==    <inherited from parent>
+==5520== 
+==5520== 
+==5520== HEAP SUMMARY:
+==5520==     in use at exit: 15,872 bytes in 1 blocks
+==5520==   total heap usage: 333,357 allocs, 333,356 frees, 5,996,534 bytes allocated
+==5520== 
+==5520== Searching for pointers to 1 not-freed blocks
+==5520== Checked 66,756 bytes
+==5520== 
+==5520== 15,872 bytes in 1 blocks are still reachable in loss record 1 of 1
+==5520==    at 0x4025016: realloc (vg_replace_malloc.c:525)
+==5520==    by 0x8048691: add_object_array (array.c:78)
+==5520==    by 0x80487BE: test_object_array (main.c:34)
+==5520==    by 0x804886D: main (main.c:53)
+==5520== 
+==5520== LEAK SUMMARY:
+==5520==    definitely lost: 0 bytes in 0 blocks
+==5520==    indirectly lost: 0 bytes in 0 blocks
+==5520==      possibly lost: 0 bytes in 0 blocks
+==5520==    still reachable: 15,872 bytes in 1 blocks
+==5520==         suppressed: 0 bytes in 0 blocks
+==5520== 
+==5520== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 12 from 7)
+--5520-- 
+--5520-- used_suppression:     12 dl-hack3-cond-1
+==5520== 
+==5520== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 12 from 7)

@@ -8,7 +8,7 @@ CROSS_COMPILE   =
 OPTIMIZE        := -O
 WARNINGS        := -Wall -Wno-unused -Wno-format
 DEFS            := 
-EXTRA_CFLAGS    := 
+EXTRA_CFLAGS    := -g
 LDFLAGS         := 
 
 # 输出目录，会自动创建
