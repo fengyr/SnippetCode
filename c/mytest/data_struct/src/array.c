@@ -23,43 +23,6 @@
 struct object_array g_object_array = OBJECT_ARRAY_INIT;
 
 /**
- * @Synopsis 创建一个object对象，该对象通过malloc动态分配内存
- *
- * @Param obj_name object的名字
- * @Param obj_id   object的id
- *
- * @Returns        object对象的指针
- */
-void* create_object(const char* obj_name, int obj_id)
-{
-    struct object *obj;
-    int len = strlen(obj_name) + 1;
-
-    obj = (struct object*) malloc(sizeof(*obj));
-    obj->name = (char*) malloc(sizeof(char) * len);
-    strcpy(obj->name, obj_name);
-    obj->id = obj_id;
-
-    return obj;
-}
-
-static void free_object(struct object *obj)
-{
-    if (!obj) {
-        return;
-    }
-
-    /* printf("free_object, obj = %p, obj->name = %s, obj->id = %p\n", obj, obj->name, &obj->id); */
-    if (obj->name != NULL) {
-        free(obj->name);
-        obj->name = NULL;
-    }
-
-    free(obj);
-    obj = NULL;
-}
-
-/**
  * @Synopsis 添加一个obj对象到array对象数组中，并指定标识该obj对象的名称。
  *           如果数组中的数量超过数组大小，会自动扩展数组的大小。
  *
@@ -116,7 +79,6 @@ void free_object_array(struct object_array *array)
     struct object_array_entry *objects = array->objects;
     char *array_name;
 
-    printf("entry free_object_array, nr = %d\n", *nr);
     do {
         (*nr)--;
         if (objects[*nr].array_name != NULL) {
@@ -128,6 +90,8 @@ void free_object_array(struct object_array *array)
             free_object(objects[*nr].item);
         }
     } while (*nr > 0);
+
+    printf("after free_object_array, nr = %d\n", *nr);
 
     array->nr = *nr;
     array->alloc = *nr;

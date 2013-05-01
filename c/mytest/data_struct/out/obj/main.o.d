@@ -1,1 +1,2 @@
-out/obj/main.o: src/main.c include/array.h
+out/obj/main.o: src/main.c include/array.h include/object.h \
+ include/list.h
