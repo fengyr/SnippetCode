@@ -1,0 +1,226 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Alarm_Time	/home/zenki/temp/colorSep/main_colorsep.cpp	/^struct timeval Alarm_Time;$/;"	kind:variable	language:C++	typeref:struct:timeval
+Alarm_Time	main_colorsep.cpp	/^struct timeval Alarm_Time;$/;"	kind:variable	language:C++	typeref:struct:timeval
+BOOST_DATE_TIME_NO_LIB	SetPic3.cpp	28;"	kind:macro	language:C++	file:
+BOOST_DATE_TIME_SOURCE	SetPic3.cpp	27;"	kind:macro	language:C++	file:
+BOOST_FILESYSTEM_NO_LIB	SetPic3.cpp	21;"	kind:macro	language:C++	file:
+BOOST_SYSTEM_NO_LIB	SetPic3.cpp	20;"	kind:macro	language:C++	file:
+BW_weight	/home/zenki/temp/colorSep/main_colorsep.cpp	/^Mat BW_weight, BW_weight_half;$/;"	kind:variable	language:C++
+BW_weight	main_colorsep.cpp	/^Mat BW_weight, BW_weight_half;$/;"	kind:variable	language:C++
+BW_weight_half	/home/zenki/temp/colorSep/main_colorsep.cpp	/^Mat BW_weight, BW_weight_half;$/;"	kind:variable	language:C++
+BW_weight_half	main_colorsep.cpp	/^Mat BW_weight, BW_weight_half;$/;"	kind:variable	language:C++
+CL_RefSet	/home/zenki/temp/colorSep/main_colorsep.cpp	/^vector<Descriptor> CL_RefSet;$/;"	kind:variable	language:C++
+CL_RefSet	main_colorsep.cpp	/^vector<Descriptor> CL_RefSet;$/;"	kind:variable	language:C++
+CL_trainnum	/home/zenki/temp/colorSep/main_colorsep.cpp	/^vector<int> CL_trainnum;$/;"	kind:variable	language:C++
+CL_trainnum	main_colorsep.cpp	/^vector<int> CL_trainnum;$/;"	kind:variable	language:C++
+CL_typenum	/home/zenki/temp/colorSep/main_colorsep.cpp	/^vector<int> CL_typenum;$/;"	kind:variable	language:C++
+CL_typenum	main_colorsep.cpp	/^vector<int> CL_typenum;$/;"	kind:variable	language:C++
+CSRC_EXT	Makefile	/^CSRC_EXT= .c$/;"	kind:macro	language:Make
+CXX	Makefile	/^CXX = g++$/;"	kind:macro	language:Make
+CalibBWPath	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char CalibBWPath[100];$/;"	kind:variable	language:C++
+CalibBWPath	main_colorsep.cpp	/^char CalibBWPath[100];$/;"	kind:variable	language:C++
+CamInputImg_rawhalf	/home/zenki/temp/colorSep/main_colorsep.cpp	/^Mat CamInputImg_rawhalf;$/;"	kind:variable	language:C++
+CamInputImg_rawhalf	main_colorsep.cpp	/^Mat CamInputImg_rawhalf;$/;"	kind:variable	language:C++
+CameraCalibPath	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char CameraCalibPath[100];$/;"	kind:variable	language:C++
+CameraCalibPath	main_colorsep.cpp	/^char CameraCalibPath[100];$/;"	kind:variable	language:C++
+ColorFoldName	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char ColorFoldName[256];$/;"	kind:variable	language:C++
+ColorFoldName	main_colorsep.cpp	/^char ColorFoldName[256];$/;"	kind:variable	language:C++
+Connection	include/utils/connect.h	/^typedef struct connect_t Connection, *PConnection;$/;"	kind:typedef	language:C++	typeref:struct:connect_t
+CornerFoldName	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char CornerFoldName[256];$/;"	kind:variable	language:C++
+CornerFoldName	main_colorsep.cpp	/^char CornerFoldName[256];$/;"	kind:variable	language:C++
+CurCamFileName	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char CurCamFileName[256];$/;"	kind:variable	language:C++
+CurCamFileName	main_colorsep.cpp	/^char CurCamFileName[256];$/;"	kind:variable	language:C++
+DEBFLAGS	Makefile	/^  DEBFLAGS = -O2$/;"	kind:macro	language:Make
+DEBFLAGS	Makefile	/^  DEBFLAGS = -g -O -DUSE_DEBUG # "-O" is needed to expand inlines$/;"	kind:macro	language:Make
+DEBUG	Makefile	/^DEBUG = y$/;"	kind:macro	language:Make
+DisplayTime	/home/zenki/temp/colorSep/main_colorsep.cpp	/^struct tm DisplayTime;$/;"	kind:variable	language:C++	typeref:struct:tm
+DisplayTime	main_colorsep.cpp	/^struct tm DisplayTime;$/;"	kind:variable	language:C++	typeref:struct:tm
+EXE_TARGET	Makefile	/^EXE_TARGET = main$/;"	kind:macro	language:Make
+FrameCounter	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int FrameCounter = 0;$/;"	kind:variable	language:C++
+FrameCounter	main_colorsep.cpp	/^int FrameCounter =  0;$/;"	kind:variable	language:C++
+INC	Makefile	/^INC = -I. -I.\/include$/;"	kind:macro	language:Make
+ImageSize	CameraInterface.cpp	/^struct ImageSize$/;"	kind:struct	language:C++	file:
+ImageSize::isize	CameraInterface.cpp	/^    int isize;$/;"	kind:member	language:C++	struct:ImageSize	file:	access:public
+Img_Tcpfd	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int Ref_Tcpfd=-1, Img_Tcpfd=-1;$/;"	kind:variable	language:C++
+Img_Tcpfd	main_colorsep.cpp	/^int Ref_Tcpfd=-1, Img_Tcpfd=-1;$/;"	kind:variable	language:C++
+Img_fdstat	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int Ref_fdstat = -1, Img_fdstat = -1;$/;"	kind:variable	language:C++
+Img_fdstat	main_colorsep.cpp	/^int Ref_fdstat = -1, Img_fdstat = -1;$/;"	kind:variable	language:C++
+InitImageTcp	CameraInterface.cpp	/^int InitImageTcp(int &Imgsockfd)$/;"	kind:function	language:C++	signature:(int &Imgsockfd)
+InitRefTcp	CameraInterface.cpp	/^int InitRefTcp(int &Refsockfd)$/;"	kind:function	language:C++	signature:(int &Refsockfd)
+InitSetPIC	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int InitSetPIC = 0;$/;"	kind:variable	language:C++
+InitSetPIC	main_colorsep.cpp	/^int InitSetPIC    =  0;$/;"	kind:variable	language:C++
+Init_DataMem	/home/zenki/temp/colorSep/main_colorsep.cpp	/^void Init_DataMem()$/;"	kind:function	language:C++	signature:()
+Init_DataMem	main_colorsep.cpp	/^void Init_DataMem()$/;"	kind:function	language:C++	signature:()
+Init_TCP	/home/zenki/temp/colorSep/main_colorsep.cpp	/^void Init_TCP()$/;"	kind:function	language:C++	signature:()
+Init_TCP	main_colorsep.cpp	/^void Init_TCP()$/;"	kind:function	language:C++	signature:()
+IntoWBMode	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int IntoWBMode=0;$/;"	kind:variable	language:C++
+IntoWBMode	main_colorsep.cpp	/^int IntoWBMode =  0;$/;"	kind:variable	language:C++
+IsCollapse	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int IsCollapse = 0, IsDetectCollapse=1;$/;"	kind:variable	language:C++
+IsCollapse	main_colorsep.cpp	/^int IsCollapse = 0, IsDetectCollapse=1;$/;"	kind:variable	language:C++
+IsDetectCollapse	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int IsCollapse = 0, IsDetectCollapse=1;$/;"	kind:variable	language:C++
+IsDetectCollapse	main_colorsep.cpp	/^int IsCollapse = 0, IsDetectCollapse=1;$/;"	kind:variable	language:C++
+IsStart	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int IsStart=0;$/;"	kind:variable	language:C++
+IsStart	main_colorsep.cpp	/^int IsStart       =  0;$/;"	kind:variable	language:C++
+KNN_Atrainnum	/home/zenki/temp/colorSep/main_colorsep.cpp	/^vector<int> KNN_Atrainnum;$/;"	kind:variable	language:C++
+KNN_Atrainnum	main_colorsep.cpp	/^vector<int> KNN_Atrainnum;$/;"	kind:variable	language:C++
+KNN_Atypenum	/home/zenki/temp/colorSep/main_colorsep.cpp	/^vector<int> KNN_Atypenum;$/;"	kind:variable	language:C++
+KNN_Atypenum	main_colorsep.cpp	/^vector<int> KNN_Atypenum;$/;"	kind:variable	language:C++
+KNN_Ctrainnum	/home/zenki/temp/colorSep/main_colorsep.cpp	/^vector<int> KNN_Ctrainnum;$/;"	kind:variable	language:C++
+KNN_Ctrainnum	main_colorsep.cpp	/^vector<int> KNN_Ctrainnum;$/;"	kind:variable	language:C++
+KNN_Ctypenum	/home/zenki/temp/colorSep/main_colorsep.cpp	/^vector<int> KNN_Ctypenum;$/;"	kind:variable	language:C++
+KNN_Ctypenum	main_colorsep.cpp	/^vector<int> KNN_Ctypenum;$/;"	kind:variable	language:C++
+LIB_FLAGS	Makefile	/^LIB_FLAGS = -pthread -lm$/;"	kind:macro	language:Make
+LIB_INC	Makefile	/^LIB_INC = -L.\/$/;"	kind:macro	language:Make
+LogFoldName	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char LogFoldName[256];$/;"	kind:variable	language:C++
+LogFoldName	main_colorsep.cpp	/^char LogFoldName[256];$/;"	kind:variable	language:C++
+MAX_NAME_LEN	include/connect.h	24;"	kind:macro	language:C++
+MAX_REMOTE_NUM	include/connect.h	23;"	kind:macro	language:C++
+MaxClass	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int MaxClass = 0;$/;"	kind:variable	language:C++
+MaxClass	main_colorsep.cpp	/^int MaxClass       =  0;$/;"	kind:variable	language:C++
+OBJECTS	Makefile	/^OBJECTS = $(OBJ_DIR)main$(OBJ_EXT) $(OBJ_DIR)shm$(OBJ_EXT) $(OBJ_DIR)connect$(OBJ_EXT)$/;"	kind:macro	language:Make
+OBJ_DIR	Makefile	/^OBJ_DIR= .\/obj\/$/;"	kind:macro	language:Make
+OBJ_EXT	Makefile	/^OBJ_EXT= .o$/;"	kind:macro	language:Make
+PConnection	include/utils/connect.h	/^typedef struct connect_t Connection, *PConnection;$/;"	kind:typedef	language:C++	typeref:struct:
+PRemote	include/connect.h	/^typedef struct remote_t Remote, *PRemote;$/;"	kind:typedef	language:C++	typeref:struct:
+PSocket	include/connect.h	/^typedef struct socket_t Socket, *PSocket;$/;"	kind:typedef	language:C++	typeref:struct:
+PostFoldName	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char PostFoldName[256];$/;"	kind:variable	language:C++
+PostFoldName	main_colorsep.cpp	/^char PostFoldName[256];$/;"	kind:variable	language:C++
+ProResize	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int ProResize = 2;$/;"	kind:variable	language:C++
+ProResize	main_colorsep.cpp	/^int ProResize     =  2;$/;"	kind:variable	language:C++
+Process_Time	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int Process_Time = 1;$/;"	kind:variable	language:C++
+Process_Time	main_colorsep.cpp	/^int Process_Time = 1;$/;"	kind:variable	language:C++
+RecvInterface	RecvSetInterface.cpp	/^void *RecvInterface (void *a)$/;"	kind:function	language:C++	signature:(void *a)
+RefFoldName	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char RefFoldName[256];$/;"	kind:variable	language:C++
+RefFoldName	main_colorsep.cpp	/^char RefFoldName[256];$/;"	kind:variable	language:C++
+RefManage	/home/zenki/temp/colorSep/main_colorsep.cpp	/^void RefManage(Mat& New_Image, int totalNum)$/;"	kind:function	language:C++	signature:(Mat& New_Image, int totalNum)
+RefManage	main_colorsep.cpp	/^void RefManage(Mat& New_Image, int totalNum)$/;"	kind:function	language:C++	signature:(Mat& New_Image, int totalNum)
+RefNum	CameraInterface.cpp	/^struct RefNum$/;"	kind:struct	language:C++	file:
+RefNum::refseq	CameraInterface.cpp	/^    char refseq[100];$/;"	kind:member	language:C++	struct:RefNum	file:	access:public
+RefNum::rnum	CameraInterface.cpp	/^    int rnum;$/;"	kind:member	language:C++	struct:RefNum	file:	access:public
+Ref_Tcpfd	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int Ref_Tcpfd=-1, Img_Tcpfd=-1;$/;"	kind:variable	language:C++
+Ref_Tcpfd	main_colorsep.cpp	/^int Ref_Tcpfd=-1, Img_Tcpfd=-1;$/;"	kind:variable	language:C++
+Ref_fdstat	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int Ref_fdstat = -1, Img_fdstat = -1;$/;"	kind:variable	language:C++
+Ref_fdstat	main_colorsep.cpp	/^int Ref_fdstat = -1, Img_fdstat = -1;$/;"	kind:variable	language:C++
+Remote	include/connect.h	/^typedef struct remote_t Remote, *PRemote;$/;"	kind:typedef	language:C++	typeref:struct:remote_t
+RunFile	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char RunFile[100];$/;"	kind:variable	language:C++
+RunFile	main_colorsep.cpp	/^char RunFile[100];$/;"	kind:variable	language:C++
+SRC_DIR	Makefile	/^SRC_DIR= .\/src\/$/;"	kind:macro	language:Make
+STATIC_LIB	Makefile	/^STATIC_LIB = $/;"	kind:macro	language:Make
+SavingFile	/home/zenki/temp/colorSep/main_colorsep.cpp	/^void SavingFile(Mat& Img, int Counter);$/;"	kind:prototype	language:C++	file:	signature:(Mat& Img, int Counter)
+SavingFile	main_colorsep.cpp	/^void SavingFile(Mat& Img, int Counter);$/;"	kind:prototype	language:C++	file:	signature:(Mat& Img, int Counter)
+Socket	include/connect.h	/^typedef struct socket_t Socket, *PSocket;$/;"	kind:typedef	language:C++	typeref:struct:socket_t
+SortFunc	SetPic3.cpp	/^bool SortFunc(path p1,path p2)$/;"	kind:function	language:C++	signature:(path p1,path p2)
+SrcFoldName	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char SrcFoldName[256];$/;"	kind:variable	language:C++
+SrcFoldName	main_colorsep.cpp	/^char SrcFoldName[256];$/;"	kind:variable	language:C++
+SystemInit	/home/zenki/temp/colorSep/main_colorsep.cpp	/^void SystemInit(int type)$/;"	kind:function	language:C++	signature:(int type)
+SystemInit	main_colorsep.cpp	/^void SystemInit(int type)$/;"	kind:function	language:C++	signature:(int type)
+Total_Time	/home/zenki/temp/colorSep/main_colorsep.cpp	/^struct timeval Total_Time;$/;"	kind:variable	language:C++	typeref:struct:timeval
+Total_Time	main_colorsep.cpp	/^struct timeval Total_Time;$/;"	kind:variable	language:C++	typeref:struct:timeval
+TrainFile	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char TrainFile[100];$/;"	kind:variable	language:C++
+TrainFile	main_colorsep.cpp	/^char TrainFile[100];$/;"	kind:variable	language:C++
+TrainMode	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int TrainMode = 0, TrainType = 0;\/\/, IsFileTrain = 1;$/;"	kind:variable	language:C++
+TrainMode	main_colorsep.cpp	/^int TrainMode      =  0, TrainType =  0;\/\/, IsFileTrain =  1;$/;"	kind:variable	language:C++
+TrainSample	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int TrainSample=0;$/;"	kind:variable	language:C++
+TrainSample	main_colorsep.cpp	/^int TrainSample    =  0;$/;"	kind:variable	language:C++
+TrainTag	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char TrainTag[100] = "";$/;"	kind:variable	language:C++
+TrainTag	main_colorsep.cpp	/^char TrainTag[100] =  "";$/;"	kind:variable	language:C++
+TrainType	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int TrainMode = 0, TrainType = 0;\/\/, IsFileTrain = 1;$/;"	kind:variable	language:C++
+TrainType	main_colorsep.cpp	/^int TrainMode      =  0, TrainType =  0;\/\/, IsFileTrain =  1;$/;"	kind:variable	language:C++
+UnRotFoldName	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char UnRotFoldName[256];$/;"	kind:variable	language:C++
+UnRotFoldName	main_colorsep.cpp	/^char UnRotFoldName[256];$/;"	kind:variable	language:C++
+UseColorSep	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int UseColorSep = 0;$/;"	kind:variable	language:C++
+UseColorSep	main_colorsep.cpp	/^int UseColorSep   =  0;$/;"	kind:variable	language:C++
+UseGLCM	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int UseGLCM = 0;$/;"	kind:variable	language:C++
+UseGLCM	main_colorsep.cpp	/^int UseGLCM       =  0;$/;"	kind:variable	language:C++
+UseNetConnect	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int UseNetConnect = 1;$/;"	kind:variable	language:C++
+UseNetConnect	main_colorsep.cpp	/^int UseNetConnect =  1;$/;"	kind:variable	language:C++
+WBDataType	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int WBDataType=0; \/\/RGB0, LAB1,HSB2$/;"	kind:variable	language:C++
+WBDataType	main_colorsep.cpp	/^int WBDataType =  0; \/\/RGB0, LAB1,HSB2$/;"	kind:variable	language:C++
+WBRect	/home/zenki/temp/colorSep/main_colorsep.cpp	/^Rect WBRect = Rect(0, 0, 1, 1);$/;"	kind:variable	language:C++
+WBRect	main_colorsep.cpp	/^Rect WBRect    =  Rect(0, 0, 1, 1);$/;"	kind:variable	language:C++
+WithCalib	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int WithCalib = 1;$/;"	kind:variable	language:C++
+WithCalib	main_colorsep.cpp	/^int WithCalib     =  1;$/;"	kind:variable	language:C++
+_connect_H_	include/connect.h	19;"	kind:macro	language:C++
+_connect_H_	include/utils/connect.h	19;"	kind:macro	language:C++
+add_client	src/connect.c	/^static void add_client(Socket *sock, int client_fd)$/;"	kind:function	language:C	file:	signature:(Socket *sock, int client_fd)
+cameraMatrix	/home/zenki/temp/colorSep/main_colorsep.cpp	/^Mat cameraMatrix, distCoeffs;$/;"	kind:variable	language:C++
+cameraMatrix	main_colorsep.cpp	/^Mat cameraMatrix, distCoeffs;$/;"	kind:variable	language:C++
+ceramictype	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int ceramictype = 100;$/;"	kind:variable	language:C++
+ceramictype	main_colorsep.cpp	/^int ceramictype = 100;$/;"	kind:variable	language:C++
+classifiertype	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int classifiertype = 0;         \/\/0为采用传统的对比方式,1为分类器方式$/;"	kind:variable	language:C++
+classifiertype	main_colorsep.cpp	/^int classifiertype = 0;         \/\/0为采用传统的对比方式,1为分类器方式$/;"	kind:variable	language:C++
+cmd	RecvSetInterface.cpp	/^struct cmd$/;"	kind:struct	language:C++	file:
+cmd::cmdID	RecvSetInterface.cpp	/^    int cmdID;$/;"	kind:member	language:C++	struct:cmd	file:	access:public
+cmd::msg	RecvSetInterface.cpp	/^    char msg[100];$/;"	kind:member	language:C++	struct:cmd	file:	access:public
+cmdID	RecvSetInterface.cpp	/^    int cmdID;$/;"	kind:member	language:C++	struct:cmd	file:	access:public
+connect_t	include/utils/connect.h	/^struct connect_t {$/;"	kind:struct	language:C++
+connect_t::local_fd	include/utils/connect.h	/^    int local_fd;$/;"	kind:member	language:C++	struct:connect_t	access:public
+connect_t::remote_fd	include/utils/connect.h	/^    int remote_fd;$/;"	kind:member	language:C++	struct:connect_t	access:public
+connect_t::remote_name	include/utils/connect.h	/^    char remote_name[32];$/;"	kind:member	language:C++	struct:connect_t	access:public
+contourSeq	/home/zenki/temp/colorSep/main_colorsep.cpp	/^vector<vector<Point> > contourSeq;$/;"	kind:variable	language:C++
+contourSeq	main_colorsep.cpp	/^vector<vector<Point> > contourSeq;$/;"	kind:variable	language:C++
+distCoeffs	/home/zenki/temp/colorSep/main_colorsep.cpp	/^Mat cameraMatrix, distCoeffs;$/;"	kind:variable	language:C++
+distCoeffs	main_colorsep.cpp	/^Mat cameraMatrix, distCoeffs;$/;"	kind:variable	language:C++
+exit_tcp_server	include/connect.h	/^void exit_tcp_server(Socket *sock);$/;"	kind:prototype	language:C++	signature:(Socket *sock)
+exit_tcp_server	src/connect.c	/^void exit_tcp_server(Socket *sock)$/;"	kind:function	language:C	signature:(Socket *sock)
+find_files	SetPic3.cpp	/^static void find_files(const path& dir,const string& filename,vector<path>& v)   \/\/查找$/;"	kind:function	language:C++	file:	signature:(const path& dir,const string& filename,vector<path>& v)
+free_socket	src/connect.c	/^static void free_socket(Socket *sock)$/;"	kind:function	language:C	file:	signature:(Socket *sock)
+g_Socket	src/connect.c	/^Socket g_Socket;$/;"	kind:variable	language:C
+imgcols	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int imgrows = 0, imgcols = 0;$/;"	kind:variable	language:C++
+imgcols	main_colorsep.cpp	/^int imgrows =  0, imgcols =  0;$/;"	kind:variable	language:C++
+imgrows	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int imgrows = 0, imgcols = 0;$/;"	kind:variable	language:C++
+imgrows	main_colorsep.cpp	/^int imgrows =  0, imgcols =  0;$/;"	kind:variable	language:C++
+init_connection	include/utils/connect.h	/^int init_connection(Connection *connect);$/;"	kind:prototype	language:C++	signature:(Connection *connect)
+init_socket	src/connect.c	/^static void init_socket(Socket *sock)$/;"	kind:function	language:C	file:	signature:(Socket *sock)
+init_tcp_server	include/connect.h	/^int init_tcp_server(Socket *sock, char *local_ip, int local_port);$/;"	kind:prototype	language:C++	signature:(Socket *sock, char *local_ip, int local_port)
+init_tcp_server	src/connect.c	/^int init_tcp_server(Socket *sock, char *local_ip, int local_port)$/;"	kind:function	language:C	signature:(Socket *sock, char *local_ip, int local_port)
+isize	CameraInterface.cpp	/^    int isize;$/;"	kind:member	language:C++	struct:ImageSize	file:	access:public
+local_fd	include/connect.h	/^    int local_fd;$/;"	kind:member	language:C++	struct:socket_t	access:public
+local_fd	include/utils/connect.h	/^    int local_fd;$/;"	kind:member	language:C++	struct:connect_t	access:public
+main	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int main(int argc,char** argv)$/;"	kind:function	language:C++	signature:(int argc,char** argv)
+main	SetPic3.cpp	/^int main(int argc,char** argv)$/;"	kind:function	language:C++	signature:(int argc,char** argv)
+main	main_colorsep.cpp	/^int main(int argc,char** argv)$/;"	kind:function	language:C++	signature:(int argc,char** argv)
+main	src/main.c	/^int main(int argc, const char *argv[])$/;"	kind:function	language:C	signature:(int argc, const char *argv[])
+msg	RecvSetInterface.cpp	/^    char msg[100];$/;"	kind:member	language:C++	struct:cmd	file:	access:public
+rd_iterator	SetPic3.cpp	/^typedef recursive_directory_iterator rd_iterator;$/;"	kind:typedef	language:C++	file:
+refseq	CameraInterface.cpp	/^    char refseq[100];$/;"	kind:member	language:C++	struct:RefNum	file:	access:public
+remote	include/connect.h	/^    Remote remote;$/;"	kind:member	language:C++	struct:socket_t	access:public
+remote_fd	include/connect.h	/^    int remote_fd[MAX_REMOTE_NUM];$/;"	kind:member	language:C++	struct:remote_t	access:public
+remote_fd	include/utils/connect.h	/^    int remote_fd;$/;"	kind:member	language:C++	struct:connect_t	access:public
+remote_name	include/connect.h	/^    char *remote_name[MAX_REMOTE_NUM];$/;"	kind:member	language:C++	struct:remote_t	access:public
+remote_name	include/utils/connect.h	/^    char remote_name[32];$/;"	kind:member	language:C++	struct:connect_t	access:public
+remote_t	include/connect.h	/^struct remote_t {$/;"	kind:struct	language:C++
+remote_t::remote_fd	include/connect.h	/^    int remote_fd[MAX_REMOTE_NUM];$/;"	kind:member	language:C++	struct:remote_t	access:public
+remote_t::remote_name	include/connect.h	/^    char *remote_name[MAX_REMOTE_NUM];$/;"	kind:member	language:C++	struct:remote_t	access:public
+rnum	CameraInterface.cpp	/^    int rnum;$/;"	kind:member	language:C++	struct:RefNum	file:	access:public
+run_tcp_server	include/connect.h	/^void run_tcp_server(Socket *sock);$/;"	kind:prototype	language:C++	signature:(Socket *sock)
+run_tcp_server	src/connect.c	/^void run_tcp_server(Socket *sock)$/;"	kind:function	language:C	signature:(Socket *sock)
+s_mutex	include/connect.h	/^    pthread_mutex_t s_mutex;$/;"	kind:member	language:C++	struct:socket_t	access:public
+sendImage	CameraInterface.cpp	/^int sendImage(DataForDisp* data, int &Imgsockfd)\/\/接收一个结构体$/;"	kind:function	language:C++	signature:(DataForDisp* data, int &Imgsockfd)
+sendInitRefImage	CameraInterface.cpp	/^int sendInitRefImage(int i,char *refseq, int Refsockfd)$/;"	kind:function	language:C++	signature:(int i,char *refseq, int Refsockfd)
+sendNewRefImage	CameraInterface.cpp	/^int sendNewRefImage(int i, int Refsockfd)$/;"	kind:function	language:C++	signature:(int i, int Refsockfd)
+server_quit	src/connect.c	/^static int server_quit = 0;$/;"	kind:variable	language:C	file:
+server_thread	src/connect.c	/^static void server_thread(void *param)$/;"	kind:function	language:C	file:	signature:(void *param)
+socket_t	include/connect.h	/^struct socket_t {$/;"	kind:struct	language:C++
+socket_t::local_fd	include/connect.h	/^    int local_fd;$/;"	kind:member	language:C++	struct:socket_t	access:public
+socket_t::remote	include/connect.h	/^    Remote remote;$/;"	kind:member	language:C++	struct:socket_t	access:public
+socket_t::s_mutex	include/connect.h	/^    pthread_mutex_t s_mutex;$/;"	kind:member	language:C++	struct:socket_t	access:public
+totalMSG	/home/zenki/temp/colorSep/main_colorsep.cpp	/^vector<float> totalMSG;$/;"	kind:variable	language:C++
+totalMSG	main_colorsep.cpp	/^vector<float> totalMSG;$/;"	kind:variable	language:C++
+typevalue	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int typevalue = 100;$/;"	kind:variable	language:C++
+typevalue	main_colorsep.cpp	/^int typevalue     =  100;$/;"	kind:variable	language:C++
+use_BWenhance	/home/zenki/temp/colorSep/main_colorsep.cpp	/^int use_BWenhance = 0;$/;"	kind:variable	language:C++
+use_BWenhance	main_colorsep.cpp	/^int use_BWenhance = 0;$/;"	kind:variable	language:C++
+window_name0	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char window_name0[] = "img_color";$/;"	kind:variable	language:C++
+window_name0	main_colorsep.cpp	/^char window_name0[] = "img_color";$/;"	kind:variable	language:C++
+window_name1	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char window_name1[] = "img_H";$/;"	kind:variable	language:C++
+window_name1	main_colorsep.cpp	/^char window_name1[] = "img_H";$/;"	kind:variable	language:C++
+window_name2	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char window_name2[] = "img_S";$/;"	kind:variable	language:C++
+window_name2	main_colorsep.cpp	/^char window_name2[] = "img_S";$/;"	kind:variable	language:C++
+window_name3	/home/zenki/temp/colorSep/main_colorsep.cpp	/^char window_name3[] = "img_V";$/;"	kind:variable	language:C++
+window_name3	main_colorsep.cpp	/^char window_name3[] = "img_V";$/;"	kind:variable	language:C++
