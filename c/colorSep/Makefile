@@ -1,44 +1,113 @@
-CXX = g++
-SRC_DIR= ./src/
-OBJ_DIR= ./obj/
-OBJ_EXT= .o
-CSRC_EXT= .c
+###############################################################################
+# Usage:
+#   $ make           Compile and link (or archive)
+#   $ make clean     Clean the objectives and target.
+###############################################################################
 
-C_FLAGS += -Wall 
-INC = -I. -I./include
-LIB_FLAGS = -pthread -lm
-LIB_INC = -L./
+CROSS_COMPILE   =
+OPTIMIZE        := -O
+WARNINGS        := -Wall
+DEFS            := 
+EXTRA_CFLAGS    := 
+LDFLAGS         := -pthread -lm
 
-# Comment/uncomment the following line to disable/enable debugging
-DEBUG = y
-# Add your debugging flag (or not) to C_FLAGS
-ifeq ($(DEBUG),y)
-  DEBFLAGS = -g -O -DUSE_DEBUG # "-O" is needed to expand inlines
-else
-  DEBFLAGS = -O2
+OUT_DIR 	    = out
+OBJ_DIR   	    = $(OUT_DIR)/obj
+
+INC_DIR   		= ./include/ ./include/core/ ./include/interface/
+SRC_DIR   		= ./src ./src/core ./src/interface
+
+EXTRA_SRC 		= 
+EXCLUDE_FILES 	= 
+SUFFIX 			= c cpp
+EXTRA_OBJS      = 
+
+TARGET          := colorSepServer
+TARGET_TYPE     := app
+
+.other_task:
+
+.other_clean:
+
+#FUNC#  Add a new line to the input stream.
+define add_newline
+$1
+
+endef
+
+#FUNC# set the variable `src-x' according to the input $1
+define set_src_x
+src-$1 = $(filter-out $4,$(foreach d,$2,$(wildcard $d/*.$1)) $(filter %.$1,$3))
+
+endef
+
+#FUNC# set the variable `obj-x' according to the input $1
+define set_obj_x
+obj-$1 = $(patsubst %.$1,$3%.o,$(notdir $2))
+
+endef
+
+#VAR# Get the uniform representation of the object directory path name
+ifneq ($(OBJ_DIR),)
+prefix_objdir  = $(shell echo $(OBJ_DIR)|sed 's:\(\./*\)*::')
+prefix_objdir := $(filter-out /,$(prefix_objdir)/)
 endif
-C_FLAGS += $(DEBFLAGS)
-# Debug setting end
 
-EXE_TARGET = main
-OBJECTS = $(OBJ_DIR)main$(OBJ_EXT) $(OBJ_DIR)shm$(OBJ_EXT) $(OBJ_DIR)connect$(OBJ_EXT)
-STATIC_LIB = 
+GCC      := $(CROSS_COMPILE)g++
+G++      := $(CROSS_COMPILE)g++
+SRC_DIR := $(sort . $(SRC_DIR))
+inc_dir = $(foreach d,$(sort $(INC_DIR) $(SRC_DIR)),-I$d)
 
-all: $(EXE_TARGET) $(OBJECTS)
+#--# Do smart deduction automatically
+$(eval $(foreach i,$(SUFFIX),$(call set_src_x,$i,$(SRC_DIR),$(EXTRA_SRC),$(EXCLUDE_FILES))))
+$(eval $(foreach i,$(SUFFIX),$(call set_obj_x,$i,$(src-$i),$(prefix_objdir))))
+$(eval $(foreach f,$(EXTRA_SRC),$(call add_newline,vpath $(notdir $f) $(dir $f))))
+$(eval $(foreach d,$(SRC_DIR),$(foreach i,$(SUFFIX),$(call add_newline,vpath %.$i $d))))
 
-$(EXE_TARGET): $(OBJECTS)
-	@echo
-	@echo "Compiling $< ==> $@..."
-	$(CXX) -o $@ $^  $(LIB_FLAGS) $(LIB_INC) $(C_FLAGS) $(INC) $(STATIC_LIB)
+all_objs = $(foreach i,$(SUFFIX),$(obj-$i))
+all_srcs = $(foreach i,$(SUFFIX),$(src-$i))
 
-$(OBJ_DIR)%$(OBJ_EXT): $(SRC_DIR)%$(CSRC_EXT)
-	@echo
-	@echo "Compiling $< ==> $@..."
-	$(CXX)  $(INC) $(C_FLAGS) -c $< -o $@
+CFLAGS       = $(EXTRA_CFLAGS) $(WARNINGS) $(OPTIMIZE) $(DEFS)
+TARGET_TYPE := $(strip $(TARGET_TYPE))
 
-clean:
-	-rm -f $(EXE_TARGET) $(OBJECTS) *~
+ifeq ($(filter $(TARGET_TYPE),so ar app),)
+$(error Unexpected TARGET_TYPE `$(TARGET_TYPE)')
+endif
 
-clean_all:
-	-rm -rf tags GPATH GRTAGS GTAGS $(EXE_TARGET) $(OBJECTS) *~
+ifeq ($(TARGET_TYPE),so)
+ CFLAGS  += -fpic -shared
+ LDFLAGS += -shared
+endif
+
+PHONY = all .mkdir clean
+
+all: .mkdir .other_task $(TARGET)
+
+define cmd_o
+$$(obj-$1): $2%.o: %.$1  $(MAKEFILE_LIST)
+	$(GCC) $(inc_dir) -Wp,-MT,$$@ -Wp,-MMD,$$@.d $(CFLAGS) -c -o $$@ $$<
+
+endef
+$(eval $(foreach i,$(SUFFIX),$(call cmd_o,$i,$(prefix_objdir))))
+
+ifeq ($(TARGET_TYPE),ar)
+$(TARGET): AR := $(CROSS_COMPILE)ar
+$(TARGET): $(all_objs)
+	rm -f $@
+	$(AR) rcvs $@ $(all_objs)
+else
+$(TARGET): LD = $(if $(strip $(src-cpp) $(src-cc) $(src-cxx)),$(G++),$(GCC))
+$(TARGET): $(all_objs)
+	$(LD) $(LDFLAGS) $(all_objs) $(EXTRA_OBJS) -o $@
+endif
+
+.mkdir:
+	@if [ ! -d $(OBJ_DIR) ]; then mkdir -p $(OBJ_DIR); fi
+
+clean: .other_clean
+	rm -f $(prefix_objdir)*.o $(TARGET)
+
+-include $(patsubst %.o,%.o.d,$(all_objs))
+
+.PHONY: $(PHONY)
 

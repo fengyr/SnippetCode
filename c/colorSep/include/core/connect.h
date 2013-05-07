@@ -22,6 +22,7 @@
 
 #define MAX_REMOTE_NUM   8
 #define MAX_NAME_LEN    32
+#define DEFAULT_CLIENT_NAME "default"
 
 struct remote_t {
     int remote_fd[MAX_REMOTE_NUM];
@@ -29,18 +30,31 @@ struct remote_t {
 };
 typedef struct remote_t Remote, *PRemote;
 
+typedef int (*EventHandlerCall)(int remote_fd);
+
+struct event_handler_t {
+    char *handler_name;
+
+    // Receiving client data , if successful returns 0, -1 on failure.
+    // This method is implemented by some communication module. 
+    // For example, cmd_ui_handler.
+    EventHandlerCall onRecvAndReplay;
+};
+typedef struct event_handler_t EventHandler, *PEventHandler;
+
 struct socket_t {
     int local_fd;
     Remote remote;
+    EventHandler **pHandlers;
 
+    pthread_t pthread;
     pthread_mutex_t s_mutex;
 };
 typedef struct socket_t Socket, *PSocket;
 
-extern Socket g_Socket;
-
 int init_tcp_server(Socket *sock, char *local_ip, int local_port);
-void run_tcp_server(Socket *sock);
+void run_tcp_server(Socket *sock, int thread_mode);
 void exit_tcp_server(Socket *sock);
+void registerHandler(Socket *sock, EventHandler *handler);
 
 #endif /* end of include guard: _connect_H_ */
