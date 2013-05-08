@@ -20,31 +20,23 @@
 
 #include <pthread.h>
 
-#define MAX_REMOTE_NUM   8
+#define MAX_REMOTE_NUM  8
+#define MAX_HANDLER_NUM 16
 #define MAX_NAME_LEN    32
-#define DEFAULT_CLIENT_NAME "default"
+
+struct event_handler_t;
+typedef struct event_handler_t EventHandler, *PEventHandler;
 
 struct remote_t {
-    int remote_fd[MAX_REMOTE_NUM];
-    char *remote_name[MAX_REMOTE_NUM];
+    int remote_fd;
+    int remote_type;    /* 0 -> control, 1 -> data */
+    char *remote_name;
 };
 typedef struct remote_t Remote, *PRemote;
 
-typedef int (*EventHandlerCall)(int remote_fd);
-
-struct event_handler_t {
-    char *handler_name;
-
-    // Receiving client data , if successful returns 0, -1 on failure.
-    // This method is implemented by some communication module. 
-    // For example, cmd_ui_handler.
-    EventHandlerCall onRecvAndReplay;
-};
-typedef struct event_handler_t EventHandler, *PEventHandler;
-
 struct socket_t {
     int local_fd;
-    Remote remote;
+    Remote remote[MAX_REMOTE_NUM];
     EventHandler **pHandlers;
 
     pthread_t pthread;
@@ -52,7 +44,23 @@ struct socket_t {
 };
 typedef struct socket_t Socket, *PSocket;
 
-int init_tcp_server(Socket *sock, char *local_ip, int local_port);
+////////////////////////////////////////////////////////////
+typedef int (*EventHandlerCall)(int remote_fd, Socket *sock);
+
+struct event_handler_t {
+    /* 该handler_name需要和remote_name保持一致，
+     * 才能够接收对方的信息 */
+    const char *handler_name;
+
+    // Receiving client data , if successful returns 0, -1 on failure.
+    // This method is implemented by some communication module. 
+    // For example, cmd_ui_handler.
+    EventHandlerCall onRecvAndReplay;
+};
+////////////////////////////////////////////////////////////
+
+// public interface
+int init_tcp_server(Socket *sock, const char *local_ip, int local_port);
 void run_tcp_server(Socket *sock, int thread_mode);
 void exit_tcp_server(Socket *sock);
 void registerHandler(Socket *sock, EventHandler *handler);

@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  handler_proc.h
+ *       Filename:  shm.c
  *
  *    Description:  
  *
  *        Version:  
- *        Created:  五月 07, 2013
+ *        Created:  五月 06, 2013
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,13 +15,5 @@
  *
  * =====================================================================================
  */
-#ifndef _handler_proc_H_
-#define _handler_proc_H_
+#include "camera_interface.h"
 
-struct handler_proc_t {
-    int cmd_id;
-    int (*proc)(int fd, char *msg);
-};
-typedef struct handler_proc_t HandlerProc, *PHandlerProc;
-
-#endif /* end of include guard: _handler_proc_H_ */

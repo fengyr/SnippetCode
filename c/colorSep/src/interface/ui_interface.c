@@ -21,22 +21,25 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "debug.h"
 #include "ui_interface.h"
-#include "handler_proc.h"
+#include "connection.h"
+#include "handler_process.h"
 
-static int say_hello(int fd, char *msg)
+static int say_hello(int fd, char *msg, Socket *sock)
 {
-    char *replay = "received message: say hello";
+    const char *replay = "received message: say hello";
     send(fd, replay, strlen(replay)*sizeof(char), 0);
 
     return 0;
 }
 
 static HandlerProc handler_proc[] = {
-    {0, say_hello},
+    DEFAULT_HANDLER,
+    {1, say_hello},
 }; 
 
-int cmd_ui_handler(int fd)
+int cmd_ui_handler(int fd, Socket *sock)
 {
     ssize_t recv_size;
     CmdUi cmd;
@@ -49,8 +52,8 @@ int cmd_ui_handler(int fd)
     } else if (recv_size == 0) {
         printf("cmd_ui_handler: client quit!!!\n");
     } else {
-        printf("cmd_id = %d, cmd_msg = %s\n", cmd.cmd_id, cmd.cmd_msg);
-        handler_proc[cmd.cmd_id].proc(fd, cmd.cmd_msg);
+        DEBUG("cmd_id = %d, cmd_msg = %s\n", cmd.cmd_id, cmd.cmd_msg);
+        call_handler(handler_proc, cmd.cmd_id, fd, cmd.cmd_msg, sock);
     }
 
     return recv_size;

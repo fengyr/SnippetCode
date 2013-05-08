@@ -26,19 +26,21 @@
 #include <errno.h>
 #include <assert.h>
 
-#include "connect.h"
+#include "connection.h"
+#include "handler_process.h"
+#include "debug.h"
 
 static int server_quit = 0;
 
 static void dumpInfo(Socket *sock)
 {
-    printf("sock->local_fd = %d\n", sock->local_fd);
+    DEBUG("sock->local_fd = %d\n", sock->local_fd);
 
-    Remote *remote = &(sock->remote);
+    Remote *remote = sock->remote;
     int i;
 
     for (i = 0; i < MAX_REMOTE_NUM; i++) {
-        printf("remote_fd[%d] = %d\n", i, remote->remote_fd[i]);
+        DEBUG("remote_fd[%d] = %d, remote_name[%d] = %s\n", i, remote[i].remote_fd, i, remote[i].remote_name);
     }
 }
 
@@ -47,11 +49,12 @@ static EventHandler* findHandlerByName(Socket *sock, char *name)
     int i;
     EventHandler **pHandler = sock->pHandlers;
 
-    /* printf("findHandlerByName: enter, name = %s\n", name); */
-    for (i = 0; i < MAX_REMOTE_NUM; i++) {
-        /* printf("findHandlerByName: loop, name = %s\n", name); */
-        if ((pHandler[i] != NULL) && (strcmp(pHandler[i]->handler_name, name) == 0)) {
-            /* printf("findHandlerByName: pHandler[i]->handler_name = %s, name = %s\n", pHandler[i]->handler_name, name); */
+    DEBUG("findHandlerByName: enter, name = %s\n", name);
+    for (i = 0; i < MAX_HANDLER_NUM; i++) {
+        DEBUG("findHandlerByName: loop, name = %s\n", name);
+        if ( ((pHandler[i] != NULL) && (strcmp(pHandler[i]->handler_name, name) == 0)) 
+                || ((pHandler[i] != NULL) && (strcmp(HANDLER_DEFAULT_NAME, name) == 0))) {
+            DEBUG("findHandlerByName: pHandler[i]->handler_name = %s, name = %s\n", pHandler[i]->handler_name, name);
             return pHandler[i];
         }
     }
@@ -62,32 +65,53 @@ static EventHandler* findHandlerByName(Socket *sock, char *name)
 static void init_socket(Socket *sock)
 {
     int i;
-    Remote *remote = &sock->remote;
+    Remote *remote = sock->remote;
 
     for (i = 0; i < MAX_REMOTE_NUM; i++) {
-        remote->remote_fd[i] = -1;
-        remote->remote_name[i] = (char*) malloc(sizeof(char)*MAX_NAME_LEN);
-        remote->remote_name[i] = DEFAULT_CLIENT_NAME;
+        remote[i].remote_fd = -1;
+        remote[i].remote_type = -1;
+        remote[i].remote_name = (char*) malloc(sizeof(char)*MAX_NAME_LEN);
+        memset(remote[i].remote_name, 0, MAX_NAME_LEN);
+        strcpy(remote[i].remote_name, HANDLER_DEFAULT_NAME);
     }
 
     pthread_mutex_init(&(sock->s_mutex), NULL);
 }
 
+static void restore_remote(Socket *sock, int id) 
+{
+    Remote *remote = sock->remote;
+
+    DEBUG("restore_remote: enter\n");
+    pthread_mutex_lock(&sock->s_mutex);
+
+    close(remote[id].remote_fd);
+    remote[id].remote_fd = -1;
+    remote[id].remote_type = -1;
+    memset(remote[id].remote_name, 0, MAX_NAME_LEN);
+    strcpy(remote[id].remote_name, HANDLER_DEFAULT_NAME);
+
+    pthread_mutex_unlock(&sock->s_mutex);
+    DEBUG("restore_remote: leave\n");
+}
+
 static void free_socket(Socket *sock)
 {
     int i, *fd;
-    Remote *remote = &sock->remote;
+    Remote *remote = sock->remote;
 
     for (i = 0; i < MAX_REMOTE_NUM; i++) {
-        fd = &remote->remote_fd[i];
+        fd = &remote[i].remote_fd;
         if (*fd != -1) {
             close(*fd);
             *fd = -1;
         }
 
-        if (remote->remote_name[i] != NULL) {
-            free(remote->remote_name[i]);
-            remote->remote_name[i] = NULL;
+        remote[i].remote_type = -1;
+
+        if (remote[i].remote_name != NULL) {
+            free(remote[i].remote_name);
+            remote[i].remote_name = NULL;
         }
     }
 
@@ -97,24 +121,25 @@ static void free_socket(Socket *sock)
 static void add_client(Socket *sock, int client_fd)
 {
     int i;
-    Remote *remote = &(sock->remote);
+    Remote *remote = sock->remote;
 
-    printf("add_client: enter\n");
+    DEBUG("add_client: enter\n");
     pthread_mutex_lock(&sock->s_mutex);
     for (i = 0; i < MAX_REMOTE_NUM; i++) {
-        if (remote->remote_fd[i] == -1) {
-            remote->remote_fd[i] = client_fd;
+        if (remote[i].remote_fd == -1) {
+            remote[i].remote_fd = client_fd;
             break;
         }
     }
     dumpInfo(sock);
     pthread_mutex_unlock(&sock->s_mutex);
+    DEBUG("add_client: leave\n");
 }
 
 static void* server_thread(void *param)
 {
     Socket *sock = (Socket*) param;
-    Remote *remote = &(sock->remote);
+    Remote *remote = sock->remote;
 
     int rc, i;
     int max_fd;
@@ -130,20 +155,18 @@ static void* server_thread(void *param)
 
         pthread_mutex_lock(&sock->s_mutex);
         for (i = 0; i < MAX_REMOTE_NUM; i++) {
-            if (remote->remote_fd[i] != -1) {
-                FD_SET(remote->remote_fd[i], &read_fds);
-                if (remote->remote_fd[i] > max_fd) {
-                    max_fd = remote->remote_fd[i];
+            if (remote[i].remote_fd != -1) {
+                FD_SET(remote[i].remote_fd, &read_fds);
+                if (remote[i].remote_fd > max_fd) {
+                    max_fd = remote[i].remote_fd;
                 }
             }
         }
         pthread_mutex_unlock(&sock->s_mutex);
         /* end set fd_set */
 
-#ifdef DEBUG
-        printf("server_thread: enter select, max_fd = %d\n", max_fd);
+        DEBUG("server_thread: enter select, max_fd = %d\n", max_fd);
         dumpInfo(sock);
-#endif
 
         rc = select(max_fd + 1, &read_fds, 0, 0, 0);    
         if (rc < 0) {
@@ -151,12 +174,12 @@ static void* server_thread(void *param)
             sleep(1);
             continue;
         } else if (rc == 0) {
-            printf("server_thread: select continue\n");
+            DEBUG("server_thread: select continue\n");
             continue;
         }
 
         if (FD_ISSET(sock->local_fd, &read_fds)) {
-            printf("server_thread: accept loop...\n");
+            DEBUG("server_thread: accept loop...\n");
             struct sockaddr_in addr;
             socklen_t alen;
             int client;
@@ -176,23 +199,23 @@ static void* server_thread(void *param)
         }
 
         for (i = 0; i < MAX_REMOTE_NUM; i++) {
-            if (i != sock->local_fd && FD_ISSET(remote->remote_fd[i], &read_fds)) {
-                printf("server_thread: enter event handler\n");
+            if (i != sock->local_fd && FD_ISSET(remote[i].remote_fd, &read_fds)) {
+                DEBUG("server_thread: enter event handler\n");
                 // read from client and replay
-                EventHandler *handler = findHandlerByName(sock, remote->remote_name[i]);
+                EventHandler *handler = findHandlerByName(sock, remote[i].remote_name);
                 if (handler != NULL) {
                     EventHandlerCall call = handler->onRecvAndReplay;
-                    rc = (*call)(remote->remote_fd[i]);
+                    rc = (*call)(remote[i].remote_fd, sock);
 
                     if (rc <= 0) {
                         /* close the socket, because remote has shutdown. */
-                        close(remote->remote_fd[i]);
-                        remote->remote_fd[i] = -1;
-                        FD_CLR(remote->remote_fd[i], &read_fds);
+                        restore_remote(sock, i);
+                        FD_CLR(remote[i].remote_fd, &read_fds);
                     } else {
                     }    
                 } else {
-                    printf("server_thread: not find EventHandler\n");
+                    fprintf(stderr, "server_thread: not found EventHandler\n");
+                    restore_remote(sock, i);
                 }
             }
         }
@@ -201,7 +224,7 @@ static void* server_thread(void *param)
     pthread_exit(NULL);
 }
 
-int init_tcp_server(Socket *sock, char *local_ip, int local_port)
+int init_tcp_server(Socket *sock, const char *local_ip, int local_port)
 {
     int rtn = -1;
     int val = MAX_REMOTE_NUM;
@@ -247,7 +270,7 @@ int init_tcp_server(Socket *sock, char *local_ip, int local_port)
     sock->local_fd = fd;
 
     // now set NULL to init handler.
-    sock->pHandlers = (EventHandler**) malloc(MAX_REMOTE_NUM * sizeof(EventHandler*));
+    sock->pHandlers = (EventHandler**) malloc(MAX_HANDLER_NUM * sizeof(EventHandler*));
 
     return rtn;
 
@@ -286,17 +309,17 @@ void registerHandler(Socket *sock, EventHandler *handler)
     int i;
 
     if (sock != NULL) {
-        for (i = 0; i < MAX_REMOTE_NUM; i++) {
+        for (i = 0; i < MAX_HANDLER_NUM; i++) {
             EventHandler **mHandler = &sock->pHandlers[i];
             if (*mHandler != NULL) {
                 if (strcmp((*mHandler)->handler_name, handler->handler_name) == 0) {
                     (*mHandler) = handler;
-                    printf("registerHandler: replace handler name = %s, i = %d\n", (*mHandler)->handler_name, i);
+                    DEBUG("registerHandler: replace handler name = %s, i = %d\n", (*mHandler)->handler_name, i);
                     return;
                 }
             } else {
                 (*mHandler) = handler;
-                printf("registerHandler: insert handler name = %s, i = %d\n", (*mHandler)->handler_name, i);
+                DEBUG("registerHandler: insert handler name = %s, i = %d\n", (*mHandler)->handler_name, i);
                 return;
             }
         }

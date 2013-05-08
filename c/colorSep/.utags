@@ -1,26 +1,27 @@
 _ 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 A 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 Acquisition 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-add_client 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+add_client 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 add_debugdata 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
-addr 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+addr 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 address 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 Again 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 Alarm_Time 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-alen 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+alen 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 algorithm 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 all 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 allocated 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 AreaAvgDisp 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
+args 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h
 as 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-assert 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+assert 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 assign 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 at 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 atof 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
 back 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 Bad 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
 bAppend 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-because 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+because 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 binary 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 bIsDir 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 book 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
@@ -46,9 +47,10 @@ calib3d 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraI
 CalibBWPath 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 calibImg 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 Calibration 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-call 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+call 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 Camera 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 CameraCalibPath 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
+camera_interface 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
 cameraMatrix 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 CamInputImg 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 CamInputImg_raw 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
@@ -68,7 +70,7 @@ Classifiertype 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/
 client1 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 clientAddr 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
 clientAddrSize 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
-client_fd 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+client_fd 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 clientsock 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
 CL_ProcessSep 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 CL_RefSet 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
@@ -76,20 +78,19 @@ CL_trainnum 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/mai
 CL_typenum 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 cmdID 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
 cmd_ui 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
-_cmd_ui_handler_H_ 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h
-cmd_ui_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h
+_cmd_ui_handler_H_ 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h
+cmd_ui_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h
 collapse_thresh 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
 colorDis 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
 ColorFile 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 ColorFoldName 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 Colorsep 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-communication 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
+communication 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 compile 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 compiler 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 config 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 con_iter 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-_connect_H_ 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
-connection 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
+_connect_H_ 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 const_iterator 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 contourSeq 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 co_proc 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
@@ -117,6 +118,8 @@ date_time 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPi
 day 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 debugdata 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 DebugData 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
+_debug_H_ 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h
+default_handler_proc 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c
 _DEF_FILENAME_LEN_ 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 Delete 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 descriptor 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
@@ -126,52 +129,53 @@ dir 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 disk 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 DisplayTime 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 distCoeffs 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-do 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+do 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 done 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 Done 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-dumpInfo 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+dumpInfo 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 dynamic_message 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 e 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-EINTR 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+EINTR 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 empty 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 enhance_calib 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-enough 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-enter 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+enough 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+enter 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 escaped_list_separator 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-event 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+event 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 event_handler 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c
-event_handler_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
-example 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
+event_handler_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
+example 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 exception 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 exists 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 Exists 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 extern 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
 f 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
-failure 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
+failure 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 false 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 Fast 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-FD_CLR 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-FD_ISSET 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-fd_set 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-FD_SET 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-FD_ZERO 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+FD_CLR 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+FD_ISSET 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+fd_set 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+FD_SET 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+FD_ZERO 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 __FILE__ 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 file_name 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 filesystem 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 fin 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-find 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+find 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 find_files 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-findHandlerByName 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+findHandlerByName 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 findInitSeq 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 first 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
+fmt 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h
 foldname 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 fopen 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
-For 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
+For 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 found 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 Frame 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-free 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-free_socket 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-from 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+free 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+free_socket 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+from 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 fwrite 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 g 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 gen_BWweight 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
@@ -180,13 +184,13 @@ getline 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3
 gettimeofday 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 global 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 google 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
-goto 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+goto 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 gregorian 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-_handler_proc_H_ 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h
-handler_proc_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h
-has 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+handler_proc 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+handler_proc_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
+has 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 heigh 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
-hello 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
+hello 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
 hours 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 HSB2 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 iAnnouncedBuffers_0 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
@@ -195,7 +199,8 @@ iAwaitDelivery_0 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/ol
 iAwaitDelivery_1 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 iBlockId_0 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 iBlockId_1 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-id 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
+id 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c
+ifdef 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h
 ifstream 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 iImageSize_0 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 iImageSize_1 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
@@ -232,11 +237,12 @@ Img_UnRot 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_
 img_V 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 iMissingPackets_0 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 iMissingPackets_1 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-implemented 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
+implemented 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 imshow 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 imwrite 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 _index 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-inet_aton 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+indexOfFd 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c
+inet_aton 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 Init_Camera 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 Init_DataMem 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 Init_Fold 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
@@ -245,9 +251,9 @@ Init_ImgPara 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/ma
 Init_log 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 InitSetPIC 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 Init_SHM 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-init_socket 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+init_socket 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 Init_TCP 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-insert 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+insert 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 into 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
 io 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 iOffsetX_0 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
@@ -306,38 +312,37 @@ __LINE__ 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic
 line_buffer 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 lld 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 Loading 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
-localaddr 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+localaddr 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 local_time 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 LogFile 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 LogFoldName 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-loop 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+loop 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 lpszChar 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 lpszFileName_0 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 lpszFileName_1 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 lpszImageBuffer_0 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 lpszImageBuffer_1 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-malloc 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+malloc 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 mat 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 math 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 MaxClass 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-max_fd 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+max_fd 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 maxlen 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
 mdata 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 memory 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 merge 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-message 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-method 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
-mHandler 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+message 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+method 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
+mHandler 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 microsec_clock 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 minutes 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 ml 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 Mode 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-module 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
+module 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 month 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 MSG 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 my 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 My 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
-name 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
 namedWindow 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 nBase 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 nCount 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
@@ -350,8 +355,8 @@ next 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_color
 nFileName 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 No 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 Not 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-not 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-now 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+not 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+now 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 nShm_Memory_ReadStatus_0 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 nShm_Memory_ReadStatus_1 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 nShm_Memory_Status 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
@@ -362,9 +367,10 @@ offset 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.
 Offset 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 offset_x 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 offset_y 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-on 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
+on 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 oops 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 opencv 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
+_opencv_interface_H_ 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h
 operations 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 Optional 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 out 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
@@ -375,15 +381,15 @@ p2 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 pa 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 para 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 parafile 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-param 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+param 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 parser 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 Part 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 path 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 pb 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
-PCmdUi 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h
-PEventHandler 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
-pHandler 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-PHandlerProc 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h
+PCmdUi 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h
+PEventHandler 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
+pHandler 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+PHandlerProc 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 PicData 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 pkg 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 Point 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
@@ -393,42 +399,41 @@ pos 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 posix_time 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 PostFile 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 PostFoldName 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-PRemote 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
-proc 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h
+PRemote 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 Process 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 Process_sep 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 Process_Time 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 Program 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 ProResize 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 protobuf 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
-PSocket 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
-pthread_exit 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-pthread_mutex_destroy 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-pthread_mutex_init 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-pthread_mutex_lock 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-pthread_mutex_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
-pthread_mutex_unlock 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+PSocket 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
+pthread_exit 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+pthread_mutex_destroy 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+pthread_mutex_init 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+pthread_mutex_lock 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+pthread_mutex_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
+pthread_mutex_unlock 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 ptime 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 push_back 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 pyrDown 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-quit 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
+quit 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
 r 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 random_shuffle 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 rd_iterator 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 Read 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-read 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-read_fds 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+read 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+read_fds 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 readPIC 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 ReadSysConf 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 receiveBuf 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
-received 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-Receiving 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
+received 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+Receiving 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 recieve 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
 reconnect 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 rect 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
 recursive_directory_iterator 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 RecvCmd 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-recv_size 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
+recv_size 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
 Ref 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 Ref_fdstat 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 RefFile 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
@@ -444,23 +449,22 @@ Ref_tcp_ 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_c
 Ref_Tcpfd 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 regex_id 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 regex_match 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-remote_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
-replace 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+remote_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
+replace 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 replace_all_copy 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-replay 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-res 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+res 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 reserve 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 result 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 ResultMSG 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 result_type 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-returns 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
+returns 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 retval 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 reverse_iterator 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 RGB0 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 right 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 rnum 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 rs 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
-rtn 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+rtn 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 RUN 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 RunFile 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 sample 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
@@ -468,11 +472,11 @@ SaveTemp 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_c
 Saving 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 SavingFile 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 SavingLog 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-say 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-say_hello 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
+say 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+say_hello 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
 Scalar 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 seconds 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-select 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+select 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 Send 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 sended 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 sendInitRefImage 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
@@ -483,10 +487,10 @@ sepangle 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSe
 SerializeToOstream 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 SerializeToString 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 serverAddr 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
-server_quit 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+server_quit 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 serverSocket 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
-server_thread 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-set 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+server_thread 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+set 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 set_collapse 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 set_data 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 set_debugdata 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
@@ -503,18 +507,19 @@ shmctl 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.
 shmdt 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 shmget 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 shmid 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
+_shm_interface_H_ 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h
 shm_size 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 show_image 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-shutdown 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+shutdown 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 ShutdownProtobufLibrary 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 size_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-socket_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
+socket_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 sockfd 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 sock_ui 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c
-some 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
+some 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 sort 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 SortFunc 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-space 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+space 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 split 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 sprintf 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 src1 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
@@ -526,11 +531,12 @@ SrcFoldName 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/mai
 srctemp 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 sregex_compiler 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 sscanf 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
-ssize_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
+ssize_t 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
 sstream 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 start 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp
 Start 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 Started 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
+stdarg 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h
 stdout 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 step 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 Stores 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
@@ -539,18 +545,16 @@ str 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 str2 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 strcat 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 strContainer 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-strcpy 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 strFileLine 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 str_filename 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 strFileName 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 stringstream 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 strInputFilename 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 strInputRunname 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-strlen 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 strName 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 strncpy 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 strstr 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-successful 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
+successful 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 sv 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 switch 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 SystemInit 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
@@ -563,7 +567,7 @@ TestBGR 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_co
 TestPB 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 TestRGB 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 The 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-This 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h
+This 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h
 this 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 ticks 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 tImage 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
@@ -574,7 +578,6 @@ timeval 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_co
 tm 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 tmat 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 tmp 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-TODO 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
 tok 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 Too 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 top 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
@@ -595,6 +598,7 @@ typeof 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.
 typevalue 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 UI_PORT 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c
 un 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
+undef 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h
 Under 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 Undistort 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 UnRotateFile 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
@@ -604,6 +608,7 @@ Usage 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colo
 use_BWenhance 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 UseColorSep 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 used 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
+USE_DEBUG 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h
 UseGLCM 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 UseNetConnect 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 usleep 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
@@ -635,17 +640,17 @@ xpressive 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPi
 year 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 zero_copy_stream_impl 1  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 a 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-accept 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-and 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+accept 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+and 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 atoi 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 bmp 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-break 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-by 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
+break 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+by 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 clear 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 clone 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-cmd 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-cmd_msg 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-CmdUi 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
+cmd 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+cmd_msg 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+CmdUi 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
 colorsep 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 const 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c
 cpp 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c
@@ -653,33 +658,32 @@ create 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_col
 c_str 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 CurDisp 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 cvDestroyWindow 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-data 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
+data 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp
 DataForDisp 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 debugData 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-default 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
+default 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
+default_handler 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c
+DEFAULT_HANDLER 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
 DispImage 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-errno 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-EventHandlerCall 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-exit_tcp_server 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+errno 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+EventHandlerCall 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+exit_tcp_server 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 Failed 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 FILE 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 file 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 File 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 filename 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-fprintf 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
 FrameCounter 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 fstream 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-handler 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-handler_proc 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-HandlerProc 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
+handler 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+HandlerProc 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
 height 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-htonl 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-i 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+htonl 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 imread 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-INADDR_ANY 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-inet_addr 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+INADDR_ANY 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+inet_addr 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 Init 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-init 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+init 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 InitImageTcp 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 InitRefTcp 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 IntoWBMode 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
@@ -687,43 +691,39 @@ ios 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInter
 IsDetectCollapse 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 it 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 iterator 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-listen 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-local_fd 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-local_ip 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-local_port 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-MAX_NAME_LEN 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-MAX_REMOTE_NUM 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+listen 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+local_fd 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+local_ip 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+local_port 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 memcpy 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 Name 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-no 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+name 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+no 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 opencv_interface 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c
-pHandlers 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-pthread 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-pthread_create 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-pthread_t 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-recv 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
+pHandlers 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+proc 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+pthread 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+pthread_create 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+pthread_t 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
+recv 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
 RecvInterface 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-remote 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-Remote 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-remote_fd 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-remote_name 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+replay 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
 resize 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-send 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
+send 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
 sendImage 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 sendNewRefImage 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 sequence 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 SetPic 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-setsockopt 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-sin_zero 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-s_mutex 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-sock 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-socklen_t 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-SOL_SOCKET 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-SO_REUSEADDR 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-stderr 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-strcmp 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+setsockopt 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+sin_zero 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+s_mutex 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+socklen_t 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+SOL_SOCKET 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+SO_REUSEADDR 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+strcmp 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+strcpy 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c
 system 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-thread_mode 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+thread_mode 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 tokenizer 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 train 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 TrainMode 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
@@ -731,7 +731,8 @@ TrainSample 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/Rec
 TrainType 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 true 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 typessequence 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-val 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+ui_interface 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+val 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 WBDataType 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 WBRect 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 width 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
@@ -739,117 +740,131 @@ with 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInte
 Write 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 x 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 y 2  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-AF_INET 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+AF_INET 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 argc 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c
-arpa 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-begin 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-bind 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-client 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-close 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-cmd_id 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
+arpa 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+begin 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+bind 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+client 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+close 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+cmd_id 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
 collapse 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 cols 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 conf 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-continue 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+connect 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+continue 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 cout 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-DEFAULT_CLIENT_NAME 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-endif 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h
+DEFAULT_CLIENT_NAME 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 endl 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-ERROR 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-error 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-EventHandler 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+ERROR 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+error 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+EventHandler 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 float 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-for 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-guard 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h
-handler_name 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-htons 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-ifndef 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h
+fprintf 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+handler_name 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+htons 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+i 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 imgproc 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
-inet 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-init_tcp_server 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+inet 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+init_tcp_server 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 iostream 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-is 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
+is 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
 main 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c
 Mat 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-msg 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-netinet 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-NULL 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-onRecvAndReplay 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-rc 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+MAX_NAME_LEN 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+MAX_REMOTE_NUM 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+netinet 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+onRecvAndReplay 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+rc 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 Rect 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-registerHandler 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+registerHandler 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+remote 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+Remote 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+remote_fd 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+remote_name 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 rows 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-run_tcp_server 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-s_addr 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-shm 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c
-sin_addr 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-sin_family 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-sin_port 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+run_tcp_server 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+s_addr 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+shm 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+sin_addr 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+sin_family 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+sin_port 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 size 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-sleep 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-sockaddr 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-sockaddr_in 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-SOCK_STREAM 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-static 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
+sleep 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+sockaddr 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+sockaddr_in 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+SOCK_STREAM 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 std 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-stdlib 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-the 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+stderr 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+stdlib 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+strlen 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+the 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+typedef 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 vector 3  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 argv 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c
-c 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-cmd_ui_handler 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-connect 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+cmd_ui_handler 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
 core 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 cv 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-exit 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-fd 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
+debug 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+DEBUG 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+exit 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+for 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 highgui 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
 hpp 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-in 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
+in 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+msg 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
 namespace 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-of 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
+NULL 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 opencv2 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-perror 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-s 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-Socket 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-to 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-typedef 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
+perror 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+sock 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+to 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
 using 4  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp
-define 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c
-else 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-memset 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-printf 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-sizeof 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-socket 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-stdio 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-void 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-while 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-d 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-end 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-n 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-string 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-types 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-unistd 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-if 7  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-return 7  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-sys 7  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-struct 8  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c
-Author 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-char 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-com 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-Compiler 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-Created 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-Description 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-gcc 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-int 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-J 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-none 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-Organization 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-Revision 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-Version 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-Zenki 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-zenki2001cn 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-Zha 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-Filename 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/shm.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-include 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
-h 13  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/connect.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/handler_proc.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/cmd_ui_handler.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/shm.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/connect.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/cmd_ui_handler.c
+c 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+connection 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+endif 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h
+fd 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+guard 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h
+ifndef 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h
+printf 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+s 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+sizeof 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+socket 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+static 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+void 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+while 5  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+d 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+else 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+memset 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+of 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp
+Socket 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+stdio 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+string 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+types 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+unistd 6  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+define 7  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c
+n 7  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+struct 7  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+sys 7  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+end 8  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c
+if 8  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+return 8  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+char 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+int 10  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c
+Author 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+com 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+Compiler 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+Created 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+Description 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+gcc 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+J 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+none 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+Organization 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+Revision 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+Version 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+Zenki 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+zenki2001cn 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+Zha 11  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+Filename 12  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+h 15  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c
+include 15  /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/debug.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/core/net/connection.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/camera_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/opencv_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/include/interface/ui_interface.h /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/RecvSetInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/CameraInterface.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/main_colorsep.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/old/SetPic3.cpp /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/main.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/default_handler.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/core/net/connection.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/opencv_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/ui_interface.c /home/zenki/.DATA/home/sourcecode/snippet_code/c/colorSep/src/interface/camera_interface.c

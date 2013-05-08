@@ -19,8 +19,9 @@
 #include <stdio.h>
 #include <sys/types.h>
 
-#include "connect.h"
+#include "connection.h"
 #include "ui_interface.h"
+#include "handler_process.h"
 
 #define UI_PORT 11014
 
@@ -28,7 +29,7 @@ int main(int argc, const char *argv[])
 {
     Socket sock_ui; 
     EventHandler event_handler;
-    event_handler.handler_name = DEFAULT_CLIENT_NAME;
+    event_handler.handler_name = HANDLER_DEFAULT_NAME;
     event_handler.onRecvAndReplay = cmd_ui_handler;
 
     init_tcp_server(&sock_ui, "10.10.96.96", UI_PORT);

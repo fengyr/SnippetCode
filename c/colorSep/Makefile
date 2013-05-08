@@ -8,14 +8,14 @@ CROSS_COMPILE   =
 OPTIMIZE        := -O
 WARNINGS        := -Wall
 DEFS            := 
-EXTRA_CFLAGS    := 
+EXTRA_CFLAGS    := -DUSE_DEBUG
 LDFLAGS         := -pthread -lm
 
 OUT_DIR 	    = out
 OBJ_DIR   	    = $(OUT_DIR)/obj
 
-INC_DIR   		= ./include/ ./include/core/ ./include/interface/
-SRC_DIR   		= ./src ./src/core ./src/interface
+INC_DIR   		= ./include/ ./include/core/ ./include/core/net/ ./include/interface/
+SRC_DIR   		= ./src ./src/core ./src/core/net ./src/interface
 
 EXTRA_SRC 		= 
 EXCLUDE_FILES 	= 

@@ -1,3 +1,4 @@
 -I./include
 -I./include/core
+-I./include/core/net
 -I./include/interface
