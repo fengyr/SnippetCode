@@ -44,22 +44,36 @@ struct socket_t {
 };
 typedef struct socket_t Socket, *PSocket;
 
-////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//              网络消息处理                        //
+//////////////////////////////////////////////////////
 typedef int (*EventHandlerCall)(int remote_fd, Socket *sock);
 
+/**
+ * @Synopsis 客户端网络消息处理
+ *
+ * handler_type: 
+ *      handler_type是通信协议中定义的一组交互通信时使用的Key，
+ *      该值由本地注册使用。
+ *      remote_name是由客户端传递过来的Key(参考Remote结构说明)，
+ *      这两个Key值一致，服务器才会接收对方的信息。
+ * onRecvAndReplay:
+ *      与handler_type绑定的事件处理。该事件主要是来自客户端的
+ *      网络消息。
+ */
 struct event_handler_t {
-    /* 该handler_name需要和remote_name保持一致，
-     * 才能够接收对方的信息 */
-    const char *handler_name;
+     
+    const char *handler_type;
 
     // Receiving client data , if successful returns 0, -1 on failure.
     // This method is implemented by some communication module. 
     // For example, cmd_ui_handler.
     EventHandlerCall onRecvAndReplay;
 };
-////////////////////////////////////////////////////////////
 
-// public interface
+//////////////////////////////////////////////////////
+//          public interface                        //
+//////////////////////////////////////////////////////
 int init_tcp_server(Socket *sock, const char *local_ip, int local_port);
 void run_tcp_server(Socket *sock, int thread_mode);
 void exit_tcp_server(Socket *sock);

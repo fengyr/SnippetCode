@@ -52,9 +52,9 @@ static EventHandler* findHandlerByName(Socket *sock, char *name)
     DEBUG("findHandlerByName: enter, name = %s\n", name);
     for (i = 0; i < MAX_HANDLER_NUM; i++) {
         DEBUG("findHandlerByName: loop, name = %s\n", name);
-        if ( ((pHandler[i] != NULL) && (strcmp(pHandler[i]->handler_name, name) == 0)) 
-                || ((pHandler[i] != NULL) && (strcmp(HANDLER_DEFAULT_NAME, name) == 0))) {
-            DEBUG("findHandlerByName: pHandler[i]->handler_name = %s, name = %s\n", pHandler[i]->handler_name, name);
+        if ( ((pHandler[i] != NULL) && (strcmp(pHandler[i]->handler_type, name) == 0)) 
+                || ((pHandler[i] != NULL) && (strcmp(HANDLER_DEFAULT_TYPE, name) == 0))) {
+            DEBUG("findHandlerByName: pHandler[i]->handler_type = %s, name = %s\n", pHandler[i]->handler_type, name);
             return pHandler[i];
         }
     }
@@ -72,7 +72,7 @@ static void init_socket(Socket *sock)
         remote[i].remote_type = -1;
         remote[i].remote_name = (char*) malloc(sizeof(char)*MAX_NAME_LEN);
         memset(remote[i].remote_name, 0, MAX_NAME_LEN);
-        strcpy(remote[i].remote_name, HANDLER_DEFAULT_NAME);
+        strcpy(remote[i].remote_name, HANDLER_DEFAULT_TYPE);
     }
 
     pthread_mutex_init(&(sock->s_mutex), NULL);
@@ -89,7 +89,7 @@ static void restore_remote(Socket *sock, int id)
     remote[id].remote_fd = -1;
     remote[id].remote_type = -1;
     memset(remote[id].remote_name, 0, MAX_NAME_LEN);
-    strcpy(remote[id].remote_name, HANDLER_DEFAULT_NAME);
+    strcpy(remote[id].remote_name, HANDLER_DEFAULT_TYPE);
 
     pthread_mutex_unlock(&sock->s_mutex);
     DEBUG("restore_remote: leave\n");
@@ -312,14 +312,14 @@ void registerHandler(Socket *sock, EventHandler *handler)
         for (i = 0; i < MAX_HANDLER_NUM; i++) {
             EventHandler **mHandler = &sock->pHandlers[i];
             if (*mHandler != NULL) {
-                if (strcmp((*mHandler)->handler_name, handler->handler_name) == 0) {
+                if (strcmp((*mHandler)->handler_type, handler->handler_type) == 0) {
                     (*mHandler) = handler;
-                    DEBUG("registerHandler: replace handler name = %s, i = %d\n", (*mHandler)->handler_name, i);
+                    DEBUG("registerHandler: replace handler name = %s, i = %d\n", (*mHandler)->handler_type, i);
                     return;
                 }
             } else {
                 (*mHandler) = handler;
-                DEBUG("registerHandler: insert handler name = %s, i = %d\n", (*mHandler)->handler_name, i);
+                DEBUG("registerHandler: insert handler name = %s, i = %d\n", (*mHandler)->handler_type, i);
                 return;
             }
         }

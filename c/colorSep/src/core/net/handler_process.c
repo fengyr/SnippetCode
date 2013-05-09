@@ -53,9 +53,9 @@ int default_handler(int fd, char *msg, Socket *sock)
             memset(remote[id].remote_name, 0, MAX_NAME_LEN);
             strcpy(remote[id].remote_name, msg);
 
-            if (strcmp(remote[id].remote_name, HANDLER_CONTROL_NAME) == 0) {
+            if (strcmp(remote[id].remote_name, HANDLER_CONTROL_TYPE) == 0) {
                 remote[id].remote_type = 0;
-            } else if (strcmp(remote[id].remote_name, HANDLER_DATA_NAME) == 0) {
+            } else if (strcmp(remote[id].remote_name, HANDLER_DATA_TYPE) == 0) {
                 remote[id].remote_type = 1;
             }
             DEBUG("remote[id].remote_name = %s, type = %d\n", remote[id].remote_name, remote[id].remote_type);

@@ -14,8 +14,8 @@ LDFLAGS         := -pthread -lm
 OUT_DIR 	    = out
 OBJ_DIR   	    = $(OUT_DIR)/obj
 
-INC_DIR   		= ./include/ ./include/core/ ./include/core/net/ ./include/interface/
-SRC_DIR   		= ./src ./src/core ./src/core/net ./src/interface
+INC_DIR   		= ./include/ ./include/core/ ./include/core/utils ./include/core/net/ ./include/interface/
+SRC_DIR   		= ./src ./src/core ./src/core/net ./src/core/utils ./src/interface
 
 EXTRA_SRC 		= 
 EXCLUDE_FILES 	= 

@@ -20,9 +20,9 @@
 
 #include "connection.h"
 
-#define HANDLER_DEFAULT_NAME   "type_default"
-#define HANDLER_CONTROL_NAME   "type_control"
-#define HANDLER_DATA_NAME      "type_data"
+#define HANDLER_DEFAULT_TYPE   "type_default"
+#define HANDLER_CONTROL_TYPE   "type_control"
+#define HANDLER_DATA_TYPE      "type_data"
 
 struct handler_proc_t {
     int cmd_id;
@@ -30,6 +30,9 @@ struct handler_proc_t {
 };
 typedef struct handler_proc_t HandlerProc, *PHandlerProc;
 
+//////////////////////////////////////////////////////
+//          public interface                        //
+//////////////////////////////////////////////////////
 int default_handler(int fd, char *msg, Socket *sock);
 int call_handler(HandlerProc *handler, int id, int fd, char *msg, Socket *sock); 
 

@@ -26,6 +26,10 @@ struct cmd_ui_t {
 };
 typedef struct cmd_ui_t CmdUi, *PCmdUi;
 
-int cmd_ui_handler(int fd, Socket *sock);
+//////////////////////////////////////////////////////
+//          public interface                        //
+//////////////////////////////////////////////////////
+int ui_control_handler(int fd, Socket *sock);
+int ui_data_handler(int fd, Socket *sock);
 
 #endif /* end of include guard: _cmd_ui_handler_H_ */
