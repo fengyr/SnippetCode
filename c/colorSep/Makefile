@@ -5,7 +5,7 @@
 ###############################################################################
 
 CROSS_COMPILE   =
-OPTIMIZE        := -O
+OPTIMIZE        := 
 WARNINGS        := -Wall
 DEFS            := 
 EXTRA_CFLAGS    := -DUSE_DEBUG

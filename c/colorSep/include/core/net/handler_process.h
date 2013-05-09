@@ -20,9 +20,12 @@
 
 #include "connection.h"
 
-#define HANDLER_DEFAULT_TYPE   "type_default"
-#define HANDLER_CONTROL_TYPE   "type_control"
-#define HANDLER_DATA_TYPE      "type_data"
+#define HANDLER_TYPE_DEFAULT   "type_default"
+#define HANDLER_TYPE_CONTROL   "type_control"
+#define HANDLER_TYPE_DATA      "type_data"
+
+#define REPLAY_SUCCESS      "success"
+#define REPLAY_FAILED       "failed"
 
 struct handler_proc_t {
     int cmd_id;

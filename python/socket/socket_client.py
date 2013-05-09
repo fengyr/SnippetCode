@@ -6,7 +6,7 @@ import sys
 import time
 import struct
 
-HOST = '10.10.96.96'
+HOST = '127.0.0.1'
 PORT = 11014
 
 def getData(ID, msg):
@@ -59,7 +59,7 @@ def tcp3():
     s.connect((HOST, PORT))
     s.settimeout(10)
 
-    s.send(getData(0, "type_data"))
+    s.send(getData(0, "type_new"))
     # s.sendto("hello world", (HOST, PORT));
     print s.recv(4096)
     time.sleep(1)

@@ -53,7 +53,7 @@ static EventHandler* findHandlerByName(Socket *sock, char *name)
     for (i = 0; i < MAX_HANDLER_NUM; i++) {
         DEBUG("findHandlerByName: loop, name = %s\n", name);
         if ( ((pHandler[i] != NULL) && (strcmp(pHandler[i]->handler_type, name) == 0)) 
-                || ((pHandler[i] != NULL) && (strcmp(HANDLER_DEFAULT_TYPE, name) == 0))) {
+                || ((pHandler[i] != NULL) && (strcmp(HANDLER_TYPE_DEFAULT, name) == 0))) {
             DEBUG("findHandlerByName: pHandler[i]->handler_type = %s, name = %s\n", pHandler[i]->handler_type, name);
             return pHandler[i];
         }
@@ -72,7 +72,7 @@ static void init_socket(Socket *sock)
         remote[i].remote_type = -1;
         remote[i].remote_name = (char*) malloc(sizeof(char)*MAX_NAME_LEN);
         memset(remote[i].remote_name, 0, MAX_NAME_LEN);
-        strcpy(remote[i].remote_name, HANDLER_DEFAULT_TYPE);
+        strcpy(remote[i].remote_name, HANDLER_TYPE_DEFAULT);
     }
 
     pthread_mutex_init(&(sock->s_mutex), NULL);
@@ -89,7 +89,7 @@ static void restore_remote(Socket *sock, int id)
     remote[id].remote_fd = -1;
     remote[id].remote_type = -1;
     memset(remote[id].remote_name, 0, MAX_NAME_LEN);
-    strcpy(remote[id].remote_name, HANDLER_DEFAULT_TYPE);
+    strcpy(remote[id].remote_name, HANDLER_TYPE_DEFAULT);
 
     pthread_mutex_unlock(&sock->s_mutex);
     DEBUG("restore_remote: leave\n");
@@ -97,6 +97,10 @@ static void restore_remote(Socket *sock, int id)
 
 static void free_socket(Socket *sock)
 {
+    server_quit = 1;
+
+    sleep(1);
+
     int i, *fd;
     Remote *remote = sock->remote;
 
@@ -116,6 +120,8 @@ static void free_socket(Socket *sock)
     }
 
     pthread_mutex_destroy(&sock->s_mutex);
+
+    fprintf(stderr, "server exit...\n");
 }
 
 static void add_client(Socket *sock, int client_fd)
@@ -210,8 +216,8 @@ static void* server_thread(void *param)
                     if (rc <= 0) {
                         /* close the socket, because remote has shutdown. */
                         restore_remote(sock, i);
-                        FD_CLR(remote[i].remote_fd, &read_fds);
                     } else {
+                        DEBUG("server_thread: handler...\n");
                     }    
                 } else {
                     fprintf(stderr, "server_thread: not found EventHandler\n");
@@ -293,14 +299,13 @@ void run_tcp_server(Socket *sock, int thread_mode)
             exit(1);
         }
     } else {
-        sock->pthread = NULL;
+        sock->pthread = -1;
         server_thread((void*)sock);
     }
 }
 
-void exit_tcp_server(Socket *sock)
+void quit_tcp_server(Socket *sock)
 {
-    server_quit = 1;
     free_socket(sock);
 }
 
@@ -308,7 +313,7 @@ void registerHandler(Socket *sock, EventHandler *handler)
 {
     int i;
 
-    if (sock != NULL) {
+    if ((sock != NULL) && !server_quit) {
         for (i = 0; i < MAX_HANDLER_NUM; i++) {
             EventHandler **mHandler = &sock->pHandlers[i];
             if (*mHandler != NULL) {

@@ -59,24 +59,29 @@ typedef int (*EventHandlerCall)(int remote_fd, Socket *sock);
  *      这两个Key值一致，服务器才会接收对方的信息。
  * onRecvAndReplay:
  *      与handler_type绑定的事件处理。该事件主要是来自客户端的
- *      网络消息。
+ *      网络消息，可参考<ui_interface.c>。
  */
 struct event_handler_t {
-     
     const char *handler_type;
-
-    // Receiving client data , if successful returns 0, -1 on failure.
-    // This method is implemented by some communication module. 
-    // For example, cmd_ui_handler.
     EventHandlerCall onRecvAndReplay;
 };
 
 //////////////////////////////////////////////////////
 //          public interface                        //
 //////////////////////////////////////////////////////
+struct tcp_server_t {
+    int (*init)(Socket *sock, const char *local_ip, int local_port);
+    void (*run)(Socket *sock, int thread_mode);
+    void (*quit)(Socket *sock);
+    void (*register_handler)(Socket *sock, EventHandler *handler);
+};
+typedef struct tcp_server_t TcpServer, *PTcpServer;
+
+#define INIT_TCP_SERVER {init_tcp_server, run_tcp_server, quit_tcp_server, registerHandler}
+
 int init_tcp_server(Socket *sock, const char *local_ip, int local_port);
 void run_tcp_server(Socket *sock, int thread_mode);
-void exit_tcp_server(Socket *sock);
+void quit_tcp_server(Socket *sock);
 void registerHandler(Socket *sock, EventHandler *handler);
 
 #endif /* end of include guard: _connect_H_ */

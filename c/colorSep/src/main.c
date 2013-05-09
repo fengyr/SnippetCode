@@ -62,18 +62,20 @@ int main(int argc, const char *argv[])
     Socket sock_ui; 
 
     EventHandler control_handler;
-    control_handler.handler_type = HANDLER_CONTROL_TYPE;
+    control_handler.handler_type = HANDLER_TYPE_CONTROL;
     control_handler.onRecvAndReplay = ui_control_handler;
 
     EventHandler data_handler;
-    data_handler.handler_type = HANDLER_DATA_TYPE;
+    data_handler.handler_type = HANDLER_TYPE_DATA;
     data_handler.onRecvAndReplay = ui_data_handler;
 
-    init_tcp_server(&sock_ui, "10.10.96.96", UI_PORT);
-    registerHandler(&sock_ui, &control_handler);
-    registerHandler(&sock_ui, &data_handler);
+    TcpServer server = INIT_TCP_SERVER;
 
-    run_tcp_server(&sock_ui, 1);
+    server.init(&sock_ui, NULL, UI_PORT);
+    server.register_handler(&sock_ui, &control_handler);
+    server.register_handler(&sock_ui, &data_handler);
+
+    server.run(&sock_ui, 1);
 
     while (1) {
         sleep(1);
