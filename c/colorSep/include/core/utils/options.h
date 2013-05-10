@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  command_line.h
+ *       Filename:  options.h
  *
  *    Description:  
  *
@@ -18,10 +18,6 @@
 #ifndef _command_line_H_
 #define _command_line_H_
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 /* Types of tags that can be parsed */
 #define TAGTYPE_BOOL 0
 #define TAGTYPE_INT 1
@@ -34,15 +30,24 @@
 #define TAGERR_TYPE -3
 #define TAGERR_DATA -4
 
-/* The basic struct that defines what to look for and what to do when you find it */
-typedef struct
-{
-	char *name; /* text to look for */
-	int type;   /* what to do about it */
-	void *data;  /* pointer for possible return of data */
-} tag;
+typedef struct {
+	const char *name;       /* text to look for */
+	int type;               /* what to do about it */
+	void *data;             /* pointer for possible return of data */
+} Tag;
 
-int parse_params (int argc, const char *argv[], int numtags, tag* t);
-int parse_params_action (const char *argv[], int ii, tag t);
+//////////////////////////////////////////////////////
+//          public interface                        //
+//////////////////////////////////////////////////////
+#define DEFAULT_SERVER_IP       ""
+#define DEFAULT_SERVER_PORT     11014
+
+typedef struct options_t {
+    char config_file_path[255];     /* --config */
+    char server_ip_addr[24];        /* --addr */
+    int server_port;                /* --port */
+} Options, *POptions;
+
+int getOptions(Options *options, int argc, const char *argv[]);
 
 #endif /* end of include guard: _command_line_H_ */

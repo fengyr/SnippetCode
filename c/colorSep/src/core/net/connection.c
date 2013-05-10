@@ -248,7 +248,7 @@ int init_tcp_server(Socket *sock, const char *local_ip, int local_port)
     localaddr.sin_family = AF_INET;
     localaddr.sin_port = htons(local_port);
     /* localaddr.sin_addr.s_addr = inet_addr(local_ip); */
-    if (NULL == local_ip) {
+    if ((NULL == local_ip) || (strcmp(local_ip, "") == 0)) {
         localaddr.sin_addr.s_addr = htonl(INADDR_ANY);
     } else {
         inet_aton(local_ip, &(localaddr.sin_addr));

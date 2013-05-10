@@ -69,16 +69,6 @@ struct event_handler_t {
 //////////////////////////////////////////////////////
 //          public interface                        //
 //////////////////////////////////////////////////////
-struct tcp_server_t {
-    int (*init)(Socket *sock, const char *local_ip, int local_port);
-    void (*run)(Socket *sock, int thread_mode);
-    void (*quit)(Socket *sock);
-    void (*register_handler)(Socket *sock, EventHandler *handler);
-};
-typedef struct tcp_server_t TcpServer, *PTcpServer;
-
-#define INIT_TCP_SERVER {init_tcp_server, run_tcp_server, quit_tcp_server, registerHandler}
-
 int init_tcp_server(Socket *sock, const char *local_ip, int local_port);
 void run_tcp_server(Socket *sock, int thread_mode);
 void quit_tcp_server(Socket *sock);

@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  cmd_ui_handler.c
+ *       Filename:  ui_interface.c
  *
  *    Description:  
  *
@@ -51,9 +51,9 @@ int ui_control_handler(int fd, Socket *sock)
     recv_size = recv(fd, &cmd, sizeof(cmd), 0);
 
     if (recv_size < 0) {
-        perror("cmd_ui_handler: error");
+        perror("ui_handler: error");
     } else if (recv_size == 0) {
-        printf("cmd_ui_handler: client quit!!!\n");
+        printf("ui_handler: client quit!!!\n");
     } else {
         DEBUG("cmd_id = %d, cmd_msg = %s\n", cmd.cmd_id, cmd.cmd_msg);
         call_handler(control_proc, cmd.cmd_id, fd, cmd.cmd_msg, sock);
@@ -87,9 +87,9 @@ int ui_data_handler(int fd, Socket *sock)
     recv_size = recv(fd, &cmd, sizeof(cmd), 0);
 
     if (recv_size < 0) {
-        perror("cmd_ui_handler: error");
+        perror("ui_handler: error");
     } else if (recv_size == 0) {
-        printf("cmd_ui_handler: client quit!!!\n");
+        printf("ui_handler: client quit!!!\n");
     } else {
         DEBUG("cmd_id = %d, cmd_msg = %s\n", cmd.cmd_id, cmd.cmd_msg);
         call_handler(data_proc, cmd.cmd_id, fd, cmd.cmd_msg, sock);

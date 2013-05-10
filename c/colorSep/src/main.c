@@ -19,67 +19,18 @@
 #include <stdio.h>
 #include <sys/types.h>
 
-#include "connection.h"
-#include "ui_interface.h"
-#include "handler_process.h"
-#include "command_line.h"
-
-#define UI_PORT 11014
-
-void command_test(int argc, const char *argv[])
-{
-    int returnval;
-
-	/* initialize a struct with that to look for */
-	tag t[3];
-
-	int flag;
-	t[0].name = "-m";
-	t[0].type = TAGTYPE_BOOL;
-	t[0].data = &flag;
-
-	char filename[10];
-	t[1].name = "-file";
-	t[1].type = TAGTYPE_STRING;
-	t[1].data = filename;
-
-	float init;
-	t[2].name = "-init";
-	t[2].type = TAGTYPE_FLOAT;
-	t[2].data = &init;
-
-	returnval = parse_params(argc, argv, 3, t);
-
-	printf("\nreturn value = %d\n", returnval);
-
-	printf("\n%d\n%s\n%f\n", flag, filename, init);
-}
+#include "options.h"
+#include "tcp_server.h"
 
 int main(int argc, const char *argv[])
 {
-    command_test(argc, argv);
+    Options options;
+    getOptions(&options, argc, argv);
 
-    Socket sock_ui; 
-
-    EventHandler control_handler;
-    control_handler.handler_type = HANDLER_TYPE_CONTROL;
-    control_handler.onRecvAndReplay = ui_control_handler;
-
-    EventHandler data_handler;
-    data_handler.handler_type = HANDLER_TYPE_DATA;
-    data_handler.onRecvAndReplay = ui_data_handler;
-
-    TcpServer server = INIT_TCP_SERVER;
-
-    server.init(&sock_ui, NULL, UI_PORT);
-    server.register_handler(&sock_ui, &control_handler);
-    server.register_handler(&sock_ui, &data_handler);
-
-    server.run(&sock_ui, 1);
-
-    while (1) {
-        sleep(1);
-    }
+    TcpServer *server = &g_tcp_server;
+    server->init(server, options.server_ip_addr, options.server_port);
+    server->run(server, 0);
+    server->quit(server);
 
     return 0;
 }

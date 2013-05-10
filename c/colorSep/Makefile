@@ -8,7 +8,8 @@ CROSS_COMPILE   =
 OPTIMIZE        := 
 WARNINGS        := -Wall
 DEFS            := 
-EXTRA_CFLAGS    := -DUSE_DEBUG
+EXTRA_CFLAGS    := 
+# EXTRA_CFLAGS    := -DUSE_DEBUG
 LDFLAGS         := -pthread -lm
 
 OUT_DIR 	    = out
@@ -53,7 +54,7 @@ prefix_objdir  = $(shell echo $(OBJ_DIR)|sed 's:\(\./*\)*::')
 prefix_objdir := $(filter-out /,$(prefix_objdir)/)
 endif
 
-GCC      := $(CROSS_COMPILE)g++
+GCC      := $(CROSS_COMPILE)gcc
 G++      := $(CROSS_COMPILE)g++
 SRC_DIR := $(sort . $(SRC_DIR))
 inc_dir = $(foreach d,$(sort $(INC_DIR) $(SRC_DIR)),-I$d)
