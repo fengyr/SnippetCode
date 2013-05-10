@@ -1,0 +1,102 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/frame_background"
+    tools:context=".DisplayActivity" >
+
+    <LinearLayout
+        android:id="@+id/id_photo_wrapper"
+        android:layout_width="960dip"
+        android:layout_height="450dip"
+        android:layout_marginLeft="20dip"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="960dip"
+            android:layout_height="400dip" >
+
+            <ImageView 
+                android:layout_width="960dip"
+                android:layout_height="fill_parent"
+                android:background="@drawable/display_photo_frame"/>
+            
+            <com.pateo.as.photo.view.PhotoView
+                android:id="@+id/id_photo_image"
+                android:layout_width="960dip"
+                android:layout_height="400dip"
+                android:scaleType="center" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/id_photo_name"
+            android:layout_width="960dip"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="#ffffffff"
+            android:background="@drawable/display_photo_name" />
+    </LinearLayout>
+
+    <com.pateo.as.photo.view.ToolBar
+        android:id="@+id/id_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:layout_below="@id/id_photo_wrapper"
+        android:layout_marginTop="20dip"
+        android:gravity="center_vertical|left" >
+
+        <ImageButton
+            android:id="@+id/id_toolbar_btn_pre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_btn_pre_selector" />
+        
+        <ImageButton
+            android:id="@+id/id_toolbar_btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_btn_next_selector" />
+        
+        <ImageButton
+            android:id="@+id/id_toolbar_btn_rotate_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_btn_rotate_left_selector" />
+        
+        <ImageButton
+            android:id="@+id/id_toolbar_btn_rotate_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_btn_rotate_right_selector" />
+        
+        <ImageButton
+            android:id="@+id/id_toolbar_btn_navigate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_btn_navigate_selector" />
+        
+        <ImageButton
+            android:id="@+id/id_toolbar_btn_fullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_btn_fullscreen_selector" />
+        
+        <ImageButton
+            android:id="@+id/id_toolbar_btn_slide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_btn_slide_selector" />
+        
+        <ImageButton
+            android:id="@+id/id_toolbar_btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_btn_delete_selector" />
+    </com.pateo.as.photo.view.ToolBar>
+
+</RelativeLayout>
