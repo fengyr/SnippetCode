@@ -144,6 +144,8 @@ static void add_client(Socket *sock, int client_fd)
 
 static void* server_thread(void *param)
 {
+    pthread_detach(pthread_self());
+
     Socket *sock = (Socket*) param;
     Remote *remote = sock->remote;
 
@@ -230,7 +232,7 @@ static void* server_thread(void *param)
     pthread_exit(NULL);
 }
 
-int init_tcp_server(Socket *sock, const char *local_ip, int local_port)
+int tcp_server_init(Socket *sock, const char *local_ip, int local_port)
 {
     int rtn = -1;
     int val = MAX_REMOTE_NUM;
@@ -286,7 +288,7 @@ ERROR:
     return -1;
 }
 
-void run_tcp_server(Socket *sock, int thread_mode)
+void tcp_server_run(Socket *sock, int thread_mode)
 {
     assert(sock != NULL);
 
@@ -302,10 +304,14 @@ void run_tcp_server(Socket *sock, int thread_mode)
         sock->pthread = -1;
         server_thread((void*)sock);
     }
+
+    printf("server running...\n");
 }
 
-void quit_tcp_server(Socket *sock)
+void tcp_server_quit(Socket *sock)
 {
+    assert(sock != NULL);
+
     free_socket(sock);
 }
 

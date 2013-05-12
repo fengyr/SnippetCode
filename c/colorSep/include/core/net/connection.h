@@ -69,9 +69,9 @@ struct event_handler_t {
 //////////////////////////////////////////////////////
 //          public interface                        //
 //////////////////////////////////////////////////////
-int init_tcp_server(Socket *sock, const char *local_ip, int local_port);
-void run_tcp_server(Socket *sock, int thread_mode);
-void quit_tcp_server(Socket *sock);
+int tcp_server_init(Socket *sock, const char *local_ip, int local_port);
+void tcp_server_run(Socket *sock, int thread_mode);
+void tcp_server_quit(Socket *sock);
 void registerHandler(Socket *sock, EventHandler *handler);
 
 #endif /* end of include guard: _connect_H_ */

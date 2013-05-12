@@ -29,6 +29,6 @@ struct tcp_server_t {
 };
 typedef struct tcp_server_t TcpServer, *PTcpServer;
 
-extern TcpServer g_tcp_server;
+TcpServer* getTcpServer();
 
 #endif /* end of include guard: _tcp_server_H_ */
