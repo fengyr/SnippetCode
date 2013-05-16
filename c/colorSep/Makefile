@@ -9,7 +9,7 @@ OPTIMIZE        :=
 WARNINGS        := -Wall
 DEFS            := 
 EXTRA_CFLAGS    := 
-# EXTRA_CFLAGS    := -DUSE_DEBUG
+EXTRA_CFLAGS    := -DUSE_DEBUG
 LDFLAGS         := -pthread -lm
 
 OUT_DIR 	    = out

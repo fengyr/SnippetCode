@@ -18,6 +18,10 @@
 #ifndef _debug_H_
 #define _debug_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdio.h>
 #include <stdarg.h>
 
@@ -26,6 +30,10 @@
 #  define DEBUG(fmt, args...) fprintf(stderr, fmt, ## args)
 #else
 #  define DEBUG(fmt, args...)
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif /* end of include guard: _debug_H_ */

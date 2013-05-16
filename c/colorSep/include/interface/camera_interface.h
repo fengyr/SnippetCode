@@ -18,6 +18,15 @@
 #ifndef _shm_interface_H_
 #define _shm_interface_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
+
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* end of include guard: _shm_interface_H_ */

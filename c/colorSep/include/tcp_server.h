@@ -18,6 +18,10 @@
 #ifndef _tcp_server_H_
 #define _tcp_server_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "connection.h"
 
 struct tcp_server_t {
@@ -30,5 +34,9 @@ struct tcp_server_t {
 typedef struct tcp_server_t TcpServer, *PTcpServer;
 
 TcpServer* getTcpServer();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* end of include guard: _tcp_server_H_ */

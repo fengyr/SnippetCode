@@ -18,6 +18,10 @@
 #ifndef _handler_process_H_
 #define _handler_process_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "connection.h"
 
 #define HANDLER_TYPE_DEFAULT   "type_default"
@@ -41,5 +45,9 @@ int call_handler(HandlerProc *handler, int id, int fd, char *msg, Socket *sock);
 
 #define DEFAULT_HANDLER {0, default_handler}
 #define SIZE_OF_HANDLER(PHANDLER) (sizeof((*PHANDLER))/sizeof(PHandlerProc))
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* end of include guard: _handler_process_H_ */

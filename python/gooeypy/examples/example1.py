@@ -33,7 +33,7 @@ You can also have line breaks."""
 tb = gui.TextBlock(value=data, x=200, y=350, width=300)
 
 # Add our widgets to our App.
-app.add(w1,w2,w3,w4,w9,l1,tb)
+app.add(w1, w2, w3, w4, w9, l1, tb)
 
 # Now lets make us a VBox, which will automatically position widgets inside of it
 # vertically. Give it an ugly bgcolor too for fun.
@@ -44,7 +44,7 @@ w6 = gui.Button("Value 2")
 w7 = gui.Button("Value 3")
 w8 = gui.Button("Value 4")
 
-b1.add(w5,w6,w7,w8)
+b1.add(w5, w6, w7, w8)
 
 # And add it to our App.
 app.add(b1)
@@ -52,19 +52,19 @@ app.add(b1)
 
 # Lets create a SelectBox. First I want to make a switch for selecting
 # wether or not the select box should allow multiple selections.
-mon = gui.Switch(False, labels=("Multiple","Single"), options=(True, False),
-        x=430, y=200, min_width=110)
+mon = gui.Switch(False, labels=("Multiple", "Single"), options=(True, False),
+                 x=430, y=200, min_width=110)
 app.add(mon)
 # Ah heck, lets have another switch.
 don = gui.Switch(False, labels=("Disabled", "Enabled"), options=(True, False),
-        x=430, y=260, min_width=110)
+                 x=430, y=260, min_width=110)
 app.add(don)
 
 # Now we make the SelectBox. Notice how we link the value of our switch to the
 # multiple and disabled values here. We could accomplish the same thing by using
 # widget.connect, this is just easier and way cooler.
 sb1 = gui.SelectBox(disabled=don.link("value"), multiple=mon.link("value"),
-        x=200, y=200, width=200, scrollable=False, height=100)
+                    x=200, y=200, width=200, scrollable=False, height=100)
 sb1.add("Value 1", "value1")
 sb1.add("Value 2", "value2")
 sb1.add("Value 3", "value3")
@@ -79,7 +79,6 @@ sb1.add(w2, "inputvalue")
 
 # Ok, now we add it to the App...
 app.add(sb1)
-
 
 
 # Connections are still useful, lets make one. Here is our callback.

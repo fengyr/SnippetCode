@@ -18,6 +18,10 @@
 #ifndef _connect_H_
 #define _connect_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <pthread.h>
 
 #define MAX_REMOTE_NUM  8
@@ -73,5 +77,9 @@ int tcp_server_init(Socket *sock, const char *local_ip, int local_port);
 void tcp_server_run(Socket *sock, int thread_mode);
 void tcp_server_quit(Socket *sock);
 void registerHandler(Socket *sock, EventHandler *handler);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* end of include guard: _connect_H_ */

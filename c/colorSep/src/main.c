@@ -28,7 +28,7 @@ int main(int argc, const char *argv[])
     getOptions(&options, argc, argv);
 
     TcpServer *server = getTcpServer();
-    server->init(server, options.server_ip_addr, options.server_port);
+    server->init(server, options.cmd.server_ip_addr, options.cmd.server_port);
     server->run(server, 1);
     server->quit(server);
 
