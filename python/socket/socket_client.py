@@ -40,15 +40,15 @@ def tcp2():
     s.connect((HOST, PORT))
     s.settimeout(10)
 
-    s.send(getData(0, "type_default"))
+    s.send(getData(0, "type_img_data"))
     # s.sendto("hello world", (HOST, PORT));
     print s.recv(4096)
     time.sleep(1)
 
-    s.send(getData(1, "default"))
+    s.send(getData(1, "type_img_data"))
     print s.recv(4096)
 
-    s.send(getData(2, "default 2"))
+    s.send(getData(2, "type_img_data 2"))
     print s.recv(4096)
 
     time.sleep(10)
@@ -59,15 +59,15 @@ def tcp3():
     s.connect((HOST, PORT))
     s.settimeout(10)
 
-    s.send(getData(0, "type_new"))
+    s.send(getData(0, "type_ref_data"))
     # s.sendto("hello world", (HOST, PORT));
     print s.recv(4096)
     time.sleep(1)
 
-    s.send(getData(1, "ui_data"))
+    s.send(getData(1, "type_ref_data"))
     print s.recv(4096)
 
-    s.send(getData(2, "ui_data 2"))
+    s.send(getData(2, "type_ref_data 2"))
     print s.recv(4096)
 
     time.sleep(10)
