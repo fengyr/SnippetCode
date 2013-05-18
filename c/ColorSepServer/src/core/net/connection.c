@@ -142,7 +142,7 @@ static void add_client(Socket *sock, int client_fd)
     DEBUG("add_client: leave\n");
 }
 
-static void* server_thread(void *param)
+static void* thread_tcp_server(void *param)
 {
     pthread_detach(pthread_self());
 
@@ -173,21 +173,21 @@ static void* server_thread(void *param)
         pthread_mutex_unlock(&sock->s_mutex);
         /* end set fd_set */
 
-        DEBUG("server_thread: enter select, max_fd = %d\n", max_fd);
+        DEBUG("thread_tcp_server: enter select, max_fd = %d\n", max_fd);
         dumpInfo(sock);
 
         rc = select(max_fd + 1, &read_fds, 0, 0, 0);    
         if (rc < 0) {
-            perror("server_thread: select error");
+            perror("thread_tcp_server: select error");
             sleep(1);
             continue;
         } else if (rc == 0) {
-            DEBUG("server_thread: select continue\n");
+            DEBUG("thread_tcp_server: select continue\n");
             continue;
         }
 
         if (FD_ISSET(sock->local_fd, &read_fds)) {
-            DEBUG("server_thread: accept loop...\n");
+            DEBUG("thread_tcp_server: accept loop...\n");
             struct sockaddr_in addr;
             socklen_t alen;
             int client;
@@ -198,7 +198,7 @@ static void* server_thread(void *param)
             } while ((client < 0) && (errno == EINTR));
 
             if (client < 0) {
-                perror("server_thread: accept error");
+                perror("thread_tcp_server: accept error");
                 continue;
             }
 
@@ -208,7 +208,7 @@ static void* server_thread(void *param)
 
         for (i = 0; i < MAX_REMOTE_NUM; i++) {
             if (i != sock->local_fd && FD_ISSET(remote[i].remote_fd, &read_fds)) {
-                DEBUG("server_thread: enter event handler\n");
+                DEBUG("thread_tcp_server: enter event handler\n");
                 // read from client and replay
                 EventHandler *handler = findHandlerByName(sock, remote[i].remote_name);
                 if (handler != NULL) {
@@ -219,10 +219,10 @@ static void* server_thread(void *param)
                         /* close the socket, because remote has shutdown. */
                         restore_remote(sock, i);
                     } else {
-                        DEBUG("server_thread: handler...\n");
+                        DEBUG("thread_tcp_server: handler...\n");
                     }    
                 } else {
-                    fprintf(stderr, "server_thread: not found EventHandler\n");
+                    fprintf(stderr, "thread_tcp_server: not found EventHandler\n");
                     restore_remote(sock, i);
                 }
             }
@@ -295,14 +295,15 @@ void tcp_server_run(Socket *sock, int thread_mode)
     int res = -1;
 
     if (thread_mode) {
-        res = pthread_create(&sock->pthread, NULL, server_thread, (void*)sock);
+        res = pthread_create(&sock->pthread, NULL, thread_tcp_server, (void*)sock);
         if (res < 0) {
             perror("run_tcp_server: pthread_create error");
             exit(1);
         }
+        pthread_detach(sock->pthread);
     } else {
         sock->pthread = -1;
-        server_thread((void*)sock);
+        thread_tcp_server((void*)sock);
     }
 
     printf("server running...\n");

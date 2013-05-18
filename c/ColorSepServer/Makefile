@@ -9,18 +9,18 @@ OPTIMIZE        :=
 WARNINGS        := -Wall
 DEFS            := 
 EXTRA_CFLAGS    := 
-EXTRA_CFLAGS    := -DUSE_DEBUG
-LDFLAGS         := -pthread -lm
+# EXTRA_CFLAGS    := -DUSE_DEBUG
+LDFLAGS         := -pthread -lm -lrt
 
-OUT_DIR 	    = out
-OBJ_DIR   	    = $(OUT_DIR)/obj
+OUT_DIR 	= out
+OBJ_DIR   	= $(OUT_DIR)/obj
 
-INC_DIR   		= ./include/ ./include/core/ ./include/core/utils ./include/core/net/ ./include/interface/
-SRC_DIR   		= ./src ./src/core ./src/core/net ./src/core/utils ./src/interface
+INC_DIR  	= ./include/ ./include/core/ ./include/core/utils ./include/core/net/ ./include/interface/
+SRC_DIR   	= ./src ./src/core ./src/core/net ./src/core/utils ./src/interface
 
-EXTRA_SRC 		= 
+EXTRA_SRC 	= 
 EXCLUDE_FILES 	= 
-SUFFIX 			= c cpp
+SUFFIX 		= c cpp
 EXTRA_OBJS      = 
 
 TARGET          := colorSepServer
