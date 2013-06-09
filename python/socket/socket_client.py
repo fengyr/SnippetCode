@@ -10,8 +10,9 @@ HOST = '127.0.0.1'
 PORT = 11014
 
 def getData(ID, msg):
-    fm = 'i%is' % (len(msg))
-    data = struct.pack(fm, ID, msg)
+    fm = 'i%is2s' % (len(msg))
+    # fm = 'i512s2s'
+    data = struct.pack(fm, ID, msg, '\r\n')
 
     return data
 
@@ -21,15 +22,15 @@ def tcp():
     s.connect((HOST, PORT))
     s.settimeout(10)
 
-    s.send(getData(0, "type_control"))
+    s.send(getData(0, "type_ui_control"))
     # s.sendto("hello world", (HOST, PORT));
     print s.recv(4096)
     time.sleep(1)
 
-    s.send(getData(1, "hello world"))
+    s.send(getData(2, "hello world"))
     print s.recv(4096)
 
-    s.send(getData(2, "hello world 2"))
+    s.send(getData(3, "hello world 2"))
     print s.recv(4096)
 
     time.sleep(10)
@@ -43,13 +44,17 @@ def tcp2():
     s.send(getData(0, "type_img_data"))
     # s.sendto("hello world", (HOST, PORT));
     print s.recv(4096)
-    time.sleep(1)
 
-    s.send(getData(1, "type_img_data"))
-    print s.recv(4096)
+    while True:
+        headLen = s.recv(4)
+        l = struct.unpack('i', headLen)[0]
+        print 'length = ', l
 
-    s.send(getData(2, "type_img_data 2"))
-    print s.recv(4096)
+        dataLen = 0
+        while dataLen < l:
+            data = s.recv(l-dataLen)
+            print data
+            dataLen += len(data)
 
     time.sleep(10)
 
@@ -64,10 +69,29 @@ def tcp3():
     print s.recv(4096)
     time.sleep(1)
 
-    s.send(getData(1, "type_ref_data"))
+    s.send(getData(2, "type_ref_data"))
     print s.recv(4096)
 
-    s.send(getData(2, "type_ref_data 2"))
+    s.send(getData(3, "type_ref_data 2"))
+    print s.recv(4096)
+
+    time.sleep(10)
+
+def tcp4():
+    """docstring for tcp"""
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((HOST, PORT))
+    s.settimeout(10)
+
+    s.send(getData(0, "type_camera_control"))
+    # s.sendto("hello world", (HOST, PORT));
+    print s.recv(4096)
+    time.sleep(1)
+
+    s.send(getData(2, "type_camera_control 1"))
+    print s.recv(4096)
+
+    s.send(getData(3, "type_camera_control 2"))
     print s.recv(4096)
 
     time.sleep(10)
@@ -96,5 +120,7 @@ if __name__ == '__main__':
                 tcp2()
             elif sys.argv[2] == '3':
                 tcp3()
+            elif sys.argv[2] == '4':
+                tcp4()
         elif sys.argv[1] == 'udp':
             udp()
