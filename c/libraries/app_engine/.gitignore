@@ -1,0 +1,14 @@
+tags
+*.swp
+*.swo
+cscope*
+GPATH
+GRTAGS
+GTAGS
+.utags
+.clang_complete
+new/
+old/
+out/
+colorSepServer
+*.so

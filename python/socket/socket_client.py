@@ -13,6 +13,7 @@ def getData(ID, msg):
     fm = 'i%is2s' % (len(msg))
     # fm = 'i512s2s'
     data = struct.pack(fm, ID, msg, '\r\n')
+    print data
 
     return data
 
