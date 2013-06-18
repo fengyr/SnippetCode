@@ -89,6 +89,12 @@ static void start_background_loop(App *app)
     pthread_detach(pthread);
 }
 
+static void start_foreground_loop(App *app)
+{
+    printf("app: running foreground mode, so disable call onProcess !!!\n");
+    looper_run(app->looper);
+}
+
 static void run(struct app_runtime_t *app)
 {
     trigger_message(app);
@@ -105,8 +111,7 @@ static void run(struct app_runtime_t *app)
             usleep(100);
         }
     } else {
-        printf("app: running foreground mode, so disable call onProcess !!!\n");
-        looper_run(app->looper);
+        start_foreground_loop(app);
     }
 }
 
@@ -119,13 +124,18 @@ static void quit(struct app_runtime_t *app)
     message_queue_destory(app->msg_queue);
     looper_exit(app->looper);
 
-    if (app->tcp_server != NULL) {
-        app->tcp_server->quit(app->tcp_server);
+    if (app->camera_server != NULL) {
+        app->camera_server->quit(app->camera_server);
     }
 
     if (app->telnet_server != NULL) {
         app->telnet_server->quit(app->telnet_server);
     }
+}
+
+const char* get_version()
+{
+    return "0.2.0_20130618";
 }
 
 int trans_message(Message *msg)
@@ -145,20 +155,21 @@ App* create_app_instance(Options *options)
     app->run = run;
     app->quit = quit;
 
-    // create tcp server instance and run server in background
-    TcpServer *tcp_server = create_tcp_server_instance();
-    tcp_server->init(tcp_server, options->cmd.server_ip_addr, options->cmd.server_port);
-    tcp_server->run(tcp_server, 1);
+    // create camera server instance and run server in background
+    CameraServer *camera_server = create_camera_server_instance();
+    camera_server->init(camera_server, options->cmd.server_ip_addr, options->cmd.server_port);
+    camera_server->run(camera_server, 1);
 
     // create telnet server instance and run server in background
     TelnetServer *telnet_server = create_telnet_server_instance();
     telnet_server->init(telnet_server, options->cmd.server_ip_addr, 11018);
     telnet_server->run(telnet_server, 1);
 
-    // set Options and TcpServer
+    // set Options and CameraServer .etc
     app->options = options;
-    app->tcp_server = tcp_server;
+    app->camera_server = camera_server;
     app->telnet_server = telnet_server;
+    app->version = get_version;
 
     return app;
 }

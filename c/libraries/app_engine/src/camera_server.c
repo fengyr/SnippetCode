@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  tcp_server.c
+ *       Filename:  camera_server.c
  *
  *    Description:  
  *
@@ -15,7 +15,7 @@
  *
  * =====================================================================================
  */
-#include "tcp_server.h"
+#include "camera_server.h"
 #include "connection.h"
 #include "ui_interface.h"
 #include "handler_process.h"
@@ -25,9 +25,9 @@ static EventHandler s_ui_control_handler;
 static EventHandler s_img_data_handler;
 static EventHandler s_ref_data_handler;
 static EventHandler s_camera_control_handler;
-static TcpServer s_tcp_server;
+static CameraServer s_camera_server;
 
-static int init(struct tcp_server_t *server, const char *local_ip, int local_port)
+static int init(struct camera_server_t *server, const char *local_ip, int local_port)
 {
     int rtn = tcp_server_init(server->sock, local_ip, local_port, "camera");
 
@@ -54,22 +54,22 @@ static int init(struct tcp_server_t *server, const char *local_ip, int local_por
     return rtn;
 }
 
-static void run(struct tcp_server_t *server, int thread_mode)
+static void run(struct camera_server_t *server, int thread_mode)
 {
     tcp_server_run(server->sock, thread_mode);
 }
 
-static void quit(struct tcp_server_t *server)
+static void quit(struct camera_server_t *server)
 {
     tcp_server_quit(server->sock);
 }
 
-TcpServer* create_tcp_server_instance()
+CameraServer* create_camera_server_instance()
 {
-    s_tcp_server.sock = &s_server_sock;
-    s_tcp_server.init = init; 
-    s_tcp_server.run = run; 
-    s_tcp_server.quit = quit;        
+    s_camera_server.sock = &s_server_sock;
+    s_camera_server.init = init; 
+    s_camera_server.run = run; 
+    s_camera_server.quit = quit;        
 
-    return &s_tcp_server;
+    return &s_camera_server;
 }

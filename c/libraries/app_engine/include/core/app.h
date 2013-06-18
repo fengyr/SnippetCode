@@ -24,7 +24,7 @@ extern "C" {
 
 #include "message.h"
 #include "message_queue.h"
-#include "tcp_server.h"
+#include "camera_server.h"
 #include "telnet_server.h"
 #include "looper.h"
 #include "options.h"
@@ -35,13 +35,17 @@ struct app_runtime_t {
     MessageQueue *msg_queue;
     Looper *looper;
 
-    TcpServer *tcp_server;
+    CameraServer *camera_server;
     TelnetServer *telnet_server;
 
+    // init && destory
     void (*init)(struct app_runtime_t *app);
     void (*register_handler)(HandlerMessage handler, int thread_mode);
     void (*run)(struct app_runtime_t *app);
     void (*quit)(struct app_runtime_t *app);
+
+    // app engine version
+    const char* (*version)();
 
     // 用户自定义方法，在App的生命周期中被调用
     int (*onCreate)(struct app_runtime_t *app);

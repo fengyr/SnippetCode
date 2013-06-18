@@ -40,7 +40,8 @@ static void dumpInfo(Socket *sock)
     int i = 0;
 
     for (i = 0; i < MAX_REMOTE_NUM; i++) {
-        DEBUG("remote_fd[%d] = %d, remote_name[%d] = %s\n", i, remote[i].remote_fd, i, remote[i].remote_name);
+        DEBUG("%s: remote_fd[%d] = %d, remote_name[%d] = %s\n", 
+                sock->local_name, i, remote[i].remote_fd, i, remote[i].remote_name);
     }
 }
 

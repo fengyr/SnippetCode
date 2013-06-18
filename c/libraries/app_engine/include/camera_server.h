@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  tcp_server.h
+ *       Filename:  camera_server.h
  *
  *    Description:  
  *
@@ -15,8 +15,8 @@
  *
  * =====================================================================================
  */
-#ifndef _tcp_server_H_
-#define _tcp_server_H_
+#ifndef _camera_server_H_
+#define _camera_server_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -24,16 +24,16 @@ extern "C" {
 
 #include "connection.h"
 
-struct tcp_server_t {
+struct camera_server_t {
     Socket *sock;
 
-    int (*init)(struct tcp_server_t*, const char*, int);
-    void (*run)(struct tcp_server_t*, int);
-    void (*quit)(struct tcp_server_t*);
+    int (*init)(struct camera_server_t*, const char*, int);
+    void (*run)(struct camera_server_t*, int);
+    void (*quit)(struct camera_server_t*);
 };
-typedef struct tcp_server_t TcpServer, *PTcpServer;
+typedef struct camera_server_t CameraServer, *PCameraServer;
 
-TcpServer* create_tcp_server_instance();
+CameraServer* create_camera_server_instance();
 
 #ifdef __cplusplus
 }
