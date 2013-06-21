@@ -38,7 +38,7 @@ EXCLUDE_FILES 	= camera_interface.c camera_interface.h\
 				  telnet_proc.c
 
 SUFFIX 		= c cpp hpp cc
-EXTRA_OBJS  =
+EXTRA_OBJS  = ./libs/libzlog.so
 
 TARGET          := libapp.so
 TARGET_TYPE     := so

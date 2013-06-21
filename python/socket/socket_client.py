@@ -28,13 +28,24 @@ def tcp():
     print s.recv(4096)
     time.sleep(1)
 
-    s.send(getData(2, "hello world"))
+    s.send(getData(2, "4"))
     print s.recv(4096)
 
-    s.send(getData(3, "hello world 2"))
+    s.send(getData(3, "2"))
     print s.recv(4096)
 
-    time.sleep(10)
+    s.send(getData(4, "3"))
+    print s.recv(4096)
+
+    s.send(getData(5, "start"))
+    print s.recv(4096)
+
+    time.sleep(15)
+
+    s.send(getData(6, "stop"))
+    print s.recv(4096)
+
+    time.sleep(3)
 
 def tcp2():
     """docstring for tcp"""

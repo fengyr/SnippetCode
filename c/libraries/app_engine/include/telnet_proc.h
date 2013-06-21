@@ -24,8 +24,10 @@ extern "C" {
 
 #include "connection.h"
 
+#define TELNET_BUF_SIZE     1024
+
 struct telnet_proc_t {
-    char telnet_cmd[256];
+    char telnet_cmd[TELNET_BUF_SIZE];
     int (*telnet_proc_handler)(int fd, char *msg, Socket *sock);
 } /* optional variable list */;
 typedef struct telnet_proc_t TelnetProc, *PTelnetProc;

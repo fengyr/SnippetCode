@@ -70,10 +70,10 @@ static int call_telnet_handler(TelnetProc *handler, int id, int fd, char *msg, S
 
 static int telnet_proc_stub(int fd, Socket *sock, HandlerProc *handler)
 {    
-    char buffer[256];
+    char buffer[TELNET_BUF_SIZE];
     memset(buffer, 0, sizeof(buffer));
 
-    int recv_size = recv(fd, buffer, 256, 0);
+    int recv_size = recv(fd, buffer, TELNET_BUF_SIZE, 0);
 
     call_telnet_handler(s_telnet_proc, 0, fd, buffer, sock);
 

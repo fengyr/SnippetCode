@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "app.h"
+#include "version.h"
 
 static App s_app;
 static Looper s_looper;
@@ -135,7 +136,7 @@ static void quit(struct app_runtime_t *app)
 
 const char* get_version()
 {
-    return "0.2.0_20130618";
+    return APP_VERSION;
 }
 
 int trans_message(Message *msg)

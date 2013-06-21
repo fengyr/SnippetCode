@@ -179,7 +179,7 @@ static void* thread_tcp_server(void *param)
         pthread_mutex_unlock(&sock->s_mutex);
         /* end set fd_set */
 
-        DEBUG("%s server: enter select, max_fd = %d\n", sock->local_name, max_fd);
+        DEBUG("%s: enter select, max_fd = %d\n", sock->local_name, max_fd);
         dumpInfo(sock);
 
         rc = select(max_fd + 1, &read_fds, 0, 0, 0);    
@@ -188,12 +188,12 @@ static void* thread_tcp_server(void *param)
             sleep(1);
             continue;
         } else if (rc == 0) {
-            DEBUG("%s server: select continue\n", sock->local_name);
+            DEBUG("%s: select continue\n", sock->local_name);
             continue;
         }
 
         if (FD_ISSET(sock->local_fd, &read_fds)) {
-            DEBUG("%s server: accept loop...\n", sock->local_name);
+            DEBUG("%s: accept loop...\n", sock->local_name);
             struct sockaddr_in addr;
             socklen_t alen;
             int client;
@@ -214,7 +214,7 @@ static void* thread_tcp_server(void *param)
 
         for (i = 0; i < MAX_REMOTE_NUM; i++) {
             if (FD_ISSET(remote[i].remote_fd, &read_fds)) {
-                DEBUG("%s server: enter event handler\n", sock->local_name);
+                DEBUG("%s: enter event handler\n", sock->local_name);
                 // read from client and replay
                 EventHandler *handler = findHandlerByName(sock, remote[i].remote_name);
                 if (handler != NULL) {
@@ -228,7 +228,7 @@ static void* thread_tcp_server(void *param)
                         DEBUG("thread_tcp_server: handler...\n");
                     }    
                 } else {
-                    fprintf(stderr, "%s server: not found EventHandler\n", sock->local_name);
+                    fprintf(stderr, "%s: not found EventHandler\n", sock->local_name);
                     restore_remote(sock, i);
                 }
             }

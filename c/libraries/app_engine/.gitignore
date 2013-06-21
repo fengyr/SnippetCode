@@ -12,3 +12,4 @@ old/
 out/
 colorSepServer
 *.so
+!libzlog.so
