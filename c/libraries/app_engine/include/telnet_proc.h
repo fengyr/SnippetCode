@@ -24,7 +24,7 @@ extern "C" {
 
 #include "connection.h"
 
-#define TELNET_BUF_SIZE     1024
+#define TELNET_BUF_SIZE     1024    // 等于MSG_MAX
 
 struct telnet_proc_t {
     char telnet_cmd[TELNET_BUF_SIZE];

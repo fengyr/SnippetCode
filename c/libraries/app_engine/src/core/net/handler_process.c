@@ -131,7 +131,7 @@ int handler_proc_stub(int fd, Socket *sock, HandlerProc *handler)
          * } */
 
         if (recv_size < 0) {
-            fprintf(stderr, "handler_proc_stub: error, id=%d\n", handler->cmd_id);
+            fprintf(stderr, "handler_proc_stub: error, id=%d, buffer=%s\n", handler->cmd_id, buffer);
             break;
         } else if (recv_size == 0) {
             printf("handler_proc_stub: client quit!!!\n");

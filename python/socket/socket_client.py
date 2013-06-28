@@ -10,7 +10,8 @@ HOST = '127.0.0.1'
 PORT = 11014
 
 def getData(ID, msg):
-    fm = 'i%is2s' % (len(msg))
+    # fm = 'i%is2s' % (len(msg))
+    fm = 'i%is2s' % 1022
     # fm = 'i512s2s'
     data = struct.pack(fm, ID, msg, '\r\n')
     print data
@@ -28,19 +29,26 @@ def tcp():
     print s.recv(4096)
     time.sleep(1)
 
-    s.send(getData(2, "4"))
+    # 样本
+    s.send(getData(2, "3"))
     print s.recv(4096)
 
+    # 描述子
     s.send(getData(3, "2"))
     print s.recv(4096)
 
-    s.send(getData(4, "3"))
+    # 分类器
+    s.send(getData(4, "1"))
+    print s.recv(4096)
+
+    # 保存文件
+    s.send(getData(10, "1"))
     print s.recv(4096)
 
     s.send(getData(5, "start"))
     print s.recv(4096)
 
-    time.sleep(15)
+    time.sleep(600)
 
     s.send(getData(6, "stop"))
     print s.recv(4096)

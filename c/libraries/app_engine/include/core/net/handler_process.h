@@ -39,7 +39,7 @@ extern "C" {
 #define REPLAY_SUCCESS      "success"
 #define REPLAY_FAILED       "failed"
 
-#define MSG_MAX 512
+#define MSG_MAX 1024        // 等于TELNET_BUF_SIZE
 
 struct cmd_ui_t {
     int cmd_id;

@@ -26,6 +26,7 @@ static MessageQueue s_msg_queue;
 static MessageHandler s_message_handler;
 static HandlerMessage s_handler_message;
 static int s_loop_run_thread_mode = 1;
+static struct timeval s_start_timeval; 
 
 static void init(struct app_runtime_t *app)
 {
@@ -98,6 +99,9 @@ static void start_foreground_loop(App *app)
 
 static void run(struct app_runtime_t *app)
 {
+    // record start time
+    gettimeofday(&s_start_timeval, NULL);
+
     trigger_message(app);
 
     if (s_loop_run_thread_mode) {
@@ -180,4 +184,9 @@ App* get_app_instance()
     App *app = &s_app;
 
     return app;
+}
+
+struct timeval* get_start_time()
+{
+    return &s_start_timeval;
 }

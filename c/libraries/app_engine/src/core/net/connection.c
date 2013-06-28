@@ -22,6 +22,7 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <sys/types.h>
+#include <sys/time.h>
 #include <sys/socket.h>
 #include <errno.h>
 #include <assert.h>
@@ -136,6 +137,11 @@ static void add_client(Socket *sock, int client_fd)
     Remote *remote = sock->remote;
 
     DEBUG("add_client: enter\n");
+    struct timeval timeout; 
+    timeout.tv_sec = 0;
+    timeout.tv_usec = 200;
+    setsockopt(client_fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout));
+
     pthread_mutex_lock(&sock->s_mutex);
     for (i = 0; i < MAX_REMOTE_NUM; i++) {
         if (remote[i].remote_fd == -1) {

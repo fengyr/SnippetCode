@@ -22,6 +22,8 @@
 extern "C" {
 #endif
 
+#include <sys/time.h>
+
 #include "message.h"
 #include "message_queue.h"
 #include "camera_server.h"
@@ -64,6 +66,8 @@ App* get_app_instance();
 
 // 传送消息
 int trans_message(Message *msg);
+// 获取程序开始运行的时间
+struct timeval* get_start_time();
 
 #ifdef __cplusplus
 }
