@@ -137,10 +137,15 @@ static void add_client(Socket *sock, int client_fd)
     Remote *remote = sock->remote;
 
     DEBUG("add_client: enter\n");
-    struct timeval timeout; 
-    timeout.tv_sec = 0;
-    timeout.tv_usec = 200;
-    setsockopt(client_fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout));
+    struct timeval timeout_r; 
+    timeout_r.tv_sec = 0;
+    timeout_r.tv_usec = 500;
+    setsockopt(client_fd, SOL_SOCKET, SO_RCVTIMEO, &timeout_r, sizeof(timeout_r));
+
+    struct timeval timeout_s; 
+    timeout_s.tv_sec = 0;
+    timeout_s.tv_usec = 800;
+    setsockopt(client_fd, SOL_SOCKET, SO_SNDTIMEO, &timeout_s, sizeof(timeout_s));
 
     pthread_mutex_lock(&sock->s_mutex);
     for (i = 0; i < MAX_REMOTE_NUM; i++) {
@@ -247,8 +252,9 @@ static void* thread_tcp_server(void *param)
 int tcp_server_init(Socket *sock, const char *local_ip, int local_port, const char *name)
 {
     int rtn = -1;
-    int val = MAX_REMOTE_NUM;
+    int val = 1;
     struct sockaddr_in localaddr;
+    struct linger linger = { 0 };
 
     init_socket(sock, name);
 
@@ -271,15 +277,26 @@ int tcp_server_init(Socket *sock, const char *local_ip, int local_port, const ch
     }
     memset(&(localaddr.sin_zero), 0, sizeof(localaddr.sin_zero));
 
-    rtn = bind(fd, (struct sockaddr*)&localaddr, sizeof(localaddr));
-    if (rtn == -1){
-        fprintf(stderr, "init %s: bind error, ip = %s, port = %d\n", sock->local_name, local_ip, local_port);
+    rtn = setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, 
+            (const void*)&val, sizeof(val));
+    if (rtn < 0){
+        perror("init_tcp_server: setsockopt SO_REUSEADDR error");
         goto ERROR;
     }
 
-    rtn = setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &val, sizeof(val));
-    if (rtn < 0){
-        perror("init_tcp_server: setsockopt error");
+    linger.l_onoff = 1;
+    linger.l_linger = 3;
+    rtn = setsockopt(fd, SOL_SOCKET, SO_LINGER, 
+            (const void*) &linger, sizeof(linger));
+    if (rtn < 0) {
+        perror("init_tcp_server: setsockopt SO_LINGER error");
+        goto ERROR;
+    }
+
+    rtn = bind(fd, (struct sockaddr*)&localaddr, sizeof(localaddr));
+    if (rtn == -1){
+        fprintf(stderr, "init %s: bind error, ip = %s, port = %d\n", 
+                sock->local_name, local_ip, local_port);
         goto ERROR;
     }
 

@@ -115,6 +115,10 @@ static void run(struct app_runtime_t *app)
         while (!app->onProcess(app)) {
             usleep(100);
         }
+
+        Message *new_msg = (Message*)create_empty_message(MSG_ON_EXIT); 
+        trans_message(new_msg);
+        usleep(1000);
     } else {
         start_foreground_loop(app);
     }
@@ -186,7 +190,7 @@ App* get_app_instance()
     return app;
 }
 
-struct timeval* get_start_time()
+struct timeval* get_boot_time()
 {
     return &s_start_timeval;
 }
