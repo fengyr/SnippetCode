@@ -29,29 +29,53 @@ def tcp():
     print s.recv(4096)
     time.sleep(1)
 
+    # 特征描述子
+    s.send(getData(3, "2"))
+    print s.recv(4096)
+
+    # 子空间描述子
+    s.send(getData(15, "1"))
+    print s.recv(4096)
+
+    # 分类器
+    s.send(getData(4, "4"))
+    print s.recv(4096)
+
     # 样本
     s.send(getData(2, "3"))
     print s.recv(4096)
 
-    # 描述子
-    s.send(getData(3, "2"))
+    # 是否使用聚类
+    s.send(getData(7, "1"))
     print s.recv(4096)
 
-    # 分类器
-    s.send(getData(4, "1"))
+    # 最小可分类间距
+    s.send(getData(13, "9"))
+    print s.recv(4096)
+
+    # 最小分类比率
+    s.send(getData(14, "1.6"))
+    print s.recv(4096)
+
+    # 设置所有值
+    s.send(getData(12, "100 101 103 104 105 106.8"))
+    print s.recv(4096)
+
+    # 设置所有值
+    s.send(getData(16, "get"))
     print s.recv(4096)
 
     # 保存文件
-    s.send(getData(10, "1"))
-    print s.recv(4096)
+    # s.send(getData(10, "1"))
+    # print s.recv(4096)
 
-    s.send(getData(5, "start"))
-    print s.recv(4096)
+    # s.send(getData(5, "start"))
+    # print s.recv(4096)
 
-    time.sleep(600)
+    # time.sleep(600)
 
-    s.send(getData(6, "stop"))
-    print s.recv(4096)
+    # s.send(getData(6, "stop"))
+    # print s.recv(4096)
 
     time.sleep(3)
 

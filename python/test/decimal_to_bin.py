@@ -2,6 +2,7 @@
 #!encoding=utf8
 
 import struct
+import sys
 
 """
 十进制转二进制
@@ -106,7 +107,7 @@ def f2x(flt):
     raw = struct.pack('>f', flt)
     return ','.join([hex(ord(i)).ljust(4, '0') for i in raw])
 
-
+'''
 print d2b(2007.555)
 print d2b(0.45)
 print d2b(45)
@@ -124,3 +125,11 @@ print o2b(56.5)
 
 print f2x(21.5)
 print b2d(00000001111111110000000000000001)
+'''
+
+if __name__ == '__main__':
+    val = int(sys.argv[1])
+    val2 = int(sys.argv[2])
+    print b2d(val)
+    print d2b(val2)
+
