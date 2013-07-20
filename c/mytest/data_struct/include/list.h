@@ -18,28 +18,26 @@
 #ifndef _list_H_
 #define _list_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdlib.h>
-#include "object.h"
 
-extern struct list_ g_List;
-
-typedef struct object Element;
+typedef void* Element;
 
 typedef struct list_elmt {
-    Element *data;
+    Element data;
     struct list_elmt *next;
 } ListElmt, *PListElmt;
 
-typedef struct list_ {
+typedef struct list_t {
     int size;
     int (*match)(const void *key1, const void *key2);
     void (*destroy)(void *data);
     ListElmt *head;
     ListElmt *tail;
 } List, *PList;
-
-// debug
-void list_dump(List *list);
 
 // public interface
 void list_init(List *list, void (*destroy)(void *data));
@@ -54,5 +52,9 @@ int list_remove_next(List *list, ListElmt *element, void **data);
 #define list_is_tail(element) ((element)->next == NULL ? 1 : 0)
 #define list_data(element) ((element)->data)
 #define list_next(element) ((element)->next)
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* end of include guard: _list_H_ */

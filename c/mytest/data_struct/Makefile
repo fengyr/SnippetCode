@@ -5,10 +5,11 @@
 ###############################################################################
 
 CROSS_COMPILE   =
-OPTIMIZE        := -O
-WARNINGS        := -Wall -Wno-unused -Wno-format
+OPTIMIZE        :=
+WARNINGS        := -Wall
 DEFS            := 
-EXTRA_CFLAGS    := -g
+EXTRA_CFLAGS    :=
+# EXTRA_CFLAGS    := -g
 LDFLAGS         := 
 
 # 输出目录，会自动创建
@@ -16,13 +17,15 @@ OUT_DIR 	    = out
 OBJ_DIR   	    = $(OUT_DIR)/obj
 
 # 头文件目录
-INC_DIR   		= include
+INC_DIR   		= ./include/ \
 # 源文件目录
-SRC_DIR   		= src
-# 额外包含的源文件列表
+SRC_DIR   		= ./src
+
 EXTRA_SRC 		= 
-# 排除的文件列表
-EXCLUDE_FILES 	= 
+EXCLUDE_FILES 	= ./src/hashtable.c ./include/hashtable.h \
+				  ./src/object.c ./include/object.h \
+				  ./src/main.c 
+
 # 源文件后缀
 SUFFIX 			= c cpp cc cxx
 # 额外的目标文件
@@ -30,10 +33,17 @@ EXTRA_OBJS      =
 
 # 目标名称和类型，不需要考虑后缀名，定义多个名称实际上多个拷贝
 # 如：$(OUT_DIR)/main 
-TARGET          := main
+TARGET          := libstruct.so 
 TARGET_TYPE     := app
 # TARGET_TYPE     := ar
 # TARGET_TYPE     := so
+
+# 如果编译目标是可执行程序，
+# 则需要加入测试相关代码。
+ifeq ($(TARGET_TYPE),app)
+	EXCLUDE_FILES = 
+	SRC_DIR = ./src
+endif
 
 # 其他的任务
 .other_task:
@@ -70,7 +80,7 @@ prefix_objdir  = $(shell echo $(OBJ_DIR)|sed 's:\(\./*\)*::')
 prefix_objdir := $(filter-out /,$(prefix_objdir)/)
 endif
 
-GCC      := $(CROSS_COMPILE)gcc
+GCC      := $(CROSS_COMPILE)g++
 G++      := $(CROSS_COMPILE)g++
 SRC_DIR := $(sort . $(SRC_DIR))
 inc_dir = $(foreach d,$(sort $(INC_DIR) $(SRC_DIR)),-I$d)

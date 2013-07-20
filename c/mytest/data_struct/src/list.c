@@ -17,9 +17,8 @@
  */
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "list.h"
-
-struct list_ g_List;
 
 void list_init(List *list, void (*destroy)(void *data))
 {
@@ -61,7 +60,7 @@ int list_insert_next(List *list, ListElmt *element, const void *data)
         return -1;
     }
 
-    new_element->data = data;
+    new_element->data = (Element) data;
 
     /* 如果element为空，则加入到链表头 */
     if (NULL == element) {
@@ -138,18 +137,4 @@ int list_remove_next(List *list, ListElmt *element, void **data)
     return 0;
 }
 
-void list_dump(List *list)
-{
-    ListElmt *element = list->head;
 
-    if (list_size(list) == 0) {
-        printf("list dump == NULL\n");
-    } else {
-        while (element != NULL) {
-            Element *data = element->data;
-            printf("list dump name=%s, id=%d\n", data->name, data->id);
-
-            element = element->next;
-        }
-    }
-}

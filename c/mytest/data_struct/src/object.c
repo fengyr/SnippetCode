@@ -16,6 +16,9 @@
  * =====================================================================================
  */
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
 #include "object.h"
 
 /**
@@ -44,13 +47,15 @@ void* create_object(const char* obj_name, int obj_id)
  *
  * @Param obj 待释放的obj对象
  */
-void free_object(struct object *obj)
+void free_object(void *object)
 {
+    struct object *obj = (struct object*)object;
+
     if (!obj) {
         return;
     }
 
-    printf("free_object, obj = %p, obj->name = %s, obj->id = %d\n", obj, obj->name, obj->id);
+    /* printf("free_object, obj = %p, obj->name = %s, obj->id = %d\n", obj, obj->name, obj->id); */
     if (obj->name != NULL) {
         free(obj->name);
         obj->name = NULL;

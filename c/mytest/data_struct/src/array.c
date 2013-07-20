@@ -15,86 +15,68 @@
  *
  * =====================================================================================
  */
-
-#include "array.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
-struct object_array g_object_array = OBJECT_ARRAY_INIT;
+#include "array.h"
+
+void array_obj_init(ArrayObj *array, void (*destroy)(void *item))
+{
+    array->nr = 0;
+    array->alloc = 0;
+    array->objects = NULL;
+    array->destroy = destroy;
+}
 
 /**
- * @Synopsis 添加一个obj对象到array对象数组中，并指定标识该obj对象的名称。
+ * @Synopsis 添加一个item对象到array对象数组中，并指定标识该item对象的名称。
  *           如果数组中的数量超过数组大小，会自动扩展数组的大小。
  *
- * @Param obj object对象.
- * @Param array_name obj对象在array数组中的名称.
+ * @Param item object对象.
  * @Param array object对象数组.
  */
-void add_object_array(struct object *obj, const char *array_name , struct object_array *array)
+void array_obj_add(ArrayItem item, ArrayObj *array)
 {
     unsigned int nr = array->nr;
     unsigned int alloc = array->alloc;
-    struct object_array_entry *objects = array->objects;
+    ArrayEntry *objects = array->objects;
 
     if (nr >= alloc) {
         alloc = (alloc + 32) * 2;
-        objects = (struct object_array_entry*) realloc(objects, alloc * sizeof(*objects));
+        objects = (ArrayEntry*) realloc(objects, alloc * sizeof(*objects));
         array->alloc = alloc;
         array->objects = objects;
     }
 
     /* printf("sizeof(objects)=%d\n", sizeof(*objects)); */
 
-    objects[nr].item = obj;
-
-    int len = strlen(array_name) + 1;
-    objects[nr].array_name = (char*) malloc(sizeof(char) * len);
-    strcpy(objects[nr].array_name, array_name);
+    objects[nr].item = item;
 
     /* 添加object计数 */
     array->nr = ++nr;
 }
 
-/**
- * @Synopsis 打印array指向的对象数组的信息.
- *
- * @Param array
- */
-void dump_object_array(struct object_array *array)
+void array_obj_destroy(ArrayObj *array)
 {
-    struct object_array_entry *objects = array->objects; 
-    struct object *obj;
-    int i = 0;
-
-    printf("nr=%d, alloc=%d\n", array->nr, array->alloc);
-    for (i = 0; i < array->nr; i++) {
-        obj = objects[i].item;
-        printf("array_name=%s, object id=%d, name=%s\n", objects[i].array_name, obj->id, obj->name);
-    }
-}
-
-void free_object_array(struct object_array *array)
-{
-    int *nr = &array->nr;
-    struct object_array_entry *objects = array->objects;
-    char *array_name;
+    unsigned int *nr = &array->nr;
+    ArrayEntry *objects = array->objects;
 
     do {
         (*nr)--;
-        if (objects[*nr].array_name != NULL) {
-            /* printf("free array_name, objects[*nr].array_name = %p, nr = %d\n", objects[*nr].array_name, *nr); */
-            free(objects[*nr].array_name);
-        }
         if (objects[*nr].item != NULL) {
             /* printf("free array_name, objects[*nr].item = %p\n", objects[*nr].item); */
-            free_object(objects[*nr].item);
+            if (array->destroy != NULL) {
+                array->destroy(objects[*nr].item);
+            }
         }
     } while (*nr > 0);
 
-    printf("after free_object_array, nr = %d\n", *nr);
+    /* printf("after free_object_array, nr = %d\n", *nr); */
 
     array->nr = *nr;
     array->alloc = *nr;
+    free(objects);
     objects = NULL;
     /* printf("leave free_object_array, nr = %d\n", *nr); */
 }
