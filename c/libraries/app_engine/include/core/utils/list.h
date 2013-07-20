@@ -6,7 +6,7 @@
  *    Description:  
  *
  *        Version:  
- *        Created:  五月 18, 2013
+ *        Created:  四月 30, 2013
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,7 +15,6 @@
  *
  * =====================================================================================
  */
-
 #ifndef _list_H_
 #define _list_H_
 
@@ -24,12 +23,11 @@ extern "C" {
 #endif
 
 #include <stdlib.h>
-#include "message.h"
 
-typedef struct message_t Element;
+typedef void* Element;
 
 typedef struct list_elmt {
-    Element *data;
+    Element data;
     struct list_elmt *next;
 } ListElmt, *PListElmt;
 
@@ -41,9 +39,7 @@ typedef struct list_t {
     ListElmt *tail;
 } List, *PList;
 
-//////////////////////////////////////////////////////
-//          public interface                        //
-//////////////////////////////////////////////////////
+// public interface
 void list_init(List *list, void (*destroy)(void *data));
 void list_destroy(List *list);
 int list_insert_next(List *list, ListElmt *element, const void *data);

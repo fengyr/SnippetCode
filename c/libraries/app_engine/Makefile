@@ -8,7 +8,7 @@ CROSS_COMPILE   =
 OPTIMIZE        := 
 WARNINGS        := -Wall
 DEFS            := 
-EXTRA_CFLAGS    := -g
+# EXTRA_CFLAGS    := -g
 # EXTRA_CFLAGS    := -DUSE_DEBUG -g
 LDFLAGS         := -pthread -lm -lrt -lstdc++
 
@@ -17,16 +17,16 @@ OBJ_DIR   	= $(OUT_DIR)/obj
 
 INC_DIR  	= ./include/ \
 			  ./include/core/ \
-			  ./include/core/utils \
+			  ./include/core/utils/ \
 			  ./include/core/net/ \
 			  ./include/interface/ \
 			  /usr/local/include/opencv/ \
 			  /usr/local/include/
 
-SRC_DIR   	= ./src \
-			  ./src/core \
-			  ./src/core/net \
-			  ./src/core/utils \
+SRC_DIR   	= ./src/ \
+			  ./src/core/ \
+			  ./src/core/net/ \
+			  ./src/core/utils/ \
 
 EXTRA_SRC 	= 
 EXCLUDE_FILES 	= camera_interface.c camera_interface.h\
@@ -38,11 +38,14 @@ EXCLUDE_FILES 	= camera_interface.c camera_interface.h\
 				  telnet_proc.c
 
 SUFFIX 		= c cpp hpp cc
-EXTRA_OBJS  = ./libs/libzlog.so
+EXTRA_OBJS  = ./libs/libzlog.so \
+			  ./libs/libstruct.so
 
 TARGET          := libapp.so
 TARGET_TYPE     := so
 
+# 如果编译目标是可执行程序，
+# 则需要加入测试相关代码。
 ifeq ($(TARGET_TYPE),app)
 	EXCLUDE_FILES = 
 	SRC_DIR = ./src \

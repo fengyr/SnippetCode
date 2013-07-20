@@ -128,6 +128,27 @@ static void free_socket(Socket *sock)
 
     memset(sock->local_name, 0, sizeof(sock->local_name));
 
+    if (sock->local_fd != -1) {
+        close(sock->local_fd);
+        sock->local_fd = -1;
+    }
+
+    EventHandler **pHandler = sock->pHandlers;
+
+    if (pHandler != NULL) {
+        for (i = 0; i < MAX_HANDLER_NUM; i++) {
+            if (pHandler[i] != NULL) {
+                pHandler[i] = NULL;
+            }
+        }
+        free(pHandler);
+        pHandler = NULL;
+    }
+
+    void *res;
+    pthread_join(sock->pthread, &res);
+    sock->pthread = -1;
+
     pthread_mutex_destroy(&sock->s_mutex);
 }
 
@@ -332,6 +353,7 @@ void tcp_server_run(Socket *sock, int thread_mode)
     if (thread_mode) {
         res = pthread_create(&sock->pthread, NULL, thread_tcp_server, (void*)sock);
         if (res < 0) {
+            pthread_detach(sock->pthread);
             perror("run_tcp_server: pthread_create error");
             exit(1);
         }

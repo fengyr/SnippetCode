@@ -23,6 +23,7 @@
 #include "md5.h"
 #include "debug.h"
 
+static char result[64];
 
 // Constants are the integer part of the sines of integers (in radians) * 2^32.
 static const uint32_t k[64] = {
@@ -151,7 +152,7 @@ const char* md5sum(const char *raw)
 {
     uint8_t *p;
     int len = strlen(raw);
-    char result[64], temp[64];
+    char temp[64];
  
     md5((uint8_t*)raw, len);
  
