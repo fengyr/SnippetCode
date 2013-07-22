@@ -17,8 +17,10 @@
  */
 #include <stdio.h>
 #include <unistd.h>
+
 #include "app.h"
 #include "version.h"
+#include "zlogwrap.h"
 
 static App s_app;
 static Looper s_looper;
@@ -27,6 +29,7 @@ static MessageHandler s_message_handler;
 static HandlerMessage s_handler_message;
 static int s_loop_run_thread_mode = 1;
 static struct timeval s_start_timeval; 
+static Logger s_logger;
 
 static void init(struct app_runtime_t *app)
 {
@@ -140,11 +143,21 @@ static void quit(struct app_runtime_t *app)
     if (app->telnet_server != NULL) {
         app->telnet_server->quit(app->telnet_server);
     }
+
+    logger_destroy(&s_logger);
 }
 
 const char* get_version()
 {
-    return APP_VERSION;
+    static char version[128];
+    memset(version, 0, sizeof(version));
+#ifdef MAC_VERSION
+    sprintf(version, "build_%s_%s", APP_VERSION, MAC_VERSION); 
+#else
+    sprintf(version, "build_%s", APP_VERSION); 
+#endif
+
+    return version;
 }
 
 int trans_message(Message *msg)
@@ -164,6 +177,9 @@ App* create_app_instance(Options *options)
     app->run = run;
     app->quit = quit;
 
+    // init zlog system
+    logger_init(&s_logger, LOG_FILE, LOG_CONFIG_PATH, LOG_FILE_DIR);
+
     // create camera server instance and run server in background
     CameraServer *camera_server = create_camera_server_instance();
     camera_server->init(camera_server, options->cmd.server_ip_addr, options->cmd.server_port);
@@ -179,6 +195,7 @@ App* create_app_instance(Options *options)
     app->camera_server = camera_server;
     app->telnet_server = telnet_server;
     app->version = get_version;
+    app->logger = &s_logger;
 
     return app;
 }

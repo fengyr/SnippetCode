@@ -182,8 +182,6 @@ static void add_client(Socket *sock, int client_fd)
 
 static void* thread_tcp_server(void *param)
 {
-    pthread_detach(pthread_self());
-
     Socket *sock = (Socket*) param;
     Remote *remote = sock->remote;
 
@@ -267,6 +265,7 @@ static void* thread_tcp_server(void *param)
         }
     }
 
+    pthread_detach(pthread_self());
     pthread_exit(NULL);
 }
 

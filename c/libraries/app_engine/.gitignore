@@ -13,3 +13,4 @@ out/
 colorSepServer
 *.so
 !libzlog.so
+!libstruct.so

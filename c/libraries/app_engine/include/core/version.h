@@ -22,7 +22,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.2.0"
+#define APP_VERSION "0.3.0"
 
 #ifdef __cplusplus
 }

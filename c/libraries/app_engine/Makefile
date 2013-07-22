@@ -15,31 +15,35 @@ LDFLAGS         := -pthread -lm -lrt -lstdc++
 OUT_DIR 	= out
 OBJ_DIR   	= $(OUT_DIR)/obj
 
-INC_DIR  	= ./include/ \
-			  ./include/core/ \
-			  ./include/core/utils/ \
-			  ./include/core/net/ \
-			  ./include/interface/ \
-			  /usr/local/include/opencv/ \
-			  /usr/local/include/
+INC_DIR  	= 	./include/ \
+			./include/core/ \
+			./include/core/utils/ \
+			./include/core/net/ \
+			./include/interface/ \
+			/usr/local/include/opencv/ \
+			/usr/local/include/
 
-SRC_DIR   	= ./src/ \
-			  ./src/core/ \
-			  ./src/core/net/ \
-			  ./src/core/utils/ \
+SRC_DIR   	= 	./src/ \
+			./src/core/ \
+			./src/core/net/ \
+			./src/core/utils/ \
 
 EXTRA_SRC 	= 
-EXCLUDE_FILES 	= camera_interface.c camera_interface.h\
-				  opencv_interface.cpp opencv_interface.hpp\
-				  ui_interface.c \
-				  runtime.c runtime.h \
-				  options.c options.h \
-				  app.c \
-				  telnet_proc.c
+EXCLUDE_FILES 	= 	camera_interface.c camera_interface.h\
+			opencv_interface.cpp opencv_interface.hpp\
+			ui_interface.c \
+			runtime.c runtime.h \
+			options.c options.h \
+			app.c \
+			telnet_proc.c
 
 SUFFIX 		= c cpp hpp cc
-EXTRA_OBJS  = ./libs/libzlog.so \
-			  ./libs/libstruct.so
+EXTRA_OBJS  = 	./libs/libstruct.so \
+		./libs/libzlog.a
+		# ./libs/libzlog.so \
+		# ./libs/libzlog.so.1 \
+		# ./libs/libzlog.so.1.1 \
+		
 
 TARGET          := libapp.so
 TARGET_TYPE     := so
@@ -48,11 +52,11 @@ TARGET_TYPE     := so
 # 则需要加入测试相关代码。
 ifeq ($(TARGET_TYPE),app)
 	EXCLUDE_FILES = 
-	SRC_DIR = ./src \
-			  ./src/interface \
-			  ./src/core \
-			  ./src/core/net \
-			  ./src/core/utils
+	SRC_DIR = 	./src \
+			./src/interface \
+			./src/core \
+			./src/core/net \
+			./src/core/utils
 endif
 
 .other_task:

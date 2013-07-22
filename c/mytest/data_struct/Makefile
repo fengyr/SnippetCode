@@ -34,7 +34,7 @@ EXTRA_OBJS      =
 # 目标名称和类型，不需要考虑后缀名，定义多个名称实际上多个拷贝
 # 如：$(OUT_DIR)/main 
 TARGET          := libstruct.so 
-TARGET_TYPE     := app
+TARGET_TYPE     := so
 # TARGET_TYPE     := ar
 # TARGET_TYPE     := so
 

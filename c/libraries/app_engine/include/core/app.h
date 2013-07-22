@@ -30,6 +30,7 @@ extern "C" {
 #include "telnet_server.h"
 #include "looper.h"
 #include "options.h"
+#include "zlogwrap.h"
 
 struct app_runtime_t {
     Options *options;
@@ -39,6 +40,7 @@ struct app_runtime_t {
 
     CameraServer *camera_server;
     TelnetServer *telnet_server;
+    Logger *logger;
 
     // init && destory
     void (*init)(struct app_runtime_t *app);

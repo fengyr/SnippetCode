@@ -261,13 +261,18 @@ int on_app_destroy(struct app_runtime_t *app)
  */
 int on_app_process(struct app_runtime_t *app)
 {
+    Logger *logger = app->logger;
+
     test_object_array(10);
-    printf("---------------------------\n");
+    DEBUG("on_app_process loginfo\n");
+    logger->log_i(logger, "-------------------------");
 
     test_list(10);
-    printf("---------------------------\n");
+    logger->log_d(logger, "-------------------------");
 
     test_hashmap(10);
 
-    return 0;
+    logger->log_e(logger, "-------------------------");
+
+    return 1;
 }
