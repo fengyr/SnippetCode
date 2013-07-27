@@ -34,7 +34,7 @@ extern "C" {
 struct logger_t;
 typedef struct logger_t Logger, *PLogger;
 
-typedef void (*logfunc)(Logger *logger, char *fmt);
+typedef void (*logfunc)(Logger *logger, const char *fmt);
 
 struct logger_t {
     int log_on;

@@ -24,10 +24,52 @@
 #include "app.h"
 #include "runtime.h"
 
+static App *app;
+extern int g_quit_app;
+
+static void except_quit(int signo)
+{
+    if (app == NULL) {
+        return;
+    }
+
+    Logger *logger = app->logger;
+    switch (signo) {
+        case SIGINT:
+            logger->log_e(logger, "Runtime: cause SIGINT.");
+            break;
+        case SIGSEGV:
+            logger->log_e(logger, "Runtime: cause SIGSEGV.");
+            break;
+        case SIGKILL:
+            logger->log_e(logger, "Runtime: cause SIGKILL.");
+            break;
+        case SIGTERM:
+            logger->log_e(logger, "Runtime: cause SIGTERM.");
+            break;
+        case SIGABRT:
+            logger->log_e(logger, "Runtime: cause SIGABRT.");
+            break;
+        default:
+            break;
+    }
+
+    g_quit_app = 1;
+
+    Message *new_msg = (Message*)create_empty_message(MSG_ON_EXIT); 
+    trans_message(new_msg);
+}
+
 static void signal_handle()
 {
     // ignore PIPE, or the process will be die.
     signal(SIGPIPE, SIG_IGN);
+
+    signal(SIGINT, except_quit);
+    signal(SIGTERM, except_quit);
+    signal(SIGSEGV, except_quit);
+    signal(SIGKILL, except_quit);
+    signal(SIGABRT, except_quit);
 }
 
 int main(int argc, const char *argv[])
@@ -37,7 +79,7 @@ int main(int argc, const char *argv[])
     Options options;
     getOptions(&options, argc, argv);
 
-    App *app = create_app_instance(&options);
+    app = create_app_instance(&options);
     app->onCreate = on_app_create;
     app->onProcess = on_app_process;
     app->onDestory = on_app_destroy;

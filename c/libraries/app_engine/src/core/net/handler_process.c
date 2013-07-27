@@ -23,6 +23,9 @@
 #include "handler_process.h"
 #include "ui_interface.h"
 #include "debug.h"
+#include "app.h"
+
+static App *s_app = get_app_instance();
 
 static int indexOfFd(int fd, Remote *remote)
 {
@@ -83,7 +86,11 @@ int default_handler(int fd, char *msg, Socket *sock)
         }
     }
 
-    DEBUG("remote name = %s\n", remote[id].remote_name);
+    char buf[1024];
+    memset(buf, 0, sizeof(buf));
+    sprintf(buf, "Net: remote connected id='%02d', name='%s'.", id, remote[id].remote_name);
+    Logger *logger = s_app->logger;
+    logger->log_d(logger, buf);
 
     replay(fd, REPLAY_SUCCESS);
 
@@ -103,7 +110,14 @@ int call_handler(HandlerProc *handler, int id, int fd, char *msg, Socket *sock)
 
     for (; (h != NULL) && (h->cmd_id != TAIL_ID); h++) {
         if (h->cmd_id == id) {
+            char buf[1024];
+            memset(buf, 0, sizeof(buf));
+            sprintf(buf, "Net: id='%02d',   cmd='%s'.", id, msg);
+            Logger *logger = s_app->logger;
+            logger->log_d(logger, buf);
+
             rtn = handler[id].proc(fd, msg, sock);
+
             return rtn;
         }
     }
@@ -134,7 +148,8 @@ int handler_proc_stub(int fd, Socket *sock, HandlerProc *handler)
             fprintf(stderr, "handler_proc_stub: error, id=%d, buffer=%s\n", handler->cmd_id, buffer);
             break;
         } else if (recv_size == 0) {
-            printf("handler_proc_stub: client quit!!!\n");
+            Logger *logger = s_app->logger;
+            logger->log_d(logger, "Net: remote quit.");
             return 0;
         }
 

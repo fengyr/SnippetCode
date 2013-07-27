@@ -26,7 +26,7 @@ INC_DIR  	= 	./include/ \
 SRC_DIR   	= 	./src/ \
 			./src/core/ \
 			./src/core/net/ \
-			./src/core/utils/ \
+			./src/core/utils
 
 EXTRA_SRC 	= 
 EXCLUDE_FILES 	= 	camera_interface.c camera_interface.h\
@@ -34,16 +34,12 @@ EXCLUDE_FILES 	= 	camera_interface.c camera_interface.h\
 			ui_interface.c \
 			runtime.c runtime.h \
 			options.c options.h \
-			app.c \
-			telnet_proc.c
+			telnet_proc.c \
+			app.c 
 
 SUFFIX 		= c cpp hpp cc
-EXTRA_OBJS  = 	./libs/libstruct.so \
+EXTRA_OBJS  = 	./libs/libstruct.a \
 		./libs/libzlog.a
-		# ./libs/libzlog.so \
-		# ./libs/libzlog.so.1 \
-		# ./libs/libzlog.so.1.1 \
-		
 
 TARGET          := libapp.so
 TARGET_TYPE     := so

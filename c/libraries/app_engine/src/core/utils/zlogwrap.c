@@ -88,7 +88,7 @@ static int make_config(const char *log_conf_path, const char *log_file_dir)
     return 0;
 }
 
-void my_zlog_info(Logger *logger, char *fmt)
+void my_zlog_info(Logger *logger, const char *fmt)
 {
     if (!logger->log_on || !s_init_zlog_success) {
         return;
@@ -97,7 +97,7 @@ void my_zlog_info(Logger *logger, char *fmt)
     zlog_info(logger->zc, fmt);
 }
 
-void my_zlog_debug(Logger *logger, char *fmt)
+void my_zlog_debug(Logger *logger, const char *fmt)
 {
     if (!logger->log_on || !s_init_zlog_success) {
         return;
@@ -106,7 +106,7 @@ void my_zlog_debug(Logger *logger, char *fmt)
     zlog_debug(logger->zc, fmt);
 }
 
-void my_zlog_error(Logger *logger, char *fmt)
+void my_zlog_error(Logger *logger, const char *fmt)
 {
     if (!logger->log_on || !s_init_zlog_success) {
         return;

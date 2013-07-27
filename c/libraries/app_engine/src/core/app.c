@@ -28,8 +28,11 @@ static MessageQueue s_msg_queue;
 static MessageHandler s_message_handler;
 static HandlerMessage s_handler_message;
 static int s_loop_run_thread_mode = 1;
+static int s_loop_thread_running = 0;
 static struct timeval s_start_timeval; 
 static Logger s_logger;
+
+int g_quit_app = 0;
 
 static void init(struct app_runtime_t *app)
 {
@@ -45,7 +48,6 @@ static void register_handler_message(HandlerMessage handler, int thread_mode)
 {
     s_handler_message = handler;
     s_loop_run_thread_mode = thread_mode;
-    printf("register handler success\n");
 }
 
 static void* thread_runtime(void *param)
@@ -78,7 +80,10 @@ static void* thread_loop(void *param)
 {
     App *app = (App*)param;
 
+    s_logger.log_i(&s_logger, "Runtime: Background Looper Run.");
+    s_loop_thread_running = 1;
     looper_run(app->looper);
+    s_logger.log_i(&s_logger, "Runtime: Background Looper Exit.");
 
     pthread_exit(NULL);
 }
@@ -88,7 +93,7 @@ static void start_background_loop(App *app)
     pthread_t pthread; 
     int res = pthread_create(&pthread, NULL, thread_loop, (void*)app);
     if (res < 0) {
-        perror("start_loop: pthread_create error");
+        s_logger.log_e(&s_logger, "Runtime: Background Looper Create Failed.");
         exit(1);
     }
     pthread_detach(pthread);
@@ -96,8 +101,9 @@ static void start_background_loop(App *app)
 
 static void start_foreground_loop(App *app)
 {
-    printf("app: running foreground mode, so disable call onProcess !!!\n");
+    s_logger.log_i(&s_logger, "Runtime: Foreground Looper Run.");
     looper_run(app->looper);
+    s_logger.log_i(&s_logger, "Runtime: Foreground Looper Exit.");
 }
 
 static void run(struct app_runtime_t *app)
@@ -110,12 +116,19 @@ static void run(struct app_runtime_t *app)
     if (s_loop_run_thread_mode) {
         start_background_loop(app);
 
+        // wait for loop start
+        while (!s_loop_thread_running) {
+            usleep(100000);
+        }
+        usleep(200000);
+
         if (NULL == app->onProcess) {
-            fprintf(stderr, "app: no process to run !!!\n");
+            s_logger.log_e(&s_logger, "Runtime: No Process Running.");
             return;
         }
 
-        while (!app->onProcess(app)) {
+        s_logger.log_i(&s_logger, "Runtime: Process Start.");
+        while (!app->onProcess(app) && !g_quit_app) {
             usleep(100);
         }
 

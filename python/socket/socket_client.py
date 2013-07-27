@@ -66,16 +66,16 @@ def tcp():
     print s.recv(4096)
 
     # 保存文件
-    # s.send(getData(10, "1"))
-    # print s.recv(4096)
+    s.send(getData(10, "1"))
+    print s.recv(4096)
 
-    # s.send(getData(5, "start"))
-    # print s.recv(4096)
+    s.send(getData(5, "start"))
+    print s.recv(4096)
 
-    # time.sleep(600)
+    time.sleep(5)
 
-    # s.send(getData(6, "stop"))
-    # print s.recv(4096)
+    s.send(getData(6, "stop"))
+    print s.recv(4096)
 
     time.sleep(3)
 

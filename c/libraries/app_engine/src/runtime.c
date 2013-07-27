@@ -274,5 +274,5 @@ int on_app_process(struct app_runtime_t *app)
 
     logger->log_e(logger, "-------------------------");
 
-    return 1;
+    return 0;
 }
