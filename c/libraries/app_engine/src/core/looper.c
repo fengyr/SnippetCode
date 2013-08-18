@@ -21,7 +21,7 @@
 #include "message.h"
 #include "debug.h"
 
-static int s_quit = 0;
+static int s_looper_quit = 0;
 
 void looper_init(Looper *looper, MessageQueue *queue)
 {
@@ -34,12 +34,12 @@ void looper_run(Looper *looper)
     MessageHandler *handler;
     MessageQueue *queue = looper->msg_queue;
 
-    while (!s_quit) {
+    while (!s_looper_quit) {
         msg = message_queue_pop(queue);
         if (msg != NULL) {
             if (msg->id == MSG_ON_EXIT) {
                 free_message(msg);
-                s_quit = 1;
+                s_looper_quit = 1;
                 break;
             }
 
@@ -53,13 +53,11 @@ void looper_run(Looper *looper)
             // free message obj
             free_message(msg);
         }
-
-        /* DEBUG("message queue size = %d\n", message_queue_size(queue)); */
     }
 }
 
 void looper_exit(Looper *looper)
 {
-    s_quit = 1;
+    s_looper_quit = 1;
     fprintf(stderr, "looper_exit\n");
 }

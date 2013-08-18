@@ -13,6 +13,15 @@
  *         Author:  Zenki (Zenki.J.Zha), zenki2001cn@163.com
  *   Organization:  
  *
+ *  0.3.3:
+ *      1.添加ping协议。
+ *      2.优化socket发送和接收的缓冲区大小。
+ *      3.去除SIGV的信号处理。
+ *      4.完成信号处理后，恢复默认的信号处理方式。
+ *
+ *  0.3.2:
+ *      1.修正tcp服务启动过早，导致无法更新options.
+ *
  *  0.3.1:
  *      1.更新libstruct.a。
  *      2.添加zlog日志记录。
@@ -28,7 +37,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.3.1"
+#define APP_VERSION "0.3.3"
 
 #ifdef __cplusplus
 }

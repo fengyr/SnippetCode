@@ -38,8 +38,8 @@ enum remote_type_t {
     ENUM_NODEFINED = -1,        // NOT DEFINED
     ENUM_UI_CONTROL = 0,        // see HANDLER_TYPE_UI_CONTROL
     ENUM_IMG_DATA = 1,          // see HANDLER_TYPE_IMG_DATA
-    ENUM_REF_DATA = 2,          // see HANDLER_TYPE_REF_DATA
-    ENUM_CAMERA_CONTROL = 3,    // see HANDLER_TYPE_CAMERA_CONTROL
+    ENUM_PING = 2,              // see HANDLER_TYPE_PING
+    ENUM_MODBUS = 3,            // see HANDLER_TYPE_MODBUS
 };
 
 struct remote_t {
@@ -48,8 +48,8 @@ struct remote_t {
     /*-1 -> nodefined, 
      * 0 -> ui_control, 
      * 1 -> img_data,
-     * 2 -> ref_data 
-     * 3 -> camera_control */
+     * 2 -> ping, 
+     * 3 -> modbus */
     enum remote_type_t remote_type;    
     char *remote_name;
 };

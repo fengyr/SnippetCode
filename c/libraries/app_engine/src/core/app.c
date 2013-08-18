@@ -27,10 +27,11 @@ static Looper s_looper;
 static MessageQueue s_msg_queue; 
 static MessageHandler s_message_handler;
 static HandlerMessage s_handler_message;
-static int s_loop_run_thread_mode = 1;
-static int s_loop_thread_running = 0;
+static int s_loop_run_thread_mode = 1;      // looper是否运行在线程模式
+static int s_loop_thread_running = 0;       // 等待looper线程执行
 static struct timeval s_start_timeval; 
 static Logger s_logger;
+static int s_app_exist = 0;                 // App是否已经创建
 
 int g_quit_app = 0;
 
@@ -111,6 +112,16 @@ static void run(struct app_runtime_t *app)
     // record start time
     gettimeofday(&s_start_timeval, NULL);
 
+    // run server after init all module complete.
+    CameraServer *camera_server = app->camera_server;
+    TelnetServer *telnet_server = app->telnet_server;
+    if (camera_server != NULL) {
+        camera_server->run(camera_server, 1);
+    }
+    if (telnet_server != NULL) {
+        telnet_server->run(telnet_server, 1);
+    }
+
     trigger_message(app);
 
     if (s_loop_run_thread_mode) {
@@ -183,6 +194,11 @@ int trans_message(Message *msg)
 App* create_app_instance(Options *options)
 {
     App *app = &s_app;
+
+    if (s_app_exist) {
+        return app;
+    }
+
     app->msg_queue = &s_msg_queue;
     app->looper = &s_looper;
     app->init = init;
@@ -190,18 +206,16 @@ App* create_app_instance(Options *options)
     app->run = run;
     app->quit = quit;
 
-    // init zlog system
+    // init zlog system.
     logger_init(&s_logger, LOG_FILE, LOG_CONFIG_PATH, LOG_FILE_DIR);
 
-    // create camera server instance and run server in background
+    // create camera server instance
     CameraServer *camera_server = create_camera_server_instance();
     camera_server->init(camera_server, options->cmd.server_ip_addr, options->cmd.server_port);
-    camera_server->run(camera_server, 1);
 
-    // create telnet server instance and run server in background
+    // create telnet server instance
     TelnetServer *telnet_server = create_telnet_server_instance();
     telnet_server->init(telnet_server, options->cmd.server_ip_addr, 11018);
-    telnet_server->run(telnet_server, 1);
 
     // set Options and CameraServer .etc
     app->options = options;
@@ -209,6 +223,8 @@ App* create_app_instance(Options *options)
     app->telnet_server = telnet_server;
     app->version = get_version;
     app->logger = &s_logger;
+
+    s_app_exist = 1;
 
     return app;
 }

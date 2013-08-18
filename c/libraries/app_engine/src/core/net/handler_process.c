@@ -66,17 +66,17 @@ int default_handler(int fd, char *msg, Socket *sock)
             /* 当前支持类型如下：
              * 0表示界面控制类型，
              * 1表示结果图片类型，
-             * 2表示参考图片类型，
-             * 3表示相机控制类型，
+             * 2表示ping服务器的状态，
+             * 3表示MODBUS类型，
              * 根据ID为0的命令字符串标识。参考handler_process.h */
             if (strcmp(remote[id].remote_name, HANDLER_TYPE_UI_CONTROL) == 0) {
                 remote[id].remote_type = ENUM_UI_CONTROL;
             } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_IMG_DATA) == 0) {
                 remote[id].remote_type = ENUM_IMG_DATA;
-            } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_REF_DATA) == 0) {
-                remote[id].remote_type = ENUM_REF_DATA;
-            } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_CAMERA_CONTROL) == 0) {
-                remote[id].remote_type = ENUM_CAMERA_CONTROL;
+            } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_PING) == 0) {
+                remote[id].remote_type = ENUM_PING;
+            } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_MODBUS) == 0) {
+                remote[id].remote_type = ENUM_MODBUS;
             } else {
                 remote[id].remote_type = ENUM_NODEFINED;
                 replay(fd, REPLAY_FAILED);

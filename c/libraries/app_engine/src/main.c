@@ -38,9 +38,6 @@ static void except_quit(int signo)
         case SIGINT:
             logger->log_e(logger, "Runtime: cause SIGINT.");
             break;
-        case SIGSEGV:
-            logger->log_e(logger, "Runtime: cause SIGSEGV.");
-            break;
         case SIGKILL:
             logger->log_e(logger, "Runtime: cause SIGKILL.");
             break;
@@ -53,6 +50,8 @@ static void except_quit(int signo)
         default:
             break;
     }
+
+    signal(signo, SIG_DFL);
 
     g_quit_app = 1;
 
@@ -67,7 +66,6 @@ static void signal_handle()
 
     signal(SIGINT, except_quit);
     signal(SIGTERM, except_quit);
-    signal(SIGSEGV, except_quit);
     signal(SIGKILL, except_quit);
     signal(SIGABRT, except_quit);
 }

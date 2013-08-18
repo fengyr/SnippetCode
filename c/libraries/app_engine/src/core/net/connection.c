@@ -104,7 +104,7 @@ static void free_socket(Socket *sock)
 {
     server_quit = 1;
 
-    sleep(1);
+    usleep(500000);
 
     fprintf(stderr, "%s server exit...\n", sock->local_name);
 
@@ -160,13 +160,16 @@ static void add_client(Socket *sock, int client_fd)
     DEBUG("add_client: enter\n");
     struct timeval timeout_r; 
     timeout_r.tv_sec = 0;
-    timeout_r.tv_usec = 500;
-    setsockopt(client_fd, SOL_SOCKET, SO_RCVTIMEO, &timeout_r, sizeof(timeout_r));
+    timeout_r.tv_usec = 1000;
+    setsockopt(client_fd, SOL_SOCKET, SO_RCVTIMEO, (const void*)&timeout_r, sizeof(timeout_r));
 
     struct timeval timeout_s; 
     timeout_s.tv_sec = 0;
-    timeout_s.tv_usec = 800;
-    setsockopt(client_fd, SOL_SOCKET, SO_SNDTIMEO, &timeout_s, sizeof(timeout_s));
+    timeout_s.tv_usec = 1000;
+    setsockopt(client_fd, SOL_SOCKET, SO_SNDTIMEO, (const void*)&timeout_s, sizeof(timeout_s));
+
+    int buf_size = 1024000;
+    setsockopt(client_fd, SOL_SOCKET, SO_SNDBUF, (const void*)&buf_size, sizeof(int));
 
     pthread_mutex_lock(&sock->s_mutex);
     for (i = 0; i < MAX_REMOTE_NUM; i++) {
@@ -188,6 +191,11 @@ static void* thread_tcp_server(void *param)
     int rc, i;
     int max_fd;
     fd_set read_fds;
+
+    // set timeout
+    /* struct timeval timeout; */
+    /* timeout.tv_sec = 0; */
+    /* timeout.tv_usec =500000; */
 
     while (!server_quit) {
         /* begin set fd_set */
@@ -275,6 +283,7 @@ int tcp_server_init(Socket *sock, const char *local_ip, int local_port, const ch
     int val = 1;
     struct sockaddr_in localaddr;
     struct linger linger = { 0 };
+    int buf_size = 1024000;
 
     init_socket(sock, name);
 
@@ -310,6 +319,12 @@ int tcp_server_init(Socket *sock, const char *local_ip, int local_port, const ch
             (const void*) &linger, sizeof(linger));
     if (rtn < 0) {
         perror("init_tcp_server: setsockopt SO_LINGER error");
+        goto ERROR;
+    }
+
+    rtn = setsockopt(fd, SOL_SOCKET, SO_RCVBUF, (const void*)&buf_size, sizeof(int));
+    if (rtn < 0) {
+        perror("init_tcp_server: setsockopt SO_RCVBUF error");
         goto ERROR;
     }
 

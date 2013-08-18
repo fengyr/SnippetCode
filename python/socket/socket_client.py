@@ -3,6 +3,7 @@
 
 import socket
 import sys
+import os
 import time
 import struct
 
@@ -18,6 +19,75 @@ def getData(ID, msg):
 
     return data
 
+def connect_server_ping():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((HOST, PORT))
+    s.settimeout(3)
+    s.send(getData(0, "type_ping"))
+
+    return s
+
+def connect_server_modbus():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((HOST, PORT))
+    s.settimeout(3)
+    s.send(getData(0, "type_modbus"))
+
+    return s
+
+def modbus():
+    """docstring for ping"""
+    s = None
+    while True:
+        try:
+            s = connect_server_modbus()
+        except Exception, e:
+            print e
+            time.sleep(1)
+            continue
+
+        while True:
+            try:
+                data = s.recv(4096)
+                if len(data) == 0:
+                    break
+                else:
+                    print data
+            except socket.timeout:
+                pass
+                # os.system('killall ColorPickServer')
+                # print 'killall ColorPickServer'
+            except Exception, e:
+                time.sleep(1)
+                print e
+
+
+
+def ping():
+    """docstring for ping"""
+    s = None
+    while True:
+        try:
+            s = connect_server_ping()
+        except Exception, e:
+            print e
+            time.sleep(1)
+            continue
+
+        while True:
+            try:
+                data = s.recv(4096)
+                if len(data) == 0:
+                    break
+                else:
+                    print data
+            except socket.timeout:
+                os.system('killall ColorPickServer')
+                # print 'killall ColorPickServer'
+            except Exception, e:
+                time.sleep(1)
+                print e
+
 def tcp():
     """docstring for tcp"""
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -28,6 +98,23 @@ def tcp():
     # s.sendto("hello world", (HOST, PORT));
     print s.recv(4096)
     time.sleep(1)
+
+    # exit
+    # s.send(getData(20, "exit"))
+    # print s.recv(4096)
+
+    while True:
+        # modbus class
+        s.send(getData(21, "1234567890 1"))
+        print s.recv(4096)
+        time.sleep(1)
+
+        # modbus class
+        s.send(getData(22, "1 4"))
+        print s.recv(4096)
+        time.sleep(1)
+
+    return
 
     # 特征描述子
     s.send(getData(3, "2"))
@@ -57,17 +144,25 @@ def tcp():
     s.send(getData(14, "1.6"))
     print s.recv(4096)
 
-    # 设置所有值
-    s.send(getData(12, "100 101 103 104 105 106.8"))
+    # 设置瓷砖边缘长度
+    s.send(getData(18, "420"))
     print s.recv(4096)
 
     # 设置所有值
+    s.send(getData(12, "100 101 103 104 105 106.8 410"))
+    print s.recv(4096)
+
+    # 获取版本信息
     s.send(getData(16, "get"))
     print s.recv(4096)
 
-    # 保存文件
-    s.send(getData(10, "1"))
+    # 进入高级选项模式
+    s.send(getData(17, "leave"))
     print s.recv(4096)
+
+    # 保存文件
+    # s.send(getData(10, "1"))
+    # print s.recv(4096)
 
     s.send(getData(5, "start"))
     print s.recv(4096)
@@ -108,18 +203,15 @@ def tcp3():
     s.connect((HOST, PORT))
     s.settimeout(10)
 
-    s.send(getData(0, "type_ref_data"))
+    s.send(getData(0, "type_ui_control"))
     # s.sendto("hello world", (HOST, PORT));
     print s.recv(4096)
     time.sleep(1)
 
-    s.send(getData(2, "type_ref_data"))
+    # add sample
+    msg = "%s %s" % (sys.argv[3], sys.argv[4])
+    s.send(getData(19, msg))
     print s.recv(4096)
-
-    s.send(getData(3, "type_ref_data 2"))
-    print s.recv(4096)
-
-    time.sleep(10)
 
 def tcp4():
     """docstring for tcp"""
@@ -168,3 +260,7 @@ if __name__ == '__main__':
                 tcp4()
         elif sys.argv[1] == 'udp':
             udp()
+        elif sys.argv[1] == 'ping':
+            ping()
+        elif sys.argv[1] == 'modbus':
+            modbus()

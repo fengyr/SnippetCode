@@ -23,8 +23,8 @@
 static Socket s_server_sock;
 static EventHandler s_ui_control_handler;
 static EventHandler s_img_data_handler;
-static EventHandler s_ref_data_handler;
-static EventHandler s_camera_control_handler;
+static EventHandler s_ping_handler;
+static EventHandler s_modbus_handler;
 static CameraServer s_camera_server;
 
 static int init(struct camera_server_t *server, const char *local_ip, int local_port)
@@ -41,15 +41,15 @@ static int init(struct camera_server_t *server, const char *local_ip, int local_
     s_img_data_handler.onRecvAndReplay = ui_img_data_handler;
     registerHandler(server->sock, &s_img_data_handler);
 
-    /* 注册参考图片类型的处理方法 */
-    s_ref_data_handler.handler_type = HANDLER_TYPE_REF_DATA;
-    s_ref_data_handler.onRecvAndReplay = ui_ref_data_handler;
-    registerHandler(server->sock, &s_ref_data_handler);
+    /* 注册PING的处理方法 */
+    s_ping_handler.handler_type = HANDLER_TYPE_PING;
+    s_ping_handler.onRecvAndReplay = ping_handler;
+    registerHandler(server->sock, &s_ping_handler);
 
-    /* 注册相机控制类型的处理方法 */
-    s_camera_control_handler.handler_type = HANDLER_TYPE_CAMERA_CONTROL;
-    s_camera_control_handler.onRecvAndReplay = camera_control_handler;
-    registerHandler(server->sock, &s_camera_control_handler);
+    /* 注册MODBUS类型的处理方法 */
+    s_modbus_handler.handler_type = HANDLER_TYPE_MODBUS;
+    s_modbus_handler.onRecvAndReplay = modbus_protocol_handler;
+    registerHandler(server->sock, &s_modbus_handler);
 
     return rtn;
 }
