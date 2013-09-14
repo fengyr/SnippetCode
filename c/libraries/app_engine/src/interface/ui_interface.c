@@ -30,6 +30,11 @@
 
 static App *s_app_ins = get_app_instance(); 
 
+static EventHandler s_ui_control_handler;
+static EventHandler s_img_data_handler;
+static EventHandler s_ping_handler;
+static EventHandler s_modbus_handler;
+
 //////////////////////////////////////////////////////
 //              界面控制的接口                      //
 //////////////////////////////////////////////////////
@@ -177,4 +182,46 @@ static HandlerProc camera_control_proc[] = {
 int camera_control_handler(int fd, Socket *sock)
 {    
     return HANDLER_PROC_STUB(fd, sock, camera_control_proc);
+}
+
+//////////////////////////////////////////////////////
+//              发送PING的接口                      //
+//////////////////////////////////////////////////////
+static int send_ping_data(int fd, char *msg, Socket *sock)
+{
+    printf("send_ping_data: client connected\n");
+
+    return 0;
+}
+
+static HandlerProc ping_data_proc[] = {
+    BEGIN_HANDLER,
+    {2, send_ping_data},
+    END_HANDLER,
+}; 
+
+int ping_handler(int fd, Socket *sock)
+{
+    return HANDLER_PROC_STUB(fd, sock, ping_data_proc);
+}
+
+//////////////////////////////////////////////////////
+//              MODBUS的接口                      //
+//////////////////////////////////////////////////////
+static int test_modbus(int fd, char *msg, Socket *sock)
+{
+    printf("test_modbus: client connected\n");
+
+    return 0;
+}
+
+static HandlerProc modbus_proc[] = {
+    BEGIN_HANDLER,
+    {2, test_modbus},
+    END_HANDLER,
+};
+
+int modbus_protocol_handler(int fd, Socket *sock)
+{    
+    return HANDLER_PROC_STUB(fd, sock, modbus_proc);
 }

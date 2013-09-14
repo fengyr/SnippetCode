@@ -1,25 +1,39 @@
 #!/usr/bin/python
 import socket
 import sys
+import threading
 
 HOST = '127.0.0.1'
 PORT = 9001
 
+
+def recv_thread(*arg):
+    conn = arg[0]
+
+    print "client connect: ", conn
+
+    while True:
+        try:
+            buf = conn.recv(4096)
+            print buf, " len=", len(buf)
+            if buf == '':
+                break
+        except Exception, e:
+            break
+
 def tcp():
     """docstring for tcp"""
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     server.bind((HOST, PORT))
     server.listen(10)
 
     while True:
         (conn, addr) = server.accept()
-        conn.settimeout(10)
 
-        while True:
-            buf = conn.recv(4096)
-            print buf
-            if buf == '':
-                break
+        thread_loop = threading.Thread(target=recv_thread, args=(conn, 0))
+        thread_loop.daemon = True
+        thread_loop.start()
 
 def udp():
     """docstring for udp"""

@@ -27,13 +27,23 @@ extern "C" {
 struct telnet_server_t {
     Socket *sock;
 
-    int (*init)(struct telnet_server_t*, const char*, int);
+    int (*init)(struct telnet_server_t*, const char*, const char*, int);
     void (*run)(struct telnet_server_t*, int);
     void (*quit)(struct telnet_server_t*);
+    void (*register_event_handler)(struct telnet_server_t *server, EventHandler *handler);
 };
 typedef struct telnet_server_t TelnetServer, *PTelnetServer;
 
+#define TELNET_BUF_SIZE     1024    // 等于MSG_MAX
+
+struct telnet_proc_t {
+    char telnet_cmd[TELNET_BUF_SIZE];
+    int (*telnet_proc_handler)(int fd, char *msg, Socket *sock);
+};
+typedef struct telnet_proc_t TelnetProc, *PTelnetProc;
+
 TelnetServer* create_telnet_server_instance();
+void telnet_server_register_event_handler(struct telnet_server_t *server, EventHandler *handler);
 
 #ifdef __cplusplus
 }

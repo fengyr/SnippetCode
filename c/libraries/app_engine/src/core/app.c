@@ -33,6 +33,9 @@ static struct timeval s_start_timeval;
 static Logger s_logger;
 static int s_app_exist = 0;                 // App是否已经创建
 
+static int s_argc;
+static const char **s_argv;
+
 int g_quit_app = 0;
 
 static void init(struct app_runtime_t *app)
@@ -45,7 +48,7 @@ static void init(struct app_runtime_t *app)
     }
 }
 
-static void register_handler_message(HandlerMessage handler, int thread_mode)
+static void register_message_handler(HandlerMessage handler, int thread_mode)
 {
     s_handler_message = handler;
     s_loop_run_thread_mode = thread_mode;
@@ -112,16 +115,6 @@ static void run(struct app_runtime_t *app)
     // record start time
     gettimeofday(&s_start_timeval, NULL);
 
-    // run server after init all module complete.
-    CameraServer *camera_server = app->camera_server;
-    TelnetServer *telnet_server = app->telnet_server;
-    if (camera_server != NULL) {
-        camera_server->run(camera_server, 1);
-    }
-    if (telnet_server != NULL) {
-        telnet_server->run(telnet_server, 1);
-    }
-
     trigger_message(app);
 
     if (s_loop_run_thread_mode) {
@@ -160,12 +153,12 @@ static void quit(struct app_runtime_t *app)
     message_queue_destory(app->msg_queue);
     looper_exit(app->looper);
 
-    if (app->camera_server != NULL) {
-        app->camera_server->quit(app->camera_server);
+    if (app->tcp_server_groups != NULL) {
+        app->tcp_server_groups->destroy(app->tcp_server_groups);        
     }
 
-    if (app->telnet_server != NULL) {
-        app->telnet_server->quit(app->telnet_server);
+    if (app->tcp_slave_groups != NULL) {
+        app->tcp_slave_groups->destroy(app->tcp_slave_groups);        
     }
 
     logger_destroy(&s_logger);
@@ -176,7 +169,11 @@ const char* get_version()
     static char version[128];
     memset(version, 0, sizeof(version));
 #ifdef MAC_VERSION
+#ifdef MIN_VERSION
+    sprintf(version, "build_%s.%s_%s", APP_VERSION, MIN_VERSION, MAC_VERSION); 
+#else
     sprintf(version, "build_%s_%s", APP_VERSION, MAC_VERSION); 
+#endif
 #else
     sprintf(version, "build_%s", APP_VERSION); 
 #endif
@@ -191,9 +188,17 @@ int trans_message(Message *msg)
     return msg_handler->send_message(msg_handler, msg);
 }
 
-App* create_app_instance(Options *options)
+void parse_options(struct app_runtime_t *app, Options *options)
+{
+    getOptions(options, s_argc, s_argv);
+    app->options = options;
+}
+
+App* create_app_instance(int argc, const char *argv[])
 {
     App *app = &s_app;
+    s_argc = argc;
+    s_argv = argv;
 
     if (s_app_exist) {
         return app;
@@ -202,25 +207,25 @@ App* create_app_instance(Options *options)
     app->msg_queue = &s_msg_queue;
     app->looper = &s_looper;
     app->init = init;
-    app->register_handler = register_handler_message;
+    app->register_message_handler = register_message_handler;
+    app->parse_options = parse_options;
     app->run = run;
     app->quit = quit;
 
     // init zlog system.
     logger_init(&s_logger, LOG_FILE, LOG_CONFIG_PATH, LOG_FILE_DIR);
 
-    // create camera server instance
-    CameraServer *camera_server = create_camera_server_instance();
-    camera_server->init(camera_server, options->cmd.server_ip_addr, options->cmd.server_port);
+    // create tcp server groups instance
+    TcpServerGroups *tcp_server_groups = create_tcp_server_groups_instance();
+    tcp_server_groups->init(tcp_server_groups);
 
-    // create telnet server instance
-    TelnetServer *telnet_server = create_telnet_server_instance();
-    telnet_server->init(telnet_server, options->cmd.server_ip_addr, 11018);
+    // create tcp slave groups instance
+    TcpSlaveGroups *tcp_slave_groups = create_tcp_slave_groups_instance();
+    tcp_slave_groups->init(tcp_slave_groups);
 
-    // set Options and CameraServer .etc
-    app->options = options;
-    app->camera_server = camera_server;
-    app->telnet_server = telnet_server;
+    // set Servers .etc
+    app->tcp_server_groups = tcp_server_groups;
+    app->tcp_slave_groups = tcp_slave_groups;
     app->version = get_version;
     app->logger = &s_logger;
 

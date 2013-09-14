@@ -13,6 +13,20 @@
  *         Author:  Zenki (Zenki.J.Zha), zenki2001cn@163.com
  *   Organization:  
  *
+ *  0.4.0:
+ *      1.优化网络服务的代码，加入groups机制。
+ *      2.将网络处理优化成可注册的形式。
+ *      3.加入抽象数据库，支持Mysql。
+ *      4.提供解析Options接口，减少程序依赖性。
+ *
+ *  0.3.5:
+ *      1.添加SIGSEGV信号处理。
+ *
+ *  0.3.4:
+ *      1.添加tcp_slave_groups模块.
+ *      2.优化tcp_slave模块.
+ *      3.添加客户端连接的IP和端口信息.
+ *
  *  0.3.3:
  *      1.添加ping协议。
  *      2.优化socket发送和接收的缓冲区大小。
@@ -37,7 +51,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.3.3"
+#define APP_VERSION "0.3.5"
 
 #ifdef __cplusplus
 }

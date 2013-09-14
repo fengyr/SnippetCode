@@ -97,22 +97,27 @@ def tcp():
     s.send(getData(0, "type_ui_control"))
     # s.sendto("hello world", (HOST, PORT));
     print s.recv(4096)
-    time.sleep(1)
+    time.sleep(0.5)
 
     # exit
     # s.send(getData(20, "exit"))
     # print s.recv(4096)
 
+    class_id = 0
     while True:
         # modbus class
-        s.send(getData(21, "1234567890 1"))
+        s.send(getData(21, "1234567890 %d" % class_id))
         print s.recv(4096)
-        time.sleep(1)
+        time.sleep(0.5)
 
         # modbus class
-        s.send(getData(22, "1 4"))
-        print s.recv(4096)
-        time.sleep(1)
+        # s.send(getData(22, "1 4"))
+        # print s.recv(4096)
+        # time.sleep(1)
+
+        class_id += 1
+        if class_id > 7:
+            class_id = 0
 
     return
 

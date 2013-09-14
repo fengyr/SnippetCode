@@ -15,23 +15,31 @@
  *
  * =====================================================================================
  */
+#include <stdlib.h>
+#include <assert.h>
+
 #include "telnet_server.h"
 #include "connection.h"
-#include "telnet_proc.h"
 #include "handler_process.h"
 
-static Socket s_server_sock;
-static EventHandler s_telnet_handler;
-static TelnetServer s_telnet_server;
+/* static Socket s_server_sock; */
+/* static TelnetServer s_telnet_server; */
+/* static EventHandler s_telnet_handler; */
 
-static int init(struct telnet_server_t *server, const char *local_ip, int local_port)
+void telnet_server_register_event_handler(struct telnet_server_t *server, EventHandler *handler)
 {
-    int rtn = tcp_server_init(server->sock, local_ip, local_port, "telnet");
+    assert(server != NULL);
 
-    /* 注册界面控制类型的处理方法 */
-    s_telnet_handler.handler_type = HANDLER_TYPE_TELNET;
-    s_telnet_handler.onRecvAndReplay = telnet_handler;
-    registerHandler(server->sock, &s_telnet_handler);
+    registerHandler(server->sock, handler);
+}
+
+static int init(struct telnet_server_t *server, const char *server_name, const char *local_ip, int local_port)
+{
+    int rtn = tcp_server_init(server->sock, local_ip, local_port, server_name);
+
+    /* s_telnet_handler.handler_type = HANDLER_TYPE_TELNET; */
+    /* s_telnet_handler.onRecvAndReplay = telnet_handler; */
+    /* registerHandler(server->sock, &s_telnet_handler); */
 
     return rtn;
 }
@@ -48,10 +56,17 @@ static void quit(struct telnet_server_t *server)
 
 TelnetServer* create_telnet_server_instance()
 {
-    s_telnet_server.sock = &s_server_sock;
-    s_telnet_server.init = init; 
-    s_telnet_server.run = run; 
-    s_telnet_server.quit = quit;        
+    TelnetServer *s_telnet_server = (TelnetServer*) malloc(sizeof(TelnetServer));
+    Socket *s_server_sock = (Socket*) malloc(sizeof(Socket));
 
-    return &s_telnet_server;
+    assert(s_telnet_server != NULL);
+    assert(s_server_sock != NULL);
+
+    s_telnet_server->sock = s_server_sock;
+    s_telnet_server->init = init; 
+    s_telnet_server->run = run; 
+    s_telnet_server->quit = quit;        
+    s_telnet_server->register_event_handler = telnet_server_register_event_handler;
+
+    return s_telnet_server;
 }

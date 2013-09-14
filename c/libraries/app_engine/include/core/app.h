@@ -26,8 +26,8 @@ extern "C" {
 
 #include "message.h"
 #include "message_queue.h"
-#include "camera_server.h"
-#include "telnet_server.h"
+#include "tcp_slave_groups.h"
+#include "tcp_server_groups.h"
 #include "looper.h"
 #include "options.h"
 #include "zlogwrap.h"
@@ -38,15 +38,17 @@ struct app_runtime_t {
     MessageQueue *msg_queue;
     Looper *looper;
 
-    CameraServer *camera_server;
-    TelnetServer *telnet_server;
+    TcpServerGroups *tcp_server_groups;
+    TcpSlaveGroups *tcp_slave_groups;
     Logger *logger;
 
     // init && destory
     void (*init)(struct app_runtime_t *app);
-    void (*register_handler)(HandlerMessage handler, int thread_mode);
     void (*run)(struct app_runtime_t *app);
     void (*quit)(struct app_runtime_t *app);
+
+    void (*parse_options)(struct app_runtime_t *app, Options *options);
+    void (*register_message_handler)(HandlerMessage handler, int thread_mode);
 
     // app engine version
     const char* (*version)();
@@ -62,7 +64,7 @@ typedef struct app_runtime_t App, *PApp;
 //          public interface                        //
 //////////////////////////////////////////////////////
 // 创建一个app的实例
-App* create_app_instance(Options *options);
+App* create_app_instance(int argc, const char *argv[]);
 // 获取已创建的app实例
 App* get_app_instance();
 

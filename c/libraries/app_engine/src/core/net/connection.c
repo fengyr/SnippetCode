@@ -75,6 +75,8 @@ static void init_socket(Socket *sock, const char *name)
     for (i = 0; i < MAX_REMOTE_NUM; i++) {
         remote[i].remote_fd = -1;
         remote[i].remote_type = ENUM_NODEFINED;
+        remote[i].remote_port = -1;
+        memset(remote[i].remote_ip, 0, sizeof(remote[i].remote_ip));
         remote[i].remote_name = (char*) malloc(sizeof(char)*MAX_NAME_LEN);
         memset(remote[i].remote_name, 0, MAX_NAME_LEN);
         strcpy(remote[i].remote_name, HANDLER_TYPE_DEFAULT);
@@ -93,6 +95,8 @@ static void restore_remote(Socket *sock, int id)
     close(remote[id].remote_fd);
     remote[id].remote_fd = -1;
     remote[id].remote_type = ENUM_NODEFINED;
+    remote[id].remote_port = -1;
+    memset(remote[id].remote_ip, 0, sizeof(remote[id].remote_ip));
     memset(remote[id].remote_name, 0, MAX_NAME_LEN);
     strcpy(remote[id].remote_name, HANDLER_TYPE_DEFAULT);
 
@@ -104,7 +108,7 @@ static void free_socket(Socket *sock)
 {
     server_quit = 1;
 
-    usleep(500000);
+    usleep(300000);
 
     fprintf(stderr, "%s server exit...\n", sock->local_name);
 
@@ -152,7 +156,7 @@ static void free_socket(Socket *sock)
     pthread_mutex_destroy(&sock->s_mutex);
 }
 
-static void add_client(Socket *sock, int client_fd)
+static void add_client(Socket *sock, int client_fd, char *client_ip, int client_port)
 {
     int i;
     Remote *remote = sock->remote;
@@ -160,12 +164,12 @@ static void add_client(Socket *sock, int client_fd)
     DEBUG("add_client: enter\n");
     struct timeval timeout_r; 
     timeout_r.tv_sec = 0;
-    timeout_r.tv_usec = 1000;
+    timeout_r.tv_usec = 10000;
     setsockopt(client_fd, SOL_SOCKET, SO_RCVTIMEO, (const void*)&timeout_r, sizeof(timeout_r));
 
     struct timeval timeout_s; 
     timeout_s.tv_sec = 0;
-    timeout_s.tv_usec = 1000;
+    timeout_s.tv_usec = 10000;
     setsockopt(client_fd, SOL_SOCKET, SO_SNDTIMEO, (const void*)&timeout_s, sizeof(timeout_s));
 
     int buf_size = 1024000;
@@ -175,6 +179,9 @@ static void add_client(Socket *sock, int client_fd)
     for (i = 0; i < MAX_REMOTE_NUM; i++) {
         if (remote[i].remote_fd == -1) {
             remote[i].remote_fd = client_fd;
+            memset(remote[i].remote_ip, 0, sizeof(remote[i].remote_ip));
+            strcpy(remote[i].remote_ip, client_ip);
+            remote[i].remote_port = client_port;
             break;
         }
     }
@@ -246,7 +253,7 @@ static void* thread_tcp_server(void *param)
                 continue;
             }
 
-            add_client(sock, client);
+            add_client(sock, client, inet_ntoa(addr.sin_addr), addr.sin_port);
             continue;
         }
 

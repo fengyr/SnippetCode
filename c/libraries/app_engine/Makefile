@@ -9,8 +9,9 @@ OPTIMIZE        :=
 WARNINGS        := -Wall
 DEFS            := 
 # EXTRA_CFLAGS    := -g
+# EXTRA_CFLAGS    := -g -DUSE_MYSQL
 # EXTRA_CFLAGS    := -DUSE_DEBUG -g
-LDFLAGS         := -pthread -lm -lrt -lstdc++
+LDFLAGS         := -pthread -lm -lrt -lstdc++ -ldl
 
 OUT_DIR 	= out
 OBJ_DIR   	= $(OUT_DIR)/obj
@@ -19,27 +20,32 @@ INC_DIR  	= 	./include/ \
 			./include/core/ \
 			./include/core/utils/ \
 			./include/core/net/ \
+			./include/core/database/ \
 			./include/interface/ \
 			/usr/local/include/opencv/ \
-			/usr/local/include/
+			/usr/local/include/ \
+			/usr/local/mysql/include/mysql \
+			/usr/local/mysql/include/
 
 SRC_DIR   	= 	./src/ \
 			./src/core/ \
 			./src/core/net/ \
-			./src/core/utils
+			./src/core/utils \
+			./src/core/database
 
 EXTRA_SRC 	= 
-EXCLUDE_FILES 	= 	camera_interface.c camera_interface.h\
-			opencv_interface.cpp opencv_interface.hpp\
-			ui_interface.c \
+EXCLUDE_FILES 	= 	camera_interface.c camera_interface.h \
+			opencv_interface.cpp opencv_interface.hpp \
+			ui_interface.c ui_interface.h \
 			runtime.c runtime.h \
 			options.c options.h \
-			telnet_proc.c \
-			app.c 
+			telnet_proc.c telnet_proc.h \
+			app.c app.h
 
 SUFFIX 		= c cpp hpp cc
 EXTRA_OBJS  = 	./libs/libstruct.a \
-		./libs/libzlog.a
+				./libs/libzlog.a \
+				/usr/local/mysql/lib/libmysqlclient.so
 
 TARGET          := libapp.so
 TARGET_TYPE     := so
@@ -52,7 +58,8 @@ ifeq ($(TARGET_TYPE),app)
 			./src/interface \
 			./src/core \
 			./src/core/net \
-			./src/core/utils
+			./src/core/utils \
+			./src/core/database
 endif
 
 .other_task:

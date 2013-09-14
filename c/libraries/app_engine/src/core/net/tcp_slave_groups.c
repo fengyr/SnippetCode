@@ -1,0 +1,155 @@
+/*
+ * =====================================================================================
+ *
+ *       Filename:  tcp_slave_groups.c
+ *
+ *    Description:  
+ *
+ *        Version:  
+ *        Created:  八月 24, 2013
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Zenki (Zenki.J.Zha), zenki2001cn@163.com
+ *   Organization:  
+ *
+ * =====================================================================================
+ */
+#include <stdlib.h>
+#include <assert.h>
+#include <string.h>
+
+#include "tcp_slave_groups.h"
+#include "debug.h"
+#include "zlogwrap.h"
+#include "app.h"
+
+static TcpSlaveGroups s_tcp_slave_groups;
+static App *s_app = get_app_instance();
+
+static TcpSlave* get_slave(struct tcp_slave_groups_t *groups, 
+                           const char *slave_name)
+{
+    int error;
+    TcpSlave *slave;
+    Logger *logger = s_app->logger;
+
+    error = hashmap_get(groups->hashmap_slave_groups, (char*)slave_name, (void**)(&slave));
+    if (error != MAP_OK) {
+        logger->log_e(logger, "Net: Get Slave Error.");
+    }
+
+    return slave;
+}
+
+static int tcp_slave_groups_register(TcpSlaveGroups *groups, 
+                              const char *slave_name, 
+                              const char *server_ip, 
+                              int server_port)
+{
+    Logger *logger = s_app->logger;
+    
+    if (groups->slave_count >= MAX_SLAVES) {
+        logger->log_e(logger, "Net: Slave Register, Groups Is Full.");
+        return -1; 
+    }
+
+    if (!strcmp(slave_name, "")) {
+        logger->log_e(logger, "Net: Slave Register, Slave Name Is NULL.");
+        return -1;
+    }
+
+    // init TcpSlave
+    TcpSlave *slave;
+    slave = (TcpSlave*)malloc(sizeof(TcpSlave));
+
+    memset(slave->slave_name, 0, sizeof(slave->slave_name));
+    strcpy(slave->slave_name, slave_name);
+    memset(slave->server_ip, 0, sizeof(slave->server_ip));
+    strcpy(slave->server_ip, server_ip);
+    slave->server_port = server_port;
+    slave->connect = slave_tcp_connect;
+    slave->disconnect = slave_tcp_disconnect;
+    slave->send = slave_tcp_send;
+    slave->status = ENUM_TCP_DISCONNECTED;
+
+    int error = hashmap_put(groups->hashmap_slave_groups, (char*)slave_name, slave);
+    if (error != MAP_OK) {
+        logger->log_e(logger, "Net: Slave Register, Slave Add Failed.");
+        return -1;
+    }
+
+    DEBUG("tcp_slave_groups_register: slave_name=%s\n", slave->slave_name);
+
+    if (groups->slave_names[groups->slave_count] != NULL) {
+        strcpy(groups->slave_names[groups->slave_count], slave_name);
+    } else {
+        error = hashmap_remove(groups->hashmap_slave_groups, (char*)slave_name);
+        logger->log_e(logger, "Net: Slave Register, Slave Add Name Failed.");
+        return -1;
+    }
+
+    groups->slave_count++;
+
+    return 0;
+}
+
+static int tcp_slave_groups_init(TcpSlaveGroups *groups)
+{
+    groups->hashmap_slave_groups = hashmap_new();
+
+    int i;
+    for (i = 0; i < MAX_SLAVES; i++) {
+        groups->slave_names[i] = (char*)malloc(256);
+        memset(groups->slave_names[i], 0, 256);
+    }
+
+    groups->slave_count = 0;
+
+    return 0;
+}
+
+static int tcp_slave_groups_destroy(TcpSlaveGroups *groups)
+{
+    int error;
+    TcpSlave *slave;
+    Logger *logger = s_app->logger;
+
+    DEBUG("tcp_slave_groups_destroy: BEGIN\n");
+    int i;
+    for (i = 0; i < MAX_SLAVES; i++) {
+        error = hashmap_get(groups->hashmap_slave_groups, groups->slave_names[i], (void**)(&slave));
+        if (slave != NULL) {
+            DEBUG("tcp_slave_groups_destroy: slave_name=%s\n", slave->slave_name);
+            slave_tcp_close(slave);
+            free(slave);
+            slave = NULL;
+
+            error = hashmap_remove(groups->hashmap_slave_groups, groups->slave_names[i]);
+            if (error != MAP_OK) {
+                logger->log_e(logger, "Net: Groups Free, Slave Remove Error.");
+            }
+        }
+
+        free(groups->slave_names[i]);
+        groups->slave_names[i] = NULL;
+    }
+
+    groups->slave_count = 0;
+
+    DEBUG("tcp_slave_groups_destroy: OK\n");
+
+    hashmap_free(groups->hashmap_slave_groups);
+
+    return 0;
+}
+
+TcpSlaveGroups* create_tcp_slave_groups_instance()
+{
+    s_tcp_slave_groups.init = tcp_slave_groups_init;
+    s_tcp_slave_groups.destroy= tcp_slave_groups_destroy;
+    s_tcp_slave_groups.get_slave = get_slave;
+    s_tcp_slave_groups.register_slave = tcp_slave_groups_register;
+
+    return &s_tcp_slave_groups;
+}

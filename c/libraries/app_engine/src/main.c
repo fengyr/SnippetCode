@@ -19,8 +19,8 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <signal.h>
+#include <stdlib.h>
 
-#include "options.h"
 #include "app.h"
 #include "runtime.h"
 
@@ -47,6 +47,9 @@ static void except_quit(int signo)
         case SIGABRT:
             logger->log_e(logger, "Runtime: cause SIGABRT.");
             break;
+        case SIGSEGV:
+            logger->log_e(logger, "Runtime: cause SIGSEGV.");
+            break;
         default:
             break;
     }
@@ -68,16 +71,16 @@ static void signal_handle()
     signal(SIGTERM, except_quit);
     signal(SIGKILL, except_quit);
     signal(SIGABRT, except_quit);
+    signal(SIGSEGV, except_quit);
+
+    system("echo './core-%e-%p-%t' > /proc/sys/kernel/core_pattern");
 }
 
 int main(int argc, const char *argv[])
 {
     signal_handle();
 
-    Options options;
-    getOptions(&options, argc, argv);
-
-    app = create_app_instance(&options);
+    app = create_app_instance(argc, argv);
     app->onCreate = on_app_create;
     app->onProcess = on_app_process;
     app->onDestory = on_app_destroy;

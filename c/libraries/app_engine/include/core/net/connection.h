@@ -44,6 +44,8 @@ enum remote_type_t {
 
 struct remote_t {
     int remote_fd;
+    int remote_port;
+    char remote_ip[32];
 
     /*-1 -> nodefined, 
      * 0 -> ui_control, 
@@ -60,7 +62,7 @@ typedef struct remote_t Remote, *PRemote;
 //////////////////////////////////////////////////////
 struct socket_t {
     int local_fd;
-    char local_name[64];
+    char local_name[256];
     Remote remote[MAX_REMOTE_NUM];
     EventHandler **pHandlers;
 
