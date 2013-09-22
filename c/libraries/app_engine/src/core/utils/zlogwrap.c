@@ -26,7 +26,7 @@
 #include "zlogwrap.h"
 #include "debug.h"
 
-static char * LOG_CONFIG_TEMPLE[] = {
+static char const *LOG_CONFIG_TEMPLE[] = {
     "[global]",
     "default format = \"%d [%-5V] - %m%n\"",
     "",
@@ -52,7 +52,7 @@ static int make_config(const char *log_conf_path, const char *log_file_dir)
         return -1;
     }
 
-    char **line;
+    char const **line;
     ssize_t wsize;
     for (line = LOG_CONFIG_TEMPLE; *line != NULL; line++) {
         wsize = write(fd, *line, strlen(*line));

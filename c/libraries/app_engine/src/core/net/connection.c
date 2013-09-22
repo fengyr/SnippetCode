@@ -74,7 +74,7 @@ static void init_socket(Socket *sock, const char *name)
 
     for (i = 0; i < MAX_REMOTE_NUM; i++) {
         remote[i].remote_fd = -1;
-        remote[i].remote_type = ENUM_NODEFINED;
+        remote[i].remote_type = ENUM_REMOTE_NODEFINED;
         remote[i].remote_port = -1;
         memset(remote[i].remote_ip, 0, sizeof(remote[i].remote_ip));
         remote[i].remote_name = (char*) malloc(sizeof(char)*MAX_NAME_LEN);
@@ -94,7 +94,7 @@ static void restore_remote(Socket *sock, int id)
 
     close(remote[id].remote_fd);
     remote[id].remote_fd = -1;
-    remote[id].remote_type = ENUM_NODEFINED;
+    remote[id].remote_type = ENUM_REMOTE_NODEFINED;
     remote[id].remote_port = -1;
     memset(remote[id].remote_ip, 0, sizeof(remote[id].remote_ip));
     memset(remote[id].remote_name, 0, MAX_NAME_LEN);
@@ -122,7 +122,7 @@ static void free_socket(Socket *sock)
             *fd = -1;
         }
 
-        remote[i].remote_type = ENUM_NODEFINED;
+        remote[i].remote_type = ENUM_REMOTE_NODEFINED;
 
         if (remote[i].remote_name != NULL) {
             free(remote[i].remote_name);

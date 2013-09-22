@@ -13,6 +13,13 @@
  *         Author:  Zenki (Zenki.J.Zha), zenki2001cn@163.com
  *   Organization:  
  *
+ *  添加新的协议类型:
+ *  1.添加HANDLER_TYPE_*作为字符串认证       <handler_process.h>
+ *  2.添加enum remote_type_t的标识           <connection.h>
+ *  3.根据类型，做默认的认证处理             <handler_process.c>
+ *  4.定义每种类型对应的处理方法             <ui_interface.h>
+ *  5.注册每种类型对应的处理方法             <runtime.c>
+ *  6.实现每种类型对应的处理方法             <ui_interface.c>
  * =====================================================================================
  */
 #include <string.h>
@@ -70,15 +77,15 @@ int default_handler(int fd, char *msg, Socket *sock)
              * 3表示MODBUS类型，
              * 根据ID为0的命令字符串标识。参考handler_process.h */
             if (strcmp(remote[id].remote_name, HANDLER_TYPE_UI_CONTROL) == 0) {
-                remote[id].remote_type = ENUM_UI_CONTROL;
+                remote[id].remote_type = ENUM_REMOTE_UI_CONTROL;
             } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_IMG_DATA) == 0) {
-                remote[id].remote_type = ENUM_IMG_DATA;
+                remote[id].remote_type = ENUM_REMOTE_IMG_DATA;
             } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_PING) == 0) {
-                remote[id].remote_type = ENUM_PING;
+                remote[id].remote_type = ENUM_REMOTE_PING;
             } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_MODBUS) == 0) {
-                remote[id].remote_type = ENUM_MODBUS;
+                remote[id].remote_type = ENUM_REMOTE_MODBUS;
             } else {
-                remote[id].remote_type = ENUM_NODEFINED;
+                remote[id].remote_type = ENUM_REMOTE_NODEFINED;
                 replay(fd, REPLAY_FAILED);
                 return -1;
             }

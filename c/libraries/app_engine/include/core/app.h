@@ -51,7 +51,7 @@ struct app_runtime_t {
     void (*register_message_handler)(HandlerMessage handler, int thread_mode);
 
     // app engine version
-    const char* (*version)();
+    const char* (*version)(const char *min_ver, const char *mac_ver);
 
     // 用户自定义方法，在App的生命周期中被调用
     int (*onCreate)(struct app_runtime_t *app);

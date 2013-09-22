@@ -13,6 +13,10 @@
  *         Author:  Zenki (Zenki.J.Zha), zenki2001cn@163.com
  *   Organization:  
  *
+ *  0.4.1:
+ *      1.添加部分注释。
+ *      2.优化部分目录结构。
+ *
  *  0.4.0:
  *      1.优化网络服务的代码，加入groups机制。
  *      2.将网络处理优化成可注册的形式。
@@ -51,7 +55,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.3.5"
+#define APP_VERSION "0.4.0"
 
 #ifdef __cplusplus
 }

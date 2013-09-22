@@ -35,7 +35,6 @@ struct tcp_server_t {
 typedef struct tcp_server_t TcpServer, *PTcpServer;
 
 TcpServer* create_tcp_server_instance();
-void tcp_server_register_event_handler(struct tcp_server_t *server, EventHandler *handler);
 
 #ifdef __cplusplus
 }

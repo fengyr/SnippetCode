@@ -32,13 +32,13 @@ extern "C" {
 #define SQL_CREATE_DATABASE     "create database"
 
 struct db_mysql_user_t {
-    char db_host[24];
-    char db_user[24];
-    char db_passwd[64];
-    char db_name[64];
-    unsigned int db_port;
-    char db_socket[64];
-    unsigned long db_flags;
+    char db_host[24];           // mysql的ip地址
+    char db_user[24];           // mysql的用户名
+    char db_passwd[64];         // mysql的密码
+    char db_name[64];           // 数据库名称
+    unsigned int db_port;       // 数据库端口
+    char db_socket[64];         // socket名称
+    unsigned long db_flags;     // 标识
 };
 typedef struct db_mysql_user_t MysqlUser, *PMysqlUser;
 

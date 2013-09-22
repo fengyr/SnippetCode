@@ -43,7 +43,6 @@ struct telnet_proc_t {
 typedef struct telnet_proc_t TelnetProc, *PTelnetProc;
 
 TelnetServer* create_telnet_server_instance();
-void telnet_server_register_event_handler(struct telnet_server_t *server, EventHandler *handler);
 
 #ifdef __cplusplus
 }

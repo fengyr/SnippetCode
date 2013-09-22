@@ -25,15 +25,6 @@ extern "C" {
 #include <sys/types.h>
 #include "connection.h"
 
-/* 
- * 添加新的协议类型:
- * 1.添加HANDLER_TYPE_*作为字符串认证       "handler_process.h"
- * 2.添加enum remote_type_t的标识           "connection.h"
- * 3.根据类型，做默认的认证处理             "handler_process.c"
- * 4.定义每种类型对应的处理方法             "ui_interface.h"
- * 5.注册每种类型对应的处理方法             "camera_server.c"
- * 6.实现每种类型对应的处理方法             "ui_interface.c"
- */
 #define HANDLER_TYPE_DEFAULT            "type_default"
 #define HANDLER_TYPE_UI_CONTROL         "type_ui_control"
 #define HANDLER_TYPE_IMG_DATA           "type_img_data"

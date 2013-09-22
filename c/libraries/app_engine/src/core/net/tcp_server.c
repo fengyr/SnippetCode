@@ -22,10 +22,7 @@
 #include "connection.h"
 #include "handler_process.h"
 
-/* static Socket s_server_sock; */
-/* static TcpServer s_tcp_server; */
-
-void tcp_server_register_event_handler(struct tcp_server_t *server, EventHandler *handler)
+static void tcp_server_register_event_handler(struct tcp_server_t *server, EventHandler *handler)
 {
     assert(server != NULL);
 
@@ -35,26 +32,6 @@ void tcp_server_register_event_handler(struct tcp_server_t *server, EventHandler
 static int init(struct tcp_server_t *server, const char *server_name, const char *local_ip, int local_port)
 {
     int rtn = tcp_server_init(server->sock, local_ip, local_port, server_name);
-
-    /* 注册界面控制类型的处理方法 */
-    /* s_ui_control_handler.handler_type = HANDLER_TYPE_UI_CONTROL; */
-    /* s_ui_control_handler.onRecvAndReplay = ui_control_handler; */
-    /* registerHandler(server->sock, &s_ui_control_handler); */
-
-    /* 注册结果图片类型的处理方法 */
-    /* s_img_data_handler.handler_type = HANDLER_TYPE_IMG_DATA; */
-    /* s_img_data_handler.onRecvAndReplay = ui_img_data_handler; */
-    /* registerHandler(server->sock, &s_img_data_handler); */
-
-    /* 注册PING的处理方法 */
-    /* s_ping_handler.handler_type = HANDLER_TYPE_PING; */
-    /* s_ping_handler.onRecvAndReplay = ping_handler; */
-    /* registerHandler(server->sock, &s_ping_handler); */
-
-    /* 注册MODBUS类型的处理方法 */
-    /* s_modbus_handler.handler_type = HANDLER_TYPE_MODBUS; */
-    /* s_modbus_handler.onRecvAndReplay = modbus_protocol_handler; */
-    /* registerHandler(server->sock, &s_modbus_handler); */
 
     return rtn;
 }

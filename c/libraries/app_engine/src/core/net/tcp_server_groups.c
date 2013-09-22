@@ -13,6 +13,12 @@
  *         Author:  Zenki (Zenki.J.Zha), zenki2001cn@163.com
  *   Organization:  
  *
+ *  注册新服务的流程：
+ *  1.创建新的服务抽象类型，参考tcp_server和telnet_server。     <tcp_server.h>,<telnet_server.h>
+ *  2.实现新的服务抽象类型.                                     <tcp_server.c>, <telnet_server.c>
+ *  3.为每种抽象服务类型定义标识enum tcp_server_type_t.         <tcp_server_groups.h>
+ *  4.通过register_server方法注册一个服务.                      <runtime.c>
+ *  5.通过get_server方法获取一个服务.                           <runtime.c>
  * =====================================================================================
  */
 #include <stdlib.h>

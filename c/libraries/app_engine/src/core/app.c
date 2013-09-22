@@ -164,21 +164,13 @@ static void quit(struct app_runtime_t *app)
     logger_destroy(&s_logger);
 }
 
-const char* get_version()
+const char* get_version(const char *min_ver, const char *mac_ver)
 {
-    static char version[128];
-    memset(version, 0, sizeof(version));
-#ifdef MAC_VERSION
-#ifdef MIN_VERSION
-    sprintf(version, "build_%s.%s_%s", APP_VERSION, MIN_VERSION, MAC_VERSION); 
-#else
-    sprintf(version, "build_%s_%s", APP_VERSION, MAC_VERSION); 
-#endif
-#else
-    sprintf(version, "build_%s", APP_VERSION); 
-#endif
+    static char ver[128];
+    memset(ver, 0, sizeof(ver));
+    sprintf(ver, "build_%s.%s_%s", APP_VERSION, min_ver, mac_ver); 
 
-    return version;
+    return ver;
 }
 
 int trans_message(Message *msg)

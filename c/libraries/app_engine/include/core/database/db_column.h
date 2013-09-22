@@ -45,12 +45,12 @@ typedef void* ContentVal;
 
 #define DB_MAX_NAME_LEN    64
 struct content_t {
-    char cont_name[DB_MAX_NAME_LEN];
-    enum content_type_t cont_type;
-    char cont_null[16];
-    char cont_key[16];
-    char cont_extra[16];
-    ContentVal cont_val;
+    char cont_name[DB_MAX_NAME_LEN];    // 列名称
+    enum content_type_t cont_type;      // 列数据类型
+    char cont_null[16];                 // 是否可为空
+    char cont_key[16];                  // 主键
+    char cont_extra[16];                // 其他信息
+    ContentVal cont_val;                // 默认值
 };
 typedef struct content_t ContentColumn, *PContentColumn;
 

@@ -22,11 +22,7 @@
 #include "connection.h"
 #include "handler_process.h"
 
-/* static Socket s_server_sock; */
-/* static TelnetServer s_telnet_server; */
-/* static EventHandler s_telnet_handler; */
-
-void telnet_server_register_event_handler(struct telnet_server_t *server, EventHandler *handler)
+static void telnet_server_register_event_handler(struct telnet_server_t *server, EventHandler *handler)
 {
     assert(server != NULL);
 
@@ -36,10 +32,6 @@ void telnet_server_register_event_handler(struct telnet_server_t *server, EventH
 static int init(struct telnet_server_t *server, const char *server_name, const char *local_ip, int local_port)
 {
     int rtn = tcp_server_init(server->sock, local_ip, local_port, server_name);
-
-    /* s_telnet_handler.handler_type = HANDLER_TYPE_TELNET; */
-    /* s_telnet_handler.onRecvAndReplay = telnet_handler; */
-    /* registerHandler(server->sock, &s_telnet_handler); */
 
     return rtn;
 }
