@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 应用程序名称 -->
+    <string name="app_name">ColorPickMobile</string>
+    <string name="app_title">瓷片分拣系统</string>
+    
+    <!-- 标签页标题 -->
+    <string name="main_page">主页</string>
+    <string name="class_page">分类信息</string>
+
+</resources>
