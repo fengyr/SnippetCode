@@ -147,7 +147,7 @@ static void test_register_tcp_handler(App *app)
     TcpServer *server = (TcpServer*) groups->get_server(groups, "tcp_default");
     static EventHandler s_ui_control_handler;
     static EventHandler s_img_data_handler;
-    static EventHandler s_ping_handler;
+    static EventHandler s_mobile_handler;
     static EventHandler s_modbus_handler;
 
     /* 注册界面控制类型的处理方法 */
@@ -161,9 +161,9 @@ static void test_register_tcp_handler(App *app)
     server->register_event_handler(server, &s_img_data_handler);
 
     /* 注册PING的处理方法 */
-    s_ping_handler.handler_type = HANDLER_TYPE_PING;
-    s_ping_handler.onRecvAndReplay = ping_handler;
-    server->register_event_handler(server, &s_ping_handler);
+    s_mobile_handler.handler_type = HANDLER_TYPE_MOBILE_DATA;
+    s_mobile_handler.onRecvAndReplay = mobile_handler;
+    server->register_event_handler(server, &s_mobile_handler);
 
     /* 注册MODBUS类型的处理方法 */
     s_modbus_handler.handler_type = HANDLER_TYPE_MODBUS;

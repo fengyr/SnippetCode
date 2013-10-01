@@ -80,8 +80,8 @@ int default_handler(int fd, char *msg, Socket *sock)
                 remote[id].remote_type = ENUM_REMOTE_UI_CONTROL;
             } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_IMG_DATA) == 0) {
                 remote[id].remote_type = ENUM_REMOTE_IMG_DATA;
-            } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_PING) == 0) {
-                remote[id].remote_type = ENUM_REMOTE_PING;
+            } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_MOBILE_DATA) == 0) {
+                remote[id].remote_type = ENUM_REMOTE_MOBILE_DATA;
             } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_MODBUS) == 0) {
                 remote[id].remote_type = ENUM_REMOTE_MODBUS;
             } else {

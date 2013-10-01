@@ -13,6 +13,9 @@
  *         Author:  Zenki (Zenki.J.Zha), zenki2001cn@163.com
  *   Organization:  
  *
+ *  0.4.2:
+ *      1.服务端加入mobile数据请求类型。
+ *
  *  0.4.1:
  *      1.添加部分注释。
  *      2.优化部分目录结构。
@@ -55,7 +58,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.4.0"
+#define APP_VERSION "0.4.2"
 
 #ifdef __cplusplus
 }

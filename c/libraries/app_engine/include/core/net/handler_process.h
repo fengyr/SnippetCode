@@ -28,7 +28,7 @@ extern "C" {
 #define HANDLER_TYPE_DEFAULT            "type_default"
 #define HANDLER_TYPE_UI_CONTROL         "type_ui_control"
 #define HANDLER_TYPE_IMG_DATA           "type_img_data"
-#define HANDLER_TYPE_PING               "type_ping"
+#define HANDLER_TYPE_MOBILE_DATA        "type_mobile_data"
 #define HANDLER_TYPE_MODBUS             "type_modbus"
 
 #define HANDLER_TYPE_TELNET             "type_telnet"

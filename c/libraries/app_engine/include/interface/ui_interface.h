@@ -30,7 +30,7 @@ extern "C" {
 /* 以下方法实现了EventHandlerCall接口，用来处理不同的网络协议 */
 int ui_control_handler(int fd, Socket *sock);
 int ui_img_data_handler(int fd, Socket *sock);
-int ping_handler(int fd, Socket *sock);
+int mobile_handler(int fd, Socket *sock);
 int modbus_protocol_handler(int fd, Socket *sock);
 
 #ifdef __cplusplus

@@ -194,15 +194,15 @@ static int send_ping_data(int fd, char *msg, Socket *sock)
     return 0;
 }
 
-static HandlerProc ping_data_proc[] = {
+static HandlerProc mobile_data_proc[] = {
     BEGIN_HANDLER,
     {2, send_ping_data},
     END_HANDLER,
 }; 
 
-int ping_handler(int fd, Socket *sock)
+int mobile_handler(int fd, Socket *sock)
 {
-    return HANDLER_PROC_STUB(fd, sock, ping_data_proc);
+    return HANDLER_PROC_STUB(fd, sock, mobile_data_proc);
 }
 
 //////////////////////////////////////////////////////

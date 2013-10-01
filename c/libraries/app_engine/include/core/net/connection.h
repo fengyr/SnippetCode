@@ -35,11 +35,11 @@ typedef struct event_handler_t EventHandler, *PEventHandler;
 //              远程客户端                          //
 //////////////////////////////////////////////////////
 enum remote_type_t {
-    ENUM_REMOTE_NODEFINED = -1,        // NOT DEFINED
-    ENUM_REMOTE_UI_CONTROL = 0,        // see HANDLER_TYPE_UI_CONTROL
-    ENUM_REMOTE_IMG_DATA = 1,          // see HANDLER_TYPE_IMG_DATA
-    ENUM_REMOTE_PING = 2,              // see HANDLER_TYPE_PING
-    ENUM_REMOTE_MODBUS = 3,            // see HANDLER_TYPE_MODBUS
+    ENUM_REMOTE_NODEFINED = -1,         // NOT DEFINED
+    ENUM_REMOTE_UI_CONTROL = 0,         // see HANDLER_TYPE_UI_CONTROL
+    ENUM_REMOTE_IMG_DATA = 1,           // see HANDLER_TYPE_IMG_DATA
+    ENUM_REMOTE_MOBILE_DATA = 2,        // see HANDLER_TYPE_MOBILE_DATA
+    ENUM_REMOTE_MODBUS = 3,             // see HANDLER_TYPE_MODBUS
 };
 
 struct remote_t {
