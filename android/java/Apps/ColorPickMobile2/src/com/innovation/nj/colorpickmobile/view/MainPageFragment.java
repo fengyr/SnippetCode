@@ -3,6 +3,7 @@ package com.innovation.nj.colorpickmobile.view;
 import org.opencv.android.Utils;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
 
 import com.innovation.nj.colorpickmobile.R;
 import com.innovation.nj.colorpickmobile.activity.MainActivity;
@@ -23,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public final class MainPageFragment extends Fragment implements
 		DataRefreshHandler {
@@ -32,6 +34,7 @@ public final class MainPageFragment extends Fragment implements
 	public static final int MSG_REFRESH_PIC = 1;
 
 	ImageView mViewMainPic;
+	TextView mViewCurrentPicNum;
 	DataReceiver mReceiver;
 
 	public static MainPageFragment newInstance(String title) {
@@ -51,7 +54,7 @@ public final class MainPageFragment extends Fragment implements
 			mContent = savedInstanceState.getString(KEY_CONTENT);
 		}
 
-		mReceiver = new DataReceiver(this.getActivity(), "192.168.43.68", 11014);
+		mReceiver = new DataReceiver(this.getActivity(), "192.168.1.101", 11014);
 		mReceiver.registerRefreshHandler(this);
 		mReceiver.run();
 	}
@@ -60,10 +63,11 @@ public final class MainPageFragment extends Fragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		LinearLayout layout = (LinearLayout) inflater.inflate(
-				R.layout.main_page, null);
+				R.layout.main_tab, null);
 
 		mViewMainPic = (ImageView) layout.findViewById(R.id.id_main_pic);
 		mViewMainPic.setImageResource(R.drawable.icon);
+		mViewCurrentPicNum =  (TextView) layout.findViewById(R.id.id_current_pic_num);
 
 		return layout;
 	}
@@ -85,8 +89,8 @@ public final class MainPageFragment extends Fragment implements
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case MSG_REFRESH_PIC: {
-				Bitmap bmp = (Bitmap) msg.obj;
-				refreshPicture(bmp);
+				ProtobufData data = (ProtobufData) msg.obj;
+				refreshPicture(data);
 				break;
 			}
 
@@ -96,29 +100,25 @@ public final class MainPageFragment extends Fragment implements
 		};
 	};
 
-	private void refreshPicture(Bitmap bmp) {
+	private void refreshPicture(ProtobufData data) {
+		Bitmap bmp = data.decodeImageData();
+		String info;
+		
 		if (mViewMainPic != null) {
 			mViewMainPic.setImageBitmap(bmp);
+		}
+		
+		if (mViewCurrentPicNum != null) {
+			info = String.format("第 %d 类", data.image_class);
+			mViewCurrentPicNum.setText(info);
 		}
 	}
 
 	@Override
 	public void refresh(ProtobufData data) {
-		byte[] temp = data.image_data.toByteArray();
-		byte[] bmpBytes = new byte[43200];
-		System.arraycopy(temp, 0, bmpBytes, 0, bmpBytes.length);
-		 
-		Log.e(TAG, "----------width=" + data.image_width + 
-					" --------height=" + data.image_height + 
-					" bytes len=" + bmpBytes.length);
-		Mat mat = new Mat(data.image_height, data.image_width, CvType.CV_8UC3);
-		mat.put(data.image_height, data.image_width, bmpBytes);
-		Bitmap bmp = Bitmap.createBitmap(mat.cols(), mat.rows(), Config.RGB_565);
-		Utils.matToBitmap(mat, bmp);
-
 		Message msg = Message.obtain();
 		msg.what = MSG_REFRESH_PIC;
-		msg.obj = bmp;
+		msg.obj = data;
 		H.sendMessage(msg);
 	}
 }

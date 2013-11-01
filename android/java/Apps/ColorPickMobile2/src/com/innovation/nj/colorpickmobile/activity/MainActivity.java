@@ -21,7 +21,6 @@ import android.view.WindowManager;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.innovation.nj.colorpickmobile.R;
-import com.innovation.nj.colorpickmobile.core.DataReceiver;
 import com.innovation.nj.colorpickmobile.view.MainPageFragment;
 import com.innovation.nj.colorpickmobile.view.TabsFragment;
 import com.viewpagerindicator.TabPageIndicator;
@@ -78,10 +77,6 @@ public class MainActivity extends FragmentActivity {
 		indicator.setViewPager(pager);
 
 		test_protobuf();
-		test_receiver();
-	}
-
-	private void test_receiver() {
 	}
 
 	private void test_protobuf() {

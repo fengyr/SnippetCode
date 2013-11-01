@@ -103,23 +103,35 @@ def tcp():
     # s.send(getData(20, "exit"))
     # print s.recv(4096)
 
-    class_id = 0
-    while True:
-        # modbus class
-        s.send(getData(21, "1234567890 %d" % class_id))
-        print s.recv(4096)
-        time.sleep(0.5)
-
-        # modbus class
-        # s.send(getData(22, "1 4"))
+    # class_id = 0
+    # while True:
+        # # modbus class
+        # s.send(getData(21, "1234567890 %d" % class_id))
         # print s.recv(4096)
-        # time.sleep(1)
+        # time.sleep(0.5)
 
-        class_id += 1
-        if class_id > 7:
-            class_id = 0
+        # # modbus class
+        # # s.send(getData(22, "1 4"))
+        # # print s.recv(4096)
+        # # time.sleep(1)
 
-    return
+        # class_id += 1
+        # if class_id > 7:
+            # class_id = 0
+
+    # return
+
+    # 应用程序版本
+    s.send(getData(16, "get:app:version"))
+    print s.recv(4096)
+
+    # fx版本
+    s.send(getData(26, "get:fx:version"))
+    print s.recv(4096)
+
+    # sep版本
+    s.send(getData(27, "get:sep:version"))
+    print s.recv(4096)
 
     # 特征描述子
     s.send(getData(3, "2"))
@@ -154,15 +166,19 @@ def tcp():
     print s.recv(4096)
 
     # 设置所有值
-    s.send(getData(12, "100 101 103 104 105 106.8 410"))
-    print s.recv(4096)
-
-    # 获取版本信息
-    s.send(getData(16, "get"))
+    s.send(getData(12, "100 101 103 104 105 106.8 410 2 3"))
     print s.recv(4096)
 
     # 进入高级选项模式
     s.send(getData(17, "leave"))
+    print s.recv(4096)
+
+    # log输出等级
+    s.send(getData(17, "2"))
+    print s.recv(4096)
+
+    # 分辨率大小
+    s.send(getData(17, "0"))
     print s.recv(4096)
 
     # 保存文件

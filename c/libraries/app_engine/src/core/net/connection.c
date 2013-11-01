@@ -172,7 +172,7 @@ static void add_client(Socket *sock, int client_fd, char *client_ip, int client_
     timeout_s.tv_usec = 10000;
     setsockopt(client_fd, SOL_SOCKET, SO_SNDTIMEO, (const void*)&timeout_s, sizeof(timeout_s));
 
-    int buf_size = 1024000;
+    int buf_size = 1024 * 1024;
     setsockopt(client_fd, SOL_SOCKET, SO_SNDBUF, (const void*)&buf_size, sizeof(int));
 
     pthread_mutex_lock(&sock->s_mutex);
@@ -290,7 +290,6 @@ int tcp_server_init(Socket *sock, const char *local_ip, int local_port, const ch
     int val = 1;
     struct sockaddr_in localaddr;
     struct linger linger = { 0 };
-    int buf_size = 1024000;
 
     init_socket(sock, name);
 
@@ -329,11 +328,12 @@ int tcp_server_init(Socket *sock, const char *local_ip, int local_port, const ch
         goto ERROR;
     }
 
-    rtn = setsockopt(fd, SOL_SOCKET, SO_RCVBUF, (const void*)&buf_size, sizeof(int));
-    if (rtn < 0) {
-        perror("init_tcp_server: setsockopt SO_RCVBUF error");
-        goto ERROR;
-    }
+    /* int buf_size = 1024 * 1024;
+     * rtn = setsockopt(fd, SOL_SOCKET, SO_RCVBUF, (const void*)&buf_size, sizeof(int));
+     * if (rtn < 0) {
+     *     perror("init_tcp_server: setsockopt SO_RCVBUF error");
+     *     goto ERROR;
+     * }  */
 
     rtn = bind(fd, (struct sockaddr*)&localaddr, sizeof(localaddr));
     if (rtn == -1){

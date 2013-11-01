@@ -8,5 +8,8 @@
     <!-- 标签页标题 -->
     <string name="main_page">主页</string>
     <string name="class_page">分类信息</string>
+    
+    <!-- 主页信息 -->
+    <string name="current_pic">当前瓷砖类别: </string>
 
 </resources>

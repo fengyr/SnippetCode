@@ -17,7 +17,6 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.innovation.nj.colorpickmobile.activity.MainActivity;
 import com.innovation.nj.colorpickmobile.model.ProtobufData;
 
 import ColorSepServer.Image.ImagePackage;
