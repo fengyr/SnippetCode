@@ -13,6 +13,12 @@
  *         Author:  Zenki (Zenki.J.Zha), zenki2001cn@163.com
  *   Organization:  
  *
+ *  0.4.3:
+ *      1.更新zlog至1.2.12.
+ *      2.修复MysqlClient不正确释放，导致的段错误。
+ *      3.修复Socket不正确释放，导致的段错误。
+ *      4.添加mysql查询数据、执行SQL语句功能。
+ *
  *  0.4.2:
  *      1.服务端加入mobile数据请求类型。
  *
@@ -58,7 +64,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.4.2"
+#define APP_VERSION "0.4.3"
 
 #ifdef __cplusplus
 }

@@ -20,6 +20,7 @@
 #include <unistd.h>
 #include <assert.h>
 
+#include "mysql.h"
 #include "array.h"
 #include "hashmap.h"
 #include "list.h"
@@ -33,7 +34,6 @@
 #include "telnet_server.h"
 #include "tcp_server.h"
 
-
 #include "db_column.h"
 #include "db_mysql_wrap.h"
 
@@ -46,8 +46,14 @@ static Options s_options;
 static void set_tables()
 {
 #ifdef USE_MYSQL
+    if (!s_client) {
+        DEBUG("set_tables: s_client=NULL\n");
+        return;
+    }
 
     ContentTableGroups *groups = s_client->db_table_groups;
+
+    // 批次表
     ContentTable *table = groups->create_table("batch_table");
     
     int id = 0;
@@ -63,7 +69,33 @@ static void set_tables()
     table->add_column(table, col4);
     table->add_column(table, col5);
 
+    // 图片信息表
+    ContentTable *table2 = groups->create_table("pic_table");
+
+    ContentColumn *_col1 = table2->create_column("_id", ENUM_CONTENT_INT, "null", "primary key", "auto_increment", NULL);
+    ContentColumn *_col2 = table2->create_column("batch_id", ENUM_CONTENT_INT, "", "", "", NULL);
+    ContentColumn *_col3 = table2->create_column("is_sample", ENUM_CONTENT_INT, "", "", "", NULL);
+    ContentColumn *_col4 = table2->create_column("width", ENUM_CONTENT_INT, "", "", "", NULL);
+    ContentColumn *_col5 = table2->create_column("height", ENUM_CONTENT_INT, "", "", "", NULL);
+    ContentColumn *_col6 = table2->create_column("serial_number", ENUM_CONTENT_CHAR, "", "", "", NULL);
+    ContentColumn *_col7 = table2->create_column("class", ENUM_CONTENT_INT, "", "", "", NULL);
+    ContentColumn *_col8 = table2->create_column("grab_time", ENUM_CONTENT_DATETIME, "", "", "", NULL);
+    ContentColumn *_col9 = table2->create_column("process_time", ENUM_CONTENT_INT, "", "", "", NULL);
+    ContentColumn *_col10 = table2->create_column("process_status", ENUM_CONTENT_INT, "", "", "", NULL);
+
+    table2->add_column(table2, _col1);
+    table2->add_column(table2, _col2);
+    table2->add_column(table2, _col3);
+    table2->add_column(table2, _col4);
+    table2->add_column(table2, _col5);
+    table2->add_column(table2, _col6);
+    table2->add_column(table2, _col7);
+    table2->add_column(table2, _col8);
+    table2->add_column(table2, _col9);
+    table2->add_column(table2, _col10);
+
     groups->register_table(groups, table->table_name, table);
+    groups->register_table(groups, table2->table_name, table2);
 
 #endif
 }
@@ -85,40 +117,111 @@ static void test_mysql()
 
     set_tables();
 
-    ContentTableGroups *groups = s_client->db_table_groups;
-    ContentTable *table = groups->get_table(groups, "batch_table");
-    s_client->add_table(s_client, "batch_table", table, 1);
+    if (s_client) {
+        ContentTableGroups *groups = s_client->db_table_groups;
+        ContentTable *table = groups->get_table(groups, "batch_table");
+        s_client->add_table(s_client, table, 1);
+    }
 
 #endif
+}
+
+static void s_query_handler(ContentTable *table) 
+{
+    if (NULL == table) {
+        printf("test_get_tables: get table NULL\n");
+        return;
+    }
+
+    if (!strcmp(table->table_name, "batch_table")) {
+        ContentColumn *col = table->get_column_by_id(table, 0);
+        printf("%s=%d,", col->cont_name, *((int*)col->cont_val));
+        printf(" ----- ");
+
+        col = table->get_column_by_id(table, 1);
+        printf("%s=%s,", col->cont_name, (char*)col->cont_val);
+        printf(" ----- ");
+
+        col = table->get_column_by_id(table, 2);
+        printf("%s=%s,", col->cont_name, (char*)col->cont_val);
+        printf(" ----- ");
+
+        col = table->get_column_by_id(table, 3);
+        printf("%s=%s,", col->cont_name, (char*)col->cont_val);
+        printf(" ----- ");
+
+        col = table->get_column_by_id(table, 4);
+        printf("%s=%s,", col->cont_name, (char*)col->cont_val);
+        printf("\n");
+    } else {
+        ContentColumn *col;
+        while ((col = table->get_next_column(table))) {
+            if (col->cont_val) {
+                printf("%s=%d,", col->cont_name, *((int*)col->cont_val));
+                printf(" ----- ");
+            }
+        }
+        printf("\n");
+    }
+
+/*     if (table != NULL) {
+ *         ContentColumn *col = (ContentColumn*) table->columns.objects[0].item;
+ *         printf("col_name=%s, col_null=%s, col_key=%s, col_extra=%s, col_val=%d\n", 
+ *                 col->cont_name, col->cont_null, col->cont_key, col->cont_extra, *((int*)col->cont_val));
+ *     } else {
+ *         printf("test_get_tables: get table NULL\n");
+ *     } */
+}
+
+static void s_exec_handler(void *result)
+{
+    if (!result) {
+        printf("------------------------------ result=NULL\n");
+    } else {
+        int i;
+        MYSQL_ROW row;
+        MYSQL_FIELD *fields;
+        MYSQL_RES *res = (MYSQL_RES*)result;
+        int num_rows = mysql_num_rows(res);
+        int num_fields = mysql_num_fields(res);
+
+        fields = mysql_fetch_fields(res);
+        while ((row = mysql_fetch_row(res))) {
+            printf("===============");
+            for(i = 0; i < num_fields; i++) {
+                printf(" %s=%s, ", fields[i].name, row[i]);
+            }
+            printf("===============\n");
+        }
+    }
 }
 
 static void test_get_tables()
 {
 #ifdef USE_MYSQL
-    ContentTableGroups *groups = s_client->db_table_groups;
-    ContentTable *table = groups->get_table(groups, "batch_table");
-
-    if (table != NULL) {
-        ContentColumn *col = (ContentColumn*) table->columns.objects[0].item;
-        printf("col_name=%s, col_null=%s, col_key=%s, col_extra=%s, col_val=%d\n", col->cont_name, col->cont_null, col->cont_key, col->cont_extra, *((int*)col->cont_val));
-
-        col = (ContentColumn*) table->columns.objects[1].item;
-        printf("col_name=%s, col_null=%s, col_key=%s, col_extra=%s, col_val=%s\n", col->cont_name, col->cont_null, col->cont_key, col->cont_extra, (char*)col->cont_val);
-
-        col = (ContentColumn*) table->columns.objects[2].item;
-        printf("col_name=%s, col_null=%s, col_key=%s, col_extra=%s, col_val=%s\n", col->cont_name, col->cont_null, col->cont_key, col->cont_extra, (char*)col->cont_val);
-
-        col = (ContentColumn*) table->columns.objects[3].item;
-        printf("col_name=%s, col_null=%s, col_key=%s, col_extra=%s, col_val=%s\n", col->cont_name, col->cont_null, col->cont_key, col->cont_extra, (char*)col->cont_val);
-
-        col = (ContentColumn*) table->columns.objects[4].item;
-        printf("col_name=%s, col_null=%s, col_key=%s, col_extra=%s, col_val=%s\n", col->cont_name, col->cont_null, col->cont_key, col->cont_extra, (char*)col->cont_val);
-    } else {
-        printf("test_get_tables: get table NULL\n");
+    if (!s_client) {
+        DEBUG("test_get_tables: s_client=NULL\n");
+        return;
     }
+    ContentTableGroups *groups = s_client->db_table_groups;
+
+    // 查询批次表
+    ContentTable *table = groups->get_table(groups, "batch_table");
+    s_client->query_table_cond(s_client, table, "exit_status", "_id < 10", s_query_handler); 
+
+    // 查询图片信息表
+    ContentTable *table2 = groups->get_table(groups, "pic_table");
+    s_client->query_table_cond(s_client, table2, "_id,class", "_id < 10", s_query_handler); 
+
+    // 执行sql语句
+    s_client->exec_sql(s_client, "drop table batch_table;", s_exec_handler);
+    s_client->add_table(s_client, table, 1);
+    s_client->exec_sql(s_client, "insert into batch_table (exit_status) values('success');", s_exec_handler);
+    s_client->exec_sql(s_client, "insert into batch_table (exit_status) values('normal');", s_exec_handler);
+    s_client->exec_sql(s_client, "delete from batch_table where exit_status='success';", s_exec_handler);
+    s_client->exec_sql(s_client, "select * from batch_table where _id < 10;", s_exec_handler);
 
     db_mysql_free(s_client);
-
 #endif
 }
 
@@ -317,31 +420,34 @@ static void test_hashmap(int size)
 static int handler_message(struct message_handler_t *handler, struct message_t *msg)
 {
     switch (msg->id) {
-        case MSG_ON_START: {
-                               on_msg_start(handler, msg);
+        case MSG_ON_START: 
+            {
+                on_msg_start(handler, msg);
 
-                               Message *new_msg = (Message*)create_empty_message(MSG_SEP_1); 
-                               trans_message(new_msg);
-                               break;
-                           }
-        case MSG_SEP_1: {
-                            on_msg_step_1(handler, msg);
+                Message *new_msg = (Message*)create_empty_message(MSG_SEP_1); 
+                trans_message(new_msg);
+                break;
+            }
+        case MSG_SEP_1: 
+            {
+                on_msg_step_1(handler, msg);
 
-                            Message *new_msg = (Message*)create_message(MSG_SEP_2, 10, 100, (void*)"hello world"); 
-                            trans_message(new_msg);
-                            break;
-                        }
-        case MSG_SEP_2: {
-                            on_msg_step_2(handler, msg);
+                Message *new_msg = (Message*)create_message(MSG_SEP_2, 10, 100, (void*)"hello world"); 
+                trans_message(new_msg);
+                break;
+            }
+        case MSG_SEP_2: 
+            {
+                on_msg_step_2(handler, msg);
 
-                            /* Message *new_msg = (Message*)create_empty_message(MSG_ON_EXIT);  */
-                            Message *new_msg = (Message*)create_empty_message(MSG_ON_START); 
-                            trans_message(new_msg);
-                            break;
-                        }
+                /* Message *new_msg = (Message*)create_empty_message(MSG_ON_EXIT);  */
+                Message *new_msg = (Message*)create_empty_message(MSG_ON_START); 
+                trans_message(new_msg);
+                break;
+            }
 
         default:
-                        break;
+            break;
     }
 
     return 0;
@@ -406,8 +512,12 @@ int on_app_destroy(struct app_runtime_t *app)
 int on_app_process(struct app_runtime_t *app)
 {
     Logger *logger = app->logger;
-    /* 
-     *     test_object_array(10);
+
+    test_server_groups(app);
+    test_register_tcp_handler(app);
+    test_register_telnet_proc(app); 
+
+    /*     test_object_array(10);
      *     DEBUG("on_app_process loginfo\n");
      *     logger->log_i(logger, "-------------------------");
      * 
@@ -416,15 +526,10 @@ int on_app_process(struct app_runtime_t *app)
      * 
      *     test_hashmap(10);
      * 
-     *     logger->log_e(logger, "-------------------------");
-     *  */
+     *     logger->log_e(logger, "-------------------------"); */
 
     test_mysql();
     test_get_tables();
-
-    test_server_groups(app);
-    test_register_tcp_handler(app);
-    test_register_telnet_proc(app);
 
     return -1;
 }

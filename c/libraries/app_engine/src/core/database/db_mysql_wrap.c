@@ -33,6 +33,9 @@ MysqlClient* db_mysql_init(MysqlUser *user, int create_db)
     char err[128], sql[64];
 
     MysqlClient *client = (MysqlClient*) malloc(sizeof(MysqlClient));
+    client->db_conn_ptr = NULL;
+    client->db_user_info = NULL;
+    client->db_table_groups = NULL;
 
     client->db_conn_ptr = mysql_init(NULL);
     if (!client->db_conn_ptr) {
@@ -61,8 +64,8 @@ MysqlClient* db_mysql_init(MysqlUser *user, int create_db)
 
     if (create_db) {
         memset(sql, 0, sizeof(sql));
-        sprintf(sql, "%s if not exists %s;", SQL_CREATE_DATABASE, user->db_name);
-        if( mysql_query(client->db_conn_ptr, sql) < 0) {
+        sprintf(sql, SQL_CREATE_DATABASE, user->db_name);
+        if(mysql_query(client->db_conn_ptr, sql)) {
             memset(err, 0, sizeof(err));
             sprintf(err, "DB: Mysql Create DB '%s' Failed, %s", user->db_name, mysql_error(client->db_conn_ptr));
             logger->log_e(logger, err);
@@ -97,6 +100,12 @@ MysqlClient* db_mysql_init(MysqlUser *user, int create_db)
     client->db_table_groups = db_create_table_groups_instance();
     // 设置方法指针
     client->add_table = db_mysql_add_table;
+    // 查询数据库
+    client->query_table = db_mysql_query_table;
+    // 条件查询数据库
+    client->query_table_cond = db_mysql_query_table_cond;
+    // 执行sql语句
+    client->exec_sql = db_mysql_exec_sql;
 
     return client;
 
@@ -135,7 +144,7 @@ void db_mysql_free(MysqlClient *client)
     client = NULL;
 }
 
-static char* make_table_to_str(ContentTable *table, char *table_desc)
+static char* make_table_desc(ContentTable *table, char *table_desc)
 {
     int nr = table->columns.nr;
 
@@ -175,7 +184,6 @@ static char* make_table_to_str(ContentTable *table, char *table_desc)
 }
 
 int db_mysql_add_table(MysqlClient *client, 
-                       const char *table_name, 
                        ContentTable *table, 
                        int create_table)
 {
@@ -189,18 +197,24 @@ int db_mysql_add_table(MysqlClient *client,
         return -1;
     }
 
-    db_register_table(client->db_table_groups, table_name, table);
+    if (NULL == table) {
+        logger->log_e(logger, "DB: Mysql Add Table, Table Is NULL.");
+        return -1;
+    }
 
+    db_register_table(client->db_table_groups, table->table_name, table);
+
+    int rtn;
     if (create_table) {
         char table_desc[256];
         memset(table_desc, 0, sizeof(table_desc));
-        make_table_to_str(table, table_desc);
+        make_table_desc(table, table_desc);
 
         memset(sql, 0, sizeof(sql));
-        sprintf(sql, "%s %s %s", SQL_CREATE_TABLE, table->table_name, table_desc);
+        sprintf(sql, SQL_CREATE_TABLE, table->table_name, table_desc);
         DEBUG("db_mysql_add_table: <%s>\n", sql);
 
-        int rtn = mysql_query(client->db_conn_ptr, sql); 
+        rtn = mysql_query(client->db_conn_ptr, sql); 
         memset(err, 0, sizeof(err));
         sprintf(err, "DB: Mysql Create Table '%s' %s, %s", 
                 table->table_name, 
@@ -212,7 +226,152 @@ int db_mysql_add_table(MysqlClient *client,
         mysql_free_result(res);
     }
 
-    return 0;
+    return rtn;
+}
+
+static void process_query_result(MYSQL_RES *res, 
+                                 ContentTable *table, 
+                                 MysqlQueryHandler handler)
+{
+    int i;
+    int num_rows = mysql_num_rows(res);
+    int num_fields = mysql_num_fields(res);
+
+    MYSQL_ROW row;
+    MYSQL_FIELD *fields;
+    /* unsigned long *lengths; */
+
+    fields = mysql_fetch_fields(res);
+    while ((row = mysql_fetch_row(res))) {
+        /* lengths = mysql_fetch_lengths(res); */
+
+        if (handler != NULL) {
+            ContentColumn *column = NULL;
+
+            for(i = 0; i < num_fields; i++) {
+                column = table->get_column(table, fields[i].name);
+                if (column != NULL) {
+                    db_set_column_val(column, row[i], 1);
+                }
+            }
+            // 重置当前列的游标到初始位置
+            table->reset_cursor_pos(table);
+
+            (*handler)(table);
+        }
+    }
+
+    DEBUG("process_query_result: num_rows=<%d>, num_fields=<%d>\n", num_rows, num_fields);
+}
+
+int db_mysql_query_table_cond(MysqlClient *client, 
+                              ContentTable *table, 
+                              const char *args, 
+                              const char *cond,
+                              MysqlQueryHandler handler)
+{
+    Logger *logger = s_app->logger;
+    char err[128];
+    char sql[512];
+    MYSQL_RES *res;
+
+    if (NULL == client) {
+        logger->log_e(logger, "DB: db_mysql_query_table_cond, Client Is NULL.");
+        return -1;
+    }
+
+    if (NULL == table) {
+        logger->log_e(logger, "DB: db_mysql_query_table_cond, Table Is NULL.");
+        return -1;
+    }
+
+    memset(sql, 0, sizeof(sql));
+    if (!strcmp(cond, "")) {
+        sprintf(sql, SQL_QUERY_FORMAT, args, table->table_name);
+    } else {
+        sprintf(sql, SQL_QUERY_COND_FORMAT, args, table->table_name, cond);
+    }
+    DEBUG("db_mysql_query_table_cond: <%s>\n", sql);
+
+    int rtn;
+    rtn = mysql_query(client->db_conn_ptr, sql); 
+    memset(err, 0, sizeof(err));
+    sprintf(err, "DB: db_mysql_query_table_cond '%s' %s, %s", 
+            table->table_name, 
+            (rtn ? "Failed" : "Success"), 
+            mysql_error(client->db_conn_ptr));
+    logger->log_e(logger, err);
+
+    res = mysql_store_result(client->db_conn_ptr);
+    if (res) {
+        process_query_result(res, table, handler);
+    } else {
+        memset(err, 0, sizeof(err));
+        sprintf(err, "DB: Mysql Store Result Failed '%s', %s", 
+            table->table_name, 
+            mysql_error(client->db_conn_ptr));
+        logger->log_e(logger, err);
+        rtn = -1;
+    }
+
+    mysql_free_result(res);
+
+    return rtn;
+}
+
+int db_mysql_query_table(MysqlClient *client, 
+                         ContentTable *table, 
+                         const char *args, 
+                         MysqlQueryHandler handler)
+{
+    return db_mysql_query_table_cond(client, table, args, "", handler);
+}
+
+int db_mysql_exec_sql(MysqlClient *client,
+                      const char *sql,
+                      MysqlExecHandler handler)
+{
+    Logger *logger = s_app->logger;
+
+    if (NULL == client) {
+        logger->log_e(logger, "DB: db_mysql_exec_sql, Client Is NULL.");
+        return -1;
+    }
+
+    int rtn;
+    char err[128];
+    MYSQL_RES *res;
+    int num_rows = -1;
+
+    rtn = mysql_query(client->db_conn_ptr, sql); 
+    memset(err, 0, sizeof(err));
+    sprintf(err, "DB: db_mysql_exec_sql <%s> %s, %s", 
+            sql, (rtn ? "Failed" : "Success"), 
+            mysql_error(client->db_conn_ptr));
+    logger->log_e(logger, err);
+
+    res = mysql_store_result(client->db_conn_ptr);
+
+    if (res) {
+        (*handler)((void*)res);
+    } else {
+        if(0 == mysql_field_count(client->db_conn_ptr)) {
+            num_rows = mysql_affected_rows(client->db_conn_ptr);
+            if (handler != NULL) {
+                (*handler)((void*)res);
+            }
+        } else {
+            memset(err, 0, sizeof(err));
+            sprintf(err, "DB: Mysql Store Result Failed <%s>, %s", 
+                    sql, mysql_error(client->db_conn_ptr));
+            logger->log_e(logger, err);
+            rtn = -1;
+        }
+    }
+
+    mysql_free_result(res);
+
+    return rtn;
 }
 
 #endif

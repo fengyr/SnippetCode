@@ -9,7 +9,7 @@ OPTIMIZE        :=
 WARNINGS        := -Wall
 DEFS            := 
 # EXTRA_CFLAGS    := -g
-# EXTRA_CFLAGS    := -g -DUSE_MYSQL
+EXTRA_CFLAGS    := -g -DUSE_MYSQL -DUSE_DEBUG
 # EXTRA_CFLAGS    := -DUSE_DEBUG -g
 LDFLAGS         := -pthread -lm -lrt -lstdc++ -ldl
 
@@ -48,7 +48,7 @@ EXTRA_OBJS  = 	./libs/libstruct.a \
 				/usr/local/mysql/lib/libmysqlclient.so
 
 TARGET          := libapp.so
-TARGET_TYPE     := so
+TARGET_TYPE     := app
 
 # 如果编译目标是可执行程序，
 # 则需要加入测试相关代码。

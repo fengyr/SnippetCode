@@ -25,11 +25,34 @@ extern "C" {
 #include "hashmap.h"
 #include "array.h"
 
+/* 抽象表和抽象列的结构体描述 */
+/* +----------------------+            +----------------------+
+ * |    <ContentTable>    |     +----->|    <ContentColumn>   |
+ * +----------------------+     |      +----------------------+
+ * |  m: table_name (str) |     |      | m: cont_name (str)   |
+ * +----------------------+     |      +----------------------+
+ * |  m: columns (Array)--|-----+      | m: cont_type (enum)  |
+ * +----------------------+            +----------------------+
+ * |  m: cols_num (int)   |            | m: cont_null (str)   |            
+ * +----------------------+            +----------------------+
+ * |  m: cols_cursor (int)|            | m: cont_key (str)    |
+ * +----------------------+            +----------------------+
+ *       抽象表结构                    | m: cont_extra (str)  |
+ *                                     +----------------------+
+ *                                     | m: ContentVal (void*)|
+ *                                     +----------------------+
+ *                                           抽象列结构
+ ***/
+
+#define MAX_LEN_DATE        64              // 日期类型数据的最大字节数
+#define MAX_LEN_CHAR        255             // 字符串类型数据的最大字节数
+#define MAX_LEN_LONGTEXT    1024 * 1024     // 长文本类型数据的最大字节数
+
 // 枚举类型的编号与s_column_type_str对应
 enum content_type_t {
     ENUM_CONTENT_START = -1,
     ENUM_CONTENT_INT = 0,
-    ENUM_CONTENT_BITINT = 1,
+    ENUM_CONTENT_BIGINT = 1,
     ENUM_CONTENT_FLOAT = 2,
     ENUM_CONTENT_DOUBLE = 3,
     ENUM_CONTENT_DATE = 4,
@@ -55,30 +78,60 @@ struct content_t {
 typedef struct content_t ContentColumn, *PContentColumn;
 
 struct table_t {
-    char table_name[DB_MAX_NAME_LEN];
-    ArrayObj columns;
+    char table_name[DB_MAX_NAME_LEN];   // 抽象表名称
+    ArrayObj columns;                   // 抽象列对象数组
+    int cols_num;                       // 抽象列对象数量
+    int cols_cursor;                    // 当前列游标指针
 
-    ContentColumn* (*create_column)(const char *name, 
+    // 创建一个抽象列
+    struct content_t* (*create_column)(const char *name, 
                                     enum content_type_t type, 
                                     const char *is_null, 
                                     const char *key, 
                                     const char *extra, 
                                     void *val);
+
+    // 映射一个抽象列到真实数据库中
     void (*add_column)(struct table_t *table, struct content_t *column);
+
+    // 根据列名获取抽象列
+    struct content_t* (*get_column)(struct table_t *table, 
+                                    const char *col_name);
+
+    // 根据序号获取抽象列
+    struct content_t* (*get_column_by_id)(struct table_t *table, int index);
+
+    // 依次遍历所有列
+    struct content_t* (*get_next_column)(struct table_t *table);
+
+    // 获取游标位置
+    int (*get_cursor_pos)(struct table_t *table);
+
+    // 重置游标到初始位置
+    void (*reset_cursor_pos)(struct table_t *table);
 };
 typedef struct table_t ContentTable, *PContentTable;
 
-#define DB_MAX_TABLES  32
+#define DB_MAX_TABLES   32
 struct table_groups_t {
     HashMap hashmap_table_groups;
     char *table_names[DB_MAX_NAME_LEN];
     int table_count;
 
     ContentTable* (*create_table)(const char *name);
-    int (*register_table)(struct table_groups_t *groups, const char *table_name, struct table_t *table);
-    ContentTable* (*get_table)(struct table_groups_t *groups, const char *table_name);
+    int (*register_table)(struct table_groups_t *groups, 
+                          const char *table_name, 
+                          struct table_t *table);
+    ContentTable* (*get_table)(struct table_groups_t *groups, 
+                               const char *table_name);
 };
 typedef struct table_groups_t ContentTableGroups, *PContentTableGroups;
+
+// 数据库查询回调
+typedef void (*MysqlQueryHandler)(ContentTable *table);
+
+// 数据库执行回调
+typedef void (*MysqlExecHandler)(void *res);
 
 //////////////////////////////////////////////////////
 //                  ContentColumn                   //
@@ -115,6 +168,29 @@ void db_free_column(ContentColumn *column);
  */
 const char* db_get_column_type_str(enum content_type_t type);
 
+/**
+ * @Synopsis 设置一个抽象列的值
+ *
+ * @Param column    抽象列指针
+ * @Param val       该列的值
+ * @Param from_db   数据来源是否从数据库读取.
+ *                  数据库读取为字符串类型，需要转换成实际类型
+ *                  1->数据来源为数据库，0->数据来源为非数据库
+ * 
+ */
+void db_set_column_val(ContentColumn *column, void *val, int from_db);
+
+/**
+ * @Synopsis 通过列名设置一个抽象列的值
+ *
+ * @Param table     抽象表指针
+ * @Param name      列名
+ * @Param val       该列的值
+ */
+void db_set_column_val_by_name(struct table_t *table, 
+                               char *col_name, 
+                               void *val);
+
 //////////////////////////////////////////////////////
 //                  ContentTable                    // 
 //////////////////////////////////////////////////////
@@ -134,6 +210,37 @@ ContentTable* db_create_table(const char *name);
  * @Param column    抽象列指针
  */
 void db_table_add_column(ContentTable *table, ContentColumn *column);
+
+/**
+ * @Synopsis 根据列名获取一个抽象列对象
+ *
+ * @Param table     抽象表指针
+ * @Param col_name  抽象列名称
+ *
+ * @Returns         抽象列指针
+ */
+ContentColumn* db_table_get_column(ContentTable *table, 
+                                   const char *col_name);
+
+/**
+ * @Synopsis 根据序号获取一个抽象列对象
+ *
+ * @Param table     抽象表指针
+ * @Param index     抽象列序号
+ *
+ * @Returns         抽象列指针
+ */
+ContentColumn* db_table_get_column_by_index(ContentTable *table, 
+                                            int index);
+
+/**
+ * @Synopsis 依次获取一个抽象列对象
+ *
+ * @Param table     抽象表指针
+ *
+ * @Returns         抽象列指针
+ */
+ContentColumn* db_table_get_next_column(ContentTable *table);
 
 /**
  * @Synopsis    销毁一个抽象表
@@ -170,7 +277,8 @@ int db_register_table(ContentTableGroups *groups,
  *
  * @Returns 
  */
-ContentTable* db_get_table(ContentTableGroups *groups, const char *table_name);
+ContentTable* db_get_table(ContentTableGroups *groups, 
+                           const char *table_name);
 
 /**
  * @Synopsis 销毁一个抽象数据库

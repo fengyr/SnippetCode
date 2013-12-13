@@ -25,11 +25,12 @@ extern "C" {
 #endif
 
 #include "db_column.h"
-
 #include "mysql.h"
 
-#define SQL_CREATE_TABLE        "create table"
-#define SQL_CREATE_DATABASE     "create database"
+#define SQL_CREATE_TABLE        "create table %s %s;"
+#define SQL_CREATE_DATABASE     "create database if not exists %s;"
+#define SQL_QUERY_FORMAT        "select %s from %s;"
+#define SQL_QUERY_COND_FORMAT   "select %s from %s where %s;"
 
 struct db_mysql_user_t {
     char db_host[24];           // mysql的ip地址
@@ -48,9 +49,23 @@ struct db_mysql_client_t {
     ContentTableGroups *db_table_groups;
 
     int (*add_table)(struct db_mysql_client_t *client, 
-                     const char *table_name, 
                      ContentTable *table, 
                      int create_table);
+
+    int (*query_table_cond)(struct db_mysql_client_t *client, 
+                            ContentTable *table, 
+                            const char *args, 
+                            const char *cond,
+                            MysqlQueryHandler handler);
+
+    int (*query_table)(struct db_mysql_client_t *client, 
+                       ContentTable *table, 
+                       const char *args, 
+                       MysqlQueryHandler handler);
+
+    int (*exec_sql)(struct db_mysql_client_t *client, 
+                    const char *sql,
+                    MysqlExecHandler handler);
 };
 typedef struct db_mysql_client_t MysqlClient, *PMysqlClient;
 
@@ -74,6 +89,11 @@ MysqlClient* db_mysql_init(MysqlUser *user, int create_db);
  */
 void db_mysql_free(MysqlClient *client);
 
+/* 
+ * ====================================================
+ *                     执行数据库操作
+ * ====================================================
+ *  */
 /**
  * @Synopsis 加入一个表到真正的数据库中
  *
@@ -82,9 +102,55 @@ void db_mysql_free(MysqlClient *client);
  * @Param table         抽象表指针
  * @Param create_table  是否创建该表
  *
- * @Returns 
+ * @Returns             成功返回0，失败返回参考mysqlclient。
  */
-int db_mysql_add_table(MysqlClient *client, const char *table_name, ContentTable *table, int create_table);
+int db_mysql_add_table(MysqlClient *client, 
+                       ContentTable *table, 
+                       int create_table);
+
+/**
+ * @Synopsis 查询数据库操作
+ *
+ * @Param client        客户端对象指针
+ * @Param table         抽象表指针
+ * @Param args          查询参数
+ * @Param cond          查询条件
+ *
+ * @Returns             成功返回0，失败返回参考mysqlclient。
+ */
+int db_mysql_query_table_cond(MysqlClient *client, 
+                              ContentTable *table, 
+                              const char *args, 
+                              const char *cond,
+                              MysqlQueryHandler handler);
+
+/**
+ * @Synopsis 根据给定条件查询数据库
+ *
+ * @Param client        客户端对象指针
+ * @Param table         抽象表指针
+ * @Param args          查询参数
+ *
+ * @Returns             成功返回0，失败返回参考mysqlclient
+ */
+int db_mysql_query_table(MysqlClient *client, 
+                         ContentTable *table, 
+                         const char *args, 
+                         MysqlQueryHandler handler);
+
+/**
+ * @Synopsis 执行自定义的sql语句
+ *
+ * @Param client        客户端对象指针
+ * @Param table         抽象表指针
+ * @Param statement     sql语句 
+ * @Param handler       执行回调处理
+ *
+ * @Returns             成功返回0，失败返回参考mysqlclient
+ */
+int db_mysql_exec_sql(MysqlClient *client, 
+                      const char *sql, 
+                      MysqlExecHandler handler);
 
 #ifdef __cplusplus
 }

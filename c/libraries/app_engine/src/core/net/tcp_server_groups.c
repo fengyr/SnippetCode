@@ -175,7 +175,7 @@ static int tcp_server_groups_destroy(TcpServerGroups *groups)
             TelnetServer *telnet_server;
             error = hashmap_get(groups->hashmap_server_groups, groups->server_names[i], (void**)(&telnet_server));
             if (telnet_server != NULL) {
-                DEBUG("tcp_server_groups_destroy: server_name=%s\n", tcp_server->sock->local_name);
+                DEBUG("tcp_server_groups_destroy: server_name=%s\n", telnet_server->sock->local_name);
                 telnet_server->quit(telnet_server);
 
                 free(telnet_server->sock);

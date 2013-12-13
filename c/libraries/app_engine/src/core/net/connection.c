@@ -69,6 +69,7 @@ static void init_socket(Socket *sock, const char *name)
     int i;
     Remote *remote = sock->remote;
 
+    sock->local_fd = -1;
     memset(sock->local_name, 0, sizeof(sock->local_name));
     strcpy(sock->local_name, name);
 
@@ -82,6 +83,8 @@ static void init_socket(Socket *sock, const char *name)
         strcpy(remote[i].remote_name, HANDLER_TYPE_DEFAULT);
     }
 
+    sock->pHandlers = NULL;
+    sock->pthread = -1;
     pthread_mutex_init(&(sock->s_mutex), NULL);
 }
 
@@ -144,14 +147,16 @@ static void free_socket(Socket *sock)
             if (pHandler[i] != NULL) {
                 pHandler[i] = NULL;
             }
-        }
+        } 
         free(pHandler);
         pHandler = NULL;
     }
 
     void *res;
-    pthread_join(sock->pthread, &res);
-    sock->pthread = -1;
+    if (sock->pthread != -1) {
+        pthread_join(sock->pthread, &res);
+        sock->pthread = -1;
+    }
 
     pthread_mutex_destroy(&sock->s_mutex);
 }

@@ -23,6 +23,7 @@
 #include "db_column.h"
 #include "zlogwrap.h"
 #include "debug.h"
+#include "array.h"
 
 static App *s_app = get_app_instance();
 
@@ -57,51 +58,10 @@ ContentColumn* db_create_column(const char *name,
     memset(col->cont_extra, 0, sizeof(col->cont_extra));
     strcpy(col->cont_extra, extra);
     col->cont_type = type;
+    col->cont_val = NULL;
 
-    int temp_i, *val_i;
-    long long temp_l, *val_l;
-    float temp_f, *val_f;
-    double temp_d, *val_d;
-    char *temp_s, *val_s;
-    switch (type) {
-        case ENUM_CONTENT_INT:
-            temp_i = *((int*)val);
-            col->cont_val = (int*) malloc(sizeof(int));
-            val_i = (int*)(col->cont_val);
-            *val_i = temp_i;
-            break;
-        case ENUM_CONTENT_BITINT:
-            temp_l = *((long long*)val);
-            col->cont_val = (long long*) malloc(sizeof(long long));
-            val_l = (long long*)(col->cont_val);
-            *val_l = temp_l;
-            break;
-        case ENUM_CONTENT_FLOAT:
-            temp_f = *((float*)val);
-            col->cont_val = (float*) malloc(sizeof(float));
-            val_f = (float*)(col->cont_val);
-            *val_f = temp_f;
-            break;
-        case ENUM_CONTENT_DOUBLE:
-            temp_d = *((double*)val);
-            col->cont_val = (double*) malloc(sizeof(double));
-            val_d = (double*)(col->cont_val);
-            *val_d = temp_d;
-            break;
-        case ENUM_CONTENT_DATE:
-        case ENUM_CONTENT_TIME:
-        case ENUM_CONTENT_DATETIME:
-        case ENUM_CONTENT_TEXT:
-        case ENUM_CONTENT_LONGTEXT:
-        case ENUM_CONTENT_CHAR:
-            temp_s = (char*)val;
-            col->cont_val = (char*) malloc(strlen(temp_s)+1);
-            val_s = (char*)(col->cont_val);
-            strcpy(val_s, temp_s);
-            break;
-        default:
-            col->cont_val = NULL;
-            break;
+    if (val != NULL) {
+        db_set_column_val(col, val, 0); 
     }
 
     return col;
@@ -115,6 +75,106 @@ const char* db_get_column_type_str(enum content_type_t type)
     }
 
     return s_column_type_str[type];
+}
+
+void db_set_column_val(ContentColumn *column, void *val, int from_db)
+{
+    int temp_i, *val_i;
+    long long temp_l, *val_l;
+    float temp_f, *val_f;
+    double temp_d, *val_d;
+    char *temp_s, *val_s;
+    enum content_type_t type = column->cont_type; 
+
+    switch (type) {
+        case ENUM_CONTENT_INT:
+            temp_i = (NULL == val) ? 0 : (from_db ? atoi((char*)val) : *((int*)val));
+            if (NULL == column->cont_val) {
+                column->cont_val = (int*) malloc(sizeof(int));
+            }
+            val_i = (int*)(column->cont_val);
+            *val_i = temp_i;
+            break;
+        case ENUM_CONTENT_BIGINT:
+            temp_l = (NULL == val) ? 0 : (from_db ? atoll((char*)val) : *((long long*)val));
+            if (NULL == column->cont_val) {
+                column->cont_val = (long long*) malloc(sizeof(long long));
+            }
+            val_l = (long long*)(column->cont_val);
+            *val_l = temp_l;
+            break;
+        case ENUM_CONTENT_FLOAT:
+            temp_f = (NULL == val) ? 0.0 : (from_db ? atof((char*)val) : *((float*)val));
+                ((char*)val);
+            if (NULL == column->cont_val) {
+                column->cont_val = (float*) malloc(sizeof(float));
+            }
+            val_f = (float*)(column->cont_val);
+            *val_f = temp_f;
+            break;
+        case ENUM_CONTENT_DOUBLE:
+            temp_d = (NULL == val) ? 0.0 : (from_db ? atof((char*)val) : *((double*)val));
+            if (NULL == column->cont_val) {
+                column->cont_val = (double*) malloc(sizeof(double));
+            }
+            val_d = (double*)(column->cont_val);
+            *val_d = temp_d;
+            break;
+        case ENUM_CONTENT_DATE:
+        case ENUM_CONTENT_TIME:
+        case ENUM_CONTENT_DATETIME:
+            temp_s = (NULL == val) ? (char*)"NULL" : (char*)val;
+            if (NULL == column->cont_val) {
+                column->cont_val = (char*) malloc(MAX_LEN_DATE);
+            }
+            val_s = (char*)(column->cont_val);
+            strcpy(val_s, temp_s);
+            break;
+        case ENUM_CONTENT_CHAR:
+            temp_s = (NULL == val) ? (char*)"NULL" : (char*)val;
+            if (NULL == column->cont_val) {
+                column->cont_val = (char*) malloc(MAX_LEN_CHAR);
+            }
+            val_s = (char*)(column->cont_val);
+            strcpy(val_s, temp_s);
+            break;
+        case ENUM_CONTENT_TEXT:
+        case ENUM_CONTENT_LONGTEXT:
+            temp_s = (NULL == val) ? (char*)"NULL" : (char*)val;
+            if (NULL == column->cont_val) {
+                column->cont_val = (char*) malloc(MAX_LEN_LONGTEXT);
+            }
+            val_s = (char*)(column->cont_val);
+            strcpy(val_s, temp_s);
+            break;
+        default:
+            column->cont_val = NULL;
+            break;
+    }
+}
+
+void db_set_column_val_by_name(struct table_t *table, 
+                               char *col_name, void *val)
+{
+    int i;
+    ArrayEntry *objects = table->columns.objects;
+    ContentColumn *col;
+
+    if (NULL == table) {
+        DEBUG("db_set_column_val_by_name: Table Is NULL.\n");
+        return;
+    }
+
+    for (i = 0; i < table->cols_num; i++) {
+        col = (ContentColumn*)objects[i].item;
+
+        /* printf("-------------------- field=%s, colname=%s, row[%d]=%s, lengths[%d]=%d\n", 
+        *         fields[i].name, col->cont_name, i, row[i], i, lengths[i]); */
+        if (0 == strcmp(col_name, col->cont_name)) {
+            db_set_column_val(col, val, 0);
+            break;
+        }
+    }
 }
 
 void db_free_column(void *column)
@@ -133,6 +193,24 @@ void db_free_column(void *column)
     col = NULL;
 }
 
+static int db_get_cursor_pos(ContentTable *table)
+{
+    if (NULL == table) {
+        return -1;
+    }
+
+    return table->cols_cursor;
+}
+
+static void db_reset_cursor_pos(ContentTable *table)
+{
+    if (NULL == table) {
+        return;
+    }
+
+    table->cols_cursor = 0;
+}
+
 ContentTable* db_create_table(const char *name)
 {
     ContentTable *table = (ContentTable*) malloc(sizeof(ContentTable));
@@ -141,12 +219,80 @@ ContentTable* db_create_table(const char *name)
     memset(table->table_name, 0, sizeof(table->table_name));
     strcpy(table->table_name, name);
     array_obj_init(&table->columns, db_free_column);
+    table->cols_num = 0;
+    table->cols_cursor = -1;
 
-    // 设置方法指针
+    // 设置操作接口
     table->create_column = db_create_column;
     table->add_column = db_table_add_column;
+    table->get_column = db_table_get_column;
+    table->get_column_by_id = db_table_get_column_by_index;
+    table->get_next_column = db_table_get_next_column;
+    table->get_cursor_pos = db_get_cursor_pos;
+    table->reset_cursor_pos = db_reset_cursor_pos;
 
     return table;
+}
+
+ContentColumn* db_table_get_column(ContentTable *table, const char *col_name)
+{
+    if (NULL == table) {
+        Logger *logger = s_app->logger;
+        logger->log_e(logger, "DB: db_table_get_column, Table Is NULL.");
+        return NULL;
+    }
+
+    ArrayEntry *objects = table->columns.objects;
+    ContentColumn *column = NULL;
+
+    int i;
+    for (i = 0; i < table->cols_num; i++) {
+        ContentColumn *col = (ContentColumn*)objects[i].item;
+        if (0 == strcmp(col_name, col->cont_name)) {
+            column = col;
+            break;
+        }
+    } 
+
+    return column;
+}
+
+ContentColumn* db_table_get_column_by_index(ContentTable *table, int id)
+{
+    Logger *logger = s_app->logger;
+
+    if (NULL == table) {
+        logger->log_e(logger, "DB: db_table_get_column_by_index, Table Is NULL.");
+        return NULL;
+    }
+
+    if ((id < 0) || (id >= table->cols_num)) {
+        logger->log_e(logger, "DB: db_table_get_column_by_index, Index Of Column Is Error.");
+        return NULL;
+    }
+
+    ContentColumn *column = (ContentColumn*) table->columns.objects[id].item;
+
+    return column;
+}
+
+ContentColumn* db_table_get_next_column(ContentTable *table)
+{
+    if (NULL == table) {
+        Logger *logger = s_app->logger;
+        logger->log_e(logger, "DB: db_table_get_next_column, Table Is NULL.");
+        return NULL;
+    }
+
+    if ((table->cols_cursor < 0) || (table->cols_cursor >= table->cols_num)) {
+        table->cols_cursor = 0;
+        return NULL;
+    }
+
+    ContentColumn *column = (ContentColumn*) table->columns.objects[table->cols_cursor].item;
+    table->cols_cursor++;
+
+    return column;
 }
 
 void db_table_add_column(ContentTable *table, ContentColumn *column)
@@ -155,6 +301,7 @@ void db_table_add_column(ContentTable *table, ContentColumn *column)
     assert(column != NULL);
     
     array_obj_add((void*)column, &table->columns);
+    table->cols_num = table->columns.nr;
 }
 
 void db_destroy_table(ContentTable *table)
