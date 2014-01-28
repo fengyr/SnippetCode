@@ -126,7 +126,7 @@ static void test_mysql()
 #endif
 }
 
-static void s_query_handler(ContentTable *table) 
+static void s_mysql_query_handler(ContentTable *table) 
 {
     if (NULL == table) {
         printf("test_get_tables: get table NULL\n");
@@ -173,7 +173,7 @@ static void s_query_handler(ContentTable *table)
  *     } */
 }
 
-static void s_exec_handler(void *result)
+static void s_mysql_exec_handler(void *result)
 {
     if (!result) {
         printf("------------------------------ result=NULL\n");
@@ -207,19 +207,19 @@ static void test_get_tables()
 
     // 查询批次表
     ContentTable *table = groups->get_table(groups, "batch_table");
-    s_client->query_table_cond(s_client, table, "exit_status", "_id < 10", s_query_handler); 
+    s_client->query_table_cond(s_client, table, "exit_status", "_id < 10", s_mysql_query_handler); 
 
     // 查询图片信息表
     ContentTable *table2 = groups->get_table(groups, "pic_table");
-    s_client->query_table_cond(s_client, table2, "_id,class", "_id < 10", s_query_handler); 
+    s_client->query_table_cond(s_client, table2, "_id,class", "_id < 10", s_mysql_query_handler); 
 
     // 执行sql语句
-    s_client->exec_sql(s_client, "drop table batch_table;", s_exec_handler);
+    s_client->exec_sql(s_client, "drop table batch_table;", s_mysql_exec_handler);
     s_client->add_table(s_client, table, 1);
-    s_client->exec_sql(s_client, "insert into batch_table (exit_status) values('success');", s_exec_handler);
-    s_client->exec_sql(s_client, "insert into batch_table (exit_status) values('normal');", s_exec_handler);
-    s_client->exec_sql(s_client, "delete from batch_table where exit_status='success';", s_exec_handler);
-    s_client->exec_sql(s_client, "select * from batch_table where _id < 10;", s_exec_handler);
+    s_client->exec_sql(s_client, "insert into batch_table (exit_status) values('success');", s_mysql_exec_handler);
+    s_client->exec_sql(s_client, "insert into batch_table (exit_status) values('normal');", s_mysql_exec_handler);
+    s_client->exec_sql(s_client, "delete from batch_table where exit_status='success';", s_mysql_exec_handler);
+    s_client->exec_sql(s_client, "select * from batch_table where _id < 10;", s_mysql_exec_handler);
 
     db_mysql_free(s_client);
 #endif

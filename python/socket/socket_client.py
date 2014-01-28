@@ -122,75 +122,84 @@ def tcp():
     # return
 
     # 应用程序版本
-    s.send(getData(16, "get:app:version"))
-    print s.recv(4096)
-
-    # fx版本
-    s.send(getData(26, "get:fx:version"))
-    print s.recv(4096)
-
-    # sep版本
-    s.send(getData(27, "get:sep:version"))
-    print s.recv(4096)
-
-    # 特征描述子
-    s.send(getData(3, "2"))
-    print s.recv(4096)
-
-    # 子空间描述子
-    s.send(getData(15, "1"))
-    print s.recv(4096)
-
-    # 分类器
-    s.send(getData(4, "4"))
-    print s.recv(4096)
-
-    # 样本
-    s.send(getData(2, "3"))
-    print s.recv(4096)
-
-    # 是否使用聚类
-    s.send(getData(7, "1"))
-    print s.recv(4096)
-
-    # 最小可分类间距
-    s.send(getData(13, "9"))
-    print s.recv(4096)
-
-    # 最小分类比率
-    s.send(getData(14, "1.6"))
-    print s.recv(4096)
-
-    # 设置瓷砖边缘长度
-    s.send(getData(18, "420"))
-    print s.recv(4096)
-
-    # 设置所有值
-    s.send(getData(12, "100 101 103 104 105 106.8 410 2 3"))
-    print s.recv(4096)
-
-    # 进入高级选项模式
-    s.send(getData(17, "leave"))
-    print s.recv(4096)
-
-    # log输出等级
-    s.send(getData(17, "2"))
-    print s.recv(4096)
-
-    # 分辨率大小
-    s.send(getData(17, "0"))
-    print s.recv(4096)
-
-    # 保存文件
-    # s.send(getData(10, "1"))
+    # s.send(getData(16, "get:app:version"))
     # print s.recv(4096)
 
-    s.send(getData(5, "start"))
+    # # fx版本
+    # s.send(getData(26, "get:fx:version"))
+    # print s.recv(4096)
+
+    # # sep版本
+    # s.send(getData(27, "get:sep:version"))
+    # print s.recv(4096)
+
+    # # 特征描述子
+    # s.send(getData(3, "2"))
+    # print s.recv(4096)
+
+    # # 子空间描述子
+    # s.send(getData(15, "1"))
+    # print s.recv(4096)
+
+    # # 分类器
+    # s.send(getData(4, "4"))
+    # print s.recv(4096)
+
+    # # 样本
+    # s.send(getData(2, "3"))
+    # print s.recv(4096)
+
+    # # 是否使用聚类
+    # s.send(getData(7, "1"))
+    # print s.recv(4096)
+
+    # # 最小可分类间距
+    # s.send(getData(13, "9"))
+    # print s.recv(4096)
+
+    # # 最小分类比率
+    # s.send(getData(14, "1.6"))
+    # print s.recv(4096)
+
+    # # 设置瓷砖边缘长度
+    # s.send(getData(18, "420"))
+    # print s.recv(4096)
+
+    # # 设置所有值
+    # s.send(getData(12, "100 101 103 104 105 106.8 410 2 3"))
+    # print s.recv(4096)
+
+    # # 进入高级选项模式
+    # s.send(getData(17, "leave"))
+    # print s.recv(4096)
+
+    # # log输出等级
+    # s.send(getData(17, "2"))
+    # print s.recv(4096)
+
+    # # 分辨率大小
+    # s.send(getData(17, "0"))
+    # print s.recv(4096)
+
+    # # 保存文件
+    # # s.send(getData(10, "1"))
+    # # print s.recv(4096)
+
+    # s.send(getData(2, "start:BMW002"))
+    # print s.recv(4096)
+
+    # time.sleep(5)
+
+    # # s.send(getData(6, "stop"))
+    # # print s.recv(4096)
+
+    # s.send(getData(4, "/home/zenki/ruizhan/StoneSystem/StoneServer/data2"))
+    # print s.recv(4096)
+
+    s.send(getData(15, "18.5"))
     print s.recv(4096)
 
-    time.sleep(5)
-
-    s.send(getData(6, "stop"))
+    s.send(getData(16, "大理石"))
     print s.recv(4096)
 
     time.sleep(3)
