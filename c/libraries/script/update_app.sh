@@ -5,7 +5,7 @@ rm -f libs/libapp.so
 rm -f libs/libio.so
 rm -f libs/libpci_dask.so
 
-# update app_engine src
+# 1. 拷贝所需的app_engine头文件，排除interface目录、runtime.h以及options.h
 echo "========== update include =========="
 rsync -av /home/zenki/snippet_code/c/libraries/app_engine/include . \
     --exclude=interface/ \
@@ -13,11 +13,11 @@ rsync -av /home/zenki/snippet_code/c/libraries/app_engine/include . \
     --exclude=options.h \
     --exclude=*.swp
 
-# update libapp.so
+# 2. 最终更新的目标库文件
 echo "========== update libapp.so =========="
 cp /home/zenki/snippet_code/c/libraries/app_engine/libapp.so libs/
 
-# update other so && .h
+# 以下为应用相关的第三方库和头文件
 echo "========== update other so=========="
 echo "copy libvcamgetpic.so"
 cp /home/zenki/ruizhan/ColorPick/setpicV3/build/libvcamgetpic.so libs/

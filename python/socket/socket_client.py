@@ -126,23 +126,24 @@ def tcp():
     # print s.recv(4096)
 
     # # fx版本
-    # s.send(getData(26, "get:fx:version"))
+    # s.send(getData(26, "get:seg:version"))
     # print s.recv(4096)
 
     # # sep版本
     # s.send(getData(27, "get:sep:version"))
     # print s.recv(4096)
 
+
     # # 特征描述子
-    # s.send(getData(3, "2"))
+    # s.send(getData(3, "1"))
     # print s.recv(4096)
 
     # # 子空间描述子
-    # s.send(getData(15, "1"))
+    # s.send(getData(15, "3"))
     # print s.recv(4096)
 
     # # 分类器
-    # s.send(getData(4, "4"))
+    # s.send(getData(4, "1"))
     # print s.recv(4096)
 
     # # 样本
@@ -154,19 +155,15 @@ def tcp():
     # print s.recv(4096)
 
     # # 最小可分类间距
-    # s.send(getData(13, "9"))
+    # s.send(getData(13, "1"))
     # print s.recv(4096)
 
     # # 最小分类比率
-    # s.send(getData(14, "1.6"))
+    # s.send(getData(14, "1.4"))
     # print s.recv(4096)
 
-    # # 设置瓷砖边缘长度
-    # s.send(getData(18, "420"))
-    # print s.recv(4096)
-
-    # # 设置所有值
-    # s.send(getData(12, "100 101 103 104 105 106.8 410 2 3"))
+    # 设置所有值
+    # s.send(getData(12, "100 101 103 104 105 106.8 0.07 415 410 3 1 2 3"))
     # print s.recv(4096)
 
     # # 进入高级选项模式
@@ -185,6 +182,47 @@ def tcp():
     # # s.send(getData(10, "1"))
     # # print s.recv(4096)
 
+    ######################### 素烧窑尾 ############################
+    # # # 设置瓷砖边缘宽度
+    # s.send(getData(18, "500"))
+    # print s.recv(4096)
+    # #
+    # # 设置瓷砖高度
+    # s.send(getData(30, "450"))
+    # print s.recv(4096)
+
+    # # 设置偏移率
+    # s.send(getData(31, "1"))
+    # print s.recv(4096)
+
+    # # 设置使用downsample
+    # s.send(getData(32, "1"))
+    # print s.recv(4096)
+
+    # # 设置分割方法
+    # s.send(getData(33, "4"))
+    # print s.recv(4096)
+
+    # # 保存文件
+    s.send(getData(34, "4:1,0,0,0"))
+    print s.recv(4096)
+    s.send(getData(34, "3:1,2,0,0"))
+    print s.recv(4096)
+    s.send(getData(34, "2:1,2,3,0"))
+    print s.recv(4096)
+    s.send(getData(34, "1:1,2,3,4"))
+    print s.recv(4096)
+
+    time.sleep(5)
+    s.send(getData(36, "clear:lines"))
+    print s.recv(4096)
+
+    s.send(getData(34, "4:1,2,3,4"))
+    print s.recv(4096)
+    s.send(getData(34, "3:1,2,3,4"))
+    print s.recv(4096)
+
+    ######################### 石材 ################################
     # s.send(getData(2, "start:BMW002"))
     # print s.recv(4096)
 
@@ -196,13 +234,41 @@ def tcp():
     # s.send(getData(4, "/home/zenki/ruizhan/StoneSystem/StoneServer/data2"))
     # print s.recv(4096)
 
-    s.send(getData(15, "18.5"))
-    print s.recv(4096)
+    # s.send(getData(15, "18.5"))
+    # print s.recv(4096)
 
-    s.send(getData(16, "大理石"))
-    print s.recv(4096)
+    # s.send(getData(16, "大理石"))
+    # print s.recv(4096)
 
-    time.sleep(3)
+    ############################### 下砖 ################################
+    # # s.send(getData(21, "02:2101-2102-2103,01:1101-1102-1103,03:3101-3102-3103-3104,04:4111-4112-4113-4114-4115-4116,05:5111-5112-5113-5114-5115,06:6111-6112-6113,07:7777-7778-7779-7710,"))
+    # s.send(getData(21, "02:2101-2102,01:1101-1102-1103,"))
+    # print s.recv(4096)
+
+    # time.sleep(5)
+
+    # s.send(getData(22, "02:2101-2102,"))
+    # print s.recv(4096)
+
+    # time.sleep(5)
+    # s.send(getData(21, "02:2101-2102-2103,01:1101-1102-1103,03:3101-3102-3103-3104,04:4111-4112-4113-4114-4115-4116,05:5111-5112-5113-5114-5115,06:6111-6112-6113,07:7777-7778-7779-7710,"))
+    # print s.recv(4096)
+
+    # time.sleep(5)
+    # s.send(getData(21, "02:2111-2112-2113,01:1101-1102-1103,03:3101-3102-3103-3104,04:4111-4112-4113-4114-4115-4116,05:5111-5112-5113-5114-5115,06:6111-6112-6113,07:7777-7778-7779-7710,"))
+    # print s.recv(4096)
+
+    # # time.sleep(5)
+    # # s.send(getData(23, "02:2101,01:1101,03:3101,04:4111,05:5111,06:6111,07:7777,"))
+    # # print s.recv(4096)
+
+    # # 瓷砖运动方向
+    # s.send(getData(24, "0"))
+    # print s.recv(4096)
+
+    # 瓷砖运动方向
+    # s.send(getData(25, "2"))
+    # print s.recv(4096)
 
 def tcp2():
     """docstring for tcp"""

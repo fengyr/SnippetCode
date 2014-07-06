@@ -22,6 +22,8 @@
 
 /*#pragma pack(1)*/
 
+#define OFFSET(type, f) ((int)&(((type*)0)->f))
+
 struct myclass {
     double a;
     char b;
@@ -186,6 +188,12 @@ int main(int argc, const char *argv[])
     if (class_pp != NULL) {
         free(class_pp);
     }
+
+    printf("\n-------------------TEST ADDRESS OFFSET-------------------\n");
+    printf("&(myclass.a) = %x\n", OFFSET(struct myclass, a));
+    printf("&(myclass.b) = %x\n", OFFSET(struct myclass, b));
+    printf("&(myclass.c) = %x\n", OFFSET(struct myclass, c));
+    printf("&(myclass.d) = %x\n", OFFSET(struct myclass, d));
 
     return 0;
 }

@@ -67,5 +67,8 @@ int main(int argc, const char *argv[])
     printf("\n------------------TEST aligned --------------------\n");
     test_aligned();
 
+    printf("\n------------------TEST bits --------------------\n");
+    test_bits();
+
     return 0;
 }
