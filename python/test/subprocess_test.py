@@ -14,6 +14,9 @@ def filterMessage(*arg):
     while True:
         time.sleep(0.5)
         p = subprocess.Popen(['grep', 'Cpu'], stdin=arg[0])
+        if p.wait() == 1:
+            print 'subprocess exit.'
+            break
 
 thread.start_new_thread(filterMessage, (proc.stdout, 0))
 
