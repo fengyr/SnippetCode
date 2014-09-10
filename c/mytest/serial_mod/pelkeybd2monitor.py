@@ -62,11 +62,10 @@ def dev_init():
         print "Load libserial error\n"
 
     f = c_int()
-    f = libserial.OpenDev(TTYNAME)
+    f = libserial.open_serial(TTYNAME)
     if f == -1:
         sys.exit(1)
-    libserial.SetSpeed(f, c_int(BAUDRATE))
-    libserial.SetParity(f, c_int(DATABITS), c_int(STOPBITS), c_char(PARITY))
+    libserial.init_serial(f, c_int(BAUDRATE), c_int(DATABITS), c_int(STOPBITS), c_char(PARITY))
 
     return f
 
@@ -74,7 +73,7 @@ def dev_init():
 def dev_close(f):
     global libserial
 
-    libserial.CloseDev(f)
+    libserial.close_serial(f)
     print 'Serial port close...'
 
 # 数据校验
@@ -121,7 +120,7 @@ def poll(*param):
         for i in rlist:
             # 接收并处理串口数据
             if i == seri_f:
-                rsize = libserial.ReadData(
+                rsize = libserial.read_data(
                     seri_f, byref(rbuf), c_int(PACKSIZE))
                 if rsize <= 0:
                     QUIT = True

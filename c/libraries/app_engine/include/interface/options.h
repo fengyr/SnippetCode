@@ -22,8 +22,6 @@
 extern "C" {
 #endif
 
-#include <string.h>
-
 //////////////////////////////////////////////////////
 //          配置文件参数结构                        //
 //////////////////////////////////////////////////////
@@ -31,37 +29,10 @@ extern "C" {
 
 typedef struct ini_t {
     char CameraFile[255];
-    char CalibBWPath[255];
-    char RunFile[255];
 
     int UseBWenh;
-    int UseClusterSep;
-    int UseClusterData;
-
-    char ClusterDataPath[255];
     float ParaNum1;
     float ParaNum2;
-
-    int DetectCollapse;
-    float C_thresh;
-
-    int QUIET_LEVEL;
-    int PROCESS_TIME;
-    int Resize_Mode;
-    int UseNetConnect;
-    int UseGLCM;
-    int WithCalib;
-    int InitSetPIC;
-    int UseColorSep;
-    int UseSubThresh;
-    int Subthresh_Seppart;
-
-    int Classifier;
-    char TrainFile[255];
-    int MaxClass;
-    int TrainType;
-    char TrainTag[128];
-    int TrainSample;
 } Ini, *PIni;
 
 //////////////////////////////////////////////////////

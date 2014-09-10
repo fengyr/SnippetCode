@@ -8,17 +8,19 @@ CROSS_COMPILE   =
 OPTIMIZE        := 
 WARNINGS        := -Wall -Wno-unused -Wno-format
 DEFS            := 
-EXTRA_CFLAGS    := 
-LDFLAGS         :=
+EXTRA_CFLAGS    :=
+LDFLAGS         := 
 
 # 输出目录，会自动创建
 OUT_DIR 	    = out
 OBJ_DIR   	    = $(OUT_DIR)/obj
 
 # 头文件目录
-INC_DIR   		= ./
+INC_DIR   		= ./include/ \
+				  ./include/dev/
 # 源文件目录
-SRC_DIR   		= ./
+SRC_DIR   		= ./src/ \
+				  ./src/dev/
 # 额外包含的源文件列表
 EXTRA_SRC 		= 
 # 排除的文件列表
@@ -33,13 +35,14 @@ EXTRA_OBJS      =
 
 # 目标名称和类型，不需要考虑后缀名，定义多个名称实际上多个拷贝
 # 如：$(OUT_DIR)/main 
-TARGET          := libserial.a
+TARGET          := libserial.so
 # TARGET_TYPE     := app
-TARGET_TYPE     := ar
-# TARGET_TYPE     := so
+# TARGET_TYPE     := ar
+TARGET_TYPE     := so
 
 # 其他的任务
 .other_task:
+	cp $(TARGET) ../app_engine/libs/
 
 # 其他任务的清除工作
 .other_clean:
@@ -73,7 +76,7 @@ prefix_objdir  = $(shell echo $(OBJ_DIR)|sed 's:\(\./*\)*::')
 prefix_objdir := $(filter-out /,$(prefix_objdir)/)
 endif
 
-GCC      := $(CROSS_COMPILE)gcc
+GCC      := $(CROSS_COMPILE)g++
 G++      := $(CROSS_COMPILE)g++
 SRC_DIR := $(sort . $(SRC_DIR))
 inc_dir = $(foreach d,$(sort $(INC_DIR) $(SRC_DIR)),-I$d)
@@ -101,7 +104,7 @@ endif
 
 PHONY = all .mkdir clean
 
-all: .mkdir .other_task $(TARGET)
+all: .mkdir $(TARGET) .other_task
 
 define cmd_o
 $$(obj-$1): $2%.o: %.$1  $(MAKEFILE_LIST)

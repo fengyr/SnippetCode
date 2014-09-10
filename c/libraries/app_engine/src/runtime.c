@@ -19,6 +19,7 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <assert.h>
+#include <string.h>
 
 #include "mysql.h"
 #include "array.h"
@@ -33,6 +34,7 @@
 #include "telnet_proc.h"
 #include "telnet_server.h"
 #include "tcp_server.h"
+#include "dev_serial.h"
 
 #include "db_column.h"
 #include "db_mysql_wrap.h"
@@ -42,6 +44,30 @@ static MysqlClient *s_client;
 #endif
 
 static Options s_options;
+
+static void test_module_serial()
+{
+    HwModule *module = NULL;
+    HwDevice *dev = NULL;
+    SerialDevice *device = NULL;
+
+    if (hw_get_module(MODULE_SERIAL_ID, "./libs/libserial.so", &module) < 0) {
+        printf(">>> hw_get_module error: %s\n", MODULE_SERIAL_ID);
+    }
+
+    module->methods->open(module, MODULE_SERIAL_ID, &dev);
+
+    if (dev) {
+        device = (SerialDevice*)dev;
+        if (device->open("/dev/ttyS0") < 0) {
+            printf(">>> device->open error\n");
+        } else {
+            device->init(device->fd, 9600, 8, 1, 'o');
+        }
+
+        device->common.close(&device->common);
+    }
+}
 
 static void set_tables()
 {
@@ -343,11 +369,11 @@ static void test_list(int size)
     dump_list(&list);
 }
 
-static void test_hashmap(int size)
+static void test_hashmap()
 {
-#define KEY_MAX_LENGTH (256)
+#define KEY_MAX_LENGTH (10240)
 #define KEY_PREFIX ("somekey")
-#define KEY_COUNT (10)
+#define KEY_COUNT (100000)
 
     typedef struct data_struct_s
     {
@@ -374,6 +400,7 @@ static void test_hashmap(int size)
         error = hashmap_put(mymap, value->key_string, value);
         assert(error==MAP_OK);
         printf("put: key=%s, val_string=%s, val_num=%d\n", value->key_string, value->key_string, value->number);
+        /* usleep(300); */
     }
 
     printf("====================================\n");
@@ -389,6 +416,7 @@ static void test_hashmap(int size)
         assert(error==MAP_OK);
         assert(value->number==index);
         printf("get: key=%s, val_string=%s, val_num=%d\n", key_string, value->key_string, value->number);
+        /* usleep(300); */
     }
 
     /* Make sure that a value that wasn't in the map can't be found */
@@ -482,7 +510,7 @@ int on_app_create(struct app_runtime_t *app)
     printf("===============\n");
     printf("onCreate called\n");
     app->parse_options(app, &s_options);
-    app->register_message_handler(handler_message, 1);
+    app->register_message_handler(handler_message, RUNTIME_LOOP_THREAD);
 
     return 0;
 }
@@ -513,9 +541,9 @@ int on_app_process(struct app_runtime_t *app)
 {
     Logger *logger = app->logger;
 
-    test_server_groups(app);
-    test_register_tcp_handler(app);
-    test_register_telnet_proc(app); 
+    /* test_server_groups(app);
+     * test_register_tcp_handler(app);
+     * test_register_telnet_proc(app);  */
 
     /*     test_object_array(10);
      *     DEBUG("on_app_process loginfo\n");
@@ -524,12 +552,14 @@ int on_app_process(struct app_runtime_t *app)
      *     test_list(10);
      *     logger->log_d(logger, "-------------------------");
      * 
-     *     test_hashmap(10);
+     *     test_hashmap();
      * 
      *     logger->log_e(logger, "-------------------------"); */
 
-    test_mysql();
-    test_get_tables();
+    /* test_mysql();
+     * test_get_tables(); */
+
+    test_module_serial();
 
     return -1;
 }

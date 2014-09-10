@@ -25,19 +25,21 @@ extern "C" {
 #include <sys/time.h>
 
 #include "message.h"
-#include "message_queue.h"
-#include "tcp_slave_groups.h"
-#include "tcp_server_groups.h"
+#include "tcp_slave.h"
+#include "tcp_server.h"
 #include "looper.h"
 #include "options.h"
 #include "zlogwrap.h"
 
 struct app_runtime_t {
+    // 命令行参数
     Options *options;
 
+    // 内部接口
     MessageQueue *msg_queue;
     Looper *looper;
 
+    // 外部接口
     TcpServerGroups *tcp_server_groups;
     TcpSlaveGroups *tcp_slave_groups;
     Logger *logger;
@@ -63,6 +65,9 @@ typedef struct app_runtime_t App, *PApp;
 //////////////////////////////////////////////////////
 //          public interface                        //
 //////////////////////////////////////////////////////
+#define RUNTIME_LOOP_FORGROUND  0
+#define RUNTIME_LOOP_THREAD     1
+
 // 创建一个app的实例
 App* create_app_instance(int argc, const char *argv[]);
 // 获取已创建的app实例

@@ -22,7 +22,7 @@
 extern "C" {
 #endif
 
-#include "message_queue.h"
+#include "message.h"
 
 struct looper_t {
     MessageQueue *msg_queue;

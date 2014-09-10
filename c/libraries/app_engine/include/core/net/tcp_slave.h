@@ -25,6 +25,7 @@ extern "C" {
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
+#include "hashmap.h"
 
 enum tcp_status_t {
     ENUM_TCP_CONNECTING = 0,
@@ -56,6 +57,33 @@ int slave_tcp_connect(TcpSlave *slave);
 int slave_tcp_disconnect(TcpSlave *slave);
 int slave_tcp_send(TcpSlave *slave, void *data, int size);
 int slave_tcp_close(TcpSlave *slave);
+
+//////////////////////////////////////////////////////
+//                  Slave Groups                    //
+//////////////////////////////////////////////////////
+
+#define MAX_SLAVES  16
+
+struct tcp_slave_groups_t {
+    HashMap hashmap_slave_groups;
+    char *slave_names[MAX_SLAVES];
+    int slave_count;
+
+    int (*register_slave)(struct tcp_slave_groups_t *groups, 
+                          const char *slave_name, 
+                          const char *server_ip, 
+                          int server_port);
+    TcpSlave* (*get_slave)(struct tcp_slave_groups_t *groups, 
+                           const char *slave_name);
+    int (*init)(struct tcp_slave_groups_t *groups); 
+    int (*destroy)(struct tcp_slave_groups_t *groups);
+};
+typedef struct tcp_slave_groups_t TcpSlaveGroups, *PTcpSlaveGroups;
+
+//////////////////////////////////////////////////////
+//          public interface                        //
+//////////////////////////////////////////////////////
+TcpSlaveGroups* create_tcp_slave_groups_instance();
 
 #ifdef __cplusplus
 }

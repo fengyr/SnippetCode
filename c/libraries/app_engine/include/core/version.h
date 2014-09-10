@@ -13,6 +13,13 @@
  *         Author:  Zenki (Zenki.J.Zha), zenki2001cn@163.com
  *   Organization:  
  *
+ *  0.4.5:
+ *      1.采用动态方式加载模块。
+ *
+ *  0.4.4:
+ *      1.添加一些注释，优化部分代码结构。
+ *      2.添加设备模块的定义，目前支持静态添加。
+ *
  *  0.4.3:
  *      1.更新zlog至1.2.12.
  *      2.修复MysqlClient不正确释放，导致的段错误。
@@ -64,7 +71,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.4.3"
+#define APP_VERSION "0.4.5"
 
 #ifdef __cplusplus
 }

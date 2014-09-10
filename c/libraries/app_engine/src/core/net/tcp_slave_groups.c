@@ -14,8 +14,8 @@
  *   Organization:  
  *
  *  注册一个客户端的流程:
- *  1.通过register_slave创建一个客户端对象.             <tcp_slave_groups.h>,<tcp_slave_groups.c>
- *  2.通过get_slave获取已注册的客户端对象.              <tcp_slave_groups.h>,<tcp_slave_groups.c>
+ *  1.通过register_slave创建一个客户端对象.             <tcp_slave.h>,<tcp_slave_groups.c>
+ *  2.通过get_slave获取已注册的客户端对象.              <tcp_slave.h>,<tcp_slave_groups.c>
  *  3.调用客户端对象的connect、send、disconnect方法.    <tcp_slave.h>,<tcp_slave.c>
  * =====================================================================================
  */
@@ -23,7 +23,7 @@
 #include <assert.h>
 #include <string.h>
 
-#include "tcp_slave_groups.h"
+#include "tcp_slave.h"
 #include "debug.h"
 #include "zlogwrap.h"
 #include "app.h"

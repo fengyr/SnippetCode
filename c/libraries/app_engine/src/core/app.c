@@ -17,21 +17,23 @@
  */
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
 
 #include "app.h"
 #include "version.h"
 #include "zlogwrap.h"
+#include "dev_serial.h"
 
 static App s_app;
 static Looper s_looper;
 static MessageQueue s_msg_queue; 
 static MessageHandler s_message_handler;
 static HandlerMessage s_handler_message;
-static int s_loop_run_thread_mode = 1;      // looper是否运行在线程模式
-static int s_loop_thread_running = 0;       // 等待looper线程执行
+static int s_loop_thread_mode = RUNTIME_LOOP_THREAD;    // looper是否运行在线程模式
+static int s_loop_thread_running = 0;                   // 等待looper线程执行
 static struct timeval s_start_timeval; 
 static Logger s_logger;
-static int s_app_exist = 0;                 // App是否已经创建
+static int s_app_exist = 0;                             // App是否已经创建
 
 static int s_argc;
 static const char **s_argv;
@@ -51,7 +53,7 @@ static void init(struct app_runtime_t *app)
 static void register_message_handler(HandlerMessage handler, int thread_mode)
 {
     s_handler_message = handler;
-    s_loop_run_thread_mode = thread_mode;
+    s_loop_thread_mode = thread_mode;
 }
 
 static void* thread_runtime(void *param)
@@ -117,7 +119,7 @@ static void run(struct app_runtime_t *app)
 
     trigger_message(app);
 
-    if (s_loop_run_thread_mode) {
+    if (s_loop_thread_mode) {
         start_background_loop(app);
 
         // wait for loop start

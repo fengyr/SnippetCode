@@ -20,18 +20,21 @@ INC_DIR  	= 	./include/ \
 			./include/core/ \
 			./include/core/utils/ \
 			./include/core/net/ \
-			./include/core/database/ \
+			./include/core/db/ \
+			./include/core/dev/ \
+			./include/core/protocol/ \
 			./include/interface/ \
-			/usr/local/include/opencv/ \
 			/usr/local/include/ \
 			/usr/local/mysql/include/mysql \
-			/usr/local/mysql/include/
+			/usr/local/mysql/include/ \
 
 SRC_DIR   	= 	./src/ \
 			./src/core/ \
 			./src/core/net/ \
-			./src/core/utils \
-			./src/core/database
+			./src/core/utils/ \
+			./src/core/db/ \
+			./src/core/dev/ \
+			./src/core/protocol/ \
 
 EXTRA_SRC 	= 
 EXCLUDE_FILES 	= 	camera_interface.c camera_interface.h \
@@ -44,8 +47,9 @@ EXCLUDE_FILES 	= 	camera_interface.c camera_interface.h \
 
 SUFFIX 		= c cpp hpp cc
 EXTRA_OBJS  = 	./libs/libstruct.a \
-				./libs/libzlog.a \
-				/usr/local/mysql/lib/libmysqlclient.so
+		./libs/libzlog.a \
+		/usr/local/mysql/lib/libmysqlclient.so \
+		/usr/lib/i386-linux-gnu/libdl.so
 
 TARGET          := libapp.so
 TARGET_TYPE     := app
@@ -54,12 +58,7 @@ TARGET_TYPE     := app
 # 则需要加入测试相关代码。
 ifeq ($(TARGET_TYPE),app)
 	EXCLUDE_FILES = 
-	SRC_DIR = 	./src \
-			./src/interface \
-			./src/core \
-			./src/core/net \
-			./src/core/utils \
-			./src/core/database
+	SRC_DIR += ./src/interface
 endif
 
 .other_task:

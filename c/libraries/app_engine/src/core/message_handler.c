@@ -17,7 +17,7 @@
  */
 #include <stdio.h>
 
-#include "message_handler.h"
+#include "message.h"
 
 void message_handler_init(MessageHandler *handler, struct message_queue_t *queue)
 {

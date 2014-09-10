@@ -19,7 +19,6 @@
 #include <sys/time.h>
 #include <time.h>
 
-#include "message_queue.h"
 #include "message.h"
 #include "debug.h"
 
