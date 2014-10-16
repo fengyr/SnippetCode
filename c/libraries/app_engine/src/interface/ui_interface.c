@@ -28,8 +28,6 @@
 #include "app.h"
 #include "options.h"
 
-static App *s_app_ins = get_app_instance(); 
-
 static EventHandler s_ui_control_handler;
 static EventHandler s_img_data_handler;
 static EventHandler s_ping_handler;
@@ -42,60 +40,9 @@ static EventHandler s_modbus_handler;
 static int cmd_train(int fd, char *msg, Socket *sock)
 {
     /* do something */
+    App *s_app_ins = get_app_instance(); 
     Options *options = s_app_ins->options;
     strcpy(options->cmd.config_file_path, "no file");
-
-    replay(fd, REPLAY_SUCCESS);
-
-    return 0;
-}
-
-/* 设置检测崩边崩角 */
-static int cmd_detect_collapse(int fd, char *msg, Socket *sock)
-{
-    /* do something */
-
-    Options *options = s_app_ins->options;
-
-    replay(fd, options->cmd.config_file_path);
-
-    return 0;
-}
-
-/* 设置调试模式 */
-static int cmd_debug_mode(int fd, char *msg, Socket *sock)
-{
-    /* do something */
-
-    replay(fd, REPLAY_SUCCESS);
-
-    return 0;
-}
-
-/* 设置色差阀值 */
-static int cmd_color_dis(int fd, char *msg, Socket *sock)
-{
-    /* do something */
-
-    replay(fd, REPLAY_SUCCESS);
-
-    return 0;
-}
-
-/* 设置崩边阀值 */
-static int cmd_collapse_thresh(int fd, char *msg, Socket *sock)
-{
-    /* do something */
-
-    replay(fd, REPLAY_SUCCESS);
-
-    return 0;
-}
-
-/* 设置矩形参数 */
-static int cmd_set_rect(int fd, char *msg, Socket *sock)
-{
-    /* do something */
 
     replay(fd, REPLAY_SUCCESS);
 
@@ -105,11 +52,6 @@ static int cmd_set_rect(int fd, char *msg, Socket *sock)
 static HandlerProc control_proc[] = {
     BEGIN_HANDLER,
     {2, cmd_train},
-    {3, cmd_detect_collapse},
-    {4, cmd_debug_mode},
-    {5, cmd_color_dis},
-    {6, cmd_collapse_thresh},
-    {7, cmd_set_rect},
     END_HANDLER,
 }; 
 

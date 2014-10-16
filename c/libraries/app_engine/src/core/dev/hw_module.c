@@ -23,11 +23,9 @@
 #include "debug.h"
 #include "hw_module.h"
 
-static int s_modules_init = 0;
-
 static int load(const char *id, const char *so_path, struct hw_module_t **pHmi)
 {
-    int status;
+    int status = -1;
     void *handle;
     struct hw_module_t *hmi;
     const char *sym = HW_MODULE_INFO_SYM_AS_STR;
@@ -59,18 +57,18 @@ static int load(const char *id, const char *so_path, struct hw_module_t **pHmi)
     status = 0; 
 
 DONE:
+    // FIXME: 如果加载成功，还需要在后期做释放
     if (status != 0) {
         hmi = NULL;
         if (handle != NULL) {
             dlclose(handle);
             handle = NULL;
         }
-    } else {
-        DEBUG("loaded module id=%s path=%s hmi=%p handle=%p\n",
-                id, so_path, *pHmi, handle);
     }
 
     *pHmi = hmi;
+    DEBUG("loaded module id=%s path=%s hmi=%p handle=%p\n",
+            id, so_path, *pHmi, handle);
 
     return status;
 }
@@ -78,4 +76,43 @@ DONE:
 int hw_get_module(const char *id, const char *so_path, struct hw_module_t **module)
 {
     return load(id, so_path, module);
+}
+
+int dump_module_info(struct hw_module_t *module)
+{
+    if (module != NULL) {
+        fprintf(stderr, "=== Module Info ===\nTag: %d\nVersion_major: %d\nVersion_minor: %d\nID: %s\nName: %s\nAuthor: %s\nDSO: %p\n", 
+                module->tag, module->version_major, module->version_minor, module->id, module->name, module->author, module->dso);
+
+        int i;
+        fprintf(stderr, "Reserved: ");
+        for (i = 0; i < sizeof(module->reserved)/sizeof(unsigned int); i++) {
+            fprintf(stderr, "%d", module->reserved[i]);
+        }
+        fprintf(stderr, "\n");
+
+        return 0;
+    }
+
+    return -1;
+}
+
+int dump_device_info(struct hw_device_t *device)
+{
+    if (device != NULL) {
+        fprintf(stderr, "=== Device Info ===\nTag: %d\nVersion: %d\nModule: %p\n", 
+                device->tag, device->version, device->module);
+
+        int i;
+        fprintf(stderr, "Reserved: ");
+        for (i = 0; i < sizeof(device->reserved)/sizeof(unsigned int); i++) {
+            fprintf(stderr, "%d", device->reserved[i]);
+        }
+        fprintf(stderr, "\n");
+
+        return 0;
+    }
+
+    return -1;
+
 }

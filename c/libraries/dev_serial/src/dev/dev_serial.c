@@ -17,25 +17,28 @@
  */
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "dev_serial.h"
 #include "serial.h"
-#include "debug.h"
 
 static int dev_serial_close(struct hw_device_t *device)
 {
+    printf("dev_serial_close >>>>>>>\n");
+
     int ret = 0;
     SerialDevice *dev;
 
     if (!device) {
-        DEBUG("dev_serial_close: device=NULL\n");
+        printf("dev_serial_close: device=NULL\n");
         ret = -1;
         goto DONE;
     }
 
-    dev = (SerialDevice*) device;
+    dev = container_of(device, SerialDevice, common);
+
     if (dev) {
-        DEBUG("dev_serial_close: device free\n");
+        printf("dev_serial_close: device free\n");
         dev->close(dev->fd);
         free(dev);
     }
@@ -51,31 +54,36 @@ static int dev_serial_open(const struct hw_module_t *module,
 
     if (!strcmp(id, MODULE_SERIAL_ID)) {
         dev = (SerialDevice*) malloc(sizeof(SerialDevice));
+        if (!dev) {
+            return -1;
+        }
         memset(dev, 0, sizeof(SerialDevice));
 
         dev->common.tag = DEVICE_COMMON_TAG;
         dev->common.version = DEVICE_SERIAL_VERSION;
         dev->common.module = module;
+        dev->common.__exit = dev_serial_close;
 
-        dev->common.close = dev_serial_close;
         dev->open = serial_open;
         dev->init = serial_init;
         dev->read = serial_read_data;
         dev->write = serial_write_data;
         dev->close = serial_close;
 
-        *device = &dev->common;
+        *device = &(dev->common);
     }
+
+    printf("dev_serial_open >>>>>>>>\n");
 
     return 0;
 }
 
-struct hw_module_methods_t s_serial_module_methods = {
-    open: dev_serial_open,
+static struct hw_module_methods_t s_serial_module_methods = {
+    __init: dev_serial_open,
 };
 
 struct serial_module_t HW_MODULE_INFO_SYM = {
-    common : {
+    common: {
         tag: MODULE_COMMON_TAG,
         version_major: MODULE_SERIAL_MAJOR,
         version_minor: MODULE_SERIAL_MINOR,
@@ -83,5 +91,6 @@ struct serial_module_t HW_MODULE_INFO_SYM = {
         name: MODULE_SERIAL_NAME,
         author: MODULE_SERIAL_AUTHOR,
         methods: &s_serial_module_methods,
+        dso: NULL,
     },
 };

@@ -21,8 +21,6 @@
 #include <stdio.h>
 
 #include "options.h"
-#include "ini.h"
-#include "commandline.h"
 #include "debug.h"
 
 static Ini *s_ini;
@@ -32,14 +30,12 @@ static int ini_handler(void* user, const char* section,
 {
     Ini* ini = (Ini*) user;
 
-    if (MATCH(name, "CameraFile")) {
-        strcpy(ini->CameraFile, value);
-    } else if (MATCH(name, "UseBWenh")) {
-        ini->UseBWenh = atoi(value);
-    } else if (MATCH(name, "ParaNum1")) {
-        ini->ParaNum1 = atof(value);
-    } else if (MATCH(name, "ParaNum2")) {
-        ini->ParaNum2 = atof(value);
+    if (MATCH(name, "param3")) {
+        strcpy(ini->param3, value);
+    } else if (MATCH(name, "param1")) {
+        ini->param1 = atoi(value);
+    } else if (MATCH(name, "param2")) {
+        ini->param2 = atof(value);
     } else {
         return 0;
     }
@@ -81,10 +77,9 @@ static void initOptions(Options *options)
     cmd->help_mode = 0;
 
     //////////////////  配置文件默认配置 //////////////////
-    strcpy(ini->CameraFile, "../para/file_conf/CameraCalib.xml");
-    ini->UseBWenh = 100;
-    ini->ParaNum1 = 10.1;
-    ini->ParaNum2 = 20.1;
+    ini->param1 = 100;
+    ini->param2 = 10.1;
+    strcpy(ini->param3, "hello wrold.");
 }
 
 static void dumpOptions(Options *options)
@@ -94,10 +89,9 @@ static void dumpOptions(Options *options)
     DEBUG("server_ip_addr: %s\n", options->cmd.server_ip_addr);
     DEBUG("server_port: %d\n", options->cmd.server_port);
     DEBUG("-----------dump ini config --------------\n");
-    DEBUG("CameraFile: %s\n", options->ini.CameraFile);
-    DEBUG("UseBWenh: %d\n", options->ini.UseBWenh);
-    DEBUG("ParaNum1: %f\n", options->ini.ParaNum1);
-    DEBUG("ParaNum2: %f\n", options->ini.ParaNum2);
+    DEBUG("param1: %d\n", options->ini.param1);
+    DEBUG("param2: %f\n", options->ini.param2);
+    DEBUG("param3: %s\n", options->ini.param3);
 }
 
 static void print_usage()
@@ -128,8 +122,23 @@ int getOptions(Options *options, int argc, const char *argv[])
         {"--localport", TAGTYPE_INT, &options->cmd.server_port},
         {"-h", TAGTYPE_BOOL, &options->cmd.help_mode},
         {"--help", TAGTYPE_BOOL, &options->cmd.help_mode},
-        {"--camerafile", TAGTYPE_STRING, options->ini.CameraFile},
-    }; 
+    };  
+
+/*     static Tag tag[] = {
+ *         {"--config", TAGTYPE_STRING, ""},
+ *         {"--localaddr", TAGTYPE_STRING, ""},
+ *         {"--localport", TAGTYPE_INT, (int*)0},
+ *         {"-h", TAGTYPE_BOOL, (int*)0},
+ *         {"--help", TAGTYPE_BOOL, (int*)0},
+ *         {"--camerafile", TAGTYPE_STRING, ""},
+ *     };
+ * 
+ *     strcat(tag[0].data, options->cmd.config_file_path);
+ *     strcat(tag[1].data, options->cmd.server_ip_addr);
+ *     tag[2].data = &options->cmd.server_port;
+ *     tag[3].data = &options->cmd.help_mode;
+ *     tag[4].data = &options->cmd.help_mode;
+ *     strcat(tag[5].data, options->ini.CameraFile); */
 
     s_ini = &(options->ini);
     initOptions(options);

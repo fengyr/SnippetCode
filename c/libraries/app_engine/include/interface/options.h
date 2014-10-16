@@ -22,17 +22,17 @@
 extern "C" {
 #endif
 
+#include "ini.h"
+#include "commandline.h"
 //////////////////////////////////////////////////////
 //          配置文件参数结构                        //
 //////////////////////////////////////////////////////
 #define MATCH(name, n) (strcmp((name), (n)) == 0)
 
 typedef struct ini_t {
-    char CameraFile[255];
-
-    int UseBWenh;
-    float ParaNum1;
-    float ParaNum2;
+    int param1;
+    float param2;
+    char param3[255];
 } Ini, *PIni;
 
 //////////////////////////////////////////////////////

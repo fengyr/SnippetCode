@@ -8,9 +8,12 @@ CROSS_COMPILE   =
 OPTIMIZE        := 
 WARNINGS        := -Wall
 DEFS            := 
-# EXTRA_CFLAGS    := -g
-EXTRA_CFLAGS    := -g -DUSE_MYSQL -DUSE_DEBUG
-# EXTRA_CFLAGS    := -DUSE_DEBUG -g
+USE_MYSQL 		:= false 
+EXTRA_CFLAGS    := -g
+# EXTRA_CFLAGS    += -g -DUSE_DEBUG -rdynamic
+ifeq ($(USE_MYSQL),TRUE)
+EXTRA_CFLAGS    += -DUSE_MYSQL
+endif
 LDFLAGS         := -pthread -lm -lrt -lstdc++ -ldl
 
 OUT_DIR 	= out
@@ -22,43 +25,54 @@ INC_DIR  	= 	./include/ \
 			./include/core/net/ \
 			./include/core/db/ \
 			./include/core/dev/ \
-			./include/core/protocol/ \
+			./include/core/modbus/ \
 			./include/interface/ \
 			/usr/local/include/ \
-			/usr/local/mysql/include/mysql \
-			/usr/local/mysql/include/ \
 
-SRC_DIR   	= 	./src/ \
-			./src/core/ \
-			./src/core/net/ \
-			./src/core/utils/ \
-			./src/core/db/ \
-			./src/core/dev/ \
-			./src/core/protocol/ \
+
+SRC_DIR   	= 	./src/core/ \
+				./src/core/net/ \
+				./src/core/utils/ \
+				./src/core/db/ \
+				./src/core/dev/ \
+				./src/core/modbus/ \
 
 EXTRA_SRC 	= 
-EXCLUDE_FILES 	= 	camera_interface.c camera_interface.h \
-			opencv_interface.cpp opencv_interface.hpp \
-			ui_interface.c ui_interface.h \
-			runtime.c runtime.h \
-			options.c options.h \
-			telnet_proc.c telnet_proc.h \
-			app.c app.h
+EXCLUDE_FILES 	= 	./src/interface/ui_interface.c \
+					./src/interface/options.c \
+					./src/interface/telnet_proc.c \
+					./src/runtime.c \
+					./include/interface/ui_interface.h \
+					./include/interface/options.h \
+					./include/interface/telnet_proc.h \
+					./include/interface/dev_serial.h \
+					./include/runtime.h \
 
 SUFFIX 		= c cpp hpp cc
 EXTRA_OBJS  = 	./libs/libstruct.a \
-		./libs/libzlog.a \
-		/usr/local/mysql/lib/libmysqlclient.so \
-		/usr/lib/i386-linux-gnu/libdl.so
+				./libs/libzlog.a \
+				./libs/libmodbus.a \
+				/usr/lib/i386-linux-gnu/libdl.so \
+
+# mysql数据库相关配置
+ifeq ($(USE_MYSQL),true)
+INC_DIR		+= 	/usr/local/mysql/include/mysql \
+				/usr/local/mysql/include/ \
+
+EXTRA_OBJS  += 	/usr/local/mysql/lib/libmysqlclient.so \
+
+endif
 
 TARGET          := libapp.so
-TARGET_TYPE     := app
+TARGET_TYPE     := so
 
 # 如果编译目标是可执行程序，
 # 则需要加入测试相关代码。
 ifeq ($(TARGET_TYPE),app)
 	EXCLUDE_FILES = 
-	SRC_DIR += ./src/interface
+	SRC_DIR += 	./src \
+				./src/interface \
+
 endif
 
 .other_task:
@@ -111,7 +125,7 @@ $(error Unexpected TARGET_TYPE `$(TARGET_TYPE)')
 endif
 
 ifeq ($(TARGET_TYPE),so)
- CFLAGS  += -fpic -shared
+ CFLAGS  += -fpic -fPIC -shared
  LDFLAGS += -shared
 endif
 

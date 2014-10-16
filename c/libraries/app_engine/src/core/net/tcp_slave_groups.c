@@ -29,13 +29,13 @@
 #include "app.h"
 
 static TcpSlaveGroups s_tcp_slave_groups;
-static App *s_app = get_app_instance();
 
 static TcpSlave* get_slave(struct tcp_slave_groups_t *groups, 
                            const char *slave_name)
 {
     int error;
     TcpSlave *slave;
+    App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
     error = hashmap_get(groups->hashmap_slave_groups, (char*)slave_name, (void**)(&slave));
@@ -51,6 +51,7 @@ static int tcp_slave_groups_register(TcpSlaveGroups *groups,
                               const char *server_ip, 
                               int server_port)
 {
+    App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
     
     if (groups->slave_count >= MAX_SLAVES) {
@@ -117,6 +118,7 @@ static int tcp_slave_groups_destroy(TcpSlaveGroups *groups)
 {
     int error;
     TcpSlave *slave;
+    App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
     DEBUG("tcp_slave_groups_destroy: BEGIN\n");

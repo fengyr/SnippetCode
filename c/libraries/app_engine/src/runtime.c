@@ -21,7 +21,6 @@
 #include <assert.h>
 #include <string.h>
 
-#include "mysql.h"
 #include "array.h"
 #include "hashmap.h"
 #include "list.h"
@@ -35,15 +34,101 @@
 #include "telnet_server.h"
 #include "tcp_server.h"
 #include "dev_serial.h"
+#include "modbus_master.h"
 
 #include "db_column.h"
 #include "db_mysql_wrap.h"
 
 #ifdef USE_MYSQL
+#include "mysql.h"
 static MysqlClient *s_client;
 #endif
 
 static Options s_options;
+
+static void test_modbus_master()
+{
+    int rc;
+    printf("=================create_modbus_master_tcp\n");
+    ModbusMaster *modbus_m = create_modbus_master_tcp("127.0.0.1", 1502, NULL);
+
+    // 写单个线圈
+    unsigned char bits[128];
+    unsigned short shorts[128];
+
+    printf("==========读写单个线圈==========\n");
+    memset(bits, 0, sizeof(bits));
+    rc = modbus_m->write_bit(modbus_m, 0x130, 1);
+    DEBUG("write_bits: rc=%d\n", rc);
+    rc = modbus_m->read_bits(modbus_m, 0x130, 1, bits);
+    DEBUG("read_bits: rc=%d, bits[0]=%d\n\n", rc, bits[0]);
+
+    // 写多个线圈
+    printf("==========读写多个线圈==========\n");
+    const uint8_t UT_BITS_TAB[] = { 0xCD, 0x6B, 0xB2, 0x0E, 0x1B };
+    memset(bits, 0, sizeof(bits));
+    rc = modbus_m->write_bits(modbus_m, 0x130, 0x25, UT_BITS_TAB);
+    DEBUG("write_bits: rc=%d\n", rc);
+    rc = modbus_m->read_bits(modbus_m, 0x130, 0x25, bits);
+    DEBUG("read_bits: rc=%d, bits[0]=%x, bits[1]=%x\n\n", rc, bits[0], bits[1]);
+
+    // 读离散量输入
+    printf("==========读写离散量输入==========\n");
+    const uint8_t UT_INPUT_BITS_TAB[] = { 0xAC, 0xDB, 0x35 };
+    memset(bits, 0, sizeof(bits));
+    rc = modbus_m->read_input_bits(modbus_m, 0x1C4, 0x16, bits);
+    DEBUG("read_input_bits: rc=%d, bits[0]=%x, bits[1]=%x\n\n", rc, bits[0], bits[1]);
+
+    // 写单个寄存器
+    printf("==========读写单个寄存器==========\n");
+    memset(shorts, 0, sizeof(shorts));
+    rc = modbus_m->write_register(modbus_m, 0x16B, 0x1234);
+    DEBUG("write_register: rc=%d\n", rc);
+    rc = modbus_m->read_registers(modbus_m, 0x16B, 1, shorts);
+    DEBUG("read_registers: rc=%d, shorts[0]=%x\n\n", rc, shorts[0]);
+
+    printf("==========读写多个寄存器==========\n");
+    memset(shorts, 0, sizeof(shorts));
+    const uint16_t UT_REGISTERS_TAB[] = { 0x022B, 0x0001, 0x0064 };
+    rc = modbus_m->write_registers(modbus_m, 0x16B, 0x3, UT_REGISTERS_TAB);
+    DEBUG("write_registers: rc=%d\n", rc);
+    rc = modbus_m->read_registers(modbus_m, 0x16B, 0x3, shorts);
+    DEBUG("read_registers: rc=%d, shorts[0]=%x, shorts[1]=%x, shorts[2]=%x\n\n", 
+          rc, shorts[0], shorts[1], shorts[2]);
+
+    printf("==========同时读写多个寄存器==========\n");
+    memset(shorts, 0, sizeof(shorts));
+    rc = modbus_m->write_and_read_registers(modbus_m,
+                                            0x16B,
+                                            0x3,
+                                            UT_REGISTERS_TAB,
+                                            0x16B,
+                                            0x3,
+                                            shorts);
+    DEBUG("write_and_read_registers: rc=%d, shorts[0]=%x, shorts[1]=%x, shorts[2]=%x\n\n", 
+          rc, shorts[0], shorts[1], shorts[2]);
+
+    printf("==========读输入寄存器==========\n");
+    memset(shorts, 0, sizeof(shorts));
+    rc = modbus_m->read_input_registers(modbus_m, 0x108, 0x01, shorts);
+    DEBUG("read_registers: rc=%d, shorts[0]=%x\n\n", rc, shorts[0]);
+
+    printf("==========读取浮点型数据==========\n");
+    const float UT_REAL = 916.540649;
+    float real;
+
+    memset(shorts, 0, sizeof(shorts));
+    modbus_m->set_float(UT_REAL, shorts);
+    real = modbus_get_float(shorts);
+    DEBUG("modbus_get_float: UT_REAL=%f, real=%f\n", UT_REAL, real);
+
+    memset(shorts, 0, sizeof(shorts));
+    modbus_set_float_dcba(UT_REAL, shorts);
+    real = modbus_get_float_dcba(shorts);
+    DEBUG("modbus_get_float_dcba: UT_REAL=%f, real=%f\n\n", UT_REAL, real);
+
+    free_modbus_master(modbus_m);
+}
 
 static void test_module_serial()
 {
@@ -53,19 +138,26 @@ static void test_module_serial()
 
     if (hw_get_module(MODULE_SERIAL_ID, "./libs/libserial.so", &module) < 0) {
         printf(">>> hw_get_module error: %s\n", MODULE_SERIAL_ID);
+    } else {
+        dump_module_info(module);
     }
 
-    module->methods->open(module, MODULE_SERIAL_ID, &dev);
+    DEBUG("----------__init begin, %p\n", &module->methods->__init);
+    module->methods->__init(module, MODULE_SERIAL_ID, &dev);
+    DEBUG("----------__init end\n");
 
     if (dev) {
-        device = (SerialDevice*)dev;
+        dump_device_info(dev);
+        device = container_of(dev, SerialDevice, common);
         if (device->open("/dev/ttyS0") < 0) {
             printf(">>> device->open error\n");
         } else {
             device->init(device->fd, 9600, 8, 1, 'o');
         }
 
-        device->common.close(&device->common);
+        DEBUG("----------__exit begin, %p\n", &device->common.__exit);
+        device->common.__exit(&device->common);
+        DEBUG("----------__exit end\n");
     }
 }
 
@@ -201,6 +293,7 @@ static void s_mysql_query_handler(ContentTable *table)
 
 static void s_mysql_exec_handler(void *result)
 {
+#ifdef USE_MYSQL
     if (!result) {
         printf("------------------------------ result=NULL\n");
     } else {
@@ -220,6 +313,7 @@ static void s_mysql_exec_handler(void *result)
             printf("===============\n");
         }
     }
+#endif
 }
 
 static void test_get_tables()
@@ -559,7 +653,9 @@ int on_app_process(struct app_runtime_t *app)
     /* test_mysql();
      * test_get_tables(); */
 
-    test_module_serial();
+    /* test_module_serial(); */
+
+    test_modbus_master();
 
     return -1;
 }

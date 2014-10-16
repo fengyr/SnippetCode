@@ -25,8 +25,6 @@
 #include "debug.h"
 #include "array.h"
 
-static App *s_app = get_app_instance();
-
 static char const *s_column_type_str[] = {
     "INTEGER",
     "BIGINT",
@@ -105,7 +103,6 @@ void db_set_column_val(ContentColumn *column, void *val, int from_db)
             break;
         case ENUM_CONTENT_FLOAT:
             temp_f = (NULL == val) ? 0.0 : (from_db ? atof((char*)val) : *((float*)val));
-                ((char*)val);
             if (NULL == column->cont_val) {
                 column->cont_val = (float*) malloc(sizeof(float));
             }
@@ -236,6 +233,8 @@ ContentTable* db_create_table(const char *name)
 
 ContentColumn* db_table_get_column(ContentTable *table, const char *col_name)
 {
+    const App *s_app = get_app_instance();
+
     if (NULL == table) {
         Logger *logger = s_app->logger;
         logger->log_e(logger, "DB: db_table_get_column, Table Is NULL.");
@@ -259,6 +258,7 @@ ContentColumn* db_table_get_column(ContentTable *table, const char *col_name)
 
 ContentColumn* db_table_get_column_by_index(ContentTable *table, int id)
 {
+    const App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
     if (NULL == table) {
@@ -278,6 +278,8 @@ ContentColumn* db_table_get_column_by_index(ContentTable *table, int id)
 
 ContentColumn* db_table_get_next_column(ContentTable *table)
 {
+    const App *s_app = get_app_instance();
+
     if (NULL == table) {
         Logger *logger = s_app->logger;
         logger->log_e(logger, "DB: db_table_get_next_column, Table Is NULL.");
@@ -319,6 +321,7 @@ void db_destroy_table_groups(ContentTableGroups *groups)
 {
     int error;
     ContentTable *table;
+    const App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
     DEBUG("db_destroy_tables: BEGIN\n");
@@ -375,6 +378,7 @@ int db_register_table(ContentTableGroups *groups,
 {
     assert(groups != NULL);
 
+    const App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
 
@@ -410,6 +414,7 @@ ContentTable* db_get_table(ContentTableGroups *groups, const char *table_name)
 {
     int error;
     ContentTable *table;
+    const App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
     error = hashmap_get(groups->hashmap_table_groups, (char*)table_name, (void**)(&table));

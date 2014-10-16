@@ -30,12 +30,11 @@
 #include "tcp_slave.h"
 #include "debug.h"
 
-static App *s_app = get_app_instance();
-
 static int set_block_mode(int fd)
 {
     long fflag;
     char err[256];
+    App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
     if( (fflag = fcntl(fd, F_GETFL, NULL)) < 0) { 
@@ -62,6 +61,7 @@ static int set_noblock_mode(int fd)
 {
     long fflag;
     char err[256];
+    App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
     if ((fflag = fcntl(fd, F_GETFL, NULL)) < 0) { 
@@ -88,6 +88,7 @@ int slave_tcp_init(TcpSlave *slave, const char *name, const char *server_ip, int
 {
     int res;
     char err[256];
+    App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
     fd_set myset; 
     struct timeval tv;
@@ -231,6 +232,7 @@ int slave_tcp_send(TcpSlave *slave, void *data, int size)
 {
     int ssize = -1;
     char err[256];
+    App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
     if (!slave) {
@@ -288,6 +290,7 @@ int slave_tcp_send(TcpSlave *slave, void *data, int size)
 int slave_tcp_close(TcpSlave *slave)
 {
     char err[256];
+    App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
     if (!slave) {
@@ -313,6 +316,7 @@ int slave_tcp_close(TcpSlave *slave)
 int slave_tcp_disconnect(TcpSlave *slave)
 {
     char err[256];
+    App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
     if (!slave) {

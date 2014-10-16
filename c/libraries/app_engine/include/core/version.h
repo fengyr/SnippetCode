@@ -13,6 +13,19 @@
  *         Author:  Zenki (Zenki.J.Zha), zenki2001cn@163.com
  *   Organization:  
  *
+ *   TODO:
+ *      0.新建项目时，各文件的耦合关系，特别是interface，Option.
+ *      1.消息机制支持延迟功能。
+ *      2.TCP支持多种模式，包括poll、epoll等。
+ *      3.网络协议独立到protocol模块中。
+ *      4.支持外部模块的自定义配置。
+ *      5.线程的任务模型。
+ *      6.XML读写模块。
+ *
+ *  0.4.6:
+ *      1.加入modbus协议，支持RTU和TCP模式。
+ *      2.modbus暂时支持主机(master)方式。
+ *
  *  0.4.5:
  *      1.采用动态方式加载模块。
  *
@@ -71,7 +84,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.4.5"
+#define APP_VERSION "0.4.6"
 
 #ifdef __cplusplus
 }

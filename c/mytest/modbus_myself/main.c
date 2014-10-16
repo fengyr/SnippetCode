@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  opencv_interface.c
+ *       Filename:  main.c
  *
  *    Description:  
  *
  *        Version:  
- *        Created:  五月 06, 2013
+ *        Created:  九月 26, 2014
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -16,10 +16,3 @@
  * =====================================================================================
  */
 
-#include "opencv2/core/core.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
-#include "opencv2/highgui/highgui.hpp" 
-
-#include "opencv_interface.hpp"
-
-using namespace cv;

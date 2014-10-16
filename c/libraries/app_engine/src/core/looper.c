@@ -44,7 +44,7 @@ void looper_run(Looper *looper)
             }
 
             handler = msg->handler;
-            if (handler != NULL) {
+            if ((handler != NULL) && (handler->handler_message != NULL)) {
                 handler->handler_message(handler, msg);
             } else {
                 fprintf(stderr, "not register handler message\n");
@@ -59,5 +59,5 @@ void looper_run(Looper *looper)
 void looper_exit(Looper *looper)
 {
     s_looper_quit = 1;
-    fprintf(stderr, "looper_exit\n");
+    DEBUG("looper_exit\n");
 }

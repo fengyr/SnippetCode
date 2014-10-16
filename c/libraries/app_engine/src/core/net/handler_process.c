@@ -32,8 +32,6 @@
 #include "debug.h"
 #include "app.h"
 
-static App *s_app = get_app_instance();
-
 static int indexOfFd(int fd, Remote *remote)
 {
     int i;
@@ -61,6 +59,7 @@ ssize_t replay(int fd, const char *msg)
 
 int default_handler(int fd, char *msg, Socket *sock)
 {
+    const App *s_app = get_app_instance();
     Remote *remote = sock->remote;
     int id = indexOfFd(fd, remote); 
 
@@ -113,6 +112,7 @@ int default_replay_handler(int fd, char *msg, Socket *sock)
 int call_handler(HandlerProc *handler, int id, int fd, char *msg, Socket *sock)
 {
     int rtn = -1;
+    App *s_app = get_app_instance();
     HandlerProc *h = handler;
 
     for (; (h != NULL) && (h->cmd_id != TAIL_ID); h++) {
@@ -135,6 +135,7 @@ int call_handler(HandlerProc *handler, int id, int fd, char *msg, Socket *sock)
 
 int handler_proc_stub(int fd, Socket *sock, HandlerProc *handler)
 {    
+    App *s_app = get_app_instance();
     int find = 0;
     ssize_t recv_size = 0;
     ssize_t start = 0;

@@ -39,7 +39,7 @@ typedef struct hw_module_t {
     const char *name;                   // 模块名称
     const char *author;                 // 模块作者
     struct hw_module_methods_t *methods;
-    void *dso;                          // 
+    void *dso;                          // dlopen handle 
     unsigned int reserved[24];          // 预留
 } HwModule, *PHwModule;
 
@@ -48,8 +48,8 @@ typedef struct hw_module_t {
  * 一个设备对象。
  */
 typedef struct hw_module_methods_t {
-    int (*open)(const struct hw_module_t *module, 
-                const char *id, struct hw_device_t **device);
+    int (*__init)(const struct hw_module_t *module, const char *id, 
+                  struct hw_device_t **device);
 } HwModuleMethod, *PHwModuleMethod;
 
 typedef struct hw_device_t {
@@ -57,7 +57,7 @@ typedef struct hw_device_t {
     unsigned int version;               // 设备版本
     const struct hw_module_t *module;
     unsigned int reserved[24];          // 预留
-    int (*close)(struct hw_device_t *device);
+    int (*__exit)(struct hw_device_t *device);
 } HwDevice, *PHwDevice;
 
 //////////////////////////////////////////////////////
@@ -69,6 +69,17 @@ typedef struct hw_device_t {
 #define HW_MODULE_INFO_SYM          HMI
 #define HW_MODULE_INFO_SYM_AS_STR   "HMI"
 
+#undef offsetof
+#ifdef __compiler_offsetof
+#define offsetof(TYPE,MEMBER) __compiler_offsetof(TYPE,MEMBER)
+#else
+#define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
+#endif
+
+#define container_of(ptr, type, member) ({  \
+    const typeof(((type *)0)->member ) *__mptr = (ptr); \
+    (type *)((char *)__mptr - offsetof(type, member));})
+
 /**
  * @Synopsis 根据模块ID获取模块对象。
  *
@@ -78,6 +89,9 @@ typedef struct hw_device_t {
  * @Returns 成功获取返回0，没有找到可用模块返回-2。
  */
 int hw_get_module(const char *id, const char *so_path, struct hw_module_t **module);
+
+int dump_module_info(struct hw_module_t *module);
+int dump_device_info(struct hw_device_t *device);
 
 #ifdef __cplusplus
 }

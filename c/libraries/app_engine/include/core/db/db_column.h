@@ -163,7 +163,7 @@ ContentColumn* db_create_column(const char *name,
  *
  * @Param column    抽象列的指针
  */
-void db_free_column(ContentColumn *column);
+void db_free_column(void *column);
 
 /**
  * @Synopsis 根据枚举类型的抽象类型，返回字符串描述

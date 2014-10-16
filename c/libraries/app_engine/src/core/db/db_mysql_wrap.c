@@ -25,10 +25,9 @@
 #include "debug.h"
 #include "app.h"
 
-static App *s_app = get_app_instance();
-
 MysqlClient* db_mysql_init(MysqlUser *user, int create_db)
 {
+    const App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
     char err[128], sql[64];
 
@@ -118,6 +117,7 @@ DB_ERROR:
 
 void db_mysql_free(MysqlClient *client)
 {
+    const App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
     char err[128];
 
@@ -187,6 +187,7 @@ int db_mysql_add_table(MysqlClient *client,
                        ContentTable *table, 
                        int create_table)
 {
+    const App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
     char err[128];
     char sql[255];
@@ -270,6 +271,7 @@ int db_mysql_query_table_cond(MysqlClient *client,
                               const char *cond,
                               MysqlQueryHandler handler)
 {
+    const App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
     char err[128];
     char sql[512];
@@ -331,6 +333,7 @@ int db_mysql_exec_sql(MysqlClient *client,
                       const char *sql,
                       MysqlExecHandler handler)
 {
+    const App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
     if (NULL == client) {

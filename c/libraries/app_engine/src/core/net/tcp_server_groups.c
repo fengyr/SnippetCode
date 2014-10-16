@@ -32,12 +32,12 @@
 #include "app.h"
 
 static TcpServerGroups s_tcp_server_groups;
-static App *s_app = get_app_instance();
 
 static AnyServer get_server(struct tcp_server_groups_t *groups, 
                              const char *server_name)
 {
     int error;
+    App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
     enum tcp_server_type_t server_type = ENUM_SERVER_NODEFINED;
 
@@ -75,6 +75,7 @@ static int tcp_server_groups_register(TcpServerGroups *groups,
                                       const char *server_ip, 
                                       int server_port)
 {
+    App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
     if (groups->server_count >= MAX_SERVERS) {
@@ -148,6 +149,7 @@ static int tcp_server_groups_init(TcpServerGroups *groups)
 static int tcp_server_groups_destroy(TcpServerGroups *groups)
 {
     int error;
+    App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
     DEBUG("tcp_server_groups_destroy: BEGIN\n");
