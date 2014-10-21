@@ -11,6 +11,7 @@ cd $SRC
 echo "========= compile libmodbus... ========="
 echo $SRC
 cd $SRC/libmodbus
+./autogen.sh
 make clean
 rm -f $SRC/libmodbus/src/.libs/libmodbus.a
 ./configure
