@@ -345,6 +345,36 @@ static void test_get_tables()
 #endif
 }
 
+static int slave_recv_call(int slave_fd, void *data, int len)
+{
+    printf("slave_recv_call: %s\n", (char*)data);
+    return 0;
+}
+
+static void test_slave_groups(App *app)
+{
+    TcpSlaveGroups *groups = app->tcp_slave_groups;
+    groups->register_slave(groups, "slave", "127.0.0.1", 9001);
+    TcpSlave *slave = groups->get_slave(groups, "slave");
+
+    static RecvHandler s_recv_handler;
+    s_recv_handler.req_size = 1024;
+    s_recv_handler.recv_timeout = 1;
+    s_recv_handler.onRecvAndReplay = slave_recv_call;
+    slave->register_recv_handler(slave, &s_recv_handler);
+    slave->connect(slave);
+    slave->send(slave, (void*)"hello", 6);
+
+    sleep(3);
+    slave->send(slave, (void*)"hello", 6);
+    sleep(3);
+    slave->send(slave, (void*)"hello", 6);
+    sleep(3);
+    slave->send(slave, (void*)"hello", 6);
+
+    slave->disconnect(slave);
+}
+
 static void test_server_groups(App *app)
 {
     Options *options = app->options;
@@ -655,7 +685,9 @@ int on_app_process(struct app_runtime_t *app)
 
     /* test_module_serial(); */
 
-    test_modbus_master();
+    /* test_modbus_master(); */
+
+    test_slave_groups(app);
 
     return -1;
 }

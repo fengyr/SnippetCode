@@ -30,6 +30,8 @@
 #include "tcp_slave.h"
 #include "debug.h"
 
+static int server_quit = 0;
+
 static int set_block_mode(int fd)
 {
     long fflag;
@@ -84,7 +86,128 @@ static int set_noblock_mode(int fd)
     return 0;
 }
 
-int slave_tcp_init(TcpSlave *slave, const char *name, const char *server_ip, int server_port)
+static int _recv(TcpSlave *slave)
+{
+    RecvHandler *handler = slave->pHandlers;
+    ssize_t total_size = 0;
+    char *buffer = NULL;
+    int buffer_size = 6400;
+    int rc = 0;
+
+    if (handler != NULL) {
+        RecvHandlerCall call = handler->onRecvAndReplay;
+        int req_size = handler->req_size;
+        int recv_size = 0;
+
+        // 请求的最大数据<=0，则立即返回。
+        if (req_size <= 0) {
+            buffer = (char*) malloc(buffer_size*sizeof(char));
+            if (!buffer) {
+                return -1;
+            }
+
+            pthread_mutex_lock(&slave->l_mutex);
+            total_size = recv(slave->slave_fd, buffer, buffer_size, 0);
+            pthread_mutex_unlock(&slave->l_mutex);
+        } else {
+            buffer = (char*) malloc(req_size*sizeof(char));
+            if (!buffer) {
+                return -1;
+            }
+
+            pthread_mutex_lock(&slave->l_mutex);
+            while (total_size != req_size) {
+                recv_size = recv(slave->slave_fd, 
+                                 &buffer[total_size], 
+                                 req_size - total_size, 0);
+                total_size += recv_size;
+            }
+            pthread_mutex_unlock(&slave->l_mutex);
+        }
+
+        rc = (*call)(slave->slave_fd, (void*)buffer, total_size);
+
+        if (rc < 0) {
+            DEBUG("thread_slave_recv: handler failed.\n");
+        } else {
+            DEBUG("thread_slave_recv: handler...\n");
+        }
+
+        if (buffer != NULL) {
+            free(buffer);
+            buffer = NULL;
+        }
+    } else {
+        DEBUG("%s: not found RecvHandler\n", slave->slave_name);
+    }
+
+    return rc;
+}
+
+static void* thread_slave_recv(void *param)
+{
+    TcpSlave *slave = (TcpSlave*) param;
+
+    int rc;
+    int max_fd;
+    fd_set read_fds;
+
+    server_quit = 0;
+
+    // set timeout
+    /* struct timeval timeout; */
+    /* timeout.tv_sec = 0; */
+    /* timeout.tv_usec =500000; */
+
+    while (!server_quit) {
+        /* begin set fd_set */
+        FD_ZERO(&read_fds);
+        max_fd = -1;
+
+        FD_SET(slave->slave_fd, &read_fds);
+        max_fd = slave->slave_fd;
+        /* end set fd_set */
+
+        DEBUG("%s: enter select, max_fd = %d\n", slave->slave_name, max_fd);
+
+        rc = select(max_fd + 1, &read_fds, 0, 0, 0);    
+        if (rc < 0) {
+            perror("thread_slave_recv: select error");
+            sleep(1);
+            continue;
+        } else if (rc == 0) {
+            DEBUG("%s: select continue\n", slave->slave_name);
+            continue;
+        }
+
+        if (FD_ISSET(slave->slave_fd, &read_fds)) {
+            DEBUG("%s: enter recv handler...\n", slave->slave_name);
+            _recv(slave);
+        }
+    }
+
+    pthread_detach(pthread_self());
+    pthread_exit(NULL);
+}
+
+int slave_register_handler(TcpSlave *slave, RecvHandler *handler)
+{
+    int res;
+
+    if (!handler) {
+        return -1;
+    }
+
+    // Init RecvHandler
+    slave->pHandlers = (RecvHandler*) malloc(sizeof(RecvHandler));
+    memcpy(slave->pHandlers, handler, sizeof(RecvHandler));
+    DEBUG("slave_register_handler: slave name = %s, ip = %s, port = %d, handler = %p\n", 
+            slave->slave_name, slave->server_ip, slave->server_port, slave->pHandlers);
+
+    return res;
+}
+
+int slave_tcp_init(TcpSlave *slave, const char *name, const char *server_ip, int server_port, int reconnect)
 {
     int res;
     char err[256];
@@ -128,6 +251,21 @@ int slave_tcp_init(TcpSlave *slave, const char *name, const char *server_ip, int
             slave->server_ip, slave->server_port);
     logger->log_i(logger, err);
 
+    if (!reconnect) {
+        // init thread
+        slave->pthread = -1;
+        pthread_mutex_init(&(slave->l_mutex), NULL);
+    }
+
+    if (slave->pthread != -1) {
+        server_quit = 1;
+        usleep(300000);
+
+        void *join;
+        pthread_join(slave->pthread, &join);
+        slave->pthread = -1;
+    }
+    
     // Set non-blocking 
     set_noblock_mode(slave->slave_fd);
 
@@ -182,6 +320,20 @@ int slave_tcp_init(TcpSlave *slave, const char *name, const char *server_ip, int
     } else {
         slave->status = ENUM_TCP_CONNECTED;
 
+        // 设置超时，默认1秒
+        struct timeval timeout_r; 
+        if (slave->pHandlers != NULL) {
+            if (slave->pHandlers->recv_timeout > 0) {
+                timeout_r.tv_sec = slave->pHandlers->recv_timeout;
+            } else {
+                timeout_r.tv_sec = 1;
+            }
+        } else {
+            timeout_r.tv_sec = 1;
+        }
+        timeout_r.tv_usec = 0;
+        setsockopt(slave->slave_fd, SOL_SOCKET, SO_RCVTIMEO, (const void*)&timeout_r, sizeof(timeout_r));
+
         memset(err, 0, sizeof(err));
         sprintf(err, "Net: Slave Connect Server Success.");
         logger->log_i(logger, err);
@@ -204,11 +356,19 @@ int slave_tcp_init(TcpSlave *slave, const char *name, const char *server_ip, int
  *         sprintf(err, "Net: Slave Connect Server Success.");
  *         logger->log_i(logger, err);
  *     } */
-    
+
+    res = pthread_create(&slave->pthread, NULL, thread_slave_recv, (void*)slave);
+    if (res < 0) {
+        pthread_detach(slave->pthread);
+        perror("slave_register_handler: pthread_create error");
+        exit(1);
+    }
+    pthread_detach(slave->pthread);
+
     return res;
 
 ERROR:
-    slave_tcp_close(slave);
+    slave_tcp_close(slave, 0);
     return -1;
 }
 
@@ -225,7 +385,7 @@ int slave_tcp_connect(TcpSlave *slave)
     DEBUG("slave_tcp_connect: slave_name=%s, server_ip=%s, server_port=%d\n", 
            slave_name, server_ip, server_port);
 
-    return slave_tcp_init(slave, slave_name, server_ip, server_port);
+    return slave_tcp_init(slave, slave_name, server_ip, server_port, 0);
 }
 
 int slave_tcp_send(TcpSlave *slave, void *data, int size)
@@ -242,15 +402,18 @@ int slave_tcp_send(TcpSlave *slave, void *data, int size)
         return -1;
     }
 
+
     if (slave->slave_fd > 0) {
+        pthread_mutex_lock(&slave->l_mutex);
         ssize = send(slave->slave_fd, data, size, 0);
+        pthread_mutex_unlock(&slave->l_mutex);
 
         if (ssize <= 0) {
             memset(err, 0, sizeof(err));
             sprintf(err, "Net: Slave Send Data, %s.", strerror(errno));
             logger->log_e(logger, err);
 
-            slave_tcp_close(slave);
+            slave_tcp_close(slave, 1);
 
             char slave_name[256];
             char server_ip[64];
@@ -259,7 +422,7 @@ int slave_tcp_send(TcpSlave *slave, void *data, int size)
             strcpy(slave_name, slave->slave_name);
             strcpy(server_ip, slave->server_ip);
             int server_port = slave->server_port;
-            int res = slave_tcp_init(slave, slave_name, server_ip, server_port);
+            int res = slave_tcp_init(slave, slave_name, server_ip, server_port, 1);
 
             memset(err, 0, sizeof(err));
             if (res < 0) {
@@ -270,7 +433,9 @@ int slave_tcp_send(TcpSlave *slave, void *data, int size)
                 logger->log_e(logger, err);
 
                 /* sleep(1); */
+                pthread_mutex_lock(&slave->l_mutex);
                 ssize = send(slave->slave_fd, data, size, 0);
+                pthread_mutex_unlock(&slave->l_mutex);
                 if (ssize < 0) {
                     memset(err, 0, sizeof(err));
                     sprintf(err, "Net: Slave Resend Data Error, %s.", strerror(errno));
@@ -284,20 +449,26 @@ int slave_tcp_send(TcpSlave *slave, void *data, int size)
         logger->log_e(logger, err);
     }
 
+
     return ssize;
 }
 
-int slave_tcp_close(TcpSlave *slave)
+int slave_tcp_close(TcpSlave *slave, int reconnect)
 {
+    void *res = NULL;
+    int i = 0;
     char err[256];
     App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
+
+    server_quit = 1;
+    usleep(300000);
 
     if (!slave) {
         memset(err, 0, sizeof(err));
         sprintf(err, "Net: Slave Close, Slave Is NULL.");
         logger->log_e(logger, err);
-        return -1;
+        goto PTHREAD_FREE;
     }
 
     if (slave->slave_fd > 0) {
@@ -310,6 +481,23 @@ int slave_tcp_close(TcpSlave *slave)
         logger->log_i(logger, err);
     }
 
+PTHREAD_FREE:
+    fprintf(stderr, "%s recv server exit...\n", slave->slave_name);
+
+    if (slave->pthread != -1) {
+        pthread_join(slave->pthread, &res);
+        slave->pthread = -1;
+    }
+
+    if (!reconnect) {
+        if (slave->pHandlers != NULL) {
+            free(slave->pHandlers);
+            slave->pHandlers = NULL;
+        } 
+
+        pthread_mutex_destroy(&slave->l_mutex);
+    }
+    
     return 0;
 }
 

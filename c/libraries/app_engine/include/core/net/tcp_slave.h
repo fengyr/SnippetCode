@@ -22,11 +22,26 @@
 extern "C" {
 #endif
 
+#include <pthread.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include "hashmap.h"
 
+typedef int (*RecvHandlerCall)(int slave_fd, void *data, int len);
+
+/**
+ * @Synopsis 客户端接收数据回调
+ */
+typedef struct recv_handler_t {
+    int req_size;       // 请求的数据大小，小于等于0表示动态模式。
+    int recv_timeout;   // 接收数据的超时时间。
+    RecvHandlerCall onRecvAndReplay;
+} RecvHandler, *PRecvHandler;
+
+/**
+ * @Synopsis 客户端连接状态
+ */
 enum tcp_status_t {
     ENUM_TCP_CONNECTING = 0,
     ENUM_TCP_CONNECTED = 1,
@@ -42,7 +57,13 @@ struct tcp_slave_t {
     char slave_name[256];
     struct sockaddr_in serveraddr;
     enum tcp_status_t status;
+    RecvHandler *pHandlers;
 
+    pthread_t pthread;
+    pthread_mutex_t l_mutex;
+
+    int (*register_recv_handler)(struct tcp_slave_t *slave, 
+                                  RecvHandler *handler);
     int (*connect)(struct tcp_slave_t *slave);
     int (*send)(struct tcp_slave_t *slave, void *data, int size);
     int (*disconnect)(struct tcp_slave_t *slave);
@@ -52,11 +73,12 @@ typedef struct tcp_slave_t TcpSlave, *PTcpSlave;
 //////////////////////////////////////////////////////
 //          public interface                        //
 //////////////////////////////////////////////////////
-int slave_tcp_init(TcpSlave *slave, const char *name, const char *server_ip, int port);
+int slave_tcp_init(TcpSlave *slave, const char *name, const char *server_ip, int port, int reconnect);
+int slave_register_handler(TcpSlave *slave, RecvHandler *handler);
 int slave_tcp_connect(TcpSlave *slave);
 int slave_tcp_disconnect(TcpSlave *slave);
 int slave_tcp_send(TcpSlave *slave, void *data, int size);
-int slave_tcp_close(TcpSlave *slave);
+int slave_tcp_close(TcpSlave *slave, int reconnect);
 
 //////////////////////////////////////////////////////
 //                  Slave Groups                    //

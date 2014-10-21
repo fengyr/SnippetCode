@@ -76,6 +76,7 @@ static int tcp_slave_groups_register(TcpSlaveGroups *groups,
     slave->connect = slave_tcp_connect;
     slave->disconnect = slave_tcp_disconnect;
     slave->send = slave_tcp_send;
+    slave->register_recv_handler = slave_register_handler;
     slave->status = ENUM_TCP_DISCONNECTED;
 
     int error = hashmap_put(groups->hashmap_slave_groups, (char*)slave_name, slave);
@@ -127,7 +128,7 @@ static int tcp_slave_groups_destroy(TcpSlaveGroups *groups)
         error = hashmap_get(groups->hashmap_slave_groups, groups->slave_names[i], (void**)(&slave));
         if (slave != NULL) {
             DEBUG("tcp_slave_groups_destroy: slave_name=%s\n", slave->slave_name);
-            slave_tcp_close(slave);
+            slave_tcp_close(slave, 0);
             free(slave);
             slave = NULL;
 

@@ -204,6 +204,8 @@ static void* thread_tcp_server(void *param)
     int max_fd;
     fd_set read_fds;
 
+    server_quit = 0;
+
     // set timeout
     /* struct timeval timeout; */
     /* timeout.tv_sec = 0; */
