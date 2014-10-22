@@ -28,7 +28,9 @@ extern "C" {
 #include <netinet/in.h>
 #include "hashmap.h"
 
-typedef int (*RecvHandlerCall)(int slave_fd, void *data, int len);
+struct tcp_slave_t;
+typedef struct tcp_slave_t TcpSlave, *PTcpSlave;
+typedef int (*RecvHandlerCall)(TcpSlave *slave, void *data, int len);
 
 /**
  * @Synopsis 客户端接收数据回调
@@ -53,6 +55,7 @@ enum tcp_status_t {
 struct tcp_slave_t {
     int slave_fd;
     int server_port;
+    int auto_connect;
     char server_ip[64];
     char slave_name[256];
     struct sockaddr_in serveraddr;
@@ -64,20 +67,41 @@ struct tcp_slave_t {
 
     int (*register_recv_handler)(struct tcp_slave_t *slave, 
                                   RecvHandler *handler);
-    int (*connect)(struct tcp_slave_t *slave);
+    int (*connect)(struct tcp_slave_t *slave, int auto_connect);
     int (*send)(struct tcp_slave_t *slave, void *data, int size);
+    int (*recv)(struct tcp_slave_t *slave, void *data, int size);
     int (*disconnect)(struct tcp_slave_t *slave);
 };
-typedef struct tcp_slave_t TcpSlave, *PTcpSlave;
 
 //////////////////////////////////////////////////////
 //          public interface                        //
 //////////////////////////////////////////////////////
-int slave_tcp_init(TcpSlave *slave, const char *name, const char *server_ip, int port, int reconnect);
+#define SLAVE_AUTO_RECONNECT        1
+#define SLAVE_DISABLE_RECONNECT     0
+
+#define SLAVE_STATUS_RECONNECTED    1
+#define SLAVE_STATUS_CONNECT_FIRST  0
+
+int slave_tcp_init(TcpSlave *slave, 
+                   const char *name, 
+                   const char *server_ip, 
+                   int port, 
+                   int reconnect,
+                   int auto_connect);
 int slave_register_handler(TcpSlave *slave, RecvHandler *handler);
-int slave_tcp_connect(TcpSlave *slave);
+int slave_tcp_connect(TcpSlave *slave, int auto_connect);
+
+/**
+ * @Synopsis    断开客户端连接，重连需要间隔1秒。
+ *
+ * @Param slave TcpSlave对象指针。
+ *
+ * @Returns     成功返回0，失败返回-1。
+ */
 int slave_tcp_disconnect(TcpSlave *slave);
+
 int slave_tcp_send(TcpSlave *slave, void *data, int size);
+int slave_tcp_recv(TcpSlave *slave, void *data, int size);
 int slave_tcp_close(TcpSlave *slave, int reconnect);
 
 //////////////////////////////////////////////////////

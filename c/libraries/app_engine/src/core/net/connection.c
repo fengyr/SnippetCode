@@ -26,6 +26,7 @@
 #include <sys/socket.h>
 #include <errno.h>
 #include <assert.h>
+#include <signal.h>
 
 #include "connection.h"
 #include "handler_process.h"
@@ -288,6 +289,7 @@ static void* thread_tcp_server(void *param)
     }
 
     pthread_detach(pthread_self());
+    sock->pthread = -1;
     pthread_exit(NULL);
 }
 

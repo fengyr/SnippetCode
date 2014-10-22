@@ -12,12 +12,15 @@ def recv_thread(*arg):
 
     print "client connect: ", conn
 
+    count = 0
     while True:
         try:
+            count = count + 1
             buf = conn.recv(4096)
-            print buf, " len=", len(buf)
+            print buf, " len=", len(buf), " count=", count
             if buf == '':
                 break
+            conn.send("1"*16);
         except Exception, e:
             break
 

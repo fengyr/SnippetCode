@@ -22,6 +22,9 @@
  *      5.线程的任务模型。
  *      6.XML读写模块。
  *
+ *  0.4.7:
+ *      1.加入tcp_slave线程接收和recv方法。
+ *
  *  0.4.6:
  *      1.加入modbus协议，支持RTU和TCP模式。
  *      2.modbus暂时支持主机(master)方式。
@@ -84,7 +87,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.4.6"
+#define APP_VERSION "0.4.7"
 
 #ifdef __cplusplus
 }

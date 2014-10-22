@@ -12,3 +12,6 @@
 
 4. libserial.a: C实现的串口通信接口静态库
     - link: mytest/serial_mod
+ 
+5. libmodbus.a: modbus协议实现
+    - link: https://github.com/stephane/libmodbus.git

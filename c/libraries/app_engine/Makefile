@@ -8,9 +8,9 @@ CROSS_COMPILE   =
 OPTIMIZE        := 
 WARNINGS        := -Wall
 DEFS            := 
-USE_MYSQL 		:= false 
+USE_MYSQL 	:= false 
 EXTRA_CFLAGS    := -g
-EXTRA_CFLAGS    += -g -DUSE_DEBUG -rdynamic
+# EXTRA_CFLAGS    += -g -DUSE_DEBUG -rdynamic
 ifeq ($(USE_MYSQL),TRUE)
 EXTRA_CFLAGS    += -DUSE_MYSQL
 endif
@@ -31,32 +31,32 @@ INC_DIR  	= 	./include/ \
 
 
 SRC_DIR   	= 	./src/core/ \
-				./src/core/net/ \
-				./src/core/utils/ \
-				./src/core/db/ \
-				./src/core/dev/ \
-				./src/core/modbus/ \
+			./src/core/net/ \
+			./src/core/utils/ \
+			./src/core/db/ \
+			./src/core/dev/ \
+			./src/core/modbus/ \
 
 EXTRA_SRC 	= 
 EXCLUDE_FILES 	= 	./src/interface/ui_interface.c \
-					./src/interface/options.c \
-					./src/interface/telnet_proc.c \
-					./src/runtime.c \
-					./include/interface/ui_interface.h \
-					./include/interface/options.h \
-					./include/interface/telnet_proc.h \
-					./include/interface/dev_serial.h \
-					./include/runtime.h \
+			./src/interface/options.c \
+			./src/interface/telnet_proc.c \
+			./src/runtime.c \
+			./include/interface/ui_interface.h \
+			./include/interface/options.h \
+			./include/interface/telnet_proc.h \
+			./include/interface/dev_serial.h \
+			./include/runtime.h \
 
 SUFFIX 		= c cpp hpp cc
-EXTRA_OBJS  = 	./libs/libstruct.a \
-				./libs/libzlog.a \
-				./libs/libmodbus.a \
-				/usr/lib/i386-linux-gnu/libdl.so \
+EXTRA_OBJS  	=   ./libs/libstruct.a \
+		    ./libs/libzlog.a \
+		    ./libs/libmodbus.a \
+		    /usr/lib/i386-linux-gnu/libdl.so \
 
 # mysql数据库相关配置
 ifeq ($(USE_MYSQL),true)
-INC_DIR		+= 	/usr/local/mysql/include/mysql \
+INC_DIR	    += 	/usr/local/mysql/include/mysql \
 				/usr/local/mysql/include/ \
 
 EXTRA_OBJS  += 	/usr/local/mysql/lib/libmysqlclient.so \
@@ -64,14 +64,14 @@ EXTRA_OBJS  += 	/usr/local/mysql/lib/libmysqlclient.so \
 endif
 
 TARGET          := libapp.so
-TARGET_TYPE     := app
+TARGET_TYPE     := so
 
 # 如果编译目标是可执行程序，
 # 则需要加入测试相关代码。
 ifeq ($(TARGET_TYPE),app)
 	EXCLUDE_FILES = 
 	SRC_DIR += 	./src \
-				./src/interface \
+		   		./src/interface \
 
 endif
 

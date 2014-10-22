@@ -345,9 +345,17 @@ static void test_get_tables()
 #endif
 }
 
-static int slave_recv_call(int slave_fd, void *data, int len)
+static int slave_recv_call(TcpSlave *slave, void *data, int len)
 {
-    printf("slave_recv_call: %s\n", (char*)data);
+    char buf[20480];
+    strncpy(buf, (const char*) data, len);
+    printf("slave_recv_call: %s, %d\n", buf, len);
+    return 0;
+}
+
+static int slave_recv_call2(TcpSlave *slave, void *data, int len)
+{
+    printf("slave_recv_call2: %d\n", len);
     return 0;
 }
 
@@ -358,21 +366,46 @@ static void test_slave_groups(App *app)
     TcpSlave *slave = groups->get_slave(groups, "slave");
 
     static RecvHandler s_recv_handler;
-    s_recv_handler.req_size = 1024;
-    s_recv_handler.recv_timeout = 1;
+    s_recv_handler.req_size = 16;
+    s_recv_handler.recv_timeout = 0;
     s_recv_handler.onRecvAndReplay = slave_recv_call;
     slave->register_recv_handler(slave, &s_recv_handler);
-    slave->connect(slave);
+    slave->connect(slave, SLAVE_AUTO_RECONNECT);
+    /* slave->connect(slave, SLAVE_DISABLE_RECONNECT); */
     slave->send(slave, (void*)"hello", 6);
 
-    sleep(3);
-    slave->send(slave, (void*)"hello", 6);
-    sleep(3);
-    slave->send(slave, (void*)"hello", 6);
-    sleep(3);
-    slave->send(slave, (void*)"hello", 6);
+    int sw = 0;
+    int count = 1000;
+    while (count > 0) {
+        slave->send(slave, (void*)"hello", 6);
+        sleep(0.1);
 
-    slave->disconnect(slave);
+        // 断开重连
+        // sw等于0或1时使用回调
+        // sw等于2时使用recv方法
+        slave->disconnect(slave);
+        if (sw == 0) {
+            s_recv_handler.onRecvAndReplay = slave_recv_call;
+            slave->register_recv_handler(slave, &s_recv_handler);
+            slave->connect(slave, SLAVE_AUTO_RECONNECT);
+            sw = 1;
+        } else if (sw == 1) {
+            s_recv_handler.onRecvAndReplay = slave_recv_call2;
+            slave->register_recv_handler(slave, &s_recv_handler);
+            slave->connect(slave, SLAVE_AUTO_RECONNECT);
+            sw = 2;
+        } else {
+            s_recv_handler.onRecvAndReplay = NULL;
+            slave->register_recv_handler(slave, &s_recv_handler);
+            slave->connect(slave, SLAVE_AUTO_RECONNECT);
+            sw = 0;
+
+            char buf[1024];
+            slave->send(slave, (void*)"hello", 6);
+            slave->recv(slave, (void*)buf, 1024);
+            printf("------------- %s\n", buf);
+        }
+    }
 }
 
 static void test_server_groups(App *app)

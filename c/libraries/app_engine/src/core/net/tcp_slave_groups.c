@@ -76,6 +76,7 @@ static int tcp_slave_groups_register(TcpSlaveGroups *groups,
     slave->connect = slave_tcp_connect;
     slave->disconnect = slave_tcp_disconnect;
     slave->send = slave_tcp_send;
+    slave->recv = slave_tcp_recv;
     slave->register_recv_handler = slave_register_handler;
     slave->status = ENUM_TCP_DISCONNECTED;
 
