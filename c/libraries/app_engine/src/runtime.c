@@ -361,9 +361,21 @@ static int slave_recv_call2(TcpSlave *slave, void *data, int len)
 
 static void test_slave_groups(App *app)
 {
+    int i = 0;
+    int slave_id = 0;
+    char slave_name[64];
+
     TcpSlaveGroups *groups = app->tcp_slave_groups;
-    groups->register_slave(groups, "slave", "127.0.0.1", 9001);
-    TcpSlave *slave = groups->get_slave(groups, "slave");
+
+    // 宏定义最大客户端数量为256
+    for (i = 0; i < 256; i++) {
+        memset(slave_name, 0, sizeof(slave_name));
+        sprintf(slave_name, "slave-%d", i);
+        groups->register_slave(groups, slave_name, "127.0.0.1", 9001);
+        TcpSlave *slave = groups->get_slave(groups, slave_name);
+    }
+
+    TcpSlave *slave = groups->get_slave(groups, slave_name);
 
     static RecvHandler s_recv_handler;
     s_recv_handler.req_size = 16;
@@ -410,16 +422,32 @@ static void test_slave_groups(App *app)
 
 static void test_server_groups(App *app)
 {
+    int i = 0;
+
+    char server_name[64];
     Options *options = app->options;
     TcpServerGroups *groups = app->tcp_server_groups;
-    groups->register_server(groups, ENUM_SERVER_TCP, "tcp_default", options->cmd.server_ip_addr, options->cmd.server_port);
-    groups->register_server(groups, ENUM_SERVER_TELNET, "telnet", options->cmd.server_ip_addr, 11018);
+
+    // 宏定义最大服务端数量为128
+    for (i = 0; i < 128; i++) {
+        memset(server_name, 0, sizeof(server_name));
+        sprintf(server_name, "tcp-%d", i);
+        groups->register_server(groups, ENUM_SERVER_TCP, server_name, options->cmd.server_ip_addr, options->cmd.server_port + i);
+        /* TelnetServer *server = (TelnetServer*) groups->get_server(groups, server_name); */
+        /* printf("tcp name:%s, %p\n", server_name, server); */
+
+        memset(server_name, 0, sizeof(server_name));
+        sprintf(server_name, "telnet-%d", i);
+        groups->register_server(groups, ENUM_SERVER_TELNET, server_name, options->cmd.server_ip_addr, 31018 + i);
+        /* TelnetServer *server2 = (TelnetServer*) groups->get_server(groups, server_name); */
+        /* printf("telnet name:%s, %p\n", server_name, server2); */
+    }
 }
 
 static void test_register_telnet_proc(App *app)
 {
     TcpServerGroups *groups = app->tcp_server_groups;
-    TelnetServer *server = (TelnetServer*) groups->get_server(groups, "telnet");
+    TelnetServer *server = (TelnetServer*) groups->get_server(groups, "telnet-0");
     static EventHandler s_telnet_handler;
 
     s_telnet_handler.handler_type = HANDLER_TYPE_TELNET;
@@ -430,7 +458,7 @@ static void test_register_telnet_proc(App *app)
 static void test_register_tcp_handler(App *app)
 {
     TcpServerGroups *groups = app->tcp_server_groups;
-    TcpServer *server = (TcpServer*) groups->get_server(groups, "tcp_default");
+    TcpServer *server = (TcpServer*) groups->get_server(groups, "tcp-0");
     static EventHandler s_ui_control_handler;
     static EventHandler s_img_data_handler;
     static EventHandler s_mobile_handler;
@@ -699,8 +727,8 @@ int on_app_process(struct app_runtime_t *app)
     Logger *logger = app->logger;
 
     /* test_server_groups(app);
-     * test_register_tcp_handler(app);
-     * test_register_telnet_proc(app);  */
+     * test_register_telnet_proc(app);  
+     * test_register_tcp_handler(app); */
 
     /*     test_object_array(10);
      *     DEBUG("on_app_process loginfo\n");

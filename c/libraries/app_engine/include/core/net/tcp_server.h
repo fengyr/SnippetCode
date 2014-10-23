@@ -40,7 +40,7 @@ TcpServer* create_tcp_server_instance();
 //////////////////////////////////////////////////////
 //                  Server Groups                   //
 //////////////////////////////////////////////////////
-#define MAX_SERVERS  16
+#define MAX_SERVERS  128
 
 typedef void* AnyServer;
 

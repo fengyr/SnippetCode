@@ -108,7 +108,7 @@ int slave_tcp_close(TcpSlave *slave, int reconnect);
 //                  Slave Groups                    //
 //////////////////////////////////////////////////////
 
-#define MAX_SLAVES  16
+#define MAX_SLAVES  256
 
 struct tcp_slave_groups_t {
     HashMap hashmap_slave_groups;

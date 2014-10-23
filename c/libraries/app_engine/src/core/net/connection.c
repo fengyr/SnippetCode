@@ -180,6 +180,7 @@ static void add_client(Socket *sock, int client_fd, char *client_ip, int client_
 
     int buf_size = 1024 * 1024;
     setsockopt(client_fd, SOL_SOCKET, SO_SNDBUF, (const void*)&buf_size, sizeof(int));
+    setsockopt(client_fd, SOL_SOCKET, SO_RCVBUF, (const void*)&buf_size, sizeof(int));
 
     pthread_mutex_lock(&sock->s_mutex);
     for (i = 0; i < MAX_REMOTE_NUM; i++) {
@@ -198,6 +199,8 @@ static void add_client(Socket *sock, int client_fd, char *client_ip, int client_
 
 static void* thread_tcp_server(void *param)
 {
+    pthread_detach(pthread_self());
+
     Socket *sock = (Socket*) param;
     Remote *remote = sock->remote;
 
@@ -288,7 +291,6 @@ static void* thread_tcp_server(void *param)
         }
     }
 
-    pthread_detach(pthread_self());
     sock->pthread = -1;
     pthread_exit(NULL);
 }
@@ -383,11 +385,9 @@ void tcp_server_run(Socket *sock, int thread_mode)
     if (thread_mode) {
         res = pthread_create(&sock->pthread, NULL, thread_tcp_server, (void*)sock);
         if (res < 0) {
-            pthread_detach(sock->pthread);
             perror("run_tcp_server: pthread_create error");
             exit(1);
         }
-        pthread_detach(sock->pthread);
     } else {
         sock->pthread = -1;
         thread_tcp_server((void*)sock);

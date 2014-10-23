@@ -80,21 +80,22 @@ static int tcp_slave_groups_register(TcpSlaveGroups *groups,
     slave->register_recv_handler = slave_register_handler;
     slave->status = ENUM_TCP_DISCONNECTED;
 
-    int error = hashmap_put(groups->hashmap_slave_groups, (char*)slave_name, slave);
+    if (groups->slave_names[groups->slave_count] != NULL) {
+        strcpy(groups->slave_names[groups->slave_count], slave_name);
+    } else {
+        /* error = hashmap_remove(groups->hashmap_slave_groups, (char*)slave_name); */
+        logger->log_e(logger, "Net: Slave Register, Slave Add Name Failed.");
+        return -1;
+    }
+
+    int error = hashmap_put(groups->hashmap_slave_groups, groups->slave_names[groups->slave_count], slave);
     if (error != MAP_OK) {
+        memset(groups->slave_names[groups->slave_count], 0, 256);
         logger->log_e(logger, "Net: Slave Register, Slave Add Failed.");
         return -1;
     }
 
     DEBUG("tcp_slave_groups_register: slave_name=%s\n", slave->slave_name);
-
-    if (groups->slave_names[groups->slave_count] != NULL) {
-        strcpy(groups->slave_names[groups->slave_count], slave_name);
-    } else {
-        error = hashmap_remove(groups->hashmap_slave_groups, (char*)slave_name);
-        logger->log_e(logger, "Net: Slave Register, Slave Add Name Failed.");
-        return -1;
-    }
 
     groups->slave_count++;
 

@@ -80,6 +80,7 @@ class Bar(Structure):
 bar = Bar()
 bar.count = 4
 val = (c_int*4)(1, 2, 3, 4)
+# 数组转换成C的指针
 bar.values = cast( (c_byte*4)(), POINTER(c_int) )
 bar.values = val
 print bar.count, bar.values[2]

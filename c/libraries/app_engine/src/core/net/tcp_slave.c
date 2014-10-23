@@ -156,6 +156,7 @@ BUFFER_FREE:
 
 static void* thread_slave_recv(void *param)
 {
+    pthread_detach(pthread_self());
     TcpSlave *slave = (TcpSlave*) param;
 
     int rc;
@@ -197,7 +198,6 @@ static void* thread_slave_recv(void *param)
     }
 
     DEBUG("%s: enter recv thread exit... status = %d\n", slave->slave_name, slave->status);
-    pthread_detach(pthread_self());
     slave->pthread = -1;
     pthread_exit(NULL);
 }
@@ -380,11 +380,9 @@ int slave_tcp_init(TcpSlave *slave,
         int thread_res;
         thread_res = pthread_create(&slave->pthread, NULL, thread_slave_recv, (void*)slave);
         if (thread_res < 0) {
-            pthread_detach(slave->pthread);
             perror("slave_register_handler: pthread_create error");
             exit(1);
         }
-        pthread_detach(slave->pthread);
     }
     
     return res;

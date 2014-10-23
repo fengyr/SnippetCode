@@ -95,7 +95,15 @@ static int tcp_server_groups_register(TcpServerGroups *groups,
         tcp_server->init(tcp_server, server_name, server_ip, server_port);
         tcp_server->run(tcp_server, 1);
 
-        error = hashmap_put(groups->hashmap_server_groups, (char*)server_name, tcp_server);
+        if (groups->server_names[groups->server_count] != NULL) {
+            strcpy(groups->server_names[groups->server_count], server_name);
+        } else {
+            /* error = hashmap_remove(groups->hashmap_server_groups, (char*)server_name); */
+            logger->log_e(logger, "Net: Server Register, Server Add Name Failed.");
+            return -1;
+        }
+
+        error = hashmap_put(groups->hashmap_server_groups, groups->server_names[groups->server_count], tcp_server);
         DEBUG("tcp_server_groups_register: server_name=%s\n", tcp_server->sock->local_name);
     } else if (server_type == ENUM_SERVER_TELNET) {
         // create telnet server instance
@@ -103,7 +111,15 @@ static int tcp_server_groups_register(TcpServerGroups *groups,
         telnet_server->init(telnet_server, server_name, server_ip, server_port);
         telnet_server->run(telnet_server, 1);
 
-        error = hashmap_put(groups->hashmap_server_groups, (char*)server_name, telnet_server);
+        if (groups->server_names[groups->server_count] != NULL) {
+            strcpy(groups->server_names[groups->server_count], server_name);
+        } else {
+            /* error = hashmap_remove(groups->hashmap_server_groups, (char*)server_name); */
+            logger->log_e(logger, "Net: Server Register, Server Add Name Failed.");
+            return -1;
+        }
+
+        error = hashmap_put(groups->hashmap_server_groups, groups->server_names[groups->server_count], telnet_server);
         DEBUG("tcp_server_groups_register: server_name=%s\n", telnet_server->sock->local_name);
     } else {
         logger->log_e(logger, "Net: Server Register, Server Type No Defined.");
@@ -111,20 +127,12 @@ static int tcp_server_groups_register(TcpServerGroups *groups,
     }
 
     if (error != MAP_OK) {
+        memset(groups->server_names[groups->server_count], 0, 256);
         logger->log_e(logger, "Net: Server Register, Server Add Failed.");
         return -1;
     }
 
     groups->server_types[groups->server_count] = server_type;
-
-    if (groups->server_names[groups->server_count] != NULL) {
-        strcpy(groups->server_names[groups->server_count], server_name);
-    } else {
-        error = hashmap_remove(groups->hashmap_server_groups, (char*)server_name);
-        logger->log_e(logger, "Net: Server Register, Server Add Name Failed.");
-        return -1;
-    }
-
     groups->server_count++;
 
     return 0;

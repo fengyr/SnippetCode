@@ -22,6 +22,10 @@
  *      5.线程的任务模型。
  *      6.XML读写模块。
  *
+ *  0.4.8:
+ *      1.修复TcpServerGroups和TcpSlaveGroups中调用hashmap造成的空指针问题。
+ *      2.测试用例增加创建多个TcpServer和TcpSlave。
+ *
  *  0.4.7:
  *      1.加入tcp_slave线程接收和recv方法。
  *
@@ -87,7 +91,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.4.7"
+#define APP_VERSION "0.4.8"
 
 #ifdef __cplusplus
 }
