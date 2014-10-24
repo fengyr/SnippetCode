@@ -2,6 +2,7 @@
 import socket
 import sys
 import threading
+import struct
 
 HOST = '127.0.0.1'
 PORT = 9001
@@ -16,11 +17,13 @@ def recv_thread(*arg):
     while True:
         try:
             count = count + 1
-            buf = conn.recv(4096)
-            print buf, " len=", len(buf), " count=", count
+            buf = conn.recv(256)
+            # print buf, " len=", len(buf), " count=", count
             if buf == '':
                 break
-            conn.send("1"*16);
+            data = struct.unpack("<hc3d5cdhc9dh8d75c", buf)
+            print data
+            # conn.send("1"*16);
         except Exception, e:
             break
 

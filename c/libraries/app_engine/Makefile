@@ -10,7 +10,7 @@ WARNINGS        := -Wall
 DEFS            := 
 USE_MYSQL 		:= false 
 EXTRA_CFLAGS    := -g
-EXTRA_CFLAGS    += -g -DUSE_DEBUG -rdynamic
+# EXTRA_CFLAGS    += -g -DUSE_DEBUG -rdynamic
 ifeq ($(USE_MYSQL),TRUE)
 EXTRA_CFLAGS    += -DUSE_MYSQL
 endif

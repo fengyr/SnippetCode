@@ -166,9 +166,9 @@ static void* thread_slave_recv(void *param)
     SERVER_QUIT = 0;
 
     // set timeout
-    /* struct timeval timeout; */
-    /* timeout.tv_sec = 0; */
-    /* timeout.tv_usec =500000; */
+    struct timeval timeout;
+    timeout.tv_sec = 0;
+    timeout.tv_usec = 500000;
 
     while (!SERVER_QUIT) {
         /* begin set fd_set */
@@ -181,7 +181,7 @@ static void* thread_slave_recv(void *param)
 
         DEBUG("%s: enter select, max_fd = %d\n", slave->slave_name, max_fd);
 
-        rc = select(max_fd + 1, &read_fds, 0, 0, 0);    
+        rc = select(max_fd + 1, &read_fds, 0, 0, &timeout);  
         if (rc < 0) {
             perror("thread_slave_recv: select error");
             sleep(1);
@@ -195,6 +195,9 @@ static void* thread_slave_recv(void *param)
             DEBUG("%s: enter recv handler... status = %d\n", slave->slave_name, slave->status);
             _recv(slave);
         }
+
+        // 休眠10ms
+        usleep(10000);
     }
 
     DEBUG("%s: enter recv thread exit... status = %d\n", slave->slave_name, slave->status);
