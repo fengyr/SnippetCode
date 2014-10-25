@@ -21,12 +21,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "debug.h"
-#include "ui_interface.h"
-#include "connection.h"
-#include "handler_process.h"
 #include "app.h"
-#include "options.h"
+#include "ui_interface.h"
 
 static EventHandler s_ui_control_handler;
 static EventHandler s_img_data_handler;

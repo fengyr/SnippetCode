@@ -21,23 +21,13 @@
 #include <assert.h>
 #include <string.h>
 
-#include "array.h"
-#include "hashmap.h"
-#include "list.h"
-#include "message.h"
-
 #include "runtime.h"
-#include "debug.h"
-#include "ui_interface.h"
-#include "handler_process.h"
-#include "telnet_proc.h"
-#include "telnet_server.h"
-#include "tcp_server.h"
-#include "dev_serial.h"
-#include "modbus_master.h"
 
 #include "db_column.h"
 #include "db_mysql_wrap.h"
+#include "dev_serial.h"
+#include "telnet_proc.h"
+#include "ui_interface.h"
 
 #ifdef USE_MYSQL
 #include "mysql.h"
@@ -711,6 +701,7 @@ int on_app_destroy(struct app_runtime_t *app)
 {
     printf("onDestory called\n");
     printf("===============\n");
+    app->save_options(app, &s_options);
 
     return 0;
 }
@@ -728,7 +719,7 @@ int on_app_process(struct app_runtime_t *app)
 
     /* test_server_groups(app);
      * test_register_telnet_proc(app);  
-     * test_register_tcp_handler(app); */
+     * test_register_tcp_handler(app);  */
 
     /*     test_object_array(10);
      *     DEBUG("on_app_process loginfo\n");
@@ -748,7 +739,7 @@ int on_app_process(struct app_runtime_t *app)
 
     /* test_modbus_master(); */
 
-    test_slave_groups(app);
+    /* test_slave_groups(app); */
 
     return -1;
 }

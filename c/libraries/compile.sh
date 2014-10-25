@@ -9,7 +9,6 @@ make
 cd $SRC
 
 echo "========= compile libmodbus... ========="
-echo $SRC
 cd $SRC/libmodbus
 ./autogen.sh
 make clean
@@ -20,3 +19,8 @@ cd $SRC/libmodbus/src/.libs
 ar rcvs libmodbus.a modbus-data.o modbus.o modbus-rtu.o modbus-tcp.o
 cp libmodbus.a $SRC/app_engine/libs/
 cd $SRC
+
+echo "========= update simpleini... ========="
+cp $SRC/simpleini/ConvertUTF.h $SRC/app_engine/include/core/utils/
+cp $SRC/simpleini/ConvertUTF.c $SRC/app_engine/src/core/utils/
+cp $SRC/simpleini/SimpleIni.h $SRC/app_engine/include/core/utils/

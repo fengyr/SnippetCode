@@ -19,6 +19,7 @@
 #include <ctype.h>
 #include <string.h>
 
+#include "app.h"
 #include "ini.h"
 #include "debug.h"
 
@@ -111,7 +112,7 @@ int ini_parse_file(FILE* file,
 
                 /* call handler */
                 strncpy0(prev_name, name, sizeof(prev_name));
-                if (!handler(user, section, name, value) && !error) {
+                if ((handler(user, section, name, value) < 0) && !error) {
                     error = lineno;
                 }
             } else if (!error) {
@@ -138,5 +139,58 @@ int ini_parse(const char* filename,
     }
     error = ini_parse_file(file, handler, user);
     fclose(file);
+    return error;
+}
+
+int ini_parse_file2(void *simple_ini,
+        int (*handler)(void*, const char*, 
+            const char*, const char*),
+            void* user)
+{
+    int error = 0;
+
+    CSimpleIniA *ini = static_cast<CSimpleIniA*>(simple_ini);
+
+    CSimpleIniA::TNamesDepend sections;
+    ini->GetAllSections(sections);
+
+    CSimpleIniA::TNamesDepend::const_iterator s;
+    for (s = sections.begin(); s != sections.end(); ++s) { 
+        CSimpleIniA::TNamesDepend keys;
+        ini->GetAllKeys(s->pItem, keys);
+
+        CSimpleIniA::TNamesDepend::const_iterator k;
+        for (k = keys.begin(); k != keys.end(); ++k) { 
+            
+            const char *pszValue = ini->GetValue(s->pItem,
+                                                 k->pItem, 
+                                                 NULL);
+
+            DEBUG("section=%s, key=%s, value=%s\n",
+                    s->pItem, k->pItem, pszValue);
+
+            if (handler != NULL) {
+                handler(user, s->pItem, k->pItem, pszValue);
+            } else {
+                error = -1;
+            }
+        }
+    }
+
+    return error;
+}
+
+int ini_parse2(const char* filename,
+              int (*handler)(void*, const char*, const char*, const char*),
+              void* user)
+{
+    int error = 0;
+
+    CSimpleIniA ini;
+    ini.SetUnicode();
+    ini.LoadFile(filename);    
+
+    error = ini_parse_file2(static_cast<void*>(&ini), handler, user);
+
     return error;
 }

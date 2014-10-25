@@ -22,6 +22,10 @@
  *      5.线程的任务模型。
  *      6.XML读写模块。
  *
+ *  0.4.8.B:
+ *      1.加入simpleini库，优化Options模块，实现INI可读写。
+ *      2.调整头文件包含关系。
+ *
  *  0.4.8:
  *      1.修复TcpServerGroups和TcpSlaveGroups中调用hashmap造成的空指针问题。
  *      2.测试用例增加创建多个TcpServer和TcpSlave。
@@ -91,7 +95,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.4.8"
+#define APP_VERSION "0.4.8.1"
 
 #ifdef __cplusplus
 }

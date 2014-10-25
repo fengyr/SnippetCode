@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "options.h"
-#include "debug.h"
+#include "app.h"
 
 static Ini *s_ini;
 
@@ -30,13 +30,17 @@ static int ini_handler(void* user, const char* section,
 {
     Ini* ini = (Ini*) user;
 
-    /* if (MATCH(name, "CameraFile")) {
-     *     strcpy(ini->CameraFile, value);
-     * } else {
-     *     return 0;
-     * } */
+    if (MATCH(name, "param3")) {
+        printf("section=%s, name=%s, value=%s\n", section, name, value);
+    } else if (MATCH(name, "param1")) {
+        printf("section=%s, name=%s, value=%d\n", section, name, atoi(value));
+    } else if (MATCH(name, "param2")) {
+        printf("section=%s, name=%s, value=%f\n", section, name, atof(value));
+    } else {
+        return -1;
+    } 
 
-    return 1;
+    return 0;
 }
 
 static int parse_hook(const char *name, void *data)
@@ -44,7 +48,7 @@ static int parse_hook(const char *name, void *data)
     if ((strcmp(name, "--config") == 0) &&
         (strcmp((char*)data, "") != 0)) {
         DEBUG("parse_hook: name = %s, data = %s\n", name, (char*)data);
-        if (ini_parse((char*)data, ini_handler, s_ini) < 0) {
+        if (ini_parse2((char*)data, ini_handler, s_ini) < 0) {
             fprintf(stderr, "getOptions: load ini error\n");
             return -1;
         }
@@ -96,6 +100,13 @@ static void print_usage()
     printf("配置文件参数:                                       \n");
 
     exit(2);
+}
+
+int setOptionsToStr(Options *options, char *buf, int buf_size)
+{
+    sprintf(buf, "[%s]\nparam1=%d\n[%s]\nparam2=%f\n[%s]\nparam3=%s\n", 
+            "UseBWenh", 111, "ParamNum", 22.2, "CameraFile", "hello world");     
+    return 0;
 }
 
 int getOptions(Options *options, int argc, const char *argv[])

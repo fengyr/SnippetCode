@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "options.h"
-#include "debug.h"
+#include "app.h"
 
 static Ini *s_ini;
 
@@ -37,10 +37,10 @@ static int ini_handler(void* user, const char* section,
     } else if (MATCH(name, "param2")) {
         ini->param2 = atof(value);
     } else {
-        return 0;
+        return -1;
     }
 
-    return 1;
+    return 0;
 }
 
 static int parse_hook(const char *name, void *data)
@@ -48,7 +48,7 @@ static int parse_hook(const char *name, void *data)
     if ((strcmp(name, "--config") == 0) &&
         (strcmp((char*)data, "") != 0)) {
         DEBUG("parse_hook: name = %s, data = %s\n", name, (char*)data);
-        if (ini_parse((char*)data, ini_handler, s_ini) < 0) {
+        if (ini_parse2((char*)data, ini_handler, s_ini) < 0) {
             fprintf(stderr, "getOptions: load ini error\n");
             return -1;
         }
@@ -113,6 +113,13 @@ static void print_usage()
     exit(2);
 }
 
+int setOptionsToStr(Options *options, char *buf, int buf_size)
+{
+    sprintf(buf, "[%s]\nparam1=%d\n[%s]\nparam2=%f\n[%s]\nparam3=%s\n", 
+            "UseBWenh", 111000, "ParamNum", 22.000, "CameraFile", "./camera.conf");     
+    return 0;
+}
+
 int getOptions(Options *options, int argc, const char *argv[])
 {
     int rtn;
@@ -123,22 +130,6 @@ int getOptions(Options *options, int argc, const char *argv[])
         {"-h", TAGTYPE_BOOL, &options->cmd.help_mode},
         {"--help", TAGTYPE_BOOL, &options->cmd.help_mode},
     };  
-
-/*     static Tag tag[] = {
- *         {"--config", TAGTYPE_STRING, ""},
- *         {"--localaddr", TAGTYPE_STRING, ""},
- *         {"--localport", TAGTYPE_INT, (int*)0},
- *         {"-h", TAGTYPE_BOOL, (int*)0},
- *         {"--help", TAGTYPE_BOOL, (int*)0},
- *         {"--camerafile", TAGTYPE_STRING, ""},
- *     };
- * 
- *     strcat(tag[0].data, options->cmd.config_file_path);
- *     strcat(tag[1].data, options->cmd.server_ip_addr);
- *     tag[2].data = &options->cmd.server_port;
- *     tag[3].data = &options->cmd.help_mode;
- *     tag[4].data = &options->cmd.help_mode;
- *     strcat(tag[5].data, options->ini.CameraFile); */
 
     s_ini = &(options->ini);
     initOptions(options);

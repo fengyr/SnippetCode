@@ -64,7 +64,7 @@ EXTRA_OBJS  += 	/usr/local/mysql/lib/libmysqlclient.so \
 endif
 
 TARGET          := libapp.so
-TARGET_TYPE     := so
+TARGET_TYPE     := app
 
 # 如果编译目标是可执行程序，
 # 则需要加入测试相关代码。

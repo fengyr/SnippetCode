@@ -22,9 +22,7 @@
 #include <fstream>
 #include <time.h>
 
-#include "connection.h"
 #include "app.h"
-#include "tcp_slave.h"
 
 #ifdef __cplusplus
 extern "C" {

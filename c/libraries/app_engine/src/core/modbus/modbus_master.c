@@ -19,9 +19,7 @@
 #include <unistd.h>
 
 #include "modbus_master.h"
-#include "debug.h"
 #include "app.h"
-
 
 static void set_float(float src, uint16_t *dest)
 {

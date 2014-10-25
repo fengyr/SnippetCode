@@ -18,12 +18,11 @@
 #ifndef _runtime_H_
 #define _runtime_H_
 
+#include "app.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include "app.h"
-
 //////////////////////////////////////////////////////
 //          系统消息处理方法                        //
 // 说明：                                           //

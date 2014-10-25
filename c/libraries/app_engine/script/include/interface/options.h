@@ -53,6 +53,7 @@ typedef struct options_t {
     Ini ini;                        /* 从配置文件中读取的信息 */
 } Options, *POptions;
 
+int setOptionsToStr(Options *options, char *buf, int buf_size);
 int getOptions(Options *options, int argc, const char *argv[]);
 
 #ifdef __cplusplus

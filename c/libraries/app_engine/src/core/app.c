@@ -20,9 +20,6 @@
 #include <string.h>
 
 #include "app.h"
-#include "version.h"
-#include "zlogwrap.h"
-#include "dev_serial.h"
 
 static App s_app;
 static Looper s_looper;
@@ -188,6 +185,37 @@ void parse_options(struct app_runtime_t *app, Options *options)
     app->options = options;
 }
 
+void save_options(struct app_runtime_t *app, Options *options)
+{
+    if (!strcmp(options->cmd.config_file_path, "")) {
+        return; 
+    }
+
+    int buf_size = 8*1024*1024;
+    char *buffer = (char*) malloc(buf_size);
+    memset(buffer, 0, buf_size);
+
+    CSimpleIniA ini;
+    ini.SetUnicode();
+
+    setOptionsToStr(options, buffer, buf_size);
+
+    int rc = ini.LoadData(buffer, strlen(buffer));
+    if (rc < 0) {
+        s_logger.log_e(&s_logger, "APP: Load Options Error.");
+    }
+
+    rc = ini.SaveFile(options->cmd.config_file_path);
+    if (rc < 0) {
+        s_logger.log_e(&s_logger, "APP: Save Options Error.");
+    }
+
+    if (buffer != NULL) {
+        free(buffer);
+        buffer = NULL;
+    }
+}
+
 App* create_app_instance(int argc, const char *argv[])
 {
     App *app = &s_app;
@@ -203,6 +231,7 @@ App* create_app_instance(int argc, const char *argv[])
     app->init = init;
     app->register_message_handler = register_message_handler;
     app->parse_options = parse_options;
+    app->save_options = save_options;
     app->run = run;
     app->quit = quit;
 

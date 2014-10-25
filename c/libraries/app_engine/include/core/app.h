@@ -18,18 +18,43 @@
 #ifndef _MainApp_H_
 #define _MainApp_H_
 
+// C++代码做特别处理
+#include "SimpleIni.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include <sys/time.h>
 
-#include "message.h"
-#include "tcp_slave.h"
+#include "hw_module.h"
+
+#include "modbus.h"
+#include "modbus_master.h"
+#include "modbus_rtu.h"
+#include "modbus_tcp.h"
+
+#include "connection.h"
+#include "handler_process.h"
 #include "tcp_server.h"
-#include "looper.h"
-#include "options.h"
+#include "tcp_slave.h"
+#include "telnet_server.h"
+
+#include "array.h"
+#include "commandline.h"
+#include "hashmap.h"
+#include "ini.h"
+#include "list.h"
+#include "md5.h"
+#include "zlog.h"
 #include "zlogwrap.h"
+
+#include "debug.h"
+#include "looper.h"
+#include "message.h"
+#include "version.h"
+
+#include "options.h"
 
 struct app_runtime_t {
     // 命令行参数
@@ -50,6 +75,8 @@ struct app_runtime_t {
     void (*quit)(struct app_runtime_t *app);
 
     void (*parse_options)(struct app_runtime_t *app, Options *options);
+    void (*save_options)(struct app_runtime_t *app, Options *options);
+
     void (*register_message_handler)(HandlerMessage handler, int thread_mode);
 
     // app engine version

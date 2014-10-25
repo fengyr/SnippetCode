@@ -27,6 +27,7 @@ extern "C" {
 //////////////////////////////////////////////////////
 //          public interface                        //
 //////////////////////////////////////////////////////
+// 只有读功能
 int ini_parse(const char* filename, 
               int (*handler)(void* user, const char* section, 
                              const char* name, const char* value),
@@ -40,5 +41,16 @@ int ini_parse_file(FILE* file,
 #ifdef __cplusplus
 }
 #endif
+
+// 使用Simpleini解析，可读写INI文件
+int ini_parse2(const char* filename, 
+              int (*handler)(void* user, const char* section, 
+                             const char* name, const char* value),
+              void* user);
+
+int ini_parse_file2(void *ini,
+                   int (*handler)(void* user, const char* section, 
+                                  const char* name, const char* value),
+                   void* user);
 
 #endif /* end of include guard: _ini_H_ */
