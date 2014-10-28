@@ -6,7 +6,7 @@ CFLAGS += -g
 LDFLAGS += -g -lpthread
 endif
 
-TARGETS = tests/thrdtest tests/heavy tests/shutdown
+TARGETS = tests/thrdtest tests/heavy tests/shutdown src/libthreadpool.a
 
 all: $(TARGETS)
 
@@ -16,6 +16,8 @@ tests/heavy: tests/heavy.o src/threadpool.o $(LDFLAGS)
 src/threadpool.o: src/threadpool.c src/threadpool.h $(LDFLAGS)
 tests/thrdtest.o: tests/thrdtest.c src/threadpool.h $(LDFLAGS)
 tests/heavy.o: tests/heavy.c src/threadpool.h $(LDFLAGS)
+src/libthreadpool.a: src/threadpool.o
+	ar rcvs src/libthreadpool.a src/threadpool.o
 
 clean:
 	rm -f $(TARGETS) *~ */*~ */*.o

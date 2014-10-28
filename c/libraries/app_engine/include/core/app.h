@@ -48,6 +48,8 @@ extern "C" {
 #include "md5.h"
 #include "zlog.h"
 #include "zlogwrap.h"
+#include "threadpool.h"
+#include "taskmanager.h"
 
 #include "debug.h"
 #include "looper.h"
@@ -67,6 +69,7 @@ struct app_runtime_t {
     // 外部接口
     TcpServerGroups *tcp_server_groups;
     TcpSlaveGroups *tcp_slave_groups;
+    TaskManager *task_manager;
     Logger *logger;
 
     // init && destory

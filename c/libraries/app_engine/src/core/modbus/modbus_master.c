@@ -343,8 +343,11 @@ void free_modbus_master(ModbusMaster *modbus_m)
     Logger *logger = app->logger;
 
     if (modbus_m != NULL) {
-        modbus_close(modbus_m->ctx);
-        modbus_free(modbus_m->ctx);
+        if (modbus_m->ctx != NULL) {
+            modbus_close(modbus_m->ctx);
+            modbus_free(modbus_m->ctx);
+        }
+
         free(modbus_m);
         modbus_m = NULL;
         logger->log_i(logger, "Modbus: Free Modbus Master Success.");

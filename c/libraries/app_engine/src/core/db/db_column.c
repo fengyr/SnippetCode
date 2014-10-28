@@ -399,7 +399,7 @@ int db_register_table(ContentTableGroups *groups,
         return -1;
     }
 
-    int error = hashmap_put(groups->hashmap_table_groups, (char*)table_name, table);
+    int error = hashmap_put(groups->hashmap_table_groups, groups->table_names[groups->table_count], table);
     if (error != MAP_OK) {
         logger->log_e(logger, "DB: Register Table, Add Failed.");
         return -1;

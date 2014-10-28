@@ -149,6 +149,10 @@ static void quit(struct app_runtime_t *app)
         app->onDestory(app);
     }
 
+    if (app->task_manager != NULL) {
+        app->task_manager->destory(app->task_manager);
+    }
+
     message_queue_destory(app->msg_queue);
     looper_exit(app->looper);
 
@@ -238,6 +242,9 @@ App* create_app_instance(int argc, const char *argv[])
     // init zlog system.
     logger_init(&s_logger, LOG_FILE, LOG_CONFIG_PATH, LOG_FILE_DIR);
 
+    // TaskManager
+    TaskManager *task_manager = create_taskmanager_instance();
+
     // create tcp server groups instance
     TcpServerGroups *tcp_server_groups = create_tcp_server_groups_instance();
     tcp_server_groups->init(tcp_server_groups);
@@ -249,6 +256,7 @@ App* create_app_instance(int argc, const char *argv[])
     // set Servers .etc
     app->tcp_server_groups = tcp_server_groups;
     app->tcp_slave_groups = tcp_slave_groups;
+    app->task_manager = task_manager;
     app->version = get_version;
     app->logger = &s_logger;
 

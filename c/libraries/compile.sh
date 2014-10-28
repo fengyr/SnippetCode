@@ -24,3 +24,10 @@ echo "========= update simpleini... ========="
 cp $SRC/simpleini/ConvertUTF.h $SRC/app_engine/include/core/utils/
 cp $SRC/simpleini/ConvertUTF.c $SRC/app_engine/src/core/utils/
 cp $SRC/simpleini/SimpleIni.h $SRC/app_engine/include/core/utils/
+
+echo "========= update threadpool... ========="
+cd $SRC/threadpool
+make -f Makefile2
+cp $SRC/threadpool/libthreadpool.a $SRC/app_engine/libs/
+cp $SRC/threadpool/src/threadpool.h $SRC/app_engine/include/core/utils/
+cd $SRC

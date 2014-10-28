@@ -36,11 +36,33 @@ static MysqlClient *s_client;
 
 static Options s_options;
 
+static void task_run(TaskParam param)
+{
+    printf("TaskRun add\n");
+}
+
+static void test_task_manager(App *app)
+{
+    TaskManager *task_manager = app->task_manager;
+
+    int i;
+    for (i = 0; i < 256; i++) {
+        task_manager->add_task(task_manager, task_run, NULL);
+    }
+}
+
 static void test_modbus_master()
 {
     int rc;
     printf("=================create_modbus_master_tcp\n");
-    ModbusMaster *modbus_m = create_modbus_master_tcp("127.0.0.1", 1502, NULL);
+    ModbusConfig config;
+    config.debug_mode = 0;
+    config.recovery_mode = MODBUS_ERROR_RECOVERY_NONE;
+    config.res_timeout_sec = 1;
+    config.res_timeout_usec = 0;
+    config.byte_timeout_sec = 1;
+    config.byte_timeout_usec = 0;
+    ModbusMaster *modbus_m = create_modbus_master_tcp("127.0.0.1", 1502, &config);
 
     // 写单个线圈
     unsigned char bits[128];
@@ -377,8 +399,8 @@ static void test_slave_groups(App *app)
     slave->send(slave, (void*)"hello", 6);
 
     int sw = 0;
-    int count = 1000;
-    while (count > 0) {
+    int count = 100;
+    while (count-- > 0) {
         slave->send(slave, (void*)"hello", 6);
         sleep(0.1);
 
@@ -546,9 +568,9 @@ static void test_list(int size)
 
 static void test_hashmap()
 {
-#define KEY_MAX_LENGTH (10240)
+#define KEY_MAX_LENGTH (1024)
 #define KEY_PREFIX ("somekey")
-#define KEY_COUNT (100000)
+#define KEY_COUNT (100)
 
     typedef struct data_struct_s
     {
@@ -717,29 +739,31 @@ int on_app_process(struct app_runtime_t *app)
 {
     Logger *logger = app->logger;
 
-    /* test_server_groups(app);
-     * test_register_telnet_proc(app);  
-     * test_register_tcp_handler(app);  */
+    test_object_array(10);
+    DEBUG("on_app_process loginfo\n");
+    logger->log_i(logger, "-------------------------");
 
-    /*     test_object_array(10);
-     *     DEBUG("on_app_process loginfo\n");
-     *     logger->log_i(logger, "-------------------------");
-     * 
-     *     test_list(10);
-     *     logger->log_d(logger, "-------------------------");
-     * 
-     *     test_hashmap();
-     * 
-     *     logger->log_e(logger, "-------------------------"); */
+    test_list(10);
+    logger->log_d(logger, "-------------------------");
 
-    /* test_mysql();
-     * test_get_tables(); */
+    test_hashmap();
 
-    /* test_module_serial(); */
+    logger->log_e(logger, "-------------------------"); 
+
+    test_mysql();
+    test_get_tables(); 
+
+    test_module_serial();
 
     /* test_modbus_master(); */
 
-    /* test_slave_groups(app); */
+    test_slave_groups(app);
 
-    return -1;
+    test_task_manager(app);
+
+    test_server_groups(app);
+    test_register_telnet_proc(app);  
+    test_register_tcp_handler(app);  
+
+    return 1;
 }

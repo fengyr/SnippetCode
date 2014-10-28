@@ -18,3 +18,6 @@
 
 6. simpleini: 轻量级的ini文件读写库
     - link: https://github.com/brofield/simpleini
+
+7. libthreadpool.a: 线程池库
+    - link: https://github.com/mbrossard/threadpool.git
