@@ -54,7 +54,6 @@ static void test_task_manager(App *app)
 static void test_modbus_master()
 {
     int rc;
-    printf("=================create_modbus_master_tcp\n");
     ModbusConfig config;
     config.debug_mode = 0;
     config.recovery_mode = MODBUS_ERROR_RECOVERY_NONE;
@@ -63,6 +62,10 @@ static void test_modbus_master()
     config.byte_timeout_sec = 1;
     config.byte_timeout_usec = 0;
     ModbusMaster *modbus_m = create_modbus_master_tcp("127.0.0.1", 1502, &config);
+    if (!modbus_m) {
+        printf("=================create_modbus_master: %p\n", modbus_m);
+        return;
+    }
 
     // 写单个线圈
     unsigned char bits[128];
@@ -399,7 +402,7 @@ static void test_slave_groups(App *app)
     slave->send(slave, (void*)"hello", 6);
 
     int sw = 0;
-    int count = 100;
+    int count = 256;
     while (count-- > 0) {
         slave->send(slave, (void*)"hello", 6);
         sleep(0.1);
@@ -570,7 +573,7 @@ static void test_hashmap()
 {
 #define KEY_MAX_LENGTH (1024)
 #define KEY_PREFIX ("somekey")
-#define KEY_COUNT (100)
+#define KEY_COUNT (100000)
 
     typedef struct data_struct_s
     {
@@ -755,7 +758,7 @@ int on_app_process(struct app_runtime_t *app)
 
     test_module_serial();
 
-    /* test_modbus_master(); */
+    test_modbus_master();
 
     test_slave_groups(app);
 

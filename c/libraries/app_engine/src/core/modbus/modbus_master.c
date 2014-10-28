@@ -329,6 +329,7 @@ ModbusMaster* create_modbus_master_tcp(const char *ip_addr,
     if (ctx == NULL) {
         logger->log_e(logger, "Modbus: Create TCP Master Failed.");
         return NULL;
+    } else {
     }
 
     // 通用modbus设置

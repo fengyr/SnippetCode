@@ -66,7 +66,7 @@ static int tcp_slave_groups_register(TcpSlaveGroups *groups,
 
     // init TcpSlave
     TcpSlave *slave;
-    slave = (TcpSlave*)malloc(sizeof(TcpSlave));
+    slave = (TcpSlave*) malloc(sizeof(TcpSlave));
 
     memset(slave->slave_name, 0, sizeof(slave->slave_name));
     strcpy(slave->slave_name, slave_name);
@@ -120,7 +120,7 @@ static int tcp_slave_groups_init(TcpSlaveGroups *groups)
 static int tcp_slave_groups_destroy(TcpSlaveGroups *groups)
 {
     int error;
-    TcpSlave *slave;
+    TcpSlave *slave = NULL;
     App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
 
