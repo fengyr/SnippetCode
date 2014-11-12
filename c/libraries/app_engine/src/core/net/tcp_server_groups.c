@@ -33,7 +33,7 @@
 
 static TcpServerGroups s_tcp_server_groups;
 
-static AnyServer get_server(struct tcp_server_groups_t *groups, 
+static AnyServer __get_server(struct tcp_server_groups_t *groups, 
                              const char *server_name)
 {
     int error;
@@ -69,7 +69,7 @@ static AnyServer get_server(struct tcp_server_groups_t *groups,
     return NULL;
 }
 
-static int tcp_server_groups_register(TcpServerGroups *groups, 
+static int __tcp_server_groups_register(TcpServerGroups *groups, 
                                       enum tcp_server_type_t server_type,
                                       const char *server_name, 
                                       const char *server_ip, 
@@ -138,7 +138,7 @@ static int tcp_server_groups_register(TcpServerGroups *groups,
     return 0;
 }
 
-static int tcp_server_groups_init(TcpServerGroups *groups)
+static int __tcp_server_groups_init(TcpServerGroups *groups)
 {
     groups->hashmap_server_groups = hashmap_new();
 
@@ -154,7 +154,7 @@ static int tcp_server_groups_init(TcpServerGroups *groups)
     return 0;
 }
 
-static int tcp_server_groups_destroy(TcpServerGroups *groups)
+static int __tcp_server_groups_destroy(TcpServerGroups *groups)
 {
     int error;
     App *s_app = get_app_instance();
@@ -216,10 +216,10 @@ static int tcp_server_groups_destroy(TcpServerGroups *groups)
 
 TcpServerGroups* create_tcp_server_groups_instance()
 {
-    s_tcp_server_groups.init = tcp_server_groups_init;
-    s_tcp_server_groups.destroy= tcp_server_groups_destroy;
-    s_tcp_server_groups.get_server = get_server;
-    s_tcp_server_groups.register_server = tcp_server_groups_register;
+    s_tcp_server_groups.init = __tcp_server_groups_init;
+    s_tcp_server_groups.destroy= __tcp_server_groups_destroy;
+    s_tcp_server_groups.get_server = __get_server;
+    s_tcp_server_groups.register_server = __tcp_server_groups_register;
 
     return &s_tcp_server_groups;
 }

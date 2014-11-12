@@ -73,7 +73,7 @@ static void signal_handle()
     signal(SIGABRT, except_quit);
     signal(SIGSEGV, except_quit);
 
-    system("echo './core-%e-%p-%t' > /proc/sys/kernel/core_pattern");
+    /* system("echo './core-%e-%p-%t' > /proc/sys/kernel/core_pattern"); */
 }
 
 int main(int argc, const char *argv[])

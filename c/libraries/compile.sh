@@ -31,3 +31,17 @@ make -f Makefile2
 cp $SRC/threadpool/libthreadpool.a $SRC/app_engine/libs/
 cp $SRC/threadpool/src/threadpool.h $SRC/app_engine/include/core/utils/
 cd $SRC
+
+echo "========= update SQLiteCpp... ========="
+cd $SRC/SQLiteCpp
+./build.sh
+cp $SRC/SQLiteCpp/build/libSQLiteCpp.a $SRC/app_engine/libs/
+cp $SRC/SQLiteCpp/include/* $SRC/app_engine/include/core/db/sqlite3/
+cd $SRC
+
+echo "========= update zlog... ========="
+cd $SRC/zlog-1.2.12
+make clean
+make
+cp $SRC/zlog-1.2.12/libzlog.a $SRC/app_engine/libs/
+cd $SRC

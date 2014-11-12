@@ -12,5 +12,8 @@ old/
 out/
 colorSepServer
 *.so
-!libzlog.so
-!libstruct.so
+example.db3
+example_blob.db3
+out.png
+!libzlog.a
+!libstruct.a

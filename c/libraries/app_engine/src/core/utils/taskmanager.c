@@ -21,7 +21,7 @@
 
 static TaskManager *s_task_manager = NULL;
 
-static int _destory(struct taskmanager_t *task_manager)
+static int __destory(struct taskmanager_t *task_manager)
 {
     if (task_manager != NULL) {
 
@@ -73,7 +73,7 @@ TaskManager* create_taskmanager_instance()
         s_task_manager->pool = threadpool_create(TASK_NUM, 
                                                 TASK_QUEUE_SIZE, 0);
         s_task_manager->add_task = __add_task;
-        s_task_manager->destory = _destory;
+        s_task_manager->destory = __destory;
     }
 
     return s_task_manager;

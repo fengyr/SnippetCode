@@ -27,8 +27,8 @@ extern "C" {
 typedef void* TaskParam;
 typedef void (*TaskRun)(TaskParam param);
 
-#define TASK_NUM        256
-#define TASK_QUEUE_SIZE 256
+#define TASK_NUM        128     // 同时执行任务数
+#define TASK_QUEUE_SIZE 256     // 等待队列
 
 typedef struct taskmanager_t {
     threadpool_t *pool;

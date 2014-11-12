@@ -48,7 +48,7 @@ static int make_config(const char *log_conf_path, const char *log_file_dir)
     mode_t mode = S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH;
     int fd = open(log_conf_path, O_CREAT | O_RDWR | O_TRUNC, mode);
     if (fd < 0) {
-        fprintf(stderr, "make_config: create file error, %s\n", log_conf_path);
+        /* fprintf(stderr, "make_config: create file error, %s\n", log_conf_path); */
         return -1;
     }
 

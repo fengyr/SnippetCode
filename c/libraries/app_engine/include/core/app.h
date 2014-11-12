@@ -20,6 +20,7 @@
 
 // C++代码做特别处理
 #include "SimpleIni.h"
+#include "db_sqlite_wrap.hpp"
 
 #ifdef __cplusplus
 extern "C" {
@@ -33,6 +34,10 @@ extern "C" {
 #include "modbus_master.h"
 #include "modbus_rtu.h"
 #include "modbus_tcp.h"
+
+#include "db_column.h"
+#include "db_mysql_wrap.h"
+#include "db_sqlite_wrap.hpp"
 
 #include "connection.h"
 #include "handler_process.h"
@@ -50,6 +55,7 @@ extern "C" {
 #include "zlogwrap.h"
 #include "threadpool.h"
 #include "taskmanager.h"
+#include "SimpleIni.h"
 
 #include "debug.h"
 #include "looper.h"
@@ -67,6 +73,9 @@ struct app_runtime_t {
     Looper *looper;
 
     // 外部接口
+#ifdef USE_SQLITE
+    SqliteClient *sqlite_client;
+#endif
     TcpServerGroups *tcp_server_groups;
     TcpSlaveGroups *tcp_slave_groups;
     TaskManager *task_manager;

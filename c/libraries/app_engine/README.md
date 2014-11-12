@@ -2,7 +2,7 @@
 ==========
 
 1. libstruct.a: C实现的数据结构静态库
-    - link: mytest/data_struct
+    - link: snippet_code/c/mytest/data_struct
 
 2. libzlog.a: 记录日志文件的静态库
     - link: https://github.com/HardySimpson/zlog
@@ -21,3 +21,6 @@
 
 7. libthreadpool.a: 线程池库
     - link: https://github.com/mbrossard/threadpool.git
+
+8. libSQLiteCpp.a sqlite3数据库读写库
+    - link: https://github.com/SRombauts/SQLiteCpp.git

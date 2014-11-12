@@ -22,6 +22,10 @@
  *      5.线程的任务模型。
  *      6.XML读写模块。
  *
+ *  0.4.9:
+ *      1.加入sqlite支持。
+ *      2.调整目录结构，拆分多个模块，可分开编译。
+ *
  *  0.4.8.B:
  *      1.加入simpleini库，优化Options模块，实现INI可读写。
  *      2.调整头文件包含关系。
@@ -95,7 +99,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.4.8.1"
+#define APP_VERSION "0.4.9"
 
 #ifdef __cplusplus
 }

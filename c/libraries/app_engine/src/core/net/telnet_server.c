@@ -22,26 +22,26 @@
 #include "connection.h"
 #include "handler_process.h"
 
-static void telnet_server_register_event_handler(struct telnet_server_t *server, EventHandler *handler)
+static void __telnet_server_register_event_handler(struct telnet_server_t *server, EventHandler *handler)
 {
     assert(server != NULL);
 
     registerHandler(server->sock, handler);
 }
 
-static int init(struct telnet_server_t *server, const char *server_name, const char *local_ip, int local_port)
+static int __init(struct telnet_server_t *server, const char *server_name, const char *local_ip, int local_port)
 {
     int rtn = tcp_server_init(server->sock, local_ip, local_port, server_name);
 
     return rtn;
 }
 
-static void run(struct telnet_server_t *server, int thread_mode)
+static void __run(struct telnet_server_t *server, int thread_mode)
 {
     tcp_server_run(server->sock, thread_mode);
 }
 
-static void quit(struct telnet_server_t *server)
+static void __quit(struct telnet_server_t *server)
 {
     tcp_server_quit(server->sock);
 }
@@ -55,10 +55,10 @@ TelnetServer* create_telnet_server_instance()
     assert(s_server_sock != NULL);
 
     s_telnet_server->sock = s_server_sock;
-    s_telnet_server->init = init; 
-    s_telnet_server->run = run; 
-    s_telnet_server->quit = quit;        
-    s_telnet_server->register_event_handler = telnet_server_register_event_handler;
+    s_telnet_server->init = __init; 
+    s_telnet_server->run = __run; 
+    s_telnet_server->quit = __quit;        
+    s_telnet_server->register_event_handler = __telnet_server_register_event_handler;
 
     return s_telnet_server;
 }

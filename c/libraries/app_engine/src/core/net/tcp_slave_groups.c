@@ -30,7 +30,7 @@
 
 static TcpSlaveGroups s_tcp_slave_groups;
 
-static TcpSlave* get_slave(struct tcp_slave_groups_t *groups, 
+static TcpSlave* __get_slave(struct tcp_slave_groups_t *groups, 
                            const char *slave_name)
 {
     int error;
@@ -46,7 +46,7 @@ static TcpSlave* get_slave(struct tcp_slave_groups_t *groups,
     return slave;
 }
 
-static int tcp_slave_groups_register(TcpSlaveGroups *groups, 
+static int __tcp_slave_groups_register(TcpSlaveGroups *groups, 
                               const char *slave_name, 
                               const char *server_ip, 
                               int server_port)
@@ -102,7 +102,7 @@ static int tcp_slave_groups_register(TcpSlaveGroups *groups,
     return 0;
 }
 
-static int tcp_slave_groups_init(TcpSlaveGroups *groups)
+static int __tcp_slave_groups_init(TcpSlaveGroups *groups)
 {
     groups->hashmap_slave_groups = hashmap_new();
 
@@ -117,7 +117,7 @@ static int tcp_slave_groups_init(TcpSlaveGroups *groups)
     return 0;
 }
 
-static int tcp_slave_groups_destroy(TcpSlaveGroups *groups)
+static int __tcp_slave_groups_destroy(TcpSlaveGroups *groups)
 {
     int error;
     TcpSlave *slave = NULL;
@@ -155,10 +155,10 @@ static int tcp_slave_groups_destroy(TcpSlaveGroups *groups)
 
 TcpSlaveGroups* create_tcp_slave_groups_instance()
 {
-    s_tcp_slave_groups.init = tcp_slave_groups_init;
-    s_tcp_slave_groups.destroy= tcp_slave_groups_destroy;
-    s_tcp_slave_groups.get_slave = get_slave;
-    s_tcp_slave_groups.register_slave = tcp_slave_groups_register;
+    s_tcp_slave_groups.init = __tcp_slave_groups_init;
+    s_tcp_slave_groups.destroy= __tcp_slave_groups_destroy;
+    s_tcp_slave_groups.get_slave = __get_slave;
+    s_tcp_slave_groups.register_slave = __tcp_slave_groups_register;
 
     return &s_tcp_slave_groups;
 }

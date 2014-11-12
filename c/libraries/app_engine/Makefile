@@ -8,34 +8,57 @@ CROSS_COMPILE   =
 OPTIMIZE        := 
 WARNINGS        := -Wall
 DEFS            := 
-USE_MYSQL 		:= false 
 EXTRA_CFLAGS    := -g
-EXTRA_CFLAGS    += -g -DUSE_DEBUG -rdynamic
+# EXTRA_CFLAGS    += -g -DUSE_DEBUG -rdynamic
+LDFLAGS         := -pthread -lm -lrt -lstdc++ -ldl
+
+TARGET          := libapp.so
+TARGET_TYPE     := so
+
+###########################################################
+USE_MYSQL 		:= FALSE
+USE_SQLITE 		:= FALSE
+USE_MODBUS 		:= FALSE
+USE_DEVICE 		:= FALSE
+
+# 第三方库配置
 ifeq ($(USE_MYSQL),TRUE)
 EXTRA_CFLAGS    += -DUSE_MYSQL
 endif
-LDFLAGS         := -pthread -lm -lrt -lstdc++ -ldl
+
+ifeq ($(USE_SQLITE),TRUE)
+EXTRA_CFLAGS    += -DUSE_SQLITE
+endif
+
+ifeq ($(USE_MODBUS),TRUE)
+EXTRA_CFLAGS    += -DUSE_MODBUS
+endif
+
+ifeq ($(USE_DEVICE),TRUE)
+EXTRA_CFLAGS    += -DUSE_DEVICE
+endif
+###########################################################
 
 OUT_DIR 	= out
 OBJ_DIR   	= $(OUT_DIR)/obj
 
 INC_DIR  	= 	./include/ \
 			./include/core/ \
+			./include/core/db/ \
+			./include/core/db/mysql/ \
+			./include/core/db/sqlite3/ \
+			./include/core/dev/ \
 			./include/core/utils/ \
 			./include/core/net/ \
-			./include/core/db/ \
-			./include/core/dev/ \
 			./include/core/modbus/ \
 			./include/interface/ \
+			/usr/include/ \
 			/usr/local/include/ \
 
 
 SRC_DIR   	= 	./src/core/ \
 			./src/core/net/ \
 			./src/core/utils/ \
-			./src/core/db/ \
-			./src/core/dev/ \
-			./src/core/modbus/ \
 
 EXTRA_SRC 	= 
 EXCLUDE_FILES 	= 	./src/interface/ui_interface.c \
@@ -48,25 +71,59 @@ EXCLUDE_FILES 	= 	./src/interface/ui_interface.c \
 			./include/interface/dev_serial.h \
 			./include/runtime.h \
 
-SUFFIX 		= c cpp hpp cc
-EXTRA_OBJS  	=   ./libs/libstruct.a \
-		    ./libs/libzlog.a \
-		    ./libs/libmodbus.a \
-			./libs/libthreadpool.a \
-		    /usr/lib/i386-linux-gnu/libdl.so \
+SUFFIX 		= c h cpp hpp cc
+EXTRA_OBJS  =   ./libs/libstruct.a \
+		    	./libs/libzlog.a \
+				./libs/libthreadpool.a \
 
+###########################################################
 # mysql数据库相关配置
-ifeq ($(USE_MYSQL),true)
+ifeq ($(USE_MYSQL),TRUE)
 INC_DIR	    += 	/usr/local/mysql/include/mysql \
 				/usr/local/mysql/include/ \
+
+SRC_DIR 	+= 	./src/core/db/ \
+				./src/core/db/mysql/ \
 
 EXTRA_OBJS  += 	/usr/local/mysql/lib/libmysqlclient.so \
 
 endif
+#---------------------------------------------------------#
 
-TARGET          := libapp.so
-TARGET_TYPE     := app
+# sqlite数据库相关配置
+ifeq ($(USE_SQLITE),TRUE)
+INC_DIR	    += 	
 
+SRC_DIR 	+= 	./src/core/db/ \
+				./src/core/db/sqlite3/ \
+
+EXTRA_OBJS  += 	./libs/libSQLiteCpp.a \
+				/usr/lib/i386-linux-gnu/libsqlite3.so \
+
+endif
+#---------------------------------------------------------#
+
+# Modbus相关配置
+ifeq ($(USE_MODBUS),TRUE)
+INC_DIR	    +=
+
+SRC_DIR 	+= ./src/core/modbus/ \
+
+EXTRA_OBJS  += ./libs/libmodbus.a \
+
+endif
+#---------------------------------------------------------#
+
+# dev模块相关配置
+ifeq ($(USE_DEVICE),TRUE)
+INC_DIR	    +=	
+
+SRC_DIR 	+= 	./src/core/dev/ \
+
+EXTRA_OBJS  += 	/usr/lib/i386-linux-gnu/libdl.so \
+
+endif
+###########################################################
 # 如果编译目标是可执行程序，
 # 则需要加入测试相关代码。
 ifeq ($(TARGET_TYPE),app)
@@ -75,6 +132,7 @@ ifeq ($(TARGET_TYPE),app)
 		   		./src/interface \
 
 endif
+###########################################################
 
 .other_task:
 

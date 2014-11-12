@@ -20,11 +20,15 @@ OBJ_DIR   	    = $(OUT_DIR)/obj
 INC_DIR   		= ./include \
 				  ./include/core/ \
 				  ./include/core/db/ \
+				  ./include/core/db/mysql/ \
+				  ./include/core/db/sqlite3/ \
 				  ./include/core/dev/ \
 				  ./include/core/modbus/ \
 				  ./include/core/net/ \
 				  ./include/core/utils/ \
 				  ./include/interface/ \
+				  /usr/include/ \
+			  	  /usr/local/include/ \
 # 源文件目录
 SRC_DIR   		= ./src \
 				  ./src/interface/ \

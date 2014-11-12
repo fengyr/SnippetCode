@@ -164,6 +164,12 @@ static void quit(struct app_runtime_t *app)
         app->tcp_slave_groups->destroy(app->tcp_slave_groups);        
     }
 
+#ifdef USE_SQLITE
+    if (app->sqlite_client != NULL) {
+        app->sqlite_client->destory(app->sqlite_client);
+    }
+#endif
+
     logger_destroy(&s_logger);
 }
 
@@ -252,6 +258,12 @@ App* create_app_instance(int argc, const char *argv[])
     // create tcp slave groups instance
     TcpSlaveGroups *tcp_slave_groups = create_tcp_slave_groups_instance();
     tcp_slave_groups->init(tcp_slave_groups);
+
+#ifdef USE_SQLITE
+    // create sqlite instance
+    SqliteClient *sqlite_client = create_sqlite_client_instance();
+    app->sqlite_client = sqlite_client;
+#endif
 
     // set Servers .etc
     app->tcp_server_groups = tcp_server_groups;

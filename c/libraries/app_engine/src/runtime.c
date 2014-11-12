@@ -23,18 +23,149 @@
 
 #include "runtime.h"
 
-#include "db_column.h"
-#include "db_mysql_wrap.h"
 #include "dev_serial.h"
 #include "telnet_proc.h"
 #include "ui_interface.h"
 
 #ifdef USE_MYSQL
-#include "mysql.h"
 static MysqlClient *s_client;
 #endif
 
 static Options s_options;
+
+#ifdef USE_SQLITE
+static void query_bind_blob2(SqlQuery &query, void *bind_data)
+{
+}
+
+static void query_get_blob2(SqlQuery &query, void *get_data)
+{
+    const void* blob = NULL;
+    size_t size;
+    FILE *fp = (FILE*) get_data;
+
+    SqlResult colBlob = query.getColumn(1);
+    blob = colBlob.getBlob ();
+    size = colBlob.getBytes ();
+    size_t sizew = fwrite(blob, 1, size, fp);
+    fclose (fp);
+}
+
+static void query_bind_blob1(SqlQuery &query, void *bind_data)
+{
+    FILE *fp = (FILE*) bind_data;
+    char  buffer[16*1024];
+    void* blob = &buffer;
+    int size = static_cast<int>(fread(blob, 1, 16*1024, fp));
+    buffer[size] = '\0';
+    fclose (fp);
+
+    query.bind(1, blob, size);
+}
+
+static void query_get_blob1(SqlQuery &query, void *get_data)
+{
+    int nb = query.exec ();
+}
+
+static void query_bind(SqlQuery &query, void *bind_data)
+{
+    query.bind(1, 1);
+}
+
+static void query_get(SqlQuery &query, void *get_data)
+{
+    int id = query.getColumn(0);
+    std::string value = query.getColumn(1);
+    int bytes = query.getColumn(1).getBytes();
+
+    printf("QUERY_GET: id=%d, value=%s, bytes=%d\n", id, value.c_str(), bytes);
+}
+#endif
+
+static void test_sqlite(App *app)
+{
+#ifdef USE_SQLITE
+    SqliteClient *sqlite = app->sqlite_client;
+
+    // 第一次打开
+    // 只读模式，简单获取单个数据
+    printf("-------- open 1\n");
+    sqlite->open_db(sqlite, "./example.db3", SQL_OPEN_RO);
+    int exists = sqlite->table_exists(sqlite, "test");
+    printf("Table test exists: %d\n", exists);
+
+    try {
+        const char *value = sqlite->exec_get(sqlite, "SELECT value FROM test WHERE id=2");
+        if (value != NULL) {
+            printf("exec_get: %s\n", value);
+        }
+    }
+    catch (std::exception &e)
+    {
+        printf("Table test exception: %s\n",e.what());
+    }
+    
+
+    sqlite->query_cond(sqlite, "SELECT id as test_id, value as test_val FROM test WHERE id > ?", query_bind, NULL, query_get, NULL);
+    sqlite->close_db(sqlite);
+
+    // 第二次打开
+    // 读写模式，创建表，条件查询多个数据
+    printf("-------- open 2\n");
+    sqlite->open_db(sqlite, "./example.db3", SQL_OPEN_RW | SQL_OPEN_CR);
+
+    sqlite->exec_sql(sqlite, "DROP TABLE IF EXISTS test");
+    sqlite->exec_sql(sqlite, "CREATE TABLE test (id INTEGER PRIMARY KEY, value TEXT)");
+    // first row
+    int nb = sqlite->exec_sql(sqlite, "INSERT INTO test VALUES (NULL, \"test\")");
+    printf("exec1 nb: %d\n", nb);
+    // second row
+    nb = sqlite->exec_sql(sqlite, "INSERT INTO test VALUES (NULL, \"second\")");
+    printf("exec2 nb: %d\n", nb);
+    // update the second row
+    nb = sqlite->exec_sql(sqlite, "UPDATE test SET value=\"second-updated\" WHERE id='2'");
+    printf("exec3 nb: %d\n", nb);
+
+    sqlite->query_cond(sqlite, "SELECT * FROM test", NULL, NULL, query_get, NULL);
+    sqlite->close_db(sqlite);
+
+    // 第三次打开
+    // 读写模式，创建表，事务处理
+    printf("-------- open 3\n");
+    sqlite->open_db(sqlite, "./example.db3", SQL_OPEN_RW | SQL_OPEN_CR);
+
+    sqlite->transaction_begin(sqlite);
+    nb = sqlite->exec_sql(sqlite, "INSERT INTO test VALUES (NULL, \"third\")");
+    printf("exec4 nb: %d\n", nb);
+    nb = sqlite->exec_sql(sqlite, "INSERT INTO test VALUES (NULL, \"forth\")");
+    printf("exec5 nb: %d\n", nb);
+    sqlite->transaction_end(sqlite);
+
+    sqlite->query_cond(sqlite, "SELECT * FROM test", NULL, NULL, query_get, NULL);
+    sqlite->close_db(sqlite);
+
+    // 第四次打开
+    // 读写模式，写入二进制数据
+    printf("-------- open 4\n");
+    sqlite->open_db(sqlite, "./example_blob.db3", SQL_OPEN_RW | SQL_OPEN_CR);
+
+    sqlite->exec_sql(sqlite, "DROP TABLE IF EXISTS test");
+    sqlite->exec_sql(sqlite, "CREATE TABLE test (id INTEGER PRIMARY KEY, value BLOB)");
+    
+    FILE* fp = fopen("./logo.png", "rb");
+    if (NULL != fp) {
+        // Insert query
+        sqlite->query_cond(sqlite, "INSERT INTO test VALUES (NULL, ?)", query_bind_blob1, (void*)fp, query_get_blob1, NULL);
+    }
+
+    fp = fopen("out.png", "wb");
+    if (NULL != fp) {
+        sqlite->query_cond(sqlite, "SELECT * FROM test", query_bind_blob2, NULL, query_get_blob2, (void*)fp);
+    }
+    sqlite->close_db(sqlite);
+#endif
+}
 
 static void task_run(TaskParam param)
 {
@@ -53,6 +184,7 @@ static void test_task_manager(App *app)
 
 static void test_modbus_master()
 {
+#ifdef USE_MODBUS
     int rc;
     ModbusConfig config;
     config.debug_mode = 0;
@@ -61,7 +193,7 @@ static void test_modbus_master()
     config.res_timeout_usec = 0;
     config.byte_timeout_sec = 1;
     config.byte_timeout_usec = 0;
-    ModbusMaster *modbus_m = create_modbus_master_tcp("127.0.0.1", 1502, &config);
+    ModbusMaster *modbus_m = create_modbus_master_tcp("127.0.0.1", 1502, NULL);
     if (!modbus_m) {
         printf("=================create_modbus_master: %p\n", modbus_m);
         return;
@@ -143,10 +275,12 @@ static void test_modbus_master()
     DEBUG("modbus_get_float_dcba: UT_REAL=%f, real=%f\n\n", UT_REAL, real);
 
     free_modbus_master(modbus_m);
+#endif
 }
 
 static void test_module_serial()
 {
+#ifdef USE_DEVICE
     HwModule *module = NULL;
     HwDevice *dev = NULL;
     SerialDevice *device = NULL;
@@ -174,6 +308,7 @@ static void test_module_serial()
         device->common.__exit(&device->common);
         DEBUG("----------__exit end\n");
     }
+#endif
 }
 
 static void set_tables()
@@ -236,7 +371,6 @@ static void set_tables()
 static void test_mysql()
 {
 #ifdef USE_MYSQL
-
     MysqlUser user;
     strcpy(user.db_host, "127.0.0.1");
     strcpy(user.db_user, "root");
@@ -259,6 +393,7 @@ static void test_mysql()
 #endif
 }
 
+#ifdef USE_MYSQL
 static void s_mysql_query_handler(ContentTable *table) 
 {
     if (NULL == table) {
@@ -305,6 +440,7 @@ static void s_mysql_query_handler(ContentTable *table)
  *         printf("test_get_tables: get table NULL\n");
  *     } */
 }
+#endif
 
 static void s_mysql_exec_handler(void *result)
 {
@@ -742,31 +878,30 @@ int on_app_process(struct app_runtime_t *app)
 {
     Logger *logger = app->logger;
 
-    test_object_array(10);
-    DEBUG("on_app_process loginfo\n");
-    logger->log_i(logger, "-------------------------");
+    /* // STRUCT
+     * test_object_array(10);
+     * test_list(10);
+     * test_hashmap(); */
 
-    test_list(10);
-    logger->log_d(logger, "-------------------------");
-
-    test_hashmap();
-
-    logger->log_e(logger, "-------------------------"); 
-
+    // MYSQL
     test_mysql();
-    test_get_tables(); 
+    test_get_tables();  
 
-    test_module_serial();
+    // SQLITE
+    test_sqlite(app);
 
     test_modbus_master();
 
-    test_slave_groups(app);
-
-    test_task_manager(app);
-
-    test_server_groups(app);
-    test_register_telnet_proc(app);  
-    test_register_tcp_handler(app);  
+/*     test_module_serial();
+ * 
+ * 
+ *     test_slave_groups(app);
+ * 
+ *     test_task_manager(app);
+ * 
+ *     test_server_groups(app);
+ *     test_register_telnet_proc(app);  
+ *     test_register_tcp_handler(app);    */
 
     return 1;
 }
