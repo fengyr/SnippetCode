@@ -9,7 +9,7 @@ OPTIMIZE        :=
 WARNINGS        := -Wall
 DEFS            := 
 EXTRA_CFLAGS    := -g
-# EXTRA_CFLAGS    += -g -DUSE_DEBUG -rdynamic
+EXTRA_CFLAGS    += -g -DUSE_DEBUG -rdynamic
 LDFLAGS         := -pthread -lm -lrt -lstdc++ -ldl
 
 TARGET          := libapp.so

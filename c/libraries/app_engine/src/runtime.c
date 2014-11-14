@@ -22,6 +22,7 @@
 #include <string.h>
 
 #include "runtime.h"
+#include "options.h"
 
 #include "dev_serial.h"
 #include "telnet_proc.h"
@@ -862,7 +863,7 @@ int on_app_destroy(struct app_runtime_t *app)
 {
     printf("onDestory called\n");
     printf("===============\n");
-    app->save_options(app, &s_options);
+    app->save_options(app, &s_options, s_options.cmd.config_file_path);
 
     return 0;
 }

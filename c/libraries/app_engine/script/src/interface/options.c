@@ -23,47 +23,16 @@
 #include "options.h"
 #include "app.h"
 
-static Ini *s_ini;
-
-static int ini_handler(void* user, const char* section, 
-                       const char* name, const char* value)
-{
-    Ini* ini = (Ini*) user;
-
-    if (MATCH(name, "param3")) {
-        printf("section=%s, name=%s, value=%s\n", section, name, value);
-    } else if (MATCH(name, "param1")) {
-        printf("section=%s, name=%s, value=%d\n", section, name, atoi(value));
-    } else if (MATCH(name, "param2")) {
-        printf("section=%s, name=%s, value=%f\n", section, name, atof(value));
-    } else {
-        return -1;
-    } 
-
-    return 0;
-}
-
-static int parse_hook(const char *name, void *data)
-{
-    if ((strcmp(name, "--config") == 0) &&
-        (strcmp((char*)data, "") != 0)) {
-        DEBUG("parse_hook: name = %s, data = %s\n", name, (char*)data);
-        if (ini_parse2((char*)data, ini_handler, s_ini) < 0) {
-            fprintf(stderr, "getOptions: load ini error\n");
-            return -1;
-        }
-        return 0;
-    } 
-    return -1;
-}
-
-static void initOptions(Options *options)
+int initOptions(Options *options, int argc, const char *argv[])
 {
     memset(options, 0, sizeof(Options));
     CmdLine *cmd = &(options->cmd);
     Ini *ini = &(options->ini);
 
     //////////////////  命令行参数默认配置 //////////////////
+    /* 配置文件路径 */
+    strcpy(cmd->config_file_path, "");
+
     /* tcp服务器地址 */
     strcpy(cmd->server_ip_addr, DEFAULT_SERVER_IP);
 
@@ -74,45 +43,75 @@ static void initOptions(Options *options)
     cmd->help_mode = 0;
 
     //////////////////  配置文件默认配置 //////////////////
-}
 
-static void dumpOptions(Options *options)
-{
-    DEBUG("-----------dump command line ------------\n");
-    DEBUG("server_ip_addr: %s\n", options->cmd.server_ip_addr);
-    DEBUG("server_port: %d\n", options->cmd.server_port);
-    DEBUG("-----------dump ini config --------------\n");
-}
-
-static void print_usage()
-{
-    printf("Usage: App [OPTIONS] [VALUE]             \n");
-    printf("                                                    \n");
-    printf("参数设置的优先级为：                                \n");
-    printf("    命令行 > 配置文件 > 默认配置                    \n");
-    printf("                                                    \n");
-    printf("命令行参数:                                         \n");
-    printf("    --config            配置文件地址                \n");
-    printf("    --localaddr         本机服务的IP地址            \n");
-    printf("    --localport         本机服务的端口              \n");
-    printf("    -h,--help           打印帮助信息                \n");
-    printf("                                                    \n");
-    printf("配置文件参数:                                       \n");
-
-    exit(2);
-}
-
-int setOptionsToStr(Options *options, char *buf, int buf_size)
-{
-    sprintf(buf, "[%s]\nparam1=%d\n[%s]\nparam2=%f\n[%s]\nparam3=%s\n", 
-            "UseBWenh", 111, "ParamNum", 22.2, "CameraFile", "hello world");     
     return 0;
 }
 
-int getOptions(Options *options, int argc, const char *argv[])
+int iniParseHook(void* user, const char* section, 
+               const char* key, const char* value)
 {
-    int rtn;
-    static Tag tag[] = {
+    Ini* ini = (Ini*) user;
+
+    /* if (MATCH(key, "param3")) {
+     *     printf("section=%s, key=%s, value=%s\n", section, key, value);
+     * } else if (MATCH(key, "param1")) {
+     *     printf("section=%s, key=%s, value=%d\n", section, key, atoi(value));
+     * } else if (MATCH(key, "param2")) {
+     *     printf("section=%s, key=%s, value=%f\n", section, key, atof(value));
+     * } else {
+     *     return -1;
+     * }  */
+
+    return 0;
+}
+
+int formatOptions(Options *options, char *buf, int buf_size)
+{
+    char tmp[1024];
+    memset(tmp, 0, sizeof(tmp));
+    sprintf(tmp, "[Param1]\nParam1 = %s\n", "hello");
+    strcat(buf, tmp);
+
+    memset(tmp, 0, sizeof(tmp));
+    sprintf(tmp, "[Param2]\nParam2 = %d\n", 100);
+    strcat(buf, tmp); 
+
+    return OPTIONS_WRITE;
+}
+
+void printUsage(Options *options)
+{
+    if (options->cmd.help_mode) {
+        printf("Usage: App [OPTIONS] [VALUE]                        \n");
+        printf("                                                    \n");
+        printf("参数设置的优先级为：                                \n");
+        printf("    命令行 > 配置文件 > 默认配置                    \n");
+        printf("                                                    \n");
+        printf("命令行参数:                                         \n");
+        printf("    --config            配置文件路径                \n");
+        printf("    --localaddr         本机服务的IP地址            \n");
+        printf("    --localport         本机服务的端口              \n");
+        printf("    -h,--help           打印帮助信息                \n");
+        printf("                                                    \n");
+        printf("配置文件参数:                                       \n");
+
+        exit(2);
+    }
+}
+
+void printOptions(Options *options)
+{
+    DEBUG("-----------dump command line ------------\n");
+    DEBUG("config_file_path: %s\n", options->cmd.config_file_path);
+    DEBUG("server_ip_addr: %s\n", options->cmd.server_ip_addr);
+    DEBUG("server_port: %d\n", options->cmd.server_port);
+    DEBUG("help_mode: %d\n", options->cmd.help_mode);
+    DEBUG("-----------dump ini config --------------\n");
+}
+
+int pushTags(Options *options, Tag **tag)
+{
+    static Tag tags[] = {
         {"--config", TAGTYPE_STRING, options->cmd.config_file_path},
         {"--localaddr", TAGTYPE_STRING, options->cmd.server_ip_addr},
         {"--localport", TAGTYPE_INT, &options->cmd.server_port},
@@ -120,25 +119,15 @@ int getOptions(Options *options, int argc, const char *argv[])
         {"--help", TAGTYPE_BOOL, &options->cmd.help_mode},
     };  
 
-    s_ini = &(options->ini);
-    initOptions(options);
-    // 从命令行获取的参数动态改变配置文件的参数
-    set_parse_hook(parse_hook);
+    Tag *tags_p = tags;
+    *tag = tags_p;
 
-    int size = (sizeof(tag)/sizeof(Tag));
-    rtn = parse_params(argc, argv, size, tag);
+    return (sizeof(tags)/sizeof(Tag));
+}
 
-    if (options->cmd.help_mode) {
-        print_usage();
-    }
+int pushIni(Options *options, Ini **ini)
+{
+    *ini = &options->ini;
 
-    if (strcmp(options->cmd.config_file_path, "") == 0) {
-        DEBUG("getOptions: use default sysconf\n");
-    }
-
-    dumpOptions(options);
-
-    DEBUG("get command line arg num: %d\n", rtn);
-
-    return rtn;
+    return 0;
 }

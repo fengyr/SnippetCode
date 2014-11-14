@@ -22,6 +22,9 @@
  *      5.线程的任务模型。
  *      6.XML读写模块。
  *
+ *  0.4.9.B:
+ *      1.调整Options结构。
+ *
  *  0.4.9:
  *      1.加入sqlite支持。
  *      2.调整目录结构，拆分多个模块，可分开编译。
@@ -99,7 +102,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.4.9"
+#define APP_VERSION "0.4.9.B"
 
 #ifdef __cplusplus
 }

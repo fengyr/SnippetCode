@@ -27,3 +27,7 @@ SQLiteCpp_example1
 SQLiteCpp_tests
 
 !FindSQLiteCpp.cmake
+
+.cproject
+.project
+.travis.yml

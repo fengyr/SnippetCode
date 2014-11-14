@@ -28,6 +28,7 @@
 #include <fcntl.h>
 
 #include "runtime.h"
+#include "options.h"
 
 static App *s_app = get_app_instance();
 static Options s_options;
@@ -96,7 +97,7 @@ int on_app_destroy(struct app_runtime_t *app)
     Logger *logger = app->logger;
 
     logger->log_i(logger, "==========   App Destroy     ==========");
-    app->save_options(app, &s_options);
+    app->save_options(app, &s_options, app->options->cmd.config_file_path);
 
     return 0;
 }

@@ -22,6 +22,7 @@
 #include <string.h>
 
 #include "app.h"
+#include "options.h"
 #include "ui_interface.h"
 
 static EventHandler s_ui_control_handler;

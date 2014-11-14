@@ -231,7 +231,7 @@ int slave_tcp_init(TcpSlave *slave,
                     int reconnect,
                     int auto_connect)
 {
-    int res;
+    int res, select_res;
     char err[256];
     App *s_app = get_app_instance();
     Logger *logger = s_app->logger;
@@ -303,12 +303,12 @@ int slave_tcp_init(TcpSlave *slave,
                 tv.tv_usec = 0; 
                 FD_ZERO(&myset); 
                 FD_SET(slave->slave_fd, &myset); 
-                res = select(slave->slave_fd + 1, NULL, &myset, NULL, &tv); 
-                if (res < 0 && errno != EINTR) { 
+                select_res = select(slave->slave_fd + 1, NULL, &myset, NULL, &tv); 
+                if (select_res < 0 && errno != EINTR) { 
                     memset(err, 0, sizeof(err));
                     sprintf(err, "Net: Slave Connect Server, select, %s.", strerror(errno));
                     logger->log_e(logger, err);
-                } else if (res > 0) { 
+                } else if (select_res > 0) { 
                     // Socket selected for write 
                     lon = sizeof(int); 
                     if (getsockopt(slave->slave_fd, SOL_SOCKET, SO_ERROR, (void*)(&valopt), &lon) < 0) { 
@@ -324,6 +324,7 @@ int slave_tcp_init(TcpSlave *slave,
                         logger->log_e(logger, err);
                     } else {
                         slave->status = ENUM_TCP_CONNECTED;
+                        res = 0;
                     }
                     break; 
                 } else { 

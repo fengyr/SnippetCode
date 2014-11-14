@@ -195,12 +195,13 @@ void parse_options(struct app_runtime_t *app, Options *options)
     app->options = options;
 }
 
-void save_options(struct app_runtime_t *app, Options *options)
+void save_options(struct app_runtime_t *app, Options *options, char *config_file_path)
 {
-    if (!strcmp(options->cmd.config_file_path, "")) {
+    if (!strcmp(config_file_path, "")) {
         return; 
     }
 
+    int rc = -1;
     int buf_size = 8*1024*1024;
     char *buffer = (char*) malloc(buf_size);
     memset(buffer, 0, buf_size);
@@ -208,18 +209,22 @@ void save_options(struct app_runtime_t *app, Options *options)
     CSimpleIniA ini;
     ini.SetUnicode();
 
-    setOptionsToStr(options, buffer, buf_size);
+    int is_write = formatOptions(options, buffer, buf_size);
+    if (is_write != OPTIONS_WRITE) {
+        goto SAVE_QUIT;
+    }
 
-    int rc = ini.LoadData(buffer, strlen(buffer));
+    rc = ini.LoadData(buffer, strlen(buffer));
     if (rc < 0) {
         s_logger.log_e(&s_logger, "APP: Load Options Error.");
     }
 
-    rc = ini.SaveFile(options->cmd.config_file_path);
+    rc = ini.SaveFile(config_file_path);
     if (rc < 0) {
         s_logger.log_e(&s_logger, "APP: Save Options Error.");
     }
 
+SAVE_QUIT:
     if (buffer != NULL) {
         free(buffer);
         buffer = NULL;

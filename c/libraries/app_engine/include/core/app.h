@@ -62,7 +62,7 @@ extern "C" {
 #include "message.h"
 #include "version.h"
 
-#include "options.h"
+#include "options_in.h"
 
 struct app_runtime_t {
     // 命令行参数
@@ -87,7 +87,7 @@ struct app_runtime_t {
     void (*quit)(struct app_runtime_t *app);
 
     void (*parse_options)(struct app_runtime_t *app, Options *options);
-    void (*save_options)(struct app_runtime_t *app, Options *options);
+    void (*save_options)(struct app_runtime_t *app, Options *options, char *config_file_path);
 
     void (*register_message_handler)(HandlerMessage handler, int thread_mode);
 
