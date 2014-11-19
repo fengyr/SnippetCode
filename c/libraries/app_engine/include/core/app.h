@@ -28,23 +28,28 @@ extern "C" {
 
 #include <sys/time.h>
 
+/* <dev> */
 #include "hw_module.h"
 
+/* <modbus> */
 #include "modbus.h"
 #include "modbus_master.h"
 #include "modbus_rtu.h"
 #include "modbus_tcp.h"
 
+/* <db> */
 #include "db_column.h"
 #include "db_mysql_wrap.h"
 #include "db_sqlite_wrap.hpp"
 
+/* <net> */
 #include "connection.h"
 #include "handler_process.h"
 #include "tcp_server.h"
 #include "tcp_slave.h"
 #include "telnet_server.h"
 
+/* <utils> */
 #include "array.h"
 #include "commandline.h"
 #include "hashmap.h"
@@ -57,11 +62,13 @@ extern "C" {
 #include "taskmanager.h"
 #include "SimpleIni.h"
 
+/* <core> */
 #include "debug.h"
 #include "looper.h"
 #include "message.h"
 #include "version.h"
 
+/* <interface> */
 #include "options_in.h"
 
 struct app_runtime_t {

@@ -92,7 +92,6 @@ static int _recv(TcpSlave *slave)
     RecvHandler *handler = slave->pHandlers;
     ssize_t total_size = 0;
     char *buffer = NULL;
-    int buffer_size = 6400;
     int rc = 0;
 
     if (handler != NULL) {
@@ -102,16 +101,22 @@ static int _recv(TcpSlave *slave)
 
         // 请求的最大数据<=0，则立即返回。
         if (req_size <= 0) {
-            buffer = (char*) malloc(buffer_size*sizeof(char));
+            buffer = (char*) malloc(SLAVE_DYN_BUF_SIZE*sizeof(char));
             if (!buffer) {
+                if (call != NULL) {
+                    (*call)(slave, NULL, -1);
+                }
                 return -1;
             }
 
-            memset(buffer, 0, buffer_size);
-            total_size = recv(slave->slave_fd, buffer, buffer_size, 0);
+            memset(buffer, 0, SLAVE_DYN_BUF_SIZE);
+            total_size = recv(slave->slave_fd, buffer, SLAVE_DYN_BUF_SIZE, 0);
         } else {
             buffer = (char*) malloc(req_size*sizeof(char));
             if (!buffer) {
+                if (call != NULL) {
+                    (*call)(slave, NULL, -1);
+                }
                 return -1;
             }
 
@@ -121,6 +126,7 @@ static int _recv(TcpSlave *slave)
                                  &buffer[total_size], 
                                  req_size - total_size, 0);
                 if (recv_size <=0) {
+                    total_size = -1;
                     break;
                 }
                 total_size += recv_size;
@@ -130,8 +136,13 @@ static int _recv(TcpSlave *slave)
         if (total_size <= 0) {
             slave->status = ENUM_TCP_DISCONNECTED;
             SERVER_QUIT = 1;
+            // 如果服务端断开，则返回空的缓冲区
+            if (call != NULL) {
+                (*call)(slave, NULL, 0);
+            }
             goto BUFFER_FREE;
         }
+
         if (call != NULL) {
             rc = (*call)(slave, (void*)buffer, total_size);
         }

@@ -26,24 +26,24 @@ extern "C" {
 #include "connection.h"
 
 #define HANDLER_TYPE_DEFAULT            "type_default"
-#define HANDLER_TYPE_UI_CONTROL         "type_ui_control"
-#define HANDLER_TYPE_IMG_DATA           "type_img_data"
-#define HANDLER_TYPE_MOBILE_DATA        "type_mobile_data"
-#define HANDLER_TYPE_MODBUS             "type_modbus"
+#define HANDLER_TYPE_1                  "type_handler_1"
+#define HANDLER_TYPE_2                  "type_handler_2"
+#define HANDLER_TYPE_3                  "type_handler_3"
+#define HANDLER_TYPE_4                  "type_handler_4"
 
 #define HANDLER_TYPE_TELNET             "type_telnet"
 
-#define TAIL_ID             -1
-#define REGISTER_ID         0
-#define REPLAY_ID           1
-#define REPLAY_SUCCESS      "success"
-#define REPLAY_FAILED       "failed"
+#define HANDLER_TAIL_ID                 -1
+#define HANDLER_REGISTER_ID             0
+#define HANDLER_REPLAY_ID               1
+#define HANDLER_REPLAY_SUCCESS          "success"
+#define HANDLER_REPLAY_FAILED           "failed"
 
-#define MSG_MAX 1024        // 等于TELNET_BUF_SIZE
+#define HANDLER_MSG_MAX 1024            // 等于TELNET_BUF_SIZE
 
 struct cmd_ui_t {
     int cmd_id;
-    char cmd_msg[MSG_MAX];
+    char cmd_msg[HANDLER_MSG_MAX];
 };
 typedef struct cmd_ui_t CmdUi, *PCmdUi;
 
@@ -69,12 +69,12 @@ int call_handler(HandlerProc *handler, int id, int fd, char *msg, Socket *sock);
 int handler_proc_stub(int fd, Socket *sock, HandlerProc *handler);
 
 // 对保留ID=0的命令的处理
-#define DEFAULT_HANDLER {REGISTER_ID, default_handler}
+#define DEFAULT_HANDLER {HANDLER_REGISTER_ID, default_handler}
 // 对保留ID=1的响应的处理
-#define DEFAULT_REPLAY {REPLAY_ID, default_replay_handler}
+#define DEFAULT_REPLAY {HANDLER_REPLAY_ID, default_replay_handler}
 // 处理命令的结尾标识, ID=-1
 // 用户自定义的命令处理ID必须从2开始
-#define TAIL {TAIL_ID, NULL}
+#define HANDLER_TAIL {HANDLER_TAIL_ID, NULL}
 // 默认接收网络协议命令的方法
 #define HANDLER_PROC_STUB(fd, sock, handler)  handler_proc_stub((fd), (sock), (handler))
 
@@ -85,7 +85,7 @@ int handler_proc_stub(int fd, Socket *sock, HandlerProc *handler);
     
 // 命令数组默认定义的的结尾部分
 #define END_HANDLER     \
-    TAIL
+    HANDLER_TAIL
 
 #ifdef __cplusplus
 }

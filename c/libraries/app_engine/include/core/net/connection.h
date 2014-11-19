@@ -24,9 +24,9 @@ extern "C" {
 
 #include <pthread.h>
 
-#define MAX_REMOTE_NUM  16
-#define MAX_HANDLER_NUM 16
-#define MAX_NAME_LEN    32
+#define CONNECT_MAX_REMOTE_NUM  16
+#define CONNECT_MAX_HANDLER_NUM 16
+#define CONNECT_MAX_NAME_LEN    32
 
 struct event_handler_t;
 typedef struct event_handler_t EventHandler, *PEventHandler;
@@ -36,10 +36,10 @@ typedef struct event_handler_t EventHandler, *PEventHandler;
 //////////////////////////////////////////////////////
 enum remote_type_t {
     ENUM_REMOTE_NODEFINED = -1,         // NOT DEFINED
-    ENUM_REMOTE_UI_CONTROL = 0,         // see HANDLER_TYPE_UI_CONTROL
-    ENUM_REMOTE_IMG_DATA = 1,           // see HANDLER_TYPE_IMG_DATA
-    ENUM_REMOTE_MOBILE_DATA = 2,        // see HANDLER_TYPE_MOBILE_DATA
-    ENUM_REMOTE_MODBUS = 3,             // see HANDLER_TYPE_MODBUS
+    ENUM_REMOTE_1 = 0,                  // see HANDLER_TYPE_1
+    ENUM_REMOTE_2 = 1,                  // see HANDLER_TYPE_2
+    ENUM_REMOTE_3 = 2,                  // see HANDLER_TYPE_3
+    ENUM_REMOTE_4 = 3,                  // see HANDLER_TYPE_4
 };
 
 struct remote_t {
@@ -47,11 +47,6 @@ struct remote_t {
     int remote_port;
     char remote_ip[32];
 
-    /*-1 -> nodefined, 
-     * 0 -> ui_control, 
-     * 1 -> img_data,
-     * 2 -> ping, 
-     * 3 -> modbus */
     enum remote_type_t remote_type;    
     char *remote_name;
 };
@@ -63,7 +58,7 @@ typedef struct remote_t Remote, *PRemote;
 struct socket_t {
     int local_fd;
     char local_name[256];
-    Remote remote[MAX_REMOTE_NUM];
+    Remote remote[CONNECT_MAX_REMOTE_NUM];
     EventHandler **pHandlers;
 
     pthread_t pthread;

@@ -129,13 +129,9 @@ static void test_sqlite(App *app)
     printf("exec3 nb: %d\n", nb);
 
     sqlite->query_cond(sqlite, "SELECT * FROM test", NULL, NULL, query_get, NULL);
-    sqlite->close_db(sqlite);
 
-    // 第三次打开
     // 读写模式，创建表，事务处理
     printf("-------- open 3\n");
-    sqlite->open_db(sqlite, "./example.db3", SQL_OPEN_RW | SQL_OPEN_CR);
-
     sqlite->transaction_begin(sqlite);
     nb = sqlite->exec_sql(sqlite, "INSERT INTO test VALUES (NULL, \"third\")");
     printf("exec4 nb: %d\n", nb);
@@ -499,6 +495,12 @@ static void test_get_tables()
 
 static int slave_recv_call(TcpSlave *slave, void *data, int len)
 {
+
+    if (len <=0) {
+        printf("==========slave_recv_call: server quit==========\n");
+        return -1;
+    }
+
     char buf[20480];
     strncpy(buf, (const char*) data, len);
     printf("slave_recv_call: %s, %d\n", buf, len);
@@ -507,6 +509,11 @@ static int slave_recv_call(TcpSlave *slave, void *data, int len)
 
 static int slave_recv_call2(TcpSlave *slave, void *data, int len)
 {
+    if (len <=0) {
+        printf("==========slave_recv_call2: server quit==========\n");
+        return -1;
+    }
+
     printf("slave_recv_call2: %d\n", len);
     return 0;
 }
@@ -617,22 +624,22 @@ static void test_register_tcp_handler(App *app)
     static EventHandler s_modbus_handler;
 
     /* 注册界面控制类型的处理方法 */
-    s_ui_control_handler.handler_type = HANDLER_TYPE_UI_CONTROL;
+    s_ui_control_handler.handler_type = HANDLER_TYPE_1;
     s_ui_control_handler.onRecvAndReplay = ui_control_handler;
     server->register_event_handler(server, &s_ui_control_handler);
 
     /* 注册结果图片类型的处理方法 */
-    s_img_data_handler.handler_type = HANDLER_TYPE_IMG_DATA;
+    s_img_data_handler.handler_type = HANDLER_TYPE_2;
     s_img_data_handler.onRecvAndReplay = ui_img_data_handler;
     server->register_event_handler(server, &s_img_data_handler);
 
     /* 注册PING的处理方法 */
-    s_mobile_handler.handler_type = HANDLER_TYPE_MOBILE_DATA;
+    s_mobile_handler.handler_type = HANDLER_TYPE_3;
     s_mobile_handler.onRecvAndReplay = mobile_handler;
     server->register_event_handler(server, &s_mobile_handler);
 
     /* 注册MODBUS类型的处理方法 */
-    s_modbus_handler.handler_type = HANDLER_TYPE_MODBUS;
+    s_modbus_handler.handler_type = HANDLER_TYPE_4;
     s_modbus_handler.onRecvAndReplay = modbus_protocol_handler;
     server->register_event_handler(server, &s_modbus_handler);
 }
@@ -885,18 +892,18 @@ int on_app_process(struct app_runtime_t *app)
      * test_hashmap(); */
 
     // MYSQL
-    test_mysql();
-    test_get_tables();  
+    /* test_mysql();
+     * test_get_tables();   */
 
     // SQLITE
     test_sqlite(app);
 
-    test_modbus_master();
+    // MODBUS
+    /* test_modbus_master(); */
+
+    /* test_slave_groups(app); */
 
 /*     test_module_serial();
- * 
- * 
- *     test_slave_groups(app);
  * 
  *     test_task_manager(app);
  * 

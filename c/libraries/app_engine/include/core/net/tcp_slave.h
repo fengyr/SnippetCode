@@ -35,6 +35,8 @@ typedef int (*RecvHandlerCall)(TcpSlave *slave, void *data, int len);
 /**
  * @Synopsis 客户端接收数据回调
  */
+#define SLAVE_DYN_BUF_SIZE      6400
+
 typedef struct recv_handler_t {
     int req_size;       // 请求的数据大小，小于等于0表示动态模式。
     int recv_timeout;   // 接收数据的超时时间。

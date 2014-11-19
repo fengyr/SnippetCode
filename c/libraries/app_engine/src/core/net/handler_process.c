@@ -35,7 +35,7 @@
 static int indexOfFd(int fd, Remote *remote)
 {
     int i;
-    for (i = 0; i < MAX_REMOTE_NUM; i++) {
+    for (i = 0; i < CONNECT_MAX_REMOTE_NUM; i++) {
         if (fd == remote[i].remote_fd) {
             return i;
         }
@@ -48,7 +48,7 @@ ssize_t replay(int fd, const char *msg)
 {
     CmdUi cmd;
     memset(&cmd, 0, sizeof(cmd));
-    cmd.cmd_id = REPLAY_ID;
+    cmd.cmd_id = HANDLER_REPLAY_ID;
     // 消息字符串结尾需要添加\r\n
     sprintf(cmd.cmd_msg, "%s\r\n", msg);
 
@@ -66,26 +66,26 @@ int default_handler(int fd, char *msg, Socket *sock)
     DEBUG("default_handler: fd = %d, msg = %s\n", fd, msg);
     if (id != -1) {
         if (remote[id].remote_name != NULL) {
-            memset(remote[id].remote_name, 0, MAX_NAME_LEN);
+            memset(remote[id].remote_name, 0, CONNECT_MAX_NAME_LEN);
             strcpy(remote[id].remote_name, msg);
 
-            /* 当前支持类型如下：
-             * 0表示界面控制类型，
-             * 1表示结果图片类型，
-             * 2表示ping服务器的状态，
-             * 3表示MODBUS类型，
+            /* 当前支持4种类型：
+             * 0
+             * 1
+             * 2
+             * 3
              * 根据ID为0的命令字符串标识。参考handler_process.h */
-            if (strcmp(remote[id].remote_name, HANDLER_TYPE_UI_CONTROL) == 0) {
-                remote[id].remote_type = ENUM_REMOTE_UI_CONTROL;
-            } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_IMG_DATA) == 0) {
-                remote[id].remote_type = ENUM_REMOTE_IMG_DATA;
-            } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_MOBILE_DATA) == 0) {
-                remote[id].remote_type = ENUM_REMOTE_MOBILE_DATA;
-            } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_MODBUS) == 0) {
-                remote[id].remote_type = ENUM_REMOTE_MODBUS;
+            if (strcmp(remote[id].remote_name, HANDLER_TYPE_1) == 0) {
+                remote[id].remote_type = ENUM_REMOTE_1;
+            } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_2) == 0) {
+                remote[id].remote_type = ENUM_REMOTE_2;
+            } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_3) == 0) {
+                remote[id].remote_type = ENUM_REMOTE_3;
+            } else if (strcmp(remote[id].remote_name, HANDLER_TYPE_4) == 0) {
+                remote[id].remote_type = ENUM_REMOTE_4;
             } else {
                 remote[id].remote_type = ENUM_REMOTE_NODEFINED;
-                replay(fd, REPLAY_FAILED);
+                replay(fd, HANDLER_REPLAY_FAILED);
                 return -1;
             }
             DEBUG("remote[id].remote_name = %s, type = %d\n", remote[id].remote_name, remote[id].remote_type);
@@ -98,7 +98,7 @@ int default_handler(int fd, char *msg, Socket *sock)
     Logger *logger = s_app->logger;
     logger->log_d(logger, buf);
 
-    replay(fd, REPLAY_SUCCESS);
+    replay(fd, HANDLER_REPLAY_SUCCESS);
 
     return 0;
 }
@@ -115,7 +115,7 @@ int call_handler(HandlerProc *handler, int id, int fd, char *msg, Socket *sock)
     App *s_app = get_app_instance();
     HandlerProc *h = handler;
 
-    for (; (h != NULL) && (h->cmd_id != TAIL_ID); h++) {
+    for (; (h != NULL) && (h->cmd_id != HANDLER_TAIL_ID); h++) {
         if (h->cmd_id == id) {
             char buf[1024];
             memset(buf, 0, sizeof(buf));

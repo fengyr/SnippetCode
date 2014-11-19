@@ -41,7 +41,7 @@ static int cmd_train(int fd, char *msg, Socket *sock)
     Options *options = s_app_ins->options;
     strcpy(options->cmd.config_file_path, "no file");
 
-    replay(fd, REPLAY_SUCCESS);
+    replay(fd, HANDLER_REPLAY_SUCCESS);
 
     return 0;
 }
