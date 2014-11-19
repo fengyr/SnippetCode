@@ -46,7 +46,7 @@ typedef void* AnyServer;
 
 enum tcp_server_type_t {
     ENUM_SERVER_NODEFINED = -1,
-    ENUM_SERVER_TCP = 0,
+    ENUM_SERVER_TCP_ASCII = 0,
     ENUM_SERVER_TELNET = 1,
 };
 

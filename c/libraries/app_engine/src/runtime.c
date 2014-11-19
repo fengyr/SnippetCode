@@ -591,7 +591,7 @@ static void test_server_groups(App *app)
     for (i = 0; i < 128; i++) {
         memset(server_name, 0, sizeof(server_name));
         sprintf(server_name, "tcp-%d", i);
-        groups->register_server(groups, ENUM_SERVER_TCP, server_name, options->cmd.server_ip_addr, options->cmd.server_port + i);
+        groups->register_server(groups, ENUM_SERVER_TCP_ASCII, server_name, options->cmd.server_ip_addr, options->cmd.server_port + i);
         /* TelnetServer *server = (TelnetServer*) groups->get_server(groups, server_name); */
         /* printf("tcp name:%s, %p\n", server_name, server); */
 

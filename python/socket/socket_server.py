@@ -3,8 +3,10 @@ import socket
 import sys
 import threading
 import struct
+import time
 
 HOST = '127.0.0.1'
+# PORT = 11014
 PORT = 9001
 
 
@@ -18,11 +20,16 @@ def recv_thread(*arg):
         try:
             count = count + 1
             buf = conn.recv(256)
-            # print buf, " len=", len(buf), " count=", count
+            print buf, " len=", len(buf), " count=", count
+
+            # conn.send(buf);
+            # continue
+
             if buf == '':
                 break
             data = struct.unpack("<hc3d5cdhc9dh8d75c", buf)
             print data
+            time.sleep(10)
             conn.send(buf);
         except Exception, e:
             break

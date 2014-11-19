@@ -204,28 +204,30 @@ def tcp():
     # print s.recv(4096)
 
     # # 保存文件
-    s.send(getData(34, "4:1,0,0,0"))
-    print s.recv(4096)
-    s.send(getData(34, "3:1,2,0,0"))
-    print s.recv(4096)
-    s.send(getData(34, "2:1,2,3,0"))
-    print s.recv(4096)
-    s.send(getData(34, "1:1,2,3,4"))
-    print s.recv(4096)
-
-    time.sleep(5)
-    s.send(getData(36, "clear:lines"))
-    print s.recv(4096)
-
-    s.send(getData(34, "4:1,2,3,4"))
-    print s.recv(4096)
-    s.send(getData(34, "3:1,2,3,4"))
-    print s.recv(4096)
-
-    ######################### 石材 ################################
-    # s.send(getData(2, "start:BMW002"))
+    # s.send(getData(34, "4:1,0,0,0"))
+    # print s.recv(4096)
+    # s.send(getData(34, "3:1,2,0,0"))
+    # print s.recv(4096)
+    # s.send(getData(34, "2:1,2,3,0"))
+    # print s.recv(4096)
+    # s.send(getData(34, "1:1,2,3,4"))
     # print s.recv(4096)
 
+    # time.sleep(5)
+    # s.send(getData(36, "clear:lines"))
+    # print s.recv(4096)
+
+    # s.send(getData(34, "4:1,2,3,4"))
+    # print s.recv(4096)
+    # s.send(getData(34, "3:1,2,3,4"))
+    # print s.recv(4096)
+
+    ######################### 石材 ################################
+    s.send(getData(19, "1100"))
+    print s.recv(4096)
+
+    s.send(getData(20, "2200"))
+    print s.recv(4096)
     # time.sleep(5)
 
     # # s.send(getData(6, "stop"))

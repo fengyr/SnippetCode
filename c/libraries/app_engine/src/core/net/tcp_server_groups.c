@@ -49,7 +49,7 @@ static AnyServer __get_server(struct tcp_server_groups_t *groups,
         }
     }
 
-    if (server_type == ENUM_SERVER_TCP) {
+    if (server_type == ENUM_SERVER_TCP_ASCII) {
         TcpServer *tcp_server;
         error = hashmap_get(groups->hashmap_server_groups, (char*)server_name, (void**)(&tcp_server));
         return (AnyServer*) tcp_server;
@@ -89,7 +89,7 @@ static int __tcp_server_groups_register(TcpServerGroups *groups,
     }
 
     int error;
-    if (server_type == ENUM_SERVER_TCP) {
+    if (server_type == ENUM_SERVER_TCP_ASCII) {
         // create tcp server instance
         TcpServer *tcp_server = create_tcp_server_instance();
         tcp_server->init(tcp_server, server_name, server_ip, server_port);
@@ -163,7 +163,7 @@ static int __tcp_server_groups_destroy(TcpServerGroups *groups)
     DEBUG("tcp_server_groups_destroy: BEGIN\n");
     int i;
     for (i = 0; i < MAX_SERVERS; i++) {
-        if (groups->server_types[i] == ENUM_SERVER_TCP) {
+        if (groups->server_types[i] == ENUM_SERVER_TCP_ASCII) {
             TcpServer *tcp_server;
             error = hashmap_get(groups->hashmap_server_groups, groups->server_names[i], (void**)(&tcp_server));
             if (tcp_server != NULL) {
