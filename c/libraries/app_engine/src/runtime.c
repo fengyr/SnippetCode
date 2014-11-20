@@ -642,6 +642,10 @@ static void test_register_tcp_handler(App *app)
     s_modbus_handler.handler_type = HANDLER_TYPE_4;
     s_modbus_handler.onRecvAndReplay = modbus_protocol_handler;
     server->register_event_handler(server, &s_modbus_handler);
+
+    while (1) {
+        sleep(1);
+    }
 }
 
 static void dump_object_array(ArrayObj *array)
@@ -901,15 +905,21 @@ int on_app_process(struct app_runtime_t *app)
     // MODBUS
     /* test_modbus_master(); */
 
+    // SLAVE GROUP
     /* test_slave_groups(app); */
 
-/*     test_module_serial();
- * 
- *     test_task_manager(app);
- * 
- *     test_server_groups(app);
- *     test_register_telnet_proc(app);  
- *     test_register_tcp_handler(app);    */
+    // SERVER GROUP
+    test_server_groups(app);
+    test_register_tcp_handler(app);
+
+    // MODULE
+    /* test_module_serial(); */
+
+    // TASK MANAGER
+    /* test_task_manager(app); */
+
+    // TELNET SERVER
+    /* test_register_telnet_proc(app);   */
 
     return 1;
 }

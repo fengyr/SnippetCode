@@ -22,6 +22,9 @@
  *      5.线程的任务模型。
  *      6.XML读写模块。
  *
+ *  0.4.9.C:
+ *      1.修改服务端协议格式。
+ *
  *  0.4.9.B:
  *      1.调整Options结构。
  *
@@ -102,7 +105,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.4.9.B"
+#define APP_VERSION "0.4.9.C"
 
 #ifdef __cplusplus
 }

@@ -46,15 +46,23 @@ static int indexOfFd(int fd, Remote *remote)
 
 ssize_t replay(int fd, const char *msg)
 {
-    CmdUi cmd;
-    memset(&cmd, 0, sizeof(cmd));
-    cmd.cmd_id = HANDLER_REPLAY_ID;
+    ProtoData proto;
+    memset_proto(&proto);
+    proto.proto_id = HANDLER_REPLAY_ID;
     // 消息字符串结尾需要添加\r\n
-    sprintf(cmd.cmd_msg, "%s\r\n", msg);
+    sprintf(proto.proto_data, "%s", msg);
 
-    ssize_t size = send(fd, &cmd, sizeof(cmd), 0);
+    ssize_t size = send(fd, &proto, sizeof(proto), 0);
 
     return size;
+}
+
+void memset_proto(ProtoData *proto)
+{
+    memset(proto, 0, sizeof(ProtoData));
+    proto->proto_head = ':';
+    proto->proto_tail[0] = '\r';
+    proto->proto_tail[1] = '\n';
 }
 
 int default_handler(int fd, char *msg, Socket *sock)
@@ -114,12 +122,12 @@ int call_handler(HandlerProc *handler, int id, int fd, char *msg, Socket *sock)
     int rtn = -1;
     App *s_app = get_app_instance();
     HandlerProc *h = handler;
+    char buf[2048];
 
-    for (; (h != NULL) && (h->cmd_id != HANDLER_TAIL_ID); h++) {
-        if (h->cmd_id == id) {
-            char buf[1024];
+    for (; (h != NULL) && (h->proto_id != HANDLER_TAIL_ID); h++) {
+        if (h->proto_id == id) {
             memset(buf, 0, sizeof(buf));
-            sprintf(buf, "Net: id='%02d',   cmd='%s'.", id, msg);
+            sprintf(buf, "Net: id='%02d',   proto='%s'.", id, msg);
             Logger *logger = s_app->logger;
             logger->log_d(logger, buf);
 
@@ -139,11 +147,11 @@ int handler_proc_stub(int fd, Socket *sock, HandlerProc *handler)
     int find = 0;
     ssize_t recv_size = 0;
     ssize_t start = 0;
-    ssize_t total_size = sizeof(CmdUi);
-    int i;
-    static char buffer[sizeof(CmdUi)];
-    CmdUi cmd;
-    memset(&cmd, 0, sizeof(CmdUi));
+    ssize_t total_size = sizeof(ProtoData);
+    int i, head = -1;
+    static char buffer[sizeof(ProtoData)];
+    ProtoData proto;
+    memset_proto(&proto);
 
     while (!find) {
         recv_size = recv(fd, &buffer[start], total_size - start, 0);
@@ -153,7 +161,7 @@ int handler_proc_stub(int fd, Socket *sock, HandlerProc *handler)
          * } */
 
         if (recv_size < 0) {
-            fprintf(stderr, "handler_proc_stub: error, id=%d, buffer=%s\n", handler->cmd_id, buffer);
+            fprintf(stderr, "handler_proc_stub: error, id=%d, buffer=%s\n", handler->proto_id, buffer);
             break;
         } else if (recv_size == 0) {
             Logger *logger = s_app->logger;
@@ -164,11 +172,18 @@ int handler_proc_stub(int fd, Socket *sock, HandlerProc *handler)
         recv_size += start;
         start = 0;
 
+        DEBUG("handler_proc_stub: read once, recv_size=%d\n", recv_size);
+
         for (i = 0; i < recv_size; i++) {
-            if ((buffer[i] == '\r') 
+            if (buffer[i] == ':') {
+                head = i;
+            } else if ((buffer[i] == '\r') 
                 && (i + 1 < recv_size)
-                && (buffer[i + 1] == '\n')) {
-                memcpy(&cmd, &buffer[start], i-start);
+                && (buffer[i + 1] == '\n')
+                && (head != -1)
+                && ((i-head) <= HANDLER_DATA_MAX-2)) {
+                memcpy(&proto, &buffer[head], i-head);
+                DEBUG("handler_proc_stub: find head=%d, end=%d\n", head, i);
 
                 start = i + 1;
                 find = 1;
@@ -184,7 +199,7 @@ int handler_proc_stub(int fd, Socket *sock, HandlerProc *handler)
         }
     }
 
-    call_handler(handler, cmd.cmd_id, fd, cmd.cmd_msg, sock);
+    call_handler(handler, proto.proto_id, fd, proto.proto_data, sock);
 
     return recv_size;
 }

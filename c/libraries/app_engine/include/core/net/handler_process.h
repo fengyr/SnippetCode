@@ -39,22 +39,26 @@ extern "C" {
 #define HANDLER_REPLAY_SUCCESS          "success"
 #define HANDLER_REPLAY_FAILED           "failed"
 
-#define HANDLER_MSG_MAX 1024            // 等于TELNET_BUF_SIZE
+#define HANDLER_DATA_MAX 1024               // 等于TELNET_BUF_SIZE
+#define HANDLER_MSG_MAX ((HANDLER_DATA_MAX) - 7)
 
-struct cmd_ui_t {
-    int cmd_id;
-    char cmd_msg[HANDLER_MSG_MAX];
+// 总共命令行大小为1024字节
+struct proto_data_t {
+    char proto_head;                        // 1 byte
+    unsigned int proto_id;                  // 4 bytes
+    char proto_data[HANDLER_MSG_MAX];       // 1017 bytes
+    char proto_tail[2];                     // 2 bytes
 };
-typedef struct cmd_ui_t CmdUi, *PCmdUi;
+typedef struct proto_data_t ProtoData, *PProtoData;
 
 /**
  * @Synopsis 与命令ID对应的处理过程
  *
- * cmd_id   命令id
+ * proto_id   命令id
  * proc     处理过程的方法
  */
 struct handler_proc_t {
-    int cmd_id;
+    int proto_id;
     int (*proc)(int fd, char *msg, Socket *sock);
 };
 typedef struct handler_proc_t HandlerProc, *PHandlerProc;
@@ -67,6 +71,7 @@ int default_handler(int fd, char *msg, Socket *sock);
 int default_replay_handler(int fd, char *msg, Socket *sock);
 int call_handler(HandlerProc *handler, int id, int fd, char *msg, Socket *sock); 
 int handler_proc_stub(int fd, Socket *sock, HandlerProc *handler);
+void memset_proto(ProtoData *proto);
 
 // 对保留ID=0的命令的处理
 #define DEFAULT_HANDLER {HANDLER_REGISTER_ID, default_handler}

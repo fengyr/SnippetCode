@@ -34,12 +34,12 @@ static EventHandler s_modbus_handler;
 //              界面控制的接口                      //
 //////////////////////////////////////////////////////
 /* 设置训练参数 */
-static int cmd_train(int fd, char *msg, Socket *sock)
+static int cmd_hello(int fd, char *msg, Socket *sock)
 {
-    /* do something */
-    App *s_app_ins = get_app_instance(); 
-    Options *options = s_app_ins->options;
-    strcpy(options->cmd.config_file_path, "no file");
+    char buf[2048];
+    memset(buf, 0, sizeof(buf));
+    sprintf(buf, "cmd_hello: |%s|, <%c>\n", msg, msg[strlen(msg)-1]);
+    printf(buf);
 
     replay(fd, HANDLER_REPLAY_SUCCESS);
 
@@ -48,7 +48,7 @@ static int cmd_train(int fd, char *msg, Socket *sock)
 
 static HandlerProc control_proc[] = {
     BEGIN_HANDLER,
-    {2, cmd_train},
+    {2, cmd_hello},
     END_HANDLER,
 }; 
 
