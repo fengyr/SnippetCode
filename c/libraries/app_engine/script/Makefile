@@ -12,6 +12,11 @@ EXTRA_CFLAGS    := -rdynamic
 EXTRA_CFLAGS 	+= -DUSE_DEBUG
 LDFLAGS         := -pthread -lm -lrt -ldl
 
+# 目标名称和类型，不需要考虑后缀名，定义多个名称实际上多个拷贝
+# 如：$(OUT_DIR)/main 
+TARGET          := main
+TARGET_TYPE     := app
+
 # 输出目录，会自动创建
 OUT_DIR 	    = out
 OBJ_DIR   	    = $(OUT_DIR)/obj
@@ -44,13 +49,6 @@ SUFFIX 			= c cpp cc cxx
 # 例如：/usr/local/lib/libprotobuf.so
 # 否则无法找到符号
 EXTRA_OBJS      = ./libs/libapp.so
-
-# 目标名称和类型，不需要考虑后缀名，定义多个名称实际上多个拷贝
-# 如：$(OUT_DIR)/main 
-TARGET          := main
-TARGET_TYPE     := app
-# TARGET_TYPE     := ar
-# TARGET_TYPE     := so
 
 # 其他的任务
 .other_task:

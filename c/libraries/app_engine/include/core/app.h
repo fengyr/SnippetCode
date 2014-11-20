@@ -40,7 +40,6 @@ extern "C" {
 /* <db> */
 #include "db_column.h"
 #include "db_mysql_wrap.h"
-#include "db_sqlite_wrap.hpp"
 
 /* <net> */
 #include "connection.h"

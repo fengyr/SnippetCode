@@ -28,8 +28,8 @@ extern "C" {
 #define LOG_STDERR  1
 #define LOG_FILE    2
 
-#define LOG_CONFIG_PATH     "/var/log/colorserver/.server_log.conf"
-#define LOG_FILE_DIR        "/var/log/colorserver"
+#define LOG_CONFIG_PATH     "/tmp/.server_log.conf"
+#define LOG_FILE_DIR        "./"
 
 struct logger_t;
 typedef struct logger_t Logger, *PLogger;

@@ -19,6 +19,8 @@
 #ifndef _db_sqlite_wrap_H_
 #define _db_sqlite_wrap_H_
 
+#ifdef USE_SQLITE
+
 #include "SQLiteCpp.h"
 
 #define MY_SQLITE_CREATE_TABLE          "create table %s %s;"
@@ -77,5 +79,6 @@ typedef struct db_sqlite_client_t SqliteClient, *PSqliteClient;
 
 SqliteClient* create_sqlite_client_instance();
 
+#endif
 
 #endif /* end of include guard: _db_sqlite_wrap_H_ */

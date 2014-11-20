@@ -70,7 +70,7 @@ static int make_config(const char *log_conf_path, const char *log_file_dir)
 
     char new_line[1024];
     memset(new_line, 0, sizeof(new_line));
-    sprintf(new_line, "file.*   \"%s/server.log\", 10MB ~ \"%s/server-%%d(%%Y%%m%%d).#3s.log\"", 
+    sprintf(new_line, "file.*   \"%s/app.log\", 10MB ~ \"%s/app-%%d(%%Y%%m%%d).#3s.log\"", 
             log_file_dir, log_file_dir);
     wsize = write(fd, new_line, strlen(new_line));
     if (wsize < 0) {

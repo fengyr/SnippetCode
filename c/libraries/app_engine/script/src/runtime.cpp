@@ -32,7 +32,6 @@
 
 static App *s_app = get_app_instance();
 static Options s_options;
-static TcpSlave *s_data_slave = NULL;
 
 static int handler_message(struct message_handler_t *handler, struct message_t *msg)
 {

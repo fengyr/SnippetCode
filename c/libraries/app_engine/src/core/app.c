@@ -251,7 +251,10 @@ App* create_app_instance(int argc, const char *argv[])
     app->quit = quit;
 
     // init zlog system.
-    logger_init(&s_logger, LOG_FILE, LOG_CONFIG_PATH, LOG_FILE_DIR);
+    char log_file_dir[1024];
+    memset(log_file_dir, 0, sizeof(log_file_dir));
+    getcwd(log_file_dir, sizeof(log_file_dir));
+    logger_init(&s_logger, LOG_FILE, LOG_CONFIG_PATH, log_file_dir);
 
     // TaskManager
     TaskManager *task_manager = create_taskmanager_instance();

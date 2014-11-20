@@ -90,7 +90,16 @@ int slave_tcp_init(TcpSlave *slave,
                    int port, 
                    int reconnect,
                    int auto_connect);
+
 int slave_register_handler(TcpSlave *slave, RecvHandler *handler);
+/**
+ * @Synopsis 连接服务端
+ *
+ * @Param slave TcpSlave对象指针
+ * @Param auto_connect  是否断开重连
+ *
+ * @Returns 成功返回0，失败返回-1。
+ */
 int slave_tcp_connect(TcpSlave *slave, int auto_connect);
 
 /**

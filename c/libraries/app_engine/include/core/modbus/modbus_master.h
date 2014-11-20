@@ -18,6 +18,8 @@
 #ifndef _modbus_master_H_
 #define _modbus_master_H_
 
+#ifdef USE_MODBUS
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -131,6 +133,8 @@ void free_modbus_master(ModbusMaster *modbus_m);
 
 #ifdef __cplusplus
 }
+#endif
+
 #endif
 
 #endif /* end of include guard: _modbus_master_H_ */

@@ -900,17 +900,17 @@ int on_app_process(struct app_runtime_t *app)
      * test_get_tables();   */
 
     // SQLITE
-    test_sqlite(app);
+    /* test_sqlite(app); */
 
     // MODBUS
     /* test_modbus_master(); */
 
     // SLAVE GROUP
-    /* test_slave_groups(app); */
+    test_slave_groups(app);
 
     // SERVER GROUP
-    test_server_groups(app);
-    test_register_tcp_handler(app);
+    /* test_server_groups(app);
+     * test_register_tcp_handler(app); */
 
     // MODULE
     /* test_module_serial(); */
