@@ -22,6 +22,10 @@
  *      5.线程的任务模型。
  *      6.XML读写模块。
  *
+ *  0.4.9.D：
+ *      1.修正tcp_slave占用CPU过高的问题。
+ *      2.找到因为Options的原因引起的程序崩溃。该对象必须在程序中动态分配。
+ *
  *  0.4.9.C:
  *      1.修改服务端协议格式。
  *
@@ -105,7 +109,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.4.9.C"
+#define APP_VERSION "0.4.9.D"
 
 #ifdef __cplusplus
 }

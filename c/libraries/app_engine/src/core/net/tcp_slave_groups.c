@@ -108,8 +108,8 @@ static int __tcp_slave_groups_init(TcpSlaveGroups *groups)
 
     int i;
     for (i = 0; i < MAX_SLAVES; i++) {
-        groups->slave_names[i] = (char*)malloc(256);
-        memset(groups->slave_names[i], 0, 256);
+        groups->slave_names[i] = (char*)malloc(256*sizeof(char));
+        memset(groups->slave_names[i], 0, 256*sizeof(char));
     }
 
     groups->slave_count = 0;

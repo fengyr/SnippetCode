@@ -643,6 +643,9 @@ static void test_register_tcp_handler(App *app)
     s_modbus_handler.onRecvAndReplay = modbus_protocol_handler;
     server->register_event_handler(server, &s_modbus_handler);
 
+    // 同时测试客户端
+    test_slave_groups(app);
+
     while (1) {
         sleep(1);
     }
@@ -859,6 +862,9 @@ int on_app_create(struct app_runtime_t *app)
     printf("onCreate called\n");
     app->parse_options(app, &s_options);
     app->register_message_handler(handler_message, RUNTIME_LOOP_THREAD);
+    /* app->register_message_handler(handler_message, RUNTIME_LOOP_FORGROUND); */
+
+    on_app_process(app);
 
     return 0;
 }
@@ -909,8 +915,8 @@ int on_app_process(struct app_runtime_t *app)
     test_slave_groups(app);
 
     // SERVER GROUP
-    /* test_server_groups(app);
-     * test_register_tcp_handler(app); */
+    /* test_server_groups(app); */
+    /* test_register_tcp_handler(app);  */
 
     // MODULE
     /* test_module_serial(); */

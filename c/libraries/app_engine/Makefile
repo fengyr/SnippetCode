@@ -61,15 +61,19 @@ SRC_DIR   	= 	./src/core/ \
 			./src/core/utils/ \
 
 EXTRA_SRC 	= 
+
+ifeq ($(TARGET_TYPE),so)
 EXCLUDE_FILES 	= 	./src/interface/ui_interface.c \
-			./src/interface/options.c \
-			./src/interface/telnet_proc.c \
-			./src/runtime.c \
-			./include/interface/ui_interface.h \
-			./include/interface/options.h \
-			./include/interface/telnet_proc.h \
-			./include/interface/dev_serial.h \
-			./include/runtime.h \
+					./src/interface/options.c \
+					./src/interface/telnet_proc.c \
+					./src/runtime.c \
+					./include/interface/ui_interface.h \
+					./include/interface/options.h \
+					./include/interface/telnet_proc.h \
+					./include/interface/dev_serial.h \
+					./include/runtime.h \
+
+endif
 
 SUFFIX 		= c h cpp hpp cc
 EXTRA_OBJS  =   ./libs/libstruct.a \

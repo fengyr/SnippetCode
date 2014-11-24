@@ -31,7 +31,7 @@
 #include "options.h"
 
 static App *s_app = get_app_instance();
-static Options s_options;
+static Options *s_options;
 
 static int handler_message(struct message_handler_t *handler, struct message_t *msg)
 {
@@ -72,7 +72,8 @@ void on_msg_idle(MessageHandler *handler, Message *old_msg)
 int on_app_create(struct app_runtime_t *app)
 {
     // Options Hooks
-    app->parse_options(app, &s_options);
+    s_options = (Options*) malloc(sizeof(Options));
+    app->parse_options(app, s_options);
     Logger *logger = app->logger;
     Options *options = app->options;
 
@@ -96,7 +97,11 @@ int on_app_destroy(struct app_runtime_t *app)
     Logger *logger = app->logger;
 
     logger->log_i(logger, "==========   App Destroy     ==========");
-    app->save_options(app, &s_options, app->options->cmd.config_file_path);
+    app->save_options(app, app->options, app->options->cmd.config_file_path);
+
+    if (s_options != NULL) {
+        free(s_options);
+    }
 
     return 0;
 }
@@ -111,17 +116,18 @@ int on_app_destroy(struct app_runtime_t *app)
 int on_app_process(struct app_runtime_t *app)
 {
 #if USE_DEBUG
-    clock_t debug_start_time = clock();
-    clock_t debug_end_time;
-    double debug_process_time;
+    struct timeval tpstart, tpend;
+    float timeuse = 0;
+    gettimeofday(&tpstart, NULL);
 #endif
 
     Options *options = s_app->options;
 
 #if USE_DEBUG
-    debug_end_time = clock();
-    debug_process_time = static_cast<double>(debug_end_time - debug_start_time) / CLOCKS_PER_SEC * 1000;
-    fprintf(stderr, ">>>>> Loop once time: %.2fms <<<<<\n", debug_process_time);
+    gettimeofday(&tpend, NULL);
+    timeuse = 1000000 * (tpend.tv_sec - tpstart.tv_sec) + tpend.tv_usec - tpstart.tv_usec;
+    timeuse /= 1000000;
+    fprintf(stderr, ">>>>> Loop once time: %.3fs <<<<<\n", timeuse);
 #endif
 
     return 0;

@@ -24,6 +24,7 @@ extern "C" {
 
 #include <stdio.h>
 
+typedef int (*IniParseHook)(void*, const char*, const char*, const char*);
 //////////////////////////////////////////////////////
 //          public interface                        //
 //////////////////////////////////////////////////////

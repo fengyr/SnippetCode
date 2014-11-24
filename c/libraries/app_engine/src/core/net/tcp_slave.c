@@ -199,6 +199,7 @@ static void* thread_slave_recv(void *param)
             continue;
         } else if (rc == 0) {
             DEBUG("%s: select continue\n", slave->slave_name);
+            usleep(5000);
             continue;
         }
 
@@ -208,7 +209,7 @@ static void* thread_slave_recv(void *param)
         }
 
         // 休眠10ms
-        usleep(10000);
+        usleep(5000);
     }
 
     DEBUG("%s: enter recv thread exit... status = %d\n", slave->slave_name, slave->status);
