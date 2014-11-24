@@ -31,7 +31,7 @@
 #include "options.h"
 
 static App *s_app = get_app_instance();
-static Options *s_options;
+static Options s_options;
 
 static int handler_message(struct message_handler_t *handler, struct message_t *msg)
 {
@@ -72,8 +72,7 @@ void on_msg_idle(MessageHandler *handler, Message *old_msg)
 int on_app_create(struct app_runtime_t *app)
 {
     // Options Hooks
-    s_options = (Options*) malloc(sizeof(Options));
-    app->parse_options(app, s_options);
+    app->parse_options(app, &s_options);
     Logger *logger = app->logger;
     Options *options = app->options;
 
@@ -98,10 +97,6 @@ int on_app_destroy(struct app_runtime_t *app)
 
     logger->log_i(logger, "==========   App Destroy     ==========");
     app->save_options(app, app->options, app->options->cmd.config_file_path);
-
-    if (s_options != NULL) {
-        free(s_options);
-    }
 
     return 0;
 }

@@ -79,6 +79,7 @@ static int __tcp_slave_groups_register(TcpSlaveGroups *groups,
     slave->recv = slave_tcp_recv;
     slave->register_recv_handler = slave_register_handler;
     slave->status = ENUM_TCP_DISCONNECTED;
+    slave->pHandlers = NULL;
 
     if (groups->slave_names[groups->slave_count] != NULL) {
         strcpy(groups->slave_names[groups->slave_count], slave_name);
@@ -108,8 +109,8 @@ static int __tcp_slave_groups_init(TcpSlaveGroups *groups)
 
     int i;
     for (i = 0; i < MAX_SLAVES; i++) {
-        groups->slave_names[i] = (char*)malloc(256*sizeof(char));
-        memset(groups->slave_names[i], 0, 256*sizeof(char));
+        groups->slave_names[i] = (char*)malloc(256);
+        memset(groups->slave_names[i], 0, 256);
     }
 
     groups->slave_count = 0;
