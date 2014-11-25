@@ -65,7 +65,7 @@ int formatOptions(Options *options, char *buf, int buf_size);
 int initOptions(Options *options, int argc, const char *argv[]);
 
 /**
- * @Synopsis        初始化Tags，用于解析命令行参数。
+ * @Synopsis        向系统推送Tags实例，用于解析命令行参数。
  *
  * @Param options
  * @Param tag       用于返回调用端的Tag地址。
@@ -75,7 +75,7 @@ int initOptions(Options *options, int argc, const char *argv[]);
 int pushTags(Options *options, Tag **tag);
 
 /**
- * @Synopsis 初始化Ini，让系统获取Ini接口。
+ * @Synopsis 向系统推送Ini实例，让系统获取Ini接口。
  *
  * @Param options
  * @Param ini   用于返回调用端的Ini地址。
@@ -83,6 +83,15 @@ int pushTags(Options *options, Tag **tag);
  * @Returns 
  */
 int pushIni(Options *options, Ini **ini);
+
+/**
+ * @Synopsis 向系统推送Options实例，让系统获取Options接口
+ *
+ * @Param options   用于返回调用端的Options地址。
+ *
+ * @Returns 
+ */
+int pushOptions(Options **options);
 
 /**
  * @Synopsis        Ini解析回调函数。

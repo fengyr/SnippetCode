@@ -28,13 +28,13 @@ extern "C" {
 #define LOG_STDERR  1
 #define LOG_FILE    2
 
-#define LOG_CONFIG_PATH     "/tmp/.server_log.conf"
-#define LOG_FILE_DIR        "./"
+#define LOG_CONFIG_PATH     "/tmp/.app_engine_log.conf"
+#define LOG_FILE_DIR        "/var/log/app_engine/"
 
 struct logger_t;
 typedef struct logger_t Logger, *PLogger;
 
-typedef void (*logfunc)(Logger *logger, const char *fmt);
+typedef void (*logfunc)(Logger *logger, const char *fmt, ...);
 
 struct logger_t {
     int log_on;
@@ -50,6 +50,36 @@ int logger_init(Logger *logger,
                  const char *log_conf_path, 
                  const char *log_file_dir);
 void logger_destroy(Logger *logger);
+
+// int check_logger(Logger *logger);
+
+/* #define MY_ZLOG_INFO(logger, fmt, args...)  \
+ *     do {                                                    \
+ *         if (check_logger(logger) < 0) {                     \
+ *             break;                                          \
+ *         } else {                                            \
+ *             zlog_info(logger->zc, fmt, ##args);        \
+ *         }                                                   \
+ *     } while (0);                                            \
+ * 
+ * #define MY_ZLOG_DEBUG(logger, fmt, args...)  \
+ *     do {                                                    \
+ *         if (check_logger(logger) < 0) {                     \
+ *             break;                                          \
+ *         } else {                                            \
+ *             zlog_info(logger->zc, fmt, ##args);        \
+ *         }                                                   \
+ *     } while (0);                                            \
+ * 
+ * #define MY_ZLOG_ERROR(logger, fmt, args...)  \
+ *     do {                                                    \
+ *         if (check_logger(logger) < 0) {                     \
+ *             break;                                          \
+ *         } else {                                            \
+ *             zlog_info(logger->zc, fmt, ##args);        \
+ *         }                                                   \
+ *     } while (0);                                            \ */
+
 
 #ifdef __cplusplus
 }

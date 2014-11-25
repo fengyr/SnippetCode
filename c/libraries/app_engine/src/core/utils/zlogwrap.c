@@ -88,32 +88,50 @@ static int make_config(const char *log_conf_path, const char *log_file_dir)
     return 0;
 }
 
-void my_zlog_info(Logger *logger, const char *fmt)
+static int check_logger(Logger *logger)
 {
     if (!logger->log_on || !s_init_zlog_success) {
+        return -1;
+    }
+
+    return 0;
+} 
+
+static void my_zlog_info(Logger *logger, const char *fmt, ...)
+{
+    if (check_logger(logger) < 0) {
         return;
     }
 
-    zlog_info(logger->zc, fmt);
+    va_list arg;
+    va_start (arg, fmt);
+    vzlog_info(logger->zc, fmt, arg);
+    va_end (arg);
 }
 
-void my_zlog_debug(Logger *logger, const char *fmt)
+static void my_zlog_debug(Logger *logger, const char *fmt, ...)
 {
-    if (!logger->log_on || !s_init_zlog_success) {
+    if (check_logger(logger) < 0) {
         return;
     }
 
-    zlog_debug(logger->zc, fmt);
+    va_list arg;
+    va_start (arg, fmt);
+    vzlog_debug(logger->zc, fmt, arg);
+    va_end (arg);
 }
 
-void my_zlog_error(Logger *logger, const char *fmt)
+static void my_zlog_error(Logger *logger, const char *fmt, ...)
 {
-    if (!logger->log_on || !s_init_zlog_success) {
+    if (check_logger(logger) < 0) {
         return;
     }
 
-    zlog_error(logger->zc, fmt);
-}
+    va_list arg;
+    va_start (arg, fmt);
+    vzlog_error(logger->zc, fmt, arg);
+    va_end (arg);
+}  
 
 int logger_init(Logger *logger, 
                  int mode, 

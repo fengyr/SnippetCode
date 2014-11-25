@@ -32,8 +32,6 @@
 static MysqlClient *s_client;
 #endif
 
-static Options s_options;
-
 #ifdef USE_SQLITE
 static void query_bind_blob2(SqlQuery &query, void *bind_data)
 {
@@ -860,7 +858,6 @@ int on_app_create(struct app_runtime_t *app)
 {
     printf("===============\n");
     printf("onCreate called\n");
-    app->parse_options(app, &s_options);
     app->register_message_handler(handler_message, RUNTIME_LOOP_THREAD);
     /* app->register_message_handler(handler_message, RUNTIME_LOOP_FORGROUND); */
 
@@ -880,7 +877,7 @@ int on_app_destroy(struct app_runtime_t *app)
 {
     printf("onDestory called\n");
     printf("===============\n");
-    app->save_options(app, &s_options, s_options.cmd.config_file_path);
+    app->save_options(app, app->options, app->options->cmd.config_file_path);
 
     return 0;
 }
@@ -896,6 +893,15 @@ int on_app_process(struct app_runtime_t *app)
 {
     Logger *logger = app->logger;
 
+    // LOGGER
+    int count = 100000;
+    while (count-- > 0) {
+        logger->log_i(logger, "test: %d-%s-%f", 1, "hello", 1.2);
+        logger->log_d(logger, "version: %s", app->version("0", "1"));
+        logger->log_e(logger, "app: %p", app);
+        logger->log_i(logger, "hello world");
+    }
+    
     /* // STRUCT
      * test_object_array(10);
      * test_list(10);
@@ -912,7 +918,7 @@ int on_app_process(struct app_runtime_t *app)
     /* test_modbus_master(); */
 
     // SLAVE GROUP
-    test_slave_groups(app);
+    /* test_slave_groups(app); */
 
     // SERVER GROUP
     /* test_server_groups(app); */

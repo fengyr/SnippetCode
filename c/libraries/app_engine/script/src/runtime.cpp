@@ -31,7 +31,6 @@
 #include "options.h"
 
 static App *s_app = get_app_instance();
-static Options s_options;
 
 static int handler_message(struct message_handler_t *handler, struct message_t *msg)
 {
@@ -72,7 +71,6 @@ void on_msg_idle(MessageHandler *handler, Message *old_msg)
 int on_app_create(struct app_runtime_t *app)
 {
     // Options Hooks
-    app->parse_options(app, &s_options);
     Logger *logger = app->logger;
     Options *options = app->options;
 

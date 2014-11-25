@@ -23,6 +23,16 @@
 #include "options.h"
 #include "app.h"
 
+static Options s_options;
+
+static Tag tags[] = {
+    {"--config", TAGTYPE_STRING, s_options.cmd.config_file_path},
+    {"--localaddr", TAGTYPE_STRING, s_options.cmd.server_ip_addr},
+    {"--localport", TAGTYPE_INT, &s_options.cmd.server_port},
+    {"-h", TAGTYPE_BOOL, &s_options.cmd.help_mode},
+    {"--help", TAGTYPE_BOOL, &s_options.cmd.help_mode},
+};
+
 int initOptions(Options *options, int argc, const char *argv[])
 {
     memset(options, 0, sizeof(Options));
@@ -111,14 +121,6 @@ void printOptions(Options *options)
 
 int pushTags(Options *options, Tag **tag)
 {
-    static Tag tags[] = {
-        {"--config", TAGTYPE_STRING, options->cmd.config_file_path},
-        {"--localaddr", TAGTYPE_STRING, options->cmd.server_ip_addr},
-        {"--localport", TAGTYPE_INT, &options->cmd.server_port},
-        {"-h", TAGTYPE_BOOL, &options->cmd.help_mode},
-        {"--help", TAGTYPE_BOOL, &options->cmd.help_mode},
-    };  
-
     Tag *tags_p = tags;
     *tag = tags_p;
 
@@ -128,6 +130,15 @@ int pushTags(Options *options, Tag **tag)
 int pushIni(Options *options, Ini **ini)
 {
     *ini = &options->ini;
+
+    return 0;
+}
+
+int pushOptions(Options **options)
+{
+    Options *ops = &s_options;
+
+    *options = ops;
 
     return 0;
 }

@@ -23,6 +23,8 @@
 #include "options.h"
 #include "app.h"
 
+static Options s_options;
+
 int iniParseHook(void* user, const char* section, 
                const char* key, const char* value)
 {
@@ -37,6 +39,33 @@ int iniParseHook(void* user, const char* section,
     } else {
         return -1;
     }
+
+    return 0;
+}
+
+int initOptions(Options *options, int argc, const char *argv[])
+{
+    memset(options, 0, sizeof(Options));
+    CmdLine *cmd = &(options->cmd);
+    Ini *ini = &(options->ini);
+
+    //////////////////  命令行参数默认配置 //////////////////
+    /* 配置文件路径 */
+    strcpy(cmd->config_file_path, "");
+
+    /* tcp服务器地址 */
+    strcpy(cmd->server_ip_addr, DEFAULT_SERVER_IP);
+
+    /* tcp服务器端口 */
+    cmd->server_port = DEFAULT_SERVER_PORT;
+
+    /* 打印帮助信息并退出 */
+    cmd->help_mode = 0;
+
+    //////////////////  配置文件默认配置 //////////////////
+    ini->param1 = 100;
+    ini->param2 = 10.1;
+    strcpy(ini->param3, "hello wrold.");
 
     return 0;
 }
@@ -104,29 +133,11 @@ int pushIni(Options *options, Ini **ini)
     return 0;
 }
 
-int initOptions(Options *options, int argc, const char *argv[])
+int pushOptions(Options **options)
 {
-    memset(options, 0, sizeof(Options));
-    CmdLine *cmd = &(options->cmd);
-    Ini *ini = &(options->ini);
+    Options *ops = &s_options;
 
-    //////////////////  命令行参数默认配置 //////////////////
-    /* 配置文件路径 */
-    strcpy(cmd->config_file_path, "");
-
-    /* tcp服务器地址 */
-    strcpy(cmd->server_ip_addr, DEFAULT_SERVER_IP);
-
-    /* tcp服务器端口 */
-    cmd->server_port = DEFAULT_SERVER_PORT;
-
-    /* 打印帮助信息并退出 */
-    cmd->help_mode = 0;
-
-    //////////////////  配置文件默认配置 //////////////////
-    ini->param1 = 100;
-    ini->param2 = 10.1;
-    strcpy(ini->param3, "hello wrold.");
+    *options = ops;
 
     return 0;
 }

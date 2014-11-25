@@ -9,6 +9,10 @@ INIT=$1
 
 function init()
 {
+    rm -rf $PWD/include
+    rm -rf $PWD/src
+    rm -rf $PWD/libs
+
     mkdir $PWD/include
     mkdir $PWD/src
     mkdir $PWD/libs

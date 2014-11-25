@@ -39,6 +39,11 @@ int g_quit_app = 0;
 
 static void init(struct app_runtime_t *app)
 {
+    // 解析命令行参数
+    pushOptions(&app->options);
+    app->parse_options(app, app->options);
+
+    // 初始化消息队列
     message_queue_init(app->msg_queue);
     looper_init(&s_looper, app->msg_queue);
 
@@ -251,10 +256,10 @@ App* create_app_instance(int argc, const char *argv[])
     app->quit = quit;
 
     // init zlog system.
-    char log_file_dir[1024];
-    memset(log_file_dir, 0, sizeof(log_file_dir));
-    getcwd(log_file_dir, sizeof(log_file_dir));
-    logger_init(&s_logger, LOG_FILE, LOG_CONFIG_PATH, log_file_dir);
+    /* char log_file_dir[1024];
+     * memset(log_file_dir, 0, sizeof(log_file_dir));
+     * getcwd(log_file_dir, sizeof(log_file_dir)); */
+    logger_init(&s_logger, LOG_FILE, LOG_CONFIG_PATH, LOG_FILE_DIR);
 
     // TaskManager
     TaskManager *task_manager = create_taskmanager_instance();
