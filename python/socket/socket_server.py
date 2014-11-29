@@ -29,7 +29,7 @@ def recv_thread(*arg):
                 break
             data = struct.unpack("<hc3d5cdhc9dh8d75c", buf)
             print data
-            time.sleep(10)
+            # time.sleep(10)
             conn.send(buf);
         except Exception, e:
             break

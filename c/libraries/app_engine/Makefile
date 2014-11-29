@@ -8,12 +8,12 @@ CROSS_COMPILE   =
 OPTIMIZE        := 
 WARNINGS        := -Wall
 DEFS            := 
-EXTRA_CFLAGS    := -g -rdynamic
+# EXTRA_CFLAGS    := -g -rdynamic
 EXTRA_CFLAGS    += -g -DUSE_DEBUG -rdynamic
 LDFLAGS         := -pthread -lm -lrt -lstdc++ -ldl
 
 TARGET          := libapp.so
-TARGET_TYPE     := so
+TARGET_TYPE     := app
 
 ###########################################################
 USE_MYSQL 		:= FALSE

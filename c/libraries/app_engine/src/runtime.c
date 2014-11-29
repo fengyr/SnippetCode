@@ -113,6 +113,8 @@ static void test_sqlite(App *app)
     // 读写模式，创建表，条件查询多个数据
     printf("-------- open 2\n");
     sqlite->open_db(sqlite, "./example.db3", SQL_OPEN_RW | SQL_OPEN_CR);
+    // 再次打开报错
+    sqlite->open_db(sqlite, "./example.db3", SQL_OPEN_RW | SQL_OPEN_CR);
 
     sqlite->exec_sql(sqlite, "DROP TABLE IF EXISTS test");
     sqlite->exec_sql(sqlite, "CREATE TABLE test (id INTEGER PRIMARY KEY, value TEXT)");
@@ -261,13 +263,13 @@ static void test_modbus_master()
 
     memset(shorts, 0, sizeof(shorts));
     modbus_m->set_float(UT_REAL, shorts);
-    real = modbus_get_float(shorts);
-    DEBUG("modbus_get_float: UT_REAL=%f, real=%f\n", UT_REAL, real);
+    real = modbus_m->get_float(shorts);
+    printf("modbus_m->get_float: UT_REAL=%f, real=%f\n", UT_REAL, real);
 
     memset(shorts, 0, sizeof(shorts));
     modbus_set_float_dcba(UT_REAL, shorts);
-    real = modbus_get_float_dcba(shorts);
-    DEBUG("modbus_get_float_dcba: UT_REAL=%f, real=%f\n\n", UT_REAL, real);
+    real = modbus_m->get_float_dcba(shorts);
+    printf("modbus_get_float_dcba: UT_REAL=%f, real=%f\n\n", UT_REAL, real);
 
     free_modbus_master(modbus_m);
 #endif
@@ -861,8 +863,6 @@ int on_app_create(struct app_runtime_t *app)
     app->register_message_handler(handler_message, RUNTIME_LOOP_THREAD);
     /* app->register_message_handler(handler_message, RUNTIME_LOOP_FORGROUND); */
 
-    on_app_process(app);
-
     return 0;
 }
 
@@ -894,13 +894,13 @@ int on_app_process(struct app_runtime_t *app)
     Logger *logger = app->logger;
 
     // LOGGER
-    int count = 100000;
-    while (count-- > 0) {
-        logger->log_i(logger, "test: %d-%s-%f", 1, "hello", 1.2);
-        logger->log_d(logger, "version: %s", app->version("0", "1"));
-        logger->log_e(logger, "app: %p", app);
-        logger->log_i(logger, "hello world");
-    }
+    /* int count = 100000;
+     * while (count-- > 0) {
+     *     logger->log_i(logger, "test: %d-%s-%f", 1, "hello", 1.2);
+     *     logger->log_d(logger, "version: %s", app->version("0", "1"));
+     *     logger->log_e(logger, "app: %p", app);
+     *     logger->log_i(logger, "hello world");
+     * } */
     
     /* // STRUCT
      * test_object_array(10);
@@ -912,10 +912,10 @@ int on_app_process(struct app_runtime_t *app)
      * test_get_tables();   */
 
     // SQLITE
-    /* test_sqlite(app); */
+    test_sqlite(app);
 
     // MODBUS
-    /* test_modbus_master(); */
+    test_modbus_master();
 
     // SLAVE GROUP
     /* test_slave_groups(app); */

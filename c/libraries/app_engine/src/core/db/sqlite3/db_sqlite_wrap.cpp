@@ -16,6 +16,7 @@
  * =====================================================================================
  */
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "db_sqlite_wrap.hpp"
 #include "debug.h"
@@ -28,6 +29,11 @@ static int __open_db(struct db_sqlite_client_t *client,
 {
     try 
     {
+        if (client->sqlite_db != NULL) {
+            fprintf(stderr, "SqliteDb <%s> already opened\n", db_file_name);
+            return -2;
+        }
+
         client->sqlite_db = new SqlDatabase(db_file_name, db_open_flags);
     }
     catch (std::exception &e) 
@@ -40,12 +46,12 @@ static int __open_db(struct db_sqlite_client_t *client,
 
 static int __close_db(struct db_sqlite_client_t *client)
 {
-    if (client->sqlite_db) {
+    if (client->sqlite_db != NULL) {
         delete client->sqlite_db;
         client->sqlite_db = NULL;
     }
 
-    if (client->sqlite_transaction) {
+    if (client->sqlite_transaction != NULL) {
         delete client->sqlite_transaction;
         client->sqlite_transaction = NULL;
     }
@@ -188,12 +194,12 @@ static int __transaction_end(struct db_sqlite_client_t *client)
 
 static void __destory(struct db_sqlite_client_t *client)
 {
-    if (client->sqlite_db) {
+    if (client->sqlite_db != NULL) {
         delete client->sqlite_db;
         client->sqlite_db = NULL;
     }
 
-    if (client->sqlite_transaction) {
+    if (client->sqlite_transaction != NULL) {
         delete client->sqlite_transaction;
         client->sqlite_transaction = NULL;
     }

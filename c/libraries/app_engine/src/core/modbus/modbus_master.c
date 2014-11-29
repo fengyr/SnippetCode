@@ -234,22 +234,12 @@ static ModbusMaster* __init_modbus_master(modbus_t *ctx, ModbusConfig *config)
         master->config.byte_timeout_sec = config->byte_timeout_sec;
         master->config.byte_timeout_usec = config->byte_timeout_usec;
 
-        char buf[256];
-        memset(buf, 0, sizeof(buf));
-        sprintf(buf, "Modbus: debug_mode = %d.", config->debug_mode);
-        logger->log_i(logger, buf);
-
-        memset(buf, 0, sizeof(buf));
-        sprintf(buf, "Modbus: recovery_mode = %d.", config->recovery_mode);
-        logger->log_i(logger, buf);
-
-        memset(buf, 0, sizeof(buf));
-        sprintf(buf, "Modbus: response timeout = %d - %d.", config->res_timeout_sec, config->res_timeout_usec);
-        logger->log_i(logger, buf);
-
-        memset(buf, 0, sizeof(buf));
-        sprintf(buf, "Modbus: byte timeout = %d - %d.", config->byte_timeout_sec, config->byte_timeout_usec);
-        logger->log_i(logger, buf);
+        logger->log_i(logger, "Modbus: debug_mode = %d.", config->debug_mode);
+        logger->log_i(logger, "Modbus: recovery_mode = %d.", config->recovery_mode);
+        logger->log_i(logger, "Modbus: response timeout = %d - %d.", 
+                        config->res_timeout_sec, config->res_timeout_usec);
+        logger->log_i(logger, "Modbus: byte timeout = %d - %d.", 
+                        config->byte_timeout_sec, config->byte_timeout_usec);
     } else { /* 使用默认设置 */
         uint32_t old_res_timeout_sec, old_res_timeout_usec;
         uint32_t old_byte_timeout_sec, old_byte_timeout_usec;
