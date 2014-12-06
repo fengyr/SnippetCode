@@ -21,7 +21,7 @@
 #include <stdint.h>
 
 #include "md5.h"
-#include "debug.h"
+#include "appe_debug.h"
 
 static char result[64];
 

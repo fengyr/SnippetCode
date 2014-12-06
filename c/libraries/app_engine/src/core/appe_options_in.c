@@ -20,8 +20,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "options_in.h"
-#include "app.h"
+#include "appe_options_in.h"
+#include "appe_app.h"
 
 static Ini *s_ini;
 static Tag *s_tag;

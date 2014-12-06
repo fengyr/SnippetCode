@@ -66,11 +66,11 @@ typedef struct modbus_config_t {
     uint32_t                    byte_timeout_sec;   // 字节超时时间，单位秒
     uint32_t                    byte_timeout_usec;  // 字节超时时间，单位微妙
     modbus_error_recovery_mode  recovery_mode;      // 恢复模式
-} ModbusConfig, *PModbusConfig;
+} AppeModbusConfig, *PAppeModbusConfig;
 
 typedef struct modbus_master_t {
     modbus_t        *ctx;
-    ModbusConfig    config;
+    AppeModbusConfig    config;
 
     /* 读多个线圈，功能码0x01，返回读入的字节数，否则返回-1 */
     int (*read_bits)(struct modbus_master_t *modbus_m, 
@@ -115,21 +115,21 @@ typedef struct modbus_master_t {
     float (*get_float)(uint16_t *src);
     void (*set_float_dcba)(float src, uint16_t *dest);
     float (*get_float_dcba)(uint16_t *src);
-} ModbusMaster, *PModbusMaster;
+} AppeModbusMaster, *PAppeModbusMaster;
 
-/* 创建ModbusMaster */
-ModbusMaster* create_modbus_master_rtu(const char *serial_name, 
+/* 创建AppeModbusMaster */
+AppeModbusMaster* appe_create_modbus_master_rtu(const char *serial_name, 
                                        int baudrate, int databit, 
                                        char parity, int stopbit,
                                        int slave_addr,
-                                       ModbusConfig *config);
+                                       AppeModbusConfig *config);
 
-ModbusMaster* create_modbus_master_tcp(const char *ip_addr, 
+AppeModbusMaster* appe_create_modbus_master_tcp(const char *ip_addr, 
                                        int ip_port,
-                                       ModbusConfig *config);
+                                       AppeModbusConfig *config);
 
-/* 释放ModbusMaster资源 */
-void free_modbus_master(ModbusMaster *modbus_m);
+/* 释放AppeModbusMaster资源 */
+void appe_free_modbus_master(AppeModbusMaster *modbus_m);
 
 #ifdef __cplusplus
 }

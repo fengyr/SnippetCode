@@ -17,26 +17,26 @@
  */
 #include <stdio.h>
 
-#include "message.h"
+#include "appe_message.h"
 
-void message_handler_init(MessageHandler *handler, struct message_queue_t *queue)
+void appe_message_handler_init(MessageHandler *handler, struct message_queue_t *queue)
 {
     handler->queue = queue;
 }
 
-void message_handler_destroy(MessageHandler *handler)
+void appe_message_handler_destroy(MessageHandler *handler)
 {
     handler->queue = NULL;
     fprintf(stderr, "message_handler_destroy\n");
 }
 
-int default_send_message(MessageHandler *handler, struct message_t *msg)
+int appe_default_send_message(MessageHandler *handler, struct message_t *msg)
 {
     if ((handler == NULL) || (msg == NULL)) {
         fprintf(stderr, "default_send_message error\n");
         return -1;
     }
-    message_queue_push(handler->queue, msg);
+    appe_message_queue_push(handler->queue, msg);
 
     return 0;
 }

@@ -18,7 +18,7 @@
 #ifndef _runtime_H_
 #define _runtime_H_
 
-#include "app.h"
+#include "appe_app.h"
 
 #ifdef __cplusplus
 extern "C" {

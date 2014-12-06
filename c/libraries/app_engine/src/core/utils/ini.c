@@ -19,9 +19,9 @@
 #include <ctype.h>
 #include <string.h>
 
-#include "app.h"
+#include "appe_app.h"
 #include "ini.h"
-#include "debug.h"
+#include "appe_debug.h"
 
 #define MAX_LINE        1024
 #define MAX_SECTION     1024

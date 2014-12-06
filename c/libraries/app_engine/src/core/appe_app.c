@@ -19,10 +19,10 @@
 #include <unistd.h>
 #include <string.h>
 
-#include "app.h"
+#include "appe_app.h"
 
 static App s_app;
-static Looper s_looper;
+static AppeLooper s_looper;
 static MessageQueue s_msg_queue; 
 static MessageHandler s_message_handler;
 static HandlerMessage s_handler_message;
@@ -44,8 +44,8 @@ static void init(struct app_runtime_t *app)
     app->parse_options(app, app->options);
 
     // 初始化消息队列
-    message_queue_init(app->msg_queue);
-    looper_init(&s_looper, app->msg_queue);
+    appe_message_queue_init(app->msg_queue);
+    appe_looper_init(&s_looper, app->msg_queue);
 
     if (app->onCreate != NULL) {
         app->onCreate(app);
@@ -65,10 +65,10 @@ static void* thread_runtime(void *param)
     MessageHandler *msg_handler = &s_message_handler;    
     msg_handler->handler_message = s_handler_message;
     msg_handler->queue = app->msg_queue;
-    msg_handler->send_message = default_send_message; 
+    msg_handler->send_message = appe_default_send_message; 
 
-    Message *msg = (Message*)create_empty_message(MSG_ON_START); 
-    trans_message(msg);
+    Message *msg = (Message*)appe_create_empty_message(MSG_ON_START); 
+    appe_trans_message(msg);
 
     pthread_exit(NULL);
 }
@@ -90,7 +90,7 @@ static void* thread_loop(void *param)
 
     s_logger.log_i(&s_logger, "Runtime: Background Looper Run.");
     s_loop_thread_running = 1;
-    looper_run(app->looper);
+    appe_looper_run(app->looper);
     s_logger.log_i(&s_logger, "Runtime: Background Looper Exit.");
 
     pthread_exit(NULL);
@@ -110,7 +110,7 @@ static void start_background_loop(App *app)
 static void start_foreground_loop(App *app)
 {
     s_logger.log_i(&s_logger, "Runtime: Foreground Looper Run.");
-    looper_run(app->looper);
+    appe_looper_run(app->looper);
     s_logger.log_i(&s_logger, "Runtime: Foreground Looper Exit.");
 }
 
@@ -140,8 +140,8 @@ static void run(struct app_runtime_t *app)
             usleep(100);
         }
 
-        Message *new_msg = (Message*)create_empty_message(MSG_ON_EXIT); 
-        trans_message(new_msg);
+        Message *new_msg = (Message*)appe_create_empty_message(MSG_ON_EXIT); 
+        appe_trans_message(new_msg);
         usleep(1000);
     } else {
         start_foreground_loop(app);
@@ -158,8 +158,8 @@ static void quit(struct app_runtime_t *app)
         app->task_manager->destory(app->task_manager);
     }
 
-    message_queue_destory(app->msg_queue);
-    looper_exit(app->looper);
+    appe_message_queue_destory(app->msg_queue);
+    appe_looper_exit(app->looper);
 
     if (app->tcp_server_groups != NULL) {
         app->tcp_server_groups->destroy(app->tcp_server_groups);        
@@ -168,12 +168,6 @@ static void quit(struct app_runtime_t *app)
     if (app->tcp_slave_groups != NULL) {
         app->tcp_slave_groups->destroy(app->tcp_slave_groups);        
     }
-
-#ifdef USE_SQLITE
-    if (app->sqlite_client != NULL) {
-        app->sqlite_client->destory(app->sqlite_client);
-    }
-#endif
 
     logger_destroy(&s_logger);
 }
@@ -187,7 +181,7 @@ const char* get_version(const char *min_ver, const char *mac_ver)
     return ver;
 }
 
-int trans_message(Message *msg)
+int appe_trans_message(Message *msg)
 {
     MessageHandler *msg_handler = &s_message_handler;    
     msg->handler = msg_handler;
@@ -202,7 +196,7 @@ void parse_options(struct app_runtime_t *app, Options *options)
 
 void save_options(struct app_runtime_t *app, Options *options, char *config_file_path)
 {
-    if (!strcmp(config_file_path, "")) {
+    if ((!config_file_path) || (!strcmp(config_file_path, ""))) {
         return; 
     }
 
@@ -236,7 +230,7 @@ SAVE_QUIT:
     }
 }
 
-App* create_app_instance(int argc, const char *argv[])
+App* appe_create_app_instance(int argc, const char *argv[])
 {
     App *app = &s_app;
     s_argc = argc;
@@ -265,18 +259,12 @@ App* create_app_instance(int argc, const char *argv[])
     TaskManager *task_manager = create_taskmanager_instance();
 
     // create tcp server groups instance
-    TcpServerGroups *tcp_server_groups = create_tcp_server_groups_instance();
+    AppeTcpServerGroups *tcp_server_groups = appe_create_tcp_server_groups_instance();
     tcp_server_groups->init(tcp_server_groups);
 
     // create tcp slave groups instance
-    TcpSlaveGroups *tcp_slave_groups = create_tcp_slave_groups_instance();
+    AppeTcpSlaveGroups *tcp_slave_groups = appe_create_tcp_slave_groups_instance();
     tcp_slave_groups->init(tcp_slave_groups);
-
-#ifdef USE_SQLITE
-    // create sqlite instance
-    SqliteClient *sqlite_client = create_sqlite_client_instance();
-    app->sqlite_client = sqlite_client;
-#endif
 
     // set Servers .etc
     app->tcp_server_groups = tcp_server_groups;
@@ -290,7 +278,7 @@ App* create_app_instance(int argc, const char *argv[])
     return app;
 }
 
-App* get_app_instance()
+App* appe_get_app_instance()
 {
     App *app = &s_app;
 

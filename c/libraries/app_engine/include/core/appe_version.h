@@ -22,6 +22,9 @@
  *      5.线程的任务模型。
  *      6.XML读写模块。
  *
+ *  0.4.9.F：
+ *      1.调整代码结构。
+ *
  *  0.4.9.E：
  *      1.调整Options结构。
  *      2.优化Logger模块，提供可变参数接口。
@@ -113,7 +116,7 @@
 extern "C" {
 #endif
 
-#define APP_VERSION "0.4.9.E"
+#define APP_VERSION "0.4.9.F"
 
 #ifdef __cplusplus
 }

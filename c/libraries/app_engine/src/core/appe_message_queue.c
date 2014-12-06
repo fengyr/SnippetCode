@@ -19,8 +19,8 @@
 #include <sys/time.h>
 #include <time.h>
 
-#include "message.h"
-#include "debug.h"
+#include "appe_message.h"
+#include "appe_debug.h"
 
 static List s_message_list;
 
@@ -71,20 +71,20 @@ static void barrier_leave(MessageQueue *queue)
     pthread_mutex_unlock(&(queue->mutex));
 }
 
-void message_queue_init(MessageQueue *queue)
+void appe_message_queue_init(MessageQueue *queue)
 {
     if (!assertQueue(queue)) {
         return;
     }
 
     queue->list = &s_message_list;
-    list_init(queue->list, free_message);
+    list_init(queue->list, appe_free_message);
 
     pthread_mutex_init(&(queue->mutex), NULL);
     pthread_cond_init(&(queue->cond), NULL);
 }
 
-void message_queue_destory(MessageQueue *queue)
+void appe_message_queue_destory(MessageQueue *queue)
 {
     if (!assertQueue(queue)) {
         return;
@@ -101,7 +101,7 @@ void message_queue_destory(MessageQueue *queue)
     DEBUG("message_queue_destory: leave\n");
 }
 
-Message* message_queue_pop(MessageQueue *queue)
+Message* appe_message_queue_pop(MessageQueue *queue)
 {
     if (!assertQueue(queue)) {
         return NULL;
@@ -115,7 +115,7 @@ Message* message_queue_pop(MessageQueue *queue)
     return msg;
 }
 
-int message_queue_size(MessageQueue *queue)
+int appe_message_queue_size(MessageQueue *queue)
 {
     if (!assertQueue(queue)) {
         return -1;
@@ -128,7 +128,7 @@ int message_queue_size(MessageQueue *queue)
     return size;  
 }
 
-int message_queue_push(MessageQueue *queue, Message *msg)
+int appe_message_queue_push(MessageQueue *queue, Message *msg)
 {
     if (!assertQueue(queue)) {
         return -1;
@@ -143,17 +143,17 @@ int message_queue_push(MessageQueue *queue, Message *msg)
 }
 
 // debug
-void message_queue_dump(MessageQueue *queue)
+void appe_message_queue_dump(MessageQueue *queue)
 {
-    if (message_queue_size(queue) <= 0) {
+    if (appe_message_queue_size(queue) <= 0) {
         DEBUG("message_queue_dump: size=0\n");
         return;
     }
 
     Message *msg;
-    while ((msg = message_queue_pop(queue)) != NULL) {
+    while ((msg = appe_message_queue_pop(queue)) != NULL) {
         DEBUG("message_queue_dump id=%d, arg1=%d, arg2=%d, obj=%s\n", 
                 msg->id, msg->arg1, msg->arg2, (char*)msg->obj);
-        free_message(msg);
+        appe_free_message(msg);
     }
 }

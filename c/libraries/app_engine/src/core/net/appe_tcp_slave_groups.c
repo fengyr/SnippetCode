@@ -23,19 +23,19 @@
 #include <assert.h>
 #include <string.h>
 
-#include "tcp_slave.h"
-#include "debug.h"
+#include "appe_tcp_slave.h"
+#include "appe_debug.h"
 #include "zlogwrap.h"
-#include "app.h"
+#include "appe_app.h"
 
-static TcpSlaveGroups s_tcp_slave_groups;
+static AppeTcpSlaveGroups s_tcp_slave_groups;
 
-static TcpSlave* __get_slave(struct tcp_slave_groups_t *groups, 
-                           const char *slave_name)
+static AppeTcpSlave* __get_slave(struct tcp_slave_groups_t *groups, 
+                                const char *slave_name)
 {
     int error;
-    TcpSlave *slave;
-    App *s_app = get_app_instance();
+    AppeTcpSlave *slave;
+    App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
 
     error = hashmap_get(groups->hashmap_slave_groups, (char*)slave_name, (void**)(&slave));
@@ -46,12 +46,12 @@ static TcpSlave* __get_slave(struct tcp_slave_groups_t *groups,
     return slave;
 }
 
-static int __tcp_slave_groups_register(TcpSlaveGroups *groups, 
+static int __tcp_slave_groups_register(AppeTcpSlaveGroups *groups, 
                               const char *slave_name, 
                               const char *server_ip, 
                               int server_port)
 {
-    App *s_app = get_app_instance();
+    App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
     
     if (groups->slave_count >= MAX_SLAVES) {
@@ -64,20 +64,20 @@ static int __tcp_slave_groups_register(TcpSlaveGroups *groups,
         return -1;
     }
 
-    // init TcpSlave
-    TcpSlave *slave;
-    slave = (TcpSlave*) malloc(sizeof(TcpSlave));
+    // init AppeTcpSlave
+    AppeTcpSlave *slave;
+    slave = (AppeTcpSlave*) malloc(sizeof(AppeTcpSlave));
 
     memset(slave->slave_name, 0, sizeof(slave->slave_name));
     strcpy(slave->slave_name, slave_name);
     memset(slave->server_ip, 0, sizeof(slave->server_ip));
     strcpy(slave->server_ip, server_ip);
     slave->server_port = server_port;
-    slave->connect = slave_tcp_connect;
-    slave->disconnect = slave_tcp_disconnect;
-    slave->send = slave_tcp_send;
-    slave->recv = slave_tcp_recv;
-    slave->register_recv_handler = slave_register_handler;
+    slave->connect = appe_slave_tcp_connect;
+    slave->disconnect = appe_slave_tcp_disconnect;
+    slave->send = appe_slave_tcp_send;
+    slave->recv = appe_slave_tcp_recv;
+    slave->register_recv_handler = appe_slave_register_handler;
     slave->status = ENUM_TCP_DISCONNECTED;
     slave->pHandlers = NULL;
 
@@ -103,7 +103,7 @@ static int __tcp_slave_groups_register(TcpSlaveGroups *groups,
     return 0;
 }
 
-static int __tcp_slave_groups_init(TcpSlaveGroups *groups)
+static int __tcp_slave_groups_init(AppeTcpSlaveGroups *groups)
 {
     groups->hashmap_slave_groups = hashmap_new();
 
@@ -118,11 +118,11 @@ static int __tcp_slave_groups_init(TcpSlaveGroups *groups)
     return 0;
 }
 
-static int __tcp_slave_groups_destroy(TcpSlaveGroups *groups)
+static int __tcp_slave_groups_destroy(AppeTcpSlaveGroups *groups)
 {
     int error;
-    TcpSlave *slave = NULL;
-    App *s_app = get_app_instance();
+    AppeTcpSlave *slave = NULL;
+    App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
 
     DEBUG("tcp_slave_groups_destroy: BEGIN\n");
@@ -131,7 +131,7 @@ static int __tcp_slave_groups_destroy(TcpSlaveGroups *groups)
         error = hashmap_get(groups->hashmap_slave_groups, groups->slave_names[i], (void**)(&slave));
         if (slave != NULL) {
             DEBUG("tcp_slave_groups_destroy: slave_name=%s\n", slave->slave_name);
-            slave_tcp_close(slave, 0);
+            appe_slave_tcp_close(slave, 0);
             free(slave);
             slave = NULL;
 
@@ -154,7 +154,7 @@ static int __tcp_slave_groups_destroy(TcpSlaveGroups *groups)
     return 0;
 }
 
-TcpSlaveGroups* create_tcp_slave_groups_instance()
+AppeTcpSlaveGroups* appe_create_tcp_slave_groups_instance()
 {
     s_tcp_slave_groups.init = __tcp_slave_groups_init;
     s_tcp_slave_groups.destroy= __tcp_slave_groups_destroy;

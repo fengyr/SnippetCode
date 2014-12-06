@@ -28,17 +28,17 @@
 #include <assert.h>
 #include <signal.h>
 
-#include "connection.h"
-#include "handler_process.h"
-#include "debug.h"
+#include "appe_socket_in.h"
+#include "appe_socket_handler.h"
+#include "appe_debug.h"
 
 static int server_quit = 0;
 
-static void dumpInfo(Socket *sock)
+static void dumpInfo(AppeSocket *sock)
 {
     DEBUG("sock->local_fd = %d\n", sock->local_fd);
 
-    Remote *remote = sock->remote;
+    AppeRemote *remote = sock->remote;
     int i = 0;
 
     for (i = 0; i < CONNECT_MAX_REMOTE_NUM; i++) {
@@ -47,10 +47,10 @@ static void dumpInfo(Socket *sock)
     }
 }
 
-static EventHandler* findHandlerByName(Socket *sock, char *name)
+static AppeEventHandler* findHandlerByName(AppeSocket *sock, char *name)
 {
     int i;
-    EventHandler **pHandler = sock->pHandlers;
+    AppeEventHandler **pHandler = sock->pHandlers;
 
     DEBUG("findHandlerByName: enter, name = %s\n", name);
     for (i = 0; i < CONNECT_MAX_HANDLER_NUM; i++) {
@@ -65,10 +65,10 @@ static EventHandler* findHandlerByName(Socket *sock, char *name)
     return NULL;
 }
 
-static void init_socket(Socket *sock, const char *name)
+static void init_socket(AppeSocket *sock, const char *name)
 {
     int i;
-    Remote *remote = sock->remote;
+    AppeRemote *remote = sock->remote;
 
     sock->local_fd = -1;
     memset(sock->local_name, 0, sizeof(sock->local_name));
@@ -89,9 +89,9 @@ static void init_socket(Socket *sock, const char *name)
     pthread_mutex_init(&(sock->s_mutex), NULL);
 }
 
-static void restore_remote(Socket *sock, int id) 
+static void restore_remote(AppeSocket *sock, int id) 
 {
-    Remote *remote = sock->remote;
+    AppeRemote *remote = sock->remote;
 
     DEBUG("restore_remote: enter\n");
     pthread_mutex_lock(&sock->s_mutex);
@@ -108,7 +108,7 @@ static void restore_remote(Socket *sock, int id)
     DEBUG("restore_remote: leave\n");
 }
 
-static void free_socket(Socket *sock)
+static void free_socket(AppeSocket *sock)
 {
     server_quit = 1;
 
@@ -117,7 +117,7 @@ static void free_socket(Socket *sock)
     fprintf(stderr, "%s server exit...\n", sock->local_name);
 
     int i, *fd;
-    Remote *remote = sock->remote;
+    AppeRemote *remote = sock->remote;
 
     for (i = 0; i < CONNECT_MAX_REMOTE_NUM; i++) {
         fd = &remote[i].remote_fd;
@@ -141,7 +141,7 @@ static void free_socket(Socket *sock)
         sock->local_fd = -1;
     }
 
-    EventHandler **pHandler = sock->pHandlers;
+    AppeEventHandler **pHandler = sock->pHandlers;
 
     if (pHandler != NULL) {
         for (i = 0; i < CONNECT_MAX_HANDLER_NUM; i++) {
@@ -162,10 +162,10 @@ static void free_socket(Socket *sock)
     pthread_mutex_destroy(&sock->s_mutex);
 }
 
-static void add_client(Socket *sock, int client_fd, char *client_ip, int client_port)
+static void add_client(AppeSocket *sock, int client_fd, char *client_ip, int client_port)
 {
     int i;
-    Remote *remote = sock->remote;
+    AppeRemote *remote = sock->remote;
 
     DEBUG("add_client: enter\n");
     struct timeval timeout_r; 
@@ -201,8 +201,8 @@ static void* thread_tcp_server(void *param)
 {
     pthread_detach(pthread_self());
 
-    Socket *sock = (Socket*) param;
-    Remote *remote = sock->remote;
+    AppeSocket *sock = (AppeSocket*) param;
+    AppeRemote *remote = sock->remote;
 
     int rc, i;
     int max_fd;
@@ -272,9 +272,9 @@ static void* thread_tcp_server(void *param)
             if (FD_ISSET(remote[i].remote_fd, &read_fds)) {
                 DEBUG("%s: enter event handler\n", sock->local_name);
                 // read from client and replay
-                EventHandler *handler = findHandlerByName(sock, remote[i].remote_name);
+                AppeEventHandler *handler = findHandlerByName(sock, remote[i].remote_name);
                 if (handler != NULL) {
-                    EventHandlerCall call = handler->onRecvAndReplay;
+                    AppeEventHandlerCall call = handler->onRecvAndReplay;
                     rc = (*call)(remote[i].remote_fd, sock);
 
                     if (rc <= 0) {
@@ -284,7 +284,7 @@ static void* thread_tcp_server(void *param)
                         DEBUG("thread_tcp_server: handler...\n");
                     }    
                 } else {
-                    fprintf(stderr, "%s: not found EventHandler\n", sock->local_name);
+                    fprintf(stderr, "%s: not found AppeEventHandler\n", sock->local_name);
                     restore_remote(sock, i);
                 }
             }
@@ -295,7 +295,7 @@ static void* thread_tcp_server(void *param)
     pthread_exit(NULL);
 }
 
-int tcp_server_init(Socket *sock, const char *local_ip, int local_port, const char *name)
+int appe_tcp_server_init(AppeSocket *sock, const char *local_ip, int local_port, const char *name)
 {
     int rtn = -1;
     int val = 1;
@@ -362,8 +362,8 @@ int tcp_server_init(Socket *sock, const char *local_ip, int local_port, const ch
     sock->local_fd = fd;
 
     // now set NULL to init handler.
-    sock->pHandlers = (EventHandler**) malloc(CONNECT_MAX_HANDLER_NUM * sizeof(EventHandler*));
-    memset(sock->pHandlers, 0, CONNECT_MAX_HANDLER_NUM * sizeof(EventHandler*));
+    sock->pHandlers = (AppeEventHandler**) malloc(CONNECT_MAX_HANDLER_NUM * sizeof(AppeEventHandler*));
+    memset(sock->pHandlers, 0, CONNECT_MAX_HANDLER_NUM * sizeof(AppeEventHandler*));
 
     return rtn;
 
@@ -374,7 +374,7 @@ ERROR:
     return -1;
 }
 
-void tcp_server_run(Socket *sock, int thread_mode)
+void appe_tcp_server_run(AppeSocket *sock, int thread_mode)
 {
     assert(sock != NULL);
 
@@ -394,20 +394,20 @@ void tcp_server_run(Socket *sock, int thread_mode)
     }
 }
 
-void tcp_server_quit(Socket *sock)
+void appe_tcp_server_quit(AppeSocket *sock)
 {
     assert(sock != NULL);
 
     free_socket(sock);
 }
 
-void registerHandler(Socket *sock, EventHandler *handler)
+void appe_registerHandler(AppeSocket *sock, AppeEventHandler *handler)
 {
     int i = 0;
 
     if ((sock != NULL) && !server_quit) {
         for (i = 0; i < CONNECT_MAX_HANDLER_NUM; i++) {
-            EventHandler **mHandler = &sock->pHandlers[i];
+            AppeEventHandler **mHandler = &sock->pHandlers[i];
             if (*mHandler != NULL) {
                 if (strcmp((*mHandler)->handler_type, handler->handler_type) == 0) {
                     (*mHandler) = handler;

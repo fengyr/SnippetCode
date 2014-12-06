@@ -30,7 +30,7 @@
 #include "runtime.h"
 #include "options.h"
 
-static App *s_app = get_app_instance();
+static App *s_app = appe_get_app_instance();
 
 static int handler_message(struct message_handler_t *handler, struct message_t *msg)
 {
@@ -120,7 +120,7 @@ int on_app_process(struct app_runtime_t *app)
     gettimeofday(&tpend, NULL);
     timeuse = 1000000 * (tpend.tv_sec - tpstart.tv_sec) + tpend.tv_usec - tpstart.tv_usec;
     timeuse /= 1000000;
-    fprintf(stderr, ">>>>> Loop once time: %.3fs <<<<<\n", timeuse);
+    // fprintf(stderr, ">>>>> Loop once time: %.3fs <<<<<\n", timeuse);
 #endif
 
     return 0;

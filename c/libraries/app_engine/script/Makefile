@@ -9,8 +9,14 @@ OPTIMIZE        :=
 WARNINGS        := -Wall -Wno-unused -Wno-format
 DEFS            := 
 EXTRA_CFLAGS    := -rdynamic
-EXTRA_CFLAGS 	+= -DUSE_DEBUG
+EXTRA_CFLAGS 	+= -g -DUSE_DEBUG
 LDFLAGS         := -pthread -lm -lrt -ldl
+
+# 以下选项必须和libapp.so相同
+# EXTRA_CFLAGS    += -DUSE_MYSQL
+# EXTRA_CFLAGS    += -DUSE_SQLITE
+# EXTRA_CFLAGS    += -DUSE_MODBUS
+# EXTRA_CFLAGS    += -DUSE_DEVICE
 
 # 目标名称和类型，不需要考虑后缀名，定义多个名称实际上多个拷贝
 # 如：$(OUT_DIR)/main 

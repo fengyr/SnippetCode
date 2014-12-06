@@ -18,8 +18,8 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "modbus_master.h"
-#include "app.h"
+#include "appe_modbus_master.h"
+#include "appe_app.h"
 
 static void set_float(float src, uint16_t *dest)
 {
@@ -202,13 +202,13 @@ static int read_input_registers(struct modbus_master_t *modbus_m,
     return rc;
 }
 
-static ModbusMaster* __init_modbus_master(modbus_t *ctx, ModbusConfig *config)
+static AppeModbusMaster* __init_modbus_master(modbus_t *ctx, AppeModbusConfig *config)
 {
-    const App *app = get_app_instance();
+    const App *app = appe_get_app_instance();
     Logger *logger = app->logger;
-    ModbusMaster *master = NULL;
+    AppeModbusMaster *master = NULL;
 
-    master = (ModbusMaster*) malloc(sizeof(ModbusMaster));
+    master = (AppeModbusMaster*) malloc(sizeof(AppeModbusMaster));
 
     // 初始化方法
     master->ctx = ctx;
@@ -268,7 +268,7 @@ static ModbusMaster* __init_modbus_master(modbus_t *ctx, ModbusConfig *config)
 
     if (modbus_connect(ctx) == -1) {
         logger->log_e(logger, "Modbus: Connect To Slave Failed.");
-        free_modbus_master(master);
+        appe_free_modbus_master(master);
         return NULL;
     }
  
@@ -279,15 +279,15 @@ static ModbusMaster* __init_modbus_master(modbus_t *ctx, ModbusConfig *config)
 }
 
 
-ModbusMaster* create_modbus_master_rtu(const char *serial_name, 
+AppeModbusMaster* appe_create_modbus_master_rtu(const char *serial_name, 
                                        int baudrate, int databit, 
                                        char parity, int stopbit,
                                        int slave_addr,
-                                       ModbusConfig *config)
+                                       AppeModbusConfig *config)
 {
-    const App *app = get_app_instance();
+    const App *app = appe_get_app_instance();
     Logger *logger = app->logger;
-    ModbusMaster *master = NULL;
+    AppeModbusMaster *master = NULL;
 
     modbus_t *ctx = modbus_new_rtu(serial_name, baudrate, parity, databit, stopbit);
 
@@ -306,13 +306,13 @@ ModbusMaster* create_modbus_master_rtu(const char *serial_name,
 
 }
 
-ModbusMaster* create_modbus_master_tcp(const char *ip_addr, 
+AppeModbusMaster* appe_create_modbus_master_tcp(const char *ip_addr, 
                                        int ip_port,
-                                       ModbusConfig *config)
+                                       AppeModbusConfig *config)
 {
-    const App *app = get_app_instance();
+    const App *app = appe_get_app_instance();
     Logger *logger = app->logger;
-    ModbusMaster *master = NULL;
+    AppeModbusMaster *master = NULL;
 
     modbus_t *ctx = modbus_new_tcp(ip_addr, ip_port);
 
@@ -328,9 +328,9 @@ ModbusMaster* create_modbus_master_tcp(const char *ip_addr,
     return master;
 }
 
-void free_modbus_master(ModbusMaster *modbus_m)
+void appe_free_modbus_master(AppeModbusMaster *modbus_m)
 {
-    const App *app = get_app_instance();
+    const App *app = appe_get_app_instance();
     Logger *logger = app->logger;
 
     if (modbus_m != NULL) {

@@ -24,7 +24,7 @@
 #include <stdio.h>
 
 #include "zlogwrap.h"
-#include "debug.h"
+#include "appe_debug.h"
 
 static char const *LOG_CONFIG_TEMPLE[] = {
     "[global]",

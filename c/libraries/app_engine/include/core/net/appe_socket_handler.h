@@ -15,15 +15,15 @@
  *
  * =====================================================================================
  */
-#ifndef _handler_process_H_
-#define _handler_process_H_
+#ifndef _appe_socket_handler_H_
+#define _appe_socket_handler_H_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include <sys/types.h>
-#include "connection.h"
+#include "appe_socket_in.h"
 
 #define HANDLER_TYPE_DEFAULT            "type_default"
 #define HANDLER_TYPE_1                  "type_handler_1"
@@ -49,7 +49,7 @@ struct proto_data_t {
     char proto_data[HANDLER_MSG_MAX];       // 1017 bytes
     char proto_tail[2];                     // 2 bytes
 };
-typedef struct proto_data_t ProtoData, *PProtoData;
+typedef struct proto_data_t AppeProtoData, *PAppeProtoData;
 
 /**
  * @Synopsis 与命令ID对应的处理过程
@@ -59,29 +59,29 @@ typedef struct proto_data_t ProtoData, *PProtoData;
  */
 struct handler_proc_t {
     int proto_id;
-    int (*proc)(int fd, char *msg, Socket *sock);
+    int (*proc)(int fd, char *msg, AppeSocket *sock);
 };
-typedef struct handler_proc_t HandlerProc, *PHandlerProc;
+typedef struct handler_proc_t AppeHandlerProc, *PAppeHandlerProc;
 
 //////////////////////////////////////////////////////
 //          public interface                        //
 //////////////////////////////////////////////////////
-ssize_t replay(int fd, const char *msg);
-int default_handler(int fd, char *msg, Socket *sock);
-int default_replay_handler(int fd, char *msg, Socket *sock);
-int call_handler(HandlerProc *handler, int id, int fd, char *msg, Socket *sock); 
-int handler_proc_stub(int fd, Socket *sock, HandlerProc *handler);
-void memset_proto(ProtoData *proto);
+ssize_t appe_replay(int fd, const char *msg);
+int appe_default_handler(int fd, char *msg, AppeSocket *sock);
+int appe_default_replay_handler(int fd, char *msg, AppeSocket *sock);
+int appe_call_handler(AppeHandlerProc *handler, int id, int fd, char *msg, AppeSocket *sock); 
+int appe_handler_proc_stub(int fd, AppeSocket *sock, AppeHandlerProc *handler);
+void appe_memset_proto(AppeProtoData *proto);
 
 // 对保留ID=0的命令的处理
-#define DEFAULT_HANDLER {HANDLER_REGISTER_ID, default_handler}
+#define DEFAULT_HANDLER {HANDLER_REGISTER_ID, appe_default_handler}
 // 对保留ID=1的响应的处理
-#define DEFAULT_REPLAY {HANDLER_REPLAY_ID, default_replay_handler}
+#define DEFAULT_REPLAY {HANDLER_REPLAY_ID, appe_default_replay_handler}
 // 处理命令的结尾标识, ID=-1
 // 用户自定义的命令处理ID必须从2开始
 #define HANDLER_TAIL {HANDLER_TAIL_ID, NULL}
 // 默认接收网络协议命令的方法
-#define HANDLER_PROC_STUB(fd, sock, handler)  handler_proc_stub((fd), (sock), (handler))
+#define HANDLER_PROC_STUB(fd, sock, handler)  appe_handler_proc_stub((fd), (sock), (handler))
 
 // 命令数组默认定义的的开始部分
 #define BEGIN_HANDLER   \
@@ -96,4 +96,4 @@ void memset_proto(ProtoData *proto);
 }
 #endif
 
-#endif /* end of include guard: _handler_process_H_ */
+#endif /* end of include guard: _appe_socket_handler_H_ */

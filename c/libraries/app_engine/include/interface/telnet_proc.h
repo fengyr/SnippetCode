@@ -22,12 +22,12 @@
 extern "C" {
 #endif
 
-#include "connection.h"
+#include "appe_socket_in.h"
 
 //////////////////////////////////////////////////////
 //          public interface                        //
 //////////////////////////////////////////////////////
-int telnet_handler(int fd, Socket *sock);
+int telnet_handler(int fd, AppeSocket *sock);
 
 #ifdef __cplusplus
 }

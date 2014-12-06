@@ -21,7 +21,7 @@
 #include <stdio.h>
 
 #include "options.h"
-#include "app.h"
+#include "appe_app.h"
 
 static Options s_options;
 

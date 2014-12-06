@@ -17,28 +17,28 @@
  */
 #include <stdio.h>
 
-#include "looper.h"
-#include "message.h"
-#include "debug.h"
+#include "appe_looper.h"
+#include "appe_message.h"
+#include "appe_debug.h"
 
 static int s_looper_quit = 0;
 
-void looper_init(Looper *looper, MessageQueue *queue)
+void appe_looper_init(AppeLooper *looper, MessageQueue *queue)
 {
     looper->msg_queue = queue;
 }
 
-void looper_run(Looper *looper)
+void appe_looper_run(AppeLooper *looper)
 {
     Message *msg;
     MessageHandler *handler;
     MessageQueue *queue = looper->msg_queue;
 
     while (!s_looper_quit) {
-        msg = message_queue_pop(queue);
+        msg = appe_message_queue_pop(queue);
         if (msg != NULL) {
             if (msg->id == MSG_ON_EXIT) {
-                free_message(msg);
+                appe_free_message(msg);
                 s_looper_quit = 1;
                 break;
             }
@@ -51,12 +51,12 @@ void looper_run(Looper *looper)
             }
 
             // free message obj
-            free_message(msg);
+            appe_free_message(msg);
         }
     }
 }
 
-void looper_exit(Looper *looper)
+void appe_looper_exit(AppeLooper *looper)
 {
     s_looper_quit = 1;
     DEBUG("looper_exit\n");

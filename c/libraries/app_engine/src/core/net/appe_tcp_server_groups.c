@@ -25,19 +25,19 @@
 #include <assert.h>
 #include <string.h>
 
-#include "tcp_server.h"
-#include "telnet_server.h"
-#include "debug.h"
+#include "appe_tcp_server.h"
+#include "appe_telnet_server.h"
+#include "appe_debug.h"
 #include "zlogwrap.h"
-#include "app.h"
+#include "appe_app.h"
 
-static TcpServerGroups s_tcp_server_groups;
+static AppeTcpServerGroups s_tcp_server_groups;
 
-static AnyServer __get_server(struct tcp_server_groups_t *groups, 
+static AppeAnyServer __get_server(struct tcp_server_groups_t *groups, 
                              const char *server_name)
 {
     int error;
-    App *s_app = get_app_instance();
+    App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
     enum tcp_server_type_t server_type = ENUM_SERVER_NODEFINED;
 
@@ -50,13 +50,13 @@ static AnyServer __get_server(struct tcp_server_groups_t *groups,
     }
 
     if (server_type == ENUM_SERVER_TCP_ASCII) {
-        TcpServer *tcp_server;
+        AppeTcpServer *tcp_server;
         error = hashmap_get(groups->hashmap_server_groups, (char*)server_name, (void**)(&tcp_server));
-        return (AnyServer*) tcp_server;
+        return (AppeAnyServer*) tcp_server;
     } else if (server_type == ENUM_SERVER_TELNET) {
-        TelnetServer *telnet_server;
+        AppeTelnetServer *telnet_server;
         error = hashmap_get(groups->hashmap_server_groups, (char*)server_name, (void**)(&telnet_server));
-        return (AnyServer*) telnet_server;
+        return (AppeAnyServer*) telnet_server;
     } else {
         logger->log_e(logger, "Net: Get Server NO Defined.");
         return NULL;
@@ -69,13 +69,13 @@ static AnyServer __get_server(struct tcp_server_groups_t *groups,
     return NULL;
 }
 
-static int __tcp_server_groups_register(TcpServerGroups *groups, 
+static int __tcp_server_groups_register(AppeTcpServerGroups *groups, 
                                       enum tcp_server_type_t server_type,
                                       const char *server_name, 
                                       const char *server_ip, 
                                       int server_port)
 {
-    App *s_app = get_app_instance();
+    App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
 
     if (groups->server_count >= MAX_SERVERS) {
@@ -91,7 +91,7 @@ static int __tcp_server_groups_register(TcpServerGroups *groups,
     int error;
     if (server_type == ENUM_SERVER_TCP_ASCII) {
         // create tcp server instance
-        TcpServer *tcp_server = create_tcp_server_instance();
+        AppeTcpServer *tcp_server = appe_create_tcp_server_instance();
         tcp_server->init(tcp_server, server_name, server_ip, server_port);
         tcp_server->run(tcp_server, 1);
 
@@ -107,7 +107,7 @@ static int __tcp_server_groups_register(TcpServerGroups *groups,
         DEBUG("tcp_server_groups_register: server_name=%s\n", tcp_server->sock->local_name);
     } else if (server_type == ENUM_SERVER_TELNET) {
         // create telnet server instance
-        TelnetServer *telnet_server = create_telnet_server_instance();
+        AppeTelnetServer *telnet_server = appe_create_telnet_server_instance();
         telnet_server->init(telnet_server, server_name, server_ip, server_port);
         telnet_server->run(telnet_server, 1);
 
@@ -138,7 +138,7 @@ static int __tcp_server_groups_register(TcpServerGroups *groups,
     return 0;
 }
 
-static int __tcp_server_groups_init(TcpServerGroups *groups)
+static int __tcp_server_groups_init(AppeTcpServerGroups *groups)
 {
     groups->hashmap_server_groups = hashmap_new();
 
@@ -154,17 +154,17 @@ static int __tcp_server_groups_init(TcpServerGroups *groups)
     return 0;
 }
 
-static int __tcp_server_groups_destroy(TcpServerGroups *groups)
+static int __tcp_server_groups_destroy(AppeTcpServerGroups *groups)
 {
     int error;
-    App *s_app = get_app_instance();
+    App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
 
     DEBUG("tcp_server_groups_destroy: BEGIN\n");
     int i;
     for (i = 0; i < MAX_SERVERS; i++) {
         if (groups->server_types[i] == ENUM_SERVER_TCP_ASCII) {
-            TcpServer *tcp_server;
+            AppeTcpServer *tcp_server;
             error = hashmap_get(groups->hashmap_server_groups, groups->server_names[i], (void**)(&tcp_server));
             if (tcp_server != NULL) {
                 DEBUG("tcp_server_groups_destroy: server_name=%s\n", tcp_server->sock->local_name);
@@ -181,7 +181,7 @@ static int __tcp_server_groups_destroy(TcpServerGroups *groups)
                 }
             }    
         } else if (groups->server_types[i] == ENUM_SERVER_TELNET) {
-            TelnetServer *telnet_server;
+            AppeTelnetServer *telnet_server;
             error = hashmap_get(groups->hashmap_server_groups, groups->server_names[i], (void**)(&telnet_server));
             if (telnet_server != NULL) {
                 DEBUG("tcp_server_groups_destroy: server_name=%s\n", telnet_server->sock->local_name);
@@ -214,7 +214,7 @@ static int __tcp_server_groups_destroy(TcpServerGroups *groups)
     return 0;
 }
 
-TcpServerGroups* create_tcp_server_groups_instance()
+AppeTcpServerGroups* appe_create_tcp_server_groups_instance()
 {
     s_tcp_server_groups.init = __tcp_server_groups_init;
     s_tcp_server_groups.destroy= __tcp_server_groups_destroy;

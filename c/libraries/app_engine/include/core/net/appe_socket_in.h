@@ -15,8 +15,8 @@
  *
  * =====================================================================================
  */
-#ifndef _connect_H_
-#define _connect_H_
+#ifndef _appe_socket_in_H_
+#define _appe_socket_in_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -29,7 +29,7 @@ extern "C" {
 #define CONNECT_MAX_NAME_LEN    32
 
 struct event_handler_t;
-typedef struct event_handler_t EventHandler, *PEventHandler;
+typedef struct event_handler_t AppeEventHandler, *PAppeEventHandler;
 
 //////////////////////////////////////////////////////
 //              远程客户端                          //
@@ -50,7 +50,7 @@ struct remote_t {
     enum remote_type_t remote_type;    
     char *remote_name;
 };
-typedef struct remote_t Remote, *PRemote;
+typedef struct remote_t AppeRemote, *PAppeRemote;
 
 //////////////////////////////////////////////////////
 //              本地服务器                          //
@@ -58,13 +58,13 @@ typedef struct remote_t Remote, *PRemote;
 struct socket_t {
     int local_fd;
     char local_name[256];
-    Remote remote[CONNECT_MAX_REMOTE_NUM];
-    EventHandler **pHandlers;
+    AppeRemote remote[CONNECT_MAX_REMOTE_NUM];
+    AppeEventHandler **pHandlers;
 
     pthread_t pthread;
     pthread_mutex_t s_mutex;
 };
-typedef struct socket_t Socket, *PSocket;
+typedef struct socket_t AppeSocket, *PAppeSocket;
 
 //////////////////////////////////////////////////////
 //              网络协议处理                        //
@@ -73,11 +73,11 @@ typedef struct socket_t Socket, *PSocket;
  * @Synopsis 针对每组网络协议，声明相对应的处理函数。
  *
  * @Param remote_fd     远端客户端连接fd
- * @Param sock          Socket对象
+ * @Param sock          AppeSocket对象
  *
  * @Returns 
  */
-typedef int (*EventHandlerCall)(int remote_fd, Socket *sock);
+typedef int (*AppeEventHandlerCall)(int remote_fd, AppeSocket *sock);
 
 /**
  * @Synopsis 客户端网络消息处理
@@ -93,19 +93,19 @@ typedef int (*EventHandlerCall)(int remote_fd, Socket *sock);
  */
 struct event_handler_t {
     const char *handler_type;
-    EventHandlerCall onRecvAndReplay;
+    AppeEventHandlerCall onRecvAndReplay;
 };
 
 //////////////////////////////////////////////////////
 //          public interface                        //
 //////////////////////////////////////////////////////
-int tcp_server_init(Socket *sock, const char *local_ip, int local_port, const char *name);
-void tcp_server_run(Socket *sock, int thread_mode);
-void tcp_server_quit(Socket *sock);
-void registerHandler(Socket *sock, EventHandler *handler);
+int appe_tcp_server_init(AppeSocket *sock, const char *local_ip, int local_port, const char *name);
+void appe_tcp_server_run(AppeSocket *sock, int thread_mode);
+void appe_tcp_server_quit(AppeSocket *sock);
+void appe_registerHandler(AppeSocket *sock, AppeEventHandler *handler);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* end of include guard: _connect_H_ */
+#endif /* end of include guard: _appe_socket_in_H_ */

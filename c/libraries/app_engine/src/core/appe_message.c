@@ -17,10 +17,10 @@
  */
 #include <stdlib.h>
 
-#include "message.h"
-#include "debug.h"
+#include "appe_message.h"
+#include "appe_debug.h"
 
-void* create_message(int msg_id, int arg1, int arg2, void *obj)
+void* appe_create_message(int msg_id, int arg1, int arg2, void *obj)
 {
     Message *msg;
 
@@ -33,7 +33,7 @@ void* create_message(int msg_id, int arg1, int arg2, void *obj)
     return (void*)msg;
 }
 
-void* create_empty_message(int msg_id)
+void* appe_create_empty_message(int msg_id)
 {
     Message *msg;
 
@@ -46,7 +46,7 @@ void* create_empty_message(int msg_id)
     return (void*)msg;
 }
 
-void free_message(void *message)
+void appe_free_message(void *message)
 {
     if (!message) {
         return;

@@ -21,7 +21,7 @@
 #include <signal.h>
 #include <stdlib.h>
 
-#include "app.h"
+#include "appe_app.h"
 #include "runtime.h"
 
 static App *app;
@@ -58,8 +58,8 @@ static void except_quit(int signo)
 
     g_quit_app = 1;
 
-    Message *new_msg = (Message*)create_empty_message(MSG_ON_EXIT); 
-    trans_message(new_msg);
+    Message *new_msg = (Message*)appe_create_empty_message(MSG_ON_EXIT); 
+    appe_trans_message(new_msg);
 }
 
 static void signal_handle()
@@ -80,7 +80,7 @@ int main(int argc, const char *argv[])
 {
     signal_handle();
 
-    app = create_app_instance(argc, argv);
+    app = appe_create_app_instance(argc, argv);
     app->onCreate = on_app_create;
     app->onProcess = on_app_process;
     app->onDestory = on_app_destroy;

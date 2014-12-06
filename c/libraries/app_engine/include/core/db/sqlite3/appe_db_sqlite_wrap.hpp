@@ -71,13 +71,13 @@ struct db_sqlite_client_t {
 
     void (*destory)(struct db_sqlite_client_t *client);
 };
-typedef struct db_sqlite_client_t SqliteClient, *PSqliteClient;
+typedef struct db_sqlite_client_t AppeSqliteClient, *PAppeSqliteClient;
 
 //////////////////////////////////////////////////////
 //          public interface                        //
 //////////////////////////////////////////////////////
 
-SqliteClient* create_sqlite_client_instance();
+AppeSqliteClient* appe_create_sqlite_client_instance();
 
 #endif
 

@@ -20,7 +20,7 @@
 
 // C++代码做特别处理
 #include "SimpleIni.h"
-#include "db_sqlite_wrap.hpp"
+#include "appe_db_sqlite_wrap.hpp"
 
 #ifdef __cplusplus
 extern "C" {
@@ -33,7 +33,7 @@ extern "C" {
 
 /* <modbus> */
 #include "modbus.h"
-#include "modbus_master.h"
+#include "appe_modbus_master.h"
 #include "modbus_rtu.h"
 #include "modbus_tcp.h"
 
@@ -42,11 +42,11 @@ extern "C" {
 #include "db_mysql_wrap.h"
 
 /* <net> */
-#include "connection.h"
-#include "handler_process.h"
-#include "tcp_server.h"
-#include "tcp_slave.h"
-#include "telnet_server.h"
+#include "appe_socket_in.h"
+#include "appe_socket_handler.h"
+#include "appe_tcp_server.h"
+#include "appe_tcp_slave.h"
+#include "appe_telnet_server.h"
 
 /* <utils> */
 #include "array.h"
@@ -62,13 +62,13 @@ extern "C" {
 #include "SimpleIni.h"
 
 /* <core> */
-#include "debug.h"
-#include "looper.h"
-#include "message.h"
-#include "version.h"
+#include "appe_debug.h"
+#include "appe_looper.h"
+#include "appe_message.h"
+#include "appe_version.h"
 
 /* <interface> */
-#include "options_in.h"
+#include "appe_options_in.h"
 
 struct app_runtime_t {
     // 命令行参数
@@ -76,14 +76,11 @@ struct app_runtime_t {
 
     // 内部接口
     MessageQueue *msg_queue;
-    Looper *looper;
+    AppeLooper *looper;
 
     // 外部接口
-#ifdef USE_SQLITE
-    SqliteClient *sqlite_client;
-#endif
-    TcpServerGroups *tcp_server_groups;
-    TcpSlaveGroups *tcp_slave_groups;
+    AppeTcpServerGroups *tcp_server_groups;
+    AppeTcpSlaveGroups *tcp_slave_groups;
     TaskManager *task_manager;
     Logger *logger;
 
@@ -114,12 +111,12 @@ typedef struct app_runtime_t App, *PApp;
 #define RUNTIME_LOOP_THREAD     1
 
 // 创建一个app的实例
-App* create_app_instance(int argc, const char *argv[]);
+App* appe_create_app_instance(int argc, const char *argv[]);
 // 获取已创建的app实例
-App* get_app_instance();
+App* appe_get_app_instance();
 
 // 传送消息
-int trans_message(Message *msg);
+int appe_trans_message(Message *msg);
 // 获取程序开始运行的时间
 struct timeval* get_boot_time();
 

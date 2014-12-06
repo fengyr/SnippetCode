@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <dlfcn.h>
 
-#include "debug.h"
+#include "appe_debug.h"
 #include "hw_module.h"
 
 static int load(const char *id, const char *so_path, struct hw_module_t **pHmi)

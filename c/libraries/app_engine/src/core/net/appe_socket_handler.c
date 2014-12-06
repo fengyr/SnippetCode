@@ -26,13 +26,13 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 
-#include "connection.h"
-#include "handler_process.h"
+#include "appe_socket_in.h"
+#include "appe_socket_handler.h"
 #include "ui_interface.h"
-#include "debug.h"
-#include "app.h"
+#include "appe_debug.h"
+#include "appe_app.h"
 
-static int indexOfFd(int fd, Remote *remote)
+static int indexOfFd(int fd, AppeRemote *remote)
 {
     int i;
     for (i = 0; i < CONNECT_MAX_REMOTE_NUM; i++) {
@@ -44,10 +44,10 @@ static int indexOfFd(int fd, Remote *remote)
     return -1;
 }
 
-ssize_t replay(int fd, const char *msg)
+ssize_t appe_replay(int fd, const char *msg)
 {
-    ProtoData proto;
-    memset_proto(&proto);
+    AppeProtoData proto;
+    appe_memset_proto(&proto);
     proto.proto_id = HANDLER_REPLAY_ID;
     // 消息字符串结尾需要添加\r\n
     sprintf(proto.proto_data, "%s", msg);
@@ -57,18 +57,18 @@ ssize_t replay(int fd, const char *msg)
     return size;
 }
 
-void memset_proto(ProtoData *proto)
+void appe_memset_proto(AppeProtoData *proto)
 {
-    memset(proto, 0, sizeof(ProtoData));
+    memset(proto, 0, sizeof(AppeProtoData));
     proto->proto_head = ':';
     proto->proto_tail[0] = '\r';
     proto->proto_tail[1] = '\n';
 }
 
-int default_handler(int fd, char *msg, Socket *sock)
+int appe_default_handler(int fd, char *msg, AppeSocket *sock)
 {
-    const App *s_app = get_app_instance();
-    Remote *remote = sock->remote;
+    const App *s_app = appe_get_app_instance();
+    AppeRemote *remote = sock->remote;
     int id = indexOfFd(fd, remote); 
 
     DEBUG("default_handler: fd = %d, msg = %s\n", fd, msg);
@@ -93,7 +93,7 @@ int default_handler(int fd, char *msg, Socket *sock)
                 remote[id].remote_type = ENUM_REMOTE_4;
             } else {
                 remote[id].remote_type = ENUM_REMOTE_NODEFINED;
-                replay(fd, HANDLER_REPLAY_FAILED);
+                appe_replay(fd, HANDLER_REPLAY_FAILED);
                 return -1;
             }
             DEBUG("remote[id].remote_name = %s, type = %d\n", remote[id].remote_name, remote[id].remote_type);
@@ -106,22 +106,22 @@ int default_handler(int fd, char *msg, Socket *sock)
     Logger *logger = s_app->logger;
     logger->log_d(logger, buf);
 
-    replay(fd, HANDLER_REPLAY_SUCCESS);
+    appe_replay(fd, HANDLER_REPLAY_SUCCESS);
 
     return 0;
 }
 
-int default_replay_handler(int fd, char *msg, Socket *sock)
+int appe_default_replay_handler(int fd, char *msg, AppeSocket *sock)
 {
     DEBUG("default_replay_handler: fd = %d, msg = %s\n", fd, msg);
     return 0;
 }
 
-int call_handler(HandlerProc *handler, int id, int fd, char *msg, Socket *sock)
+int appe_call_handler(AppeHandlerProc *handler, int id, int fd, char *msg, AppeSocket *sock)
 {
     int rtn = -1;
-    App *s_app = get_app_instance();
-    HandlerProc *h = handler;
+    App *s_app = appe_get_app_instance();
+    AppeHandlerProc *h = handler;
     char buf[2048];
 
     for (; (h != NULL) && (h->proto_id != HANDLER_TAIL_ID); h++) {
@@ -141,17 +141,17 @@ int call_handler(HandlerProc *handler, int id, int fd, char *msg, Socket *sock)
     return -1;
 }
 
-int handler_proc_stub(int fd, Socket *sock, HandlerProc *handler)
+int appe_handler_proc_stub(int fd, AppeSocket *sock, AppeHandlerProc *handler)
 {    
-    App *s_app = get_app_instance();
+    App *s_app = appe_get_app_instance();
     int find = 0;
     ssize_t recv_size = 0;
     ssize_t start = 0;
-    ssize_t total_size = sizeof(ProtoData);
+    ssize_t total_size = sizeof(AppeProtoData);
     int i, head = -1;
-    static char buffer[sizeof(ProtoData)];
-    ProtoData proto;
-    memset_proto(&proto);
+    static char buffer[sizeof(AppeProtoData)];
+    AppeProtoData proto;
+    appe_memset_proto(&proto);
 
     while (!find) {
         recv_size = recv(fd, &buffer[start], total_size - start, 0);
@@ -199,7 +199,7 @@ int handler_proc_stub(int fd, Socket *sock, HandlerProc *handler)
         }
     }
 
-    call_handler(handler, proto.proto_id, fd, proto.proto_data, sock);
+    appe_call_handler(handler, proto.proto_id, fd, proto.proto_data, sock);
 
     return recv_size;
 }

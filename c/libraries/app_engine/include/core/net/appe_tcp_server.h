@@ -15,34 +15,34 @@
  *
  * =====================================================================================
  */
-#ifndef _tcp_server_H_
-#define _tcp_server_H_
+#ifndef _appe_tcp_server_H_
+#define _appe_tcp_server_H_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "connection.h"
+#include "appe_socket_in.h"
 #include "hashmap.h"
 
 struct tcp_server_t {
-    Socket *sock;
+    AppeSocket *sock;
 
     int (*init)(struct tcp_server_t*, const char*, const char*, int);
     void (*run)(struct tcp_server_t*, int);
     void (*quit)(struct tcp_server_t*);
-    void (*register_event_handler)(struct tcp_server_t *server, EventHandler *handler);
+    void (*register_event_handler)(struct tcp_server_t *server, AppeEventHandler *handler);
 };
-typedef struct tcp_server_t TcpServer, *PTcpServer;
+typedef struct tcp_server_t AppeTcpServer, *PAppeTcpServer;
 
-TcpServer* create_tcp_server_instance();
+AppeTcpServer* appe_create_tcp_server_instance();
 
 //////////////////////////////////////////////////////
 //                  Server Groups                   //
 //////////////////////////////////////////////////////
 #define MAX_SERVERS  128
 
-typedef void* AnyServer;
+typedef void* AppeAnyServer;
 
 enum tcp_server_type_t {
     ENUM_SERVER_NODEFINED = -1,
@@ -61,20 +61,20 @@ struct tcp_server_groups_t {
                            const char *server_name, 
                            const char *server_ip, 
                            int server_port);
-    AnyServer (*get_server)(struct tcp_server_groups_t *groups, 
+    AppeAnyServer (*get_server)(struct tcp_server_groups_t *groups, 
                            const char *server_name);
     int (*init)(struct tcp_server_groups_t *groups); 
     int (*destroy)(struct tcp_server_groups_t *groups);
 };
-typedef struct tcp_server_groups_t TcpServerGroups, *PTcpServerGroups;
+typedef struct tcp_server_groups_t AppeTcpServerGroups, *PAppeTcpServerGroups;
 
 //////////////////////////////////////////////////////
 //          public interface                        //
 //////////////////////////////////////////////////////
-TcpServerGroups* create_tcp_server_groups_instance();
+AppeTcpServerGroups* appe_create_tcp_server_groups_instance();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* end of include guard: _tcp_server_H_ */
+#endif /* end of include guard: _appe_tcp_server_H_ */

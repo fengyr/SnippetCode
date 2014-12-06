@@ -26,10 +26,10 @@
 #include <assert.h>
 #include <signal.h>
 
-#include "app.h"
+#include "appe_app.h"
 #include "zlogwrap.h"
-#include "tcp_slave.h"
-#include "debug.h"
+#include "appe_tcp_slave.h"
+#include "appe_debug.h"
 
 static int SERVER_QUIT = 0;
 
@@ -37,7 +37,7 @@ static int set_block_mode(int fd)
 {
     long fflag;
     char err[256];
-    App *s_app = get_app_instance();
+    App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
 
     if( (fflag = fcntl(fd, F_GETFL, NULL)) < 0) { 
@@ -64,7 +64,7 @@ static int set_noblock_mode(int fd)
 {
     long fflag;
     char err[256];
-    App *s_app = get_app_instance();
+    App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
 
     if ((fflag = fcntl(fd, F_GETFL, NULL)) < 0) { 
@@ -87,15 +87,15 @@ static int set_noblock_mode(int fd)
     return 0;
 }
 
-static int _recv(TcpSlave *slave)
+static int _recv(AppeTcpSlave *slave)
 {
-    RecvHandler *handler = slave->pHandlers;
+    AppeRecvHandler *handler = slave->pHandlers;
     ssize_t total_size = 0;
     char *buffer = NULL;
     int rc = 0;
 
     if (handler != NULL) {
-        RecvHandlerCall call = handler->onRecvAndReplay;
+        AppeRecvHandlerCall call = handler->onRecvAndReplay;
         int req_size = handler->req_size;
         int recv_size = 0;
 
@@ -159,7 +159,7 @@ BUFFER_FREE:
             buffer = NULL;
         }
     } else {
-        DEBUG("%s: not found RecvHandler\n", slave->slave_name);
+        DEBUG("%s: not found AppeRecvHandler\n", slave->slave_name);
     }
 
     return rc;
@@ -168,7 +168,7 @@ BUFFER_FREE:
 static void* thread_slave_recv(void *param)
 {
     pthread_detach(pthread_self());
-    TcpSlave *slave = (TcpSlave*) param;
+    AppeTcpSlave *slave = (AppeTcpSlave*) param;
 
     int rc;
     int max_fd;
@@ -217,26 +217,24 @@ static void* thread_slave_recv(void *param)
     pthread_exit(NULL);
 }
 
-int slave_register_handler(TcpSlave *slave, RecvHandler *handler)
+int appe_slave_register_handler(AppeTcpSlave *slave, AppeRecvHandler *handler)
 {
-    int res;
-
     if (!handler) {
         return -1;
     }
 
-    // Init RecvHandler
+    // Init AppeRecvHandler
     if (!slave->pHandlers) {
-        slave->pHandlers = (RecvHandler*) malloc(sizeof(RecvHandler));
+        slave->pHandlers = (AppeRecvHandler*) malloc(sizeof(AppeRecvHandler));
     }
-    memcpy(slave->pHandlers, handler, sizeof(RecvHandler));
+    memcpy(slave->pHandlers, handler, sizeof(AppeRecvHandler));
     DEBUG("slave_register_handler: slave name = %s, ip = %s, port = %d, handler = %p\n", 
             slave->slave_name, slave->server_ip, slave->server_port, slave->pHandlers);
 
-    return res;
+    return 0;
 }
 
-int slave_tcp_init(TcpSlave *slave, 
+int appe_slave_tcp_init(AppeTcpSlave *slave, 
                     const char *name, 
                     const char *server_ip, 
                     int server_port, 
@@ -245,7 +243,7 @@ int slave_tcp_init(TcpSlave *slave,
 {
     int res, select_res;
     char err[256];
-    App *s_app = get_app_instance();
+    App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
     fd_set myset; 
     struct timeval tv;
@@ -404,11 +402,11 @@ int slave_tcp_init(TcpSlave *slave,
     return res;
 
 ERROR:
-    slave_tcp_close(slave, SLAVE_STATUS_CONNECT_FIRST);
+    appe_slave_tcp_close(slave, SLAVE_STATUS_CONNECT_FIRST);
     return -1;
 }
 
-int slave_tcp_connect(TcpSlave *slave, int auto_connect)
+int appe_slave_tcp_connect(AppeTcpSlave *slave, int auto_connect)
 {
     char slave_name[256];
     char server_ip[64];
@@ -421,15 +419,15 @@ int slave_tcp_connect(TcpSlave *slave, int auto_connect)
     DEBUG("slave_tcp_connect: slave_name=%s, server_ip=%s, server_port=%d\n", 
            slave_name, server_ip, server_port);
 
-    return slave_tcp_init(slave, slave_name, server_ip, server_port, 
+    return appe_slave_tcp_init(slave, slave_name, server_ip, server_port, 
                           SLAVE_STATUS_CONNECT_FIRST, auto_connect);
 }
 
-int slave_tcp_recv(TcpSlave *slave, void *data, int size)
+int appe_slave_tcp_recv(AppeTcpSlave *slave, void *data, int size)
 {
     int ssize = -1;
     char err[256];
-    App *s_app = get_app_instance();
+    App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
 
     if (!slave) {
@@ -457,11 +455,11 @@ int slave_tcp_recv(TcpSlave *slave, void *data, int size)
     return ssize;
 }
 
-int slave_tcp_send(TcpSlave *slave, void *data, int size)
+int appe_slave_tcp_send(AppeTcpSlave *slave, void *data, int size)
 {
     int ssize = -1;
     char err[256];
-    App *s_app = get_app_instance();
+    App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
 
     if (!slave) {
@@ -480,7 +478,7 @@ int slave_tcp_send(TcpSlave *slave, void *data, int size)
             sprintf(err, "Net: Slave Send Data, %s.", strerror(errno));
             logger->log_e(logger, err);
 
-            slave_tcp_close(slave, SLAVE_STATUS_RECONNECTED);
+            appe_slave_tcp_close(slave, SLAVE_STATUS_RECONNECTED);
 
             char slave_name[256];
             char server_ip[64];
@@ -490,7 +488,7 @@ int slave_tcp_send(TcpSlave *slave, void *data, int size)
             strcpy(server_ip, slave->server_ip);
             int server_port = slave->server_port;
             int auto_connect = slave->auto_connect;
-            int res = slave_tcp_init(slave, slave_name, server_ip, server_port, SLAVE_STATUS_RECONNECTED, auto_connect);
+            int res = appe_slave_tcp_init(slave, slave_name, server_ip, server_port, SLAVE_STATUS_RECONNECTED, auto_connect);
 
             memset(err, 0, sizeof(err));
             if (res < 0) {
@@ -518,11 +516,11 @@ int slave_tcp_send(TcpSlave *slave, void *data, int size)
     return ssize;
 }
 
-int slave_tcp_close(TcpSlave *slave, int reconnect)
+int appe_slave_tcp_close(AppeTcpSlave *slave, int reconnect)
 {
     void *res = NULL;
     char err[256];
-    App *s_app = get_app_instance();
+    App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
 
     SERVER_QUIT = 1;
@@ -563,11 +561,11 @@ PTHREAD_FREE:
     return 0;
 }
 
-int slave_tcp_disconnect(TcpSlave *slave)
+int appe_slave_tcp_disconnect(AppeTcpSlave *slave)
 {
     void *res = NULL;
     char err[256];
-    App *s_app = get_app_instance();
+    App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
 
     SERVER_QUIT = 1;

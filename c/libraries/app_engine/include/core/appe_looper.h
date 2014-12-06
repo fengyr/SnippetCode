@@ -22,12 +22,12 @@
 extern "C" {
 #endif
 
-#include "message.h"
+#include "appe_message.h"
 
 struct looper_t {
     MessageQueue *msg_queue;
 };
-typedef struct looper_t Looper, *PLooper;
+typedef struct looper_t AppeLooper, *PAppeLooper;
 
 //////////////////////////////////////////////////////
 //          public interface                        //
@@ -35,9 +35,9 @@ typedef struct looper_t Looper, *PLooper;
 #define MSG_ON_START        0
 #define MSG_ON_EXIT         9999
 
-void looper_init(Looper *looper, MessageQueue *queue);
-void looper_run(Looper *looper);
-void looper_exit(Looper *looper);
+void appe_looper_init(AppeLooper *looper, MessageQueue *queue);
+void appe_looper_run(AppeLooper *looper);
+void appe_looper_exit(AppeLooper *looper);
 
 #ifdef __cplusplus
 }

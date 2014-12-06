@@ -18,10 +18,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "db_sqlite_wrap.hpp"
-#include "debug.h"
+#include "appe_db_sqlite_wrap.hpp"
+#include "appe_debug.h"
 
-static SqliteClient *s_sqlite_client = NULL; 
+static AppeSqliteClient *s_sqlite_client = NULL; 
 
 static int __open_db(struct db_sqlite_client_t *client, 
                         const char *db_file_name, 
@@ -210,10 +210,10 @@ static void __destory(struct db_sqlite_client_t *client)
     }
 }
 
-SqliteClient* create_sqlite_client_instance()
+AppeSqliteClient* appe_create_sqlite_client_instance()
 {
     if (!s_sqlite_client) {
-        s_sqlite_client = (SqliteClient*) malloc(sizeof(SqliteClient));    
+        s_sqlite_client = (AppeSqliteClient*) malloc(sizeof(AppeSqliteClient));    
         s_sqlite_client->sqlite_db = NULL;
         s_sqlite_client->sqlite_transaction = NULL;
 

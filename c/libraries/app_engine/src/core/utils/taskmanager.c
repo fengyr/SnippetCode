@@ -17,7 +17,7 @@
  */
 #include <stdlib.h>
 
-#include "app.h"
+#include "appe_app.h"
 
 static TaskManager *s_task_manager = NULL;
 
@@ -43,7 +43,7 @@ static int __add_task(struct taskmanager_t *task_manager,
                     TaskRun task, 
                     TaskParam param)
 {
-    App *s_app = get_app_instance();
+    App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
     char info[64];
 

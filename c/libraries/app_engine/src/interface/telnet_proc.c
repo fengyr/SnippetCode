@@ -21,26 +21,26 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "app.h"
+#include "appe_app.h"
 #include "telnet_proc.h"
 
 //////////////////////////////////////////////////////
 //              telnet处理方法                      //
 //////////////////////////////////////////////////////
-static int cmd_hello(int fd, char *msg, Socket *sock)
+static int cmd_hello(int fd, char *msg, AppeSocket *sock)
 {
     /* do something */
-    replay(fd, "hello world!!\n");
+    appe_replay(fd, "hello world!!\n");
 
     return 0;
 }
 
-static TelnetProc s_telnet_proc[] = {
+static AppeTelnetProc s_telnet_proc[] = {
     {"hello", cmd_hello},
     {"", NULL},
 };
 
-static int call_telnet_handler(TelnetProc *handler, int id, int fd, char *msg, Socket *sock)
+static int call_telnet_handler(AppeTelnetProc *handler, int id, int fd, char *msg, AppeSocket *sock)
 {
     int rtn = -1;
     char *tail = msg + strlen(msg) - 1;
@@ -49,7 +49,7 @@ static int call_telnet_handler(TelnetProc *handler, int id, int fd, char *msg, S
         tail--;
     }
 
-    TelnetProc *h = handler;
+    AppeTelnetProc *h = handler;
     for (; (h != NULL) && (h->telnet_proc_handler != NULL); h++) {
         if (!strcmp(msg, h->telnet_cmd)) {
             rtn = h->telnet_proc_handler(fd, msg, sock);
@@ -62,7 +62,7 @@ static int call_telnet_handler(TelnetProc *handler, int id, int fd, char *msg, S
     return -1;
 }
 
-static int telnet_proc_stub(int fd, Socket *sock, HandlerProc *handler)
+static int telnet_proc_stub(int fd, AppeSocket *sock, AppeHandlerProc *handler)
 {    
     char buffer[TELNET_BUF_SIZE];
     memset(buffer, 0, sizeof(buffer));
@@ -74,7 +74,7 @@ static int telnet_proc_stub(int fd, Socket *sock, HandlerProc *handler)
     return recv_size;
 }
 
-int telnet_handler(int fd, Socket *sock)
+int telnet_handler(int fd, AppeSocket *sock)
 {
     return telnet_proc_stub(fd, sock, NULL);
 }

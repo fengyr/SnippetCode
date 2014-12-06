@@ -85,7 +85,7 @@ static void query_get(SqlQuery &query, void *get_data)
 static void test_sqlite(App *app)
 {
 #ifdef USE_SQLITE
-    SqliteClient *sqlite = app->sqlite_client;
+    AppeSqliteClient *sqlite = appe_create_sqlite_client_instance();
 
     // 第一次打开
     // 只读模式，简单获取单个数据
@@ -183,14 +183,14 @@ static void test_modbus_master()
 {
 #ifdef USE_MODBUS
     int rc;
-    ModbusConfig config;
+    AppeModbusConfig config;
     config.debug_mode = 0;
     config.recovery_mode = MODBUS_ERROR_RECOVERY_NONE;
     config.res_timeout_sec = 1;
     config.res_timeout_usec = 0;
     config.byte_timeout_sec = 1;
     config.byte_timeout_usec = 0;
-    ModbusMaster *modbus_m = create_modbus_master_tcp("127.0.0.1", 1502, NULL);
+    AppeModbusMaster *modbus_m = appe_create_modbus_master_tcp("127.0.0.1", 1502, NULL);
     if (!modbus_m) {
         printf("=================create_modbus_master: %p\n", modbus_m);
         return;
@@ -271,7 +271,7 @@ static void test_modbus_master()
     real = modbus_m->get_float_dcba(shorts);
     printf("modbus_get_float_dcba: UT_REAL=%f, real=%f\n\n", UT_REAL, real);
 
-    free_modbus_master(modbus_m);
+    appe_free_modbus_master(modbus_m);
 #endif
 }
 
@@ -493,7 +493,7 @@ static void test_get_tables()
 #endif
 }
 
-static int slave_recv_call(TcpSlave *slave, void *data, int len)
+static int slave_recv_call(AppeTcpSlave *slave, void *data, int len)
 {
 
     if (len <=0) {
@@ -507,7 +507,7 @@ static int slave_recv_call(TcpSlave *slave, void *data, int len)
     return 0;
 }
 
-static int slave_recv_call2(TcpSlave *slave, void *data, int len)
+static int slave_recv_call2(AppeTcpSlave *slave, void *data, int len)
 {
     if (len <=0) {
         printf("==========slave_recv_call2: server quit==========\n");
@@ -524,19 +524,19 @@ static void test_slave_groups(App *app)
     int slave_id = 0;
     char slave_name[64];
 
-    TcpSlaveGroups *groups = app->tcp_slave_groups;
+    AppeTcpSlaveGroups *groups = app->tcp_slave_groups;
 
     // 宏定义最大客户端数量为256
     for (i = 0; i < 256; i++) {
         memset(slave_name, 0, sizeof(slave_name));
         sprintf(slave_name, "slave-%d", i);
         groups->register_slave(groups, slave_name, "127.0.0.1", 9001);
-        TcpSlave *slave = groups->get_slave(groups, slave_name);
+        AppeTcpSlave *slave = groups->get_slave(groups, slave_name);
     }
 
-    TcpSlave *slave = groups->get_slave(groups, slave_name);
+    AppeTcpSlave *slave = groups->get_slave(groups, slave_name);
 
-    static RecvHandler s_recv_handler;
+    static AppeRecvHandler s_recv_handler;
     s_recv_handler.req_size = 16;
     s_recv_handler.recv_timeout = 0;
     s_recv_handler.onRecvAndReplay = slave_recv_call;
@@ -585,29 +585,29 @@ static void test_server_groups(App *app)
 
     char server_name[64];
     Options *options = app->options;
-    TcpServerGroups *groups = app->tcp_server_groups;
+    AppeTcpServerGroups *groups = app->tcp_server_groups;
 
     // 宏定义最大服务端数量为128
     for (i = 0; i < 128; i++) {
         memset(server_name, 0, sizeof(server_name));
         sprintf(server_name, "tcp-%d", i);
         groups->register_server(groups, ENUM_SERVER_TCP_ASCII, server_name, options->cmd.server_ip_addr, options->cmd.server_port + i);
-        /* TelnetServer *server = (TelnetServer*) groups->get_server(groups, server_name); */
+        /* AppeTelnetServer *server = (AppeTelnetServer*) groups->get_server(groups, server_name); */
         /* printf("tcp name:%s, %p\n", server_name, server); */
 
         memset(server_name, 0, sizeof(server_name));
         sprintf(server_name, "telnet-%d", i);
         groups->register_server(groups, ENUM_SERVER_TELNET, server_name, options->cmd.server_ip_addr, 31018 + i);
-        /* TelnetServer *server2 = (TelnetServer*) groups->get_server(groups, server_name); */
+        /* AppeTelnetServer *server2 = (AppeTelnetServer*) groups->get_server(groups, server_name); */
         /* printf("telnet name:%s, %p\n", server_name, server2); */
     }
 }
 
 static void test_register_telnet_proc(App *app)
 {
-    TcpServerGroups *groups = app->tcp_server_groups;
-    TelnetServer *server = (TelnetServer*) groups->get_server(groups, "telnet-0");
-    static EventHandler s_telnet_handler;
+    AppeTcpServerGroups *groups = app->tcp_server_groups;
+    AppeTelnetServer *server = (AppeTelnetServer*) groups->get_server(groups, "telnet-0");
+    static AppeEventHandler s_telnet_handler;
 
     s_telnet_handler.handler_type = HANDLER_TYPE_TELNET;
     s_telnet_handler.onRecvAndReplay = telnet_handler;
@@ -616,12 +616,12 @@ static void test_register_telnet_proc(App *app)
 
 static void test_register_tcp_handler(App *app)
 {
-    TcpServerGroups *groups = app->tcp_server_groups;
-    TcpServer *server = (TcpServer*) groups->get_server(groups, "tcp-0");
-    static EventHandler s_ui_control_handler;
-    static EventHandler s_img_data_handler;
-    static EventHandler s_mobile_handler;
-    static EventHandler s_modbus_handler;
+    AppeTcpServerGroups *groups = app->tcp_server_groups;
+    AppeTcpServer *server = (AppeTcpServer*) groups->get_server(groups, "tcp-0");
+    static AppeEventHandler s_ui_control_handler;
+    static AppeEventHandler s_img_data_handler;
+    static AppeEventHandler s_mobile_handler;
+    static AppeEventHandler s_modbus_handler;
 
     /* 注册界面控制类型的处理方法 */
     s_ui_control_handler.handler_type = HANDLER_TYPE_1;
@@ -684,14 +684,14 @@ static void test_object_array(int size)
 {
     ArrayObj obj_array;
 
-    array_obj_init(&obj_array, free_message);
+    array_obj_init(&obj_array, appe_free_message);
 
     /* 添加数据前，打印数组信息 */
     dump_object_array(&obj_array); 
 
     int i = 0;
     for (i = 0; i < size; i++) {
-        Message *obj = (Message*)create_empty_message(i);
+        Message *obj = (Message*)appe_create_empty_message(i);
 
         array_obj_add((void*)obj, &obj_array);
     }
@@ -706,11 +706,11 @@ static void test_object_array(int size)
 static void test_list(int size)
 {
     List list;
-    list_init(&list, free_message);
+    list_init(&list, appe_free_message);
 
     int i = 0;
     for (i = 0; i < size; i++) {
-        Message *obj = (Message*)create_empty_message(i);
+        Message *obj = (Message*)appe_create_empty_message(i);
         list_insert_next(&list, NULL, obj);
     }
 
@@ -803,25 +803,25 @@ static int handler_message(struct message_handler_t *handler, struct message_t *
             {
                 on_msg_start(handler, msg);
 
-                Message *new_msg = (Message*)create_empty_message(MSG_SEP_1); 
-                trans_message(new_msg);
+                Message *new_msg = (Message*)appe_create_empty_message(MSG_SEP_1); 
+                appe_trans_message(new_msg);
                 break;
             }
         case MSG_SEP_1: 
             {
                 on_msg_step_1(handler, msg);
 
-                Message *new_msg = (Message*)create_message(MSG_SEP_2, 10, 100, (void*)"hello world"); 
-                trans_message(new_msg);
+                Message *new_msg = (Message*)appe_create_message(MSG_SEP_2, 10, 100, (void*)"hello world"); 
+                appe_trans_message(new_msg);
                 break;
             }
         case MSG_SEP_2: 
             {
                 on_msg_step_2(handler, msg);
 
-                /* Message *new_msg = (Message*)create_empty_message(MSG_ON_EXIT);  */
-                Message *new_msg = (Message*)create_empty_message(MSG_ON_START); 
-                trans_message(new_msg);
+                /* Message *new_msg = (Message*)appe_create_empty_message(MSG_ON_EXIT);  */
+                Message *new_msg = (Message*)appe_create_empty_message(MSG_ON_START); 
+                appe_trans_message(new_msg);
                 break;
             }
 
@@ -909,7 +909,7 @@ int on_app_process(struct app_runtime_t *app)
 
     // MYSQL
     /* test_mysql();
-     * test_get_tables();   */
+     * test_get_tables();    */
 
     // SQLITE
     test_sqlite(app);
@@ -921,8 +921,8 @@ int on_app_process(struct app_runtime_t *app)
     /* test_slave_groups(app); */
 
     // SERVER GROUP
-    /* test_server_groups(app); */
-    /* test_register_tcp_handler(app);  */
+    /* test_server_groups(app);
+     * test_register_tcp_handler(app);  */
 
     // MODULE
     /* test_module_serial(); */

@@ -22,27 +22,27 @@
 extern "C" {
 #endif
 
-#include "connection.h"
+#include "appe_socket_in.h"
 
 struct telnet_server_t {
-    Socket *sock;
+    AppeSocket *sock;
 
     int (*init)(struct telnet_server_t*, const char*, const char*, int);
     void (*run)(struct telnet_server_t*, int);
     void (*quit)(struct telnet_server_t*);
-    void (*register_event_handler)(struct telnet_server_t *server, EventHandler *handler);
+    void (*register_event_handler)(struct telnet_server_t *server, AppeEventHandler *handler);
 };
-typedef struct telnet_server_t TelnetServer, *PTelnetServer;
+typedef struct telnet_server_t AppeTelnetServer, *PAppeTelnetServer;
 
 #define TELNET_BUF_SIZE     1024    // 等于MSG_MAX
 
 struct telnet_proc_t {
     char telnet_cmd[TELNET_BUF_SIZE];
-    int (*telnet_proc_handler)(int fd, char *msg, Socket *sock);
+    int (*telnet_proc_handler)(int fd, char *msg, AppeSocket *sock);
 };
-typedef struct telnet_proc_t TelnetProc, *PTelnetProc;
+typedef struct telnet_proc_t AppeTelnetProc, *PAppeTelnetProc;
 
-TelnetServer* create_telnet_server_instance();
+AppeTelnetServer* appe_create_telnet_server_instance();
 
 #ifdef __cplusplus
 }
