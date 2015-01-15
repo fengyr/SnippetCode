@@ -24,11 +24,13 @@
 #include "hashtable.h"
 #include "hashmap.h"
 #include "object.h"
+#include "rb-tree.h"
 
 /* #define TEST_ARRAY */
 /* #define TEST_LIST */
 /* #define TEST_HASHTABLE */
-#define TEST_HASHMAP
+/* #define TEST_HASHMAP */
+#define TEST_RBTREE
 
 struct object_array g_object_array; 
 struct list_t g_List;
@@ -236,6 +238,74 @@ void test_hashmap(int size)
     hashmap_free(mymap);
 }
 
+void test_rb_tree_new();
+void test_rb_tree_free();
+void test_rb_tree_child();
+void test_rb_tree_insert_lookup();
+void test_rb_tree_lookup();
+void test_out_of_memory();
+
+static int int_compare(void *vlocation1, void *vlocation2)
+{
+	int *location1;
+	int *location2;
+
+	location1 = (int *) vlocation1;
+	location2 = (int *) vlocation2;
+
+	if (*location1 < *location2) {
+		return -1;
+	} else if (*location1 > *location2) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
+void test_rb_tree()
+{
+    test_rb_tree_new();
+	test_rb_tree_free();
+	test_rb_tree_child();
+	test_rb_tree_insert_lookup();
+	test_rb_tree_lookup();
+	test_out_of_memory();
+    
+    RBTree *tree;
+	RBTreeNode *node;
+	void *key_val, *val_val;
+    int NUM_TEST_VALUES = 1000000;
+	int values[NUM_TEST_VALUES];
+    int i;
+    for (i = 0; i < NUM_TEST_VALUES; i++) {
+        values[i] = i;
+    }
+
+    // 创建树
+	tree = rb_tree_new((RBTreeCompareFunc) int_compare);
+
+    // 插入数据
+	for (i=0; i<NUM_TEST_VALUES; ++i) {
+		rb_tree_insert(tree, &values[i], &values[i]);
+	}
+
+    // 查找数据
+    for (i=0; i<NUM_TEST_VALUES; ++i) {
+		node = rb_tree_lookup_node(tree, &i);
+		assert(node != NULL);
+		key_val = rb_tree_node_key(node);
+		val_val = rb_tree_node_value(node);
+		printf("%02d, key=%d, val=%d\n", i, *((int*)key_val), *((int*)val_val));
+	}
+
+    // 查找错误数据
+    int key = -1;
+	node = rb_tree_lookup_node(tree, &key);
+    printf("key error, node=%p\n", node);
+
+	rb_tree_free(tree);
+}
+
 int main(int argc, const char *argv[])
 {
 #ifdef TEST_ARRAY
@@ -263,6 +333,11 @@ int main(int argc, const char *argv[])
 #ifdef TEST_HASHMAP
     test_hashmap(10);
 #endif
+
+#ifdef TEST_RBTREE
+    test_rb_tree(); 
+#endif
+
     
     return 0;
 }

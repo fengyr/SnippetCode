@@ -18,11 +18,11 @@
 #ifndef _command_line_H_
 #define _command_line_H_
 
+#include "appe_app.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include "appe_options_in.h"
 
 //////////////////////////////////////////////////////
 //          配置文件参数结构                        //
