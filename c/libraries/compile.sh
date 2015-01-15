@@ -45,3 +45,11 @@ make clean
 make
 cp $SRC/zlog-1.2.12/libzlog.a $SRC/app_engine/libs/
 cd $SRC
+
+echo "========= update gtksdl... ========="
+cd $SRC/gtksdl
+make clean
+make
+cp $SRC/gtksdl/include/gtksdl.h $SRC/app_engine/include/core/utils/
+cp $SRC/gtksdl/libgtksdl.a $SRC/app_engine/libs/
+cd $SRC
