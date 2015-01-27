@@ -2,31 +2,28 @@
 
 using namespace std;
 
-class Base1 {
- public :
-  virtual void f() { cout << "Base1::f" << endl; }
-  virtual void g() { cout << "Base1::g" << endl; }
-  virtual void h() { cout << "Base1::h" << endl; }
+class A {
+    public :
+        virtual void hello() { cout << "A::hello" << endl; }
+        virtual void hi() { cout << "A::hi" << endl; }
 };
 
-class Base2 {
- public :
-  virtual void f() { cout << "Base2::f" << endl; }
-  virtual void g() { cout << "Base2::g" << endl; }
-  virtual void h() { cout << "Base2::h" << endl; }
+class B {
+    public :
+        virtual void hello() { cout << "B::hello" << endl; }
+        virtual void hi() { cout << "B::hi" << endl; }
 };
 
-class Base3 {
- public :
-  virtual void f() { cout << "Base3::f" << endl; }
-  virtual void g() { cout << "Base3::g" << endl; }
-  virtual void h() { cout << "Base3::h" << endl; }
+class C {
+    public :
+        virtual void hello() { cout << "C::hello" << endl; }
+        virtual void hi() { cout << "C::hi" << endl; }
 };
 
-class Derive : public Base1, public Base2, public Base3 {
- public :
-  virtual void f() { cout << "Derive::f" << endl; }
-  virtual void g1() { cout << "Derive::g1" << endl; }
+class ABC : public A, public B, public C {
+    public :
+        virtual void hello() { cout << "ABC::hello" << endl; }
+        virtual void say_hi() { cout << "ABC::say_hi" << endl; }
 };
 
 typedef void (*Fun)(void);
@@ -34,66 +31,55 @@ typedef void (*Fun)(void);
 int main()
 {
     Fun pFun = NULL;
-    Derive d;
-    int ** pVtab = (int **)&d;
+    ABC abc;
+    int **pVtab = (int **)&abc;
 
-    /************************  Base1's vtable ************************/
-    std::cout << "Base1's vtable" << std::endl;
-    //pFun = (Fun)*((int*)*(int*)((int*)&d+0)+0);
-    pFun = (Fun)pVtab[0 ][0 ];
+    /************************  A的虚表 ************************/
+    std::cout << "=========== A类虚表 ===========" << std::endl;
+    pFun = (Fun)*((int*)(*((int*)&abc+0)+0));
+    // pFun = (Fun)pVtab[0][0];
     pFun();
 
-    //pFun = (Fun)*((int*)*(int*)((int*)&d+0)+1);
-    pFun = (Fun)pVtab[0 ][1 ];
+    pFun = (Fun)*((int*)(*(int*)((int*)&abc+0)+1));
+    // pFun = (Fun)pVtab[0][1];
     pFun();
 
-    //pFun = (Fun)*((int*)*(int*)((int*)&d+0)+2);
-    pFun = (Fun)pVtab[0 ][2 ];
-    pFun();
-
-    //Derive's vtable
-    //pFun = (Fun)*((int*)*(int*)((int*)&d+0)+3);
-    pFun = (Fun)pVtab[0 ][3 ];
+    pFun = (Fun)*((int*)(*((int*)&abc+0)+2));
+    // pFun = (Fun)pVtab[0][2];
     pFun();
 
     //The tail of the vtable
-    pFun = (Fun)pVtab[0 ][4 ];
+    pFun = (Fun)pVtab[0][3];
     cout<<pFun<<endl;
     cout<<"\n";
 
-    /************************  Base2's vtable ************************/
-    std::cout << "Base2's vtable" << std::endl;
-    //pFun = (Fun)*((int*)*(int*)((int*)&d+1)+0);
-    pFun = (Fun)pVtab[1 ][0 ];
+    /************************  B类虚表 ************************/
+    std::cout << "=========== B类虚表 ===========" << std::endl;
+    //pFun = (Fun)*((int*)*(int*)((int*)&abc+1)+0);
+    pFun = (Fun)pVtab[1][0];
     pFun();
 
-    //pFun = (Fun)*((int*)*(int*)((int*)&d+1)+1);
-    pFun = (Fun)pVtab[1 ][1 ];
-    pFun();
-
-    pFun = (Fun)pVtab[1 ][2 ];
+    //pFun = (Fun)*((int*)*(int*)((int*)&abc+1)+1);
+    pFun = (Fun)pVtab[1][1];
     pFun();
 
     //The tail of the vtable
-    pFun = (Fun)pVtab[1 ][3 ];
+    pFun = (Fun)pVtab[1][2];
     cout<<pFun<<endl;
     cout<<"\n";
 
-    /************************  Base3's vtable ************************/
-    std::cout << "Base3's vtable" << std::endl;
-    //pFun = (Fun)*((int*)*(int*)((int*)&d+1)+0);
-    pFun = (Fun)pVtab[2 ][0 ];
+    /************************  C类虚表 ************************/
+    std::cout << "=========== C类虚表 ===========" << std::endl;
+    //pFun = (Fun)*((int*)*(int*)((int*)&abc+1)+0);
+    pFun = (Fun)pVtab[2][0];
     pFun();
 
-    //pFun = (Fun)*((int*)*(int*)((int*)&d+1)+1);
-    pFun = (Fun)pVtab[2 ][1 ];
-    pFun();
-
-    pFun = (Fun)pVtab[2 ][2 ];
+    //pFun = (Fun)*((int*)*(int*)((int*)&abc+1)+1);
+    pFun = (Fun)pVtab[2][1];
     pFun();
 
     //The tail of the vtable
-    pFun = (Fun)pVtab[2 ][3 ];
+    pFun = (Fun)pVtab[2][2];
     cout<<pFun<<endl;
 
     return 0 ;

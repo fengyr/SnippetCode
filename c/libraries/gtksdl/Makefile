@@ -25,7 +25,7 @@ EXTRA_SRC 		=
 EXCLUDE_FILES 	= 
 # 源文件后缀
 SUFFIX 			= c cpp cc cxx
-EXTRA_OBJS      = 
+EXTRA_OBJS      = /usr/lib/i386-linux-gnu/libglib-2.0.so
 
 # 目标名称和类型，不需要考虑后缀名，定义多个名称实际上多个拷贝
 # 如：$(OUT_DIR)/main 

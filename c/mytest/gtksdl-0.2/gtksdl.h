@@ -19,8 +19,6 @@
 # ifndef __GTK_SDL_H__
 # define __GTK_SDL_H__
 
-# ifdef USE_GTKSDL
-
 # include <stdlib.h>
 
 # include <gtk/gtk.h>
@@ -129,8 +127,6 @@ void gtk_sdl_update_roi(GtkSDL *sdl, void *pixels,
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif
 
 #endif /* __GTK_SDL_H__ */
