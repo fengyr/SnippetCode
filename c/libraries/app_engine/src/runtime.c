@@ -21,6 +21,12 @@
 #include <assert.h>
 #include <string.h>
 
+#include <opencv2/opencv.hpp>
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/calib3d/calib3d.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
 #include "runtime.h"
 #include "options.h"
 
@@ -28,9 +34,79 @@
 #include "telnet_proc.h"
 #include "ui_interface.h"
 
-#ifdef USE_MYSQL
-static MysqlClient *s_client;
+#ifdef USE_GTKSDL
+static GtkBuilder *s_gtk_builder;
+static GtkWidget *sdl_widget;
+static int pic_id = 0;
 #endif
+
+#ifdef USE_GTKSDL
+static int cb_update(void *user_data)
+{
+    time_t now;
+    struct tm *l_time;
+    gchar buf[100];
+    now=time((time_t *)NULL);
+    l_time=localtime(&now);
+    sprintf(buf,"%d:%d:%d",l_time->tm_hour,l_time->tm_min,l_time->tm_sec);
+    printf("buf=%s ", buf);
+
+    GtkSDL *sdl = (GtkSDL*) user_data;
+    char pic_path[10];
+    memset(pic_path, 0, sizeof(pic_path));
+
+    pic_id++;
+    if (pic_id > 4) {
+        pic_id = 1;
+    }
+
+    sprintf(pic_path, "./%d.png", pic_id);
+    printf("image=%s\n", pic_path);
+    cv::Mat img = cv::imread(pic_path);
+    cvtColor(img, img, CV_BGR2RGB);
+
+    gtk_sdl_update(sdl, img.data, img.cols, img.rows, 24, img.step);
+
+    return 1;
+}
+#endif
+
+static void test_gtk_sdl()
+{
+#ifdef USE_GTKSDL
+    // 初始化gtk
+    g_thread_init(NULL);
+    gdk_threads_init();
+	gtk_init(NULL, NULL);
+    s_gtk_builder = gtk_builder_new();
+    gtk_builder_add_from_file(s_gtk_builder, "./ui.glade", NULL);
+    gtk_builder_connect_signals(s_gtk_builder, NULL);
+
+    // 初始化gtk_sdl
+    gtk_sdl_init();
+
+    // 加载界面
+    GtkWidget *window_top= (GtkWidget*)gtk_builder_get_object(s_gtk_builder, "window_top");
+    GtkWidget *hbox1= (GtkWidget*)gtk_builder_get_object(s_gtk_builder, "hbox1");
+
+	sdl_widget = gtk_sdl_new(400, 400);
+    
+    gint timeout_id = gtk_timeout_add(50, cb_update, (void*)sdl_widget);
+    gtk_object_set_data( GTK_OBJECT (sdl_widget), "timeout_id", (gpointer)timeout_id );
+
+    gtk_container_add(GTK_CONTAINER(hbox1), sdl_widget);
+    gtk_widget_show(sdl_widget);
+
+    gtk_widget_show(window_top);
+
+    gdk_threads_enter();
+    gtk_main();
+    gdk_threads_leave();
+
+    // 释放gtk_sdl资源
+    gtk_sdl_free();
+#endif
+}
 
 #ifdef USE_SQLITE
 static void query_bind_blob2(SqlQuery &query, void *bind_data)
@@ -307,6 +383,10 @@ static void test_module_serial()
     }
 #endif
 }
+
+#ifdef USE_MYSQL
+static MysqlClient *s_client;
+#endif
 
 static void set_tables()
 {
@@ -912,10 +992,10 @@ int on_app_process(struct app_runtime_t *app)
      * test_get_tables();    */
 
     // SQLITE
-    test_sqlite(app);
+    /* test_sqlite(app); */
 
     // MODBUS
-    test_modbus_master();
+    /* test_modbus_master(); */
 
     // SLAVE GROUP
     /* test_slave_groups(app); */
@@ -932,6 +1012,8 @@ int on_app_process(struct app_runtime_t *app)
 
     // TELNET SERVER
     /* test_register_telnet_proc(app);   */
+
+    test_gtk_sdl();
 
     return 1;
 }

@@ -69,7 +69,7 @@ typedef struct modbus_config_t {
 } AppeModbusConfig, *PAppeModbusConfig;
 
 typedef struct modbus_master_t {
-    modbus_t        *ctx;
+    modbus_t            *ctx;
     AppeModbusConfig    config;
 
     /* 读多个线圈，功能码0x01，返回读入的字节数，否则返回-1 */

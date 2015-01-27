@@ -60,6 +60,7 @@ extern "C" {
 #include "threadpool.h"
 #include "taskmanager.h"
 #include "SimpleIni.h"
+#include "gtksdl.h"
 
 /* <core> */
 #include "appe_debug.h"
@@ -71,32 +72,45 @@ extern "C" {
 #include "appe_options_in.h"
 
 struct app_runtime_t {
-    // 命令行参数
-    Options *options;
-
-    // 内部接口
+    ////////////////////////////////
+    ///         内部接口         ///
+    ////////////////////////////////
+    // 消息机制
     MessageQueue *msg_queue;
     AppeLooper *looper;
+    void (*register_message_handler)(HandlerMessage handler, int thread_mode);
 
-    // 外部接口
-    AppeTcpServerGroups *tcp_server_groups;
-    AppeTcpSlaveGroups *tcp_slave_groups;
-    TaskManager *task_manager;
-    Logger *logger;
-
-    // init && destory
+    // 初始化和销毁
     void (*init)(struct app_runtime_t *app);
     void (*run)(struct app_runtime_t *app);
     void (*quit)(struct app_runtime_t *app);
 
+    // 命令行解析
     void (*parse_options)(struct app_runtime_t *app, Options *options);
     void (*save_options)(struct app_runtime_t *app, Options *options, char *config_file_path);
 
-    void (*register_message_handler)(HandlerMessage handler, int thread_mode);
+    ////////////////////////////////
+    ///         外部接口         ///
+    ////////////////////////////////
+    // 命令行参数
+    Options *options;
 
-    // app engine version
+    // 网络接口
+    AppeTcpServerGroups *tcp_server_groups;
+    AppeTcpSlaveGroups *tcp_slave_groups;
+    
+    // 线程管理
+    TaskManager *task_manager;
+
+    // 日志记录
+    Logger *logger;
+
+    // 版本信息
     const char* (*version)(const char *min_ver, const char *mac_ver);
 
+    ////////////////////////////////
+    ///         框架接口         ///
+    ////////////////////////////////
     // 用户自定义方法，在App的生命周期中被调用
     int (*onCreate)(struct app_runtime_t *app);
     int (*onDestory)(struct app_runtime_t *app);

@@ -13,13 +13,14 @@ EXTRA_CFLAGS    += -g -DUSE_DEBUG -rdynamic
 LDFLAGS         := -pthread -lm -lrt -lstdc++ -ldl
 
 TARGET          := libapp.so
-TARGET_TYPE     := so
+TARGET_TYPE     := app
 
 ###########################################################
 USE_MYSQL 		:= FALSE
-USE_SQLITE 		:= TRUE
-USE_MODBUS 		:= TRUE
-USE_DEVICE 		:= TRUE
+USE_SQLITE 		:= FALSE
+USE_MODBUS 		:= FALSE
+USE_DEVICE 		:= FALSE
+USE_GTKSDL 		:= TRUE
 
 # 第三方库配置
 ifeq ($(USE_MYSQL),TRUE)
@@ -36,6 +37,10 @@ endif
 
 ifeq ($(USE_DEVICE),TRUE)
 EXTRA_CFLAGS    += -DUSE_DEVICE
+endif
+
+ifeq ($(USE_GTKSDL),TRUE)
+EXTRA_CFLAGS    += -DUSE_GTKSDL
 endif
 ###########################################################
 
@@ -81,6 +86,34 @@ EXTRA_OBJS  =   ./libs/libstruct.a \
 				./libs/libthreadpool.a \
 
 ###########################################################
+
+# gtksdl相关配置
+ifeq ($(USE_GTKSDL),TRUE)
+INC_DIR	    +=
+
+SRC_DIR 	+=
+
+LDFLAGS     += 	`sdl-config --libs` \
+				`pkg-config --libs gtk+-2.0 gthread-2.0` \
+				-L/usr/lib/i386-linux-gnu \
+
+
+EXTRA_CFLAGS += `sdl-config --cflags` \
+				`pkg-config --cflags gtk+-2.0 gthread-2.0` \
+				`pkg-config --cflags opencv` \
+
+# 静态库放在前面
+EXTRA_OBJS  += ./libs/libgtksdl.a \
+			   /usr/lib/i386-linux-gnu/libglib-2.0.so \
+
+# 链接库放在后面
+EXTRA_OBJS  += 	`sdl-config --libs` \
+				`pkg-config --libs gtk+-2.0 gthread-2.0` \
+				`pkg-config --libs opencv` \
+
+endif
+#---------------------------------------------------------#
+
 # mysql数据库相关配置
 ifeq ($(USE_MYSQL),TRUE)
 INC_DIR	    += 	/usr/local/mysql/include/mysql \
@@ -127,6 +160,7 @@ SRC_DIR 	+= 	./src/core/dev/ \
 EXTRA_OBJS  += 	/usr/lib/i386-linux-gnu/libdl.so \
 
 endif
+#---------------------------------------------------------#
 ###########################################################
 # 如果编译目标是可执行程序，
 # 则需要加入测试相关代码。
