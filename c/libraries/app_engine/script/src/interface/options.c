@@ -35,12 +35,13 @@ static Tag tags[] = {
     {"--help", TAGTYPE_BOOL, &s_options.cmd.help_mode},
 };
 
-// 命令行参数初始化
 int initOptions(Options *options, int argc, const char *argv[])
 {
     memset(options, 0, sizeof(Options));
     CmdLine *cmd = &(options->cmd);
     Ini *ini = &(options->ini);
+
+    /* 以下代码对命令行参数进行初始化 */
 
     //////////////////  命令行参数默认配置 //////////////////
     /* 配置文件路径 */
@@ -65,6 +66,8 @@ int iniParseHook(void* user, const char* section,
 {
     Ini* ini = (Ini*) user;
 
+    /* 在以下代码中解析配置文件参数 */
+
     /* if (MATCH(key, "param3")) {
      *     printf("section=%s, key=%s, value=%s\n", section, key, value);
      * } else if (MATCH(key, "param1")) {
@@ -78,22 +81,26 @@ int iniParseHook(void* user, const char* section,
     return 0;
 }
 
-int formatOptions(Options *options, char *buf, int buf_size)
+int formatOptions(Options *options, char *ops_fmt_buf, int buf_size)
 {
+    /* 格式化配置文件的文本字符串，写入到ops_fmt_buf内存中 */
+
     char tmp[1024];
     memset(tmp, 0, sizeof(tmp));
     sprintf(tmp, "[Param1]\nParam1 = %s\n", "hello");
-    strcat(buf, tmp);
+    strcat(ops_fmt_buf, tmp);
 
     memset(tmp, 0, sizeof(tmp));
     sprintf(tmp, "[Param2]\nParam2 = %d\n", 100);
-    strcat(buf, tmp); 
+    strcat(ops_fmt_buf, tmp); 
 
     return OPTIONS_WRITE;
 }
 
 void printUsage(Options *options)
 {
+    /* 打印帮助信息 */
+
     if (options->cmd.help_mode) {
         printf("Usage: App [OPTIONS] [VALUE]                        \n");
         printf("                                                    \n");
@@ -114,6 +121,8 @@ void printUsage(Options *options)
 
 void printOptions(Options *options)
 {
+    /* 打印可选参数信息 */
+
     DEBUG("-----------dump command line ------------\n");
     DEBUG("config_file_path: %s\n", options->cmd.config_file_path);
     DEBUG("server_ip_addr: %s\n", options->cmd.server_ip_addr);
@@ -124,6 +133,8 @@ void printOptions(Options *options)
 
 int pushTags(Options *options, Tag **tag)
 {
+    /* 以下代码请勿修改 */
+
     Tag *tags_p = tags;
     *tag = tags_p;
 
@@ -132,6 +143,8 @@ int pushTags(Options *options, Tag **tag)
 
 int pushIni(Options *options, Ini **ini)
 {
+    /* 以下代码请勿修改 */
+
     *ini = &options->ini;
 
     return 0;
@@ -139,6 +152,8 @@ int pushIni(Options *options, Ini **ini)
 
 int pushOptions(Options **options)
 {
+    /* 以下代码请勿修改 */
+
     Options *ops = &s_options;
 
     *options = ops;

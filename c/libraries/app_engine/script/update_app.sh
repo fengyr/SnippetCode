@@ -28,7 +28,7 @@ function init()
 function update()
 {
     echo "remove old so"
-    rm -f $PWD/libs/libapp.so
+    rm -f $PWD/libs/libapp_main.so
 
     # 1. 拷贝所需的app_engine头文件，排除interface目录、runtime.h以及options.h
     echo "========== update include =========="
@@ -39,8 +39,8 @@ function update()
         --exclude=*.swp
 
     # 2. 最终更新的目标库文件
-    echo "========== update libapp.so =========="
-    cp $SRC/$FOLD_CODE/libapp.so libs/
+    echo "========== update libapp_main.so =========="
+    cp $SRC/$FOLD_CODE/libapp_main.so libs/
 
     # 以下为应用相关的第三方库和头文件
     echo "========== update other so=========="

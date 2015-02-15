@@ -13,7 +13,7 @@ EXTRA_CFLAGS    += -g -DUSE_DEBUG -rdynamic
 LDFLAGS         := -pthread -lm -lrt -lstdc++ -ldl
 
 TARGET          := libapp_main.so
-TARGET_TYPE     := app
+TARGET_TYPE     := so
 
 ###########################################################
 USE_MYSQL 		:= FALSE

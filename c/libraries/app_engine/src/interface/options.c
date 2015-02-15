@@ -103,9 +103,9 @@ void printUsage(Options *options)
     }
 }
 
-int formatOptions(Options *options, char *buf, int buf_size)
+int formatOptions(Options *options, char *ops_fmt_buf, int buf_size)
 {
-    sprintf(buf, "[%s]\nparam1=%d\n[%s]\nparam2=%f\n[%s]\nparam3=%s\n", 
+    sprintf(ops_fmt_buf, "[%s]\nparam1=%d\n[%s]\nparam2=%f\n[%s]\nparam3=%s\n", 
             "UseBWenh", 111000, "ParamNum", 22.000, "CameraFile", "./camera.conf");     
     return OPTIONS_WRITE;
 }

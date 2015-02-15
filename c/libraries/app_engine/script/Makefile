@@ -54,7 +54,7 @@ SUFFIX 			= c cpp cc cxx
 # 第三方的库需要在这里写全路径名
 # 例如：/usr/local/lib/libprotobuf.so
 # 否则无法找到符号
-EXTRA_OBJS      = ./libs/libapp.so
+EXTRA_OBJS      = ./libs/libapp_main.so
 
 # 其他的任务
 .other_task:
