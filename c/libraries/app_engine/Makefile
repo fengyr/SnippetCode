@@ -12,7 +12,7 @@ DEFS            :=
 EXTRA_CFLAGS    += -g -DUSE_DEBUG -rdynamic
 LDFLAGS         := -pthread -lm -lrt -lstdc++ -ldl
 
-TARGET          := libapp.so
+TARGET          := libapp_main.so
 TARGET_TYPE     := app
 
 ###########################################################
@@ -20,7 +20,7 @@ USE_MYSQL 		:= FALSE
 USE_SQLITE 		:= FALSE
 USE_MODBUS 		:= FALSE
 USE_DEVICE 		:= FALSE
-USE_GTKSDL 		:= TRUE
+USE_GTKSDL 		:= FALSE
 
 # 第三方库配置
 ifeq ($(USE_MYSQL),TRUE)

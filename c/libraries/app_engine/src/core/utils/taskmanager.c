@@ -45,16 +45,14 @@ static int __add_task(struct taskmanager_t *task_manager,
 {
     App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
-    char info[64];
 
     if ((task_manager != NULL) && (task_manager->pool != NULL)) {
         int error;
         error = threadpool_add(task_manager->pool, task, param, 0);
         if (error < 0) {
-            memset(info, 0, sizeof(info));
-            sprintf(info, "TaskManager: Add Task Failed, code: %d.", error);
-            logger->log_e(logger, info);
+            logger->log_e(logger, "TaskManager: Add Task Failed, code: %d.", error);
             DEBUG("TaskManager add task: Failed.");
+            return -1;
         } else {
             DEBUG("TaskManager add task: OK.");
         }
@@ -70,8 +68,7 @@ TaskManager* create_taskmanager_instance()
         s_task_manager = (TaskManager*) malloc(sizeof(TaskManager));
         memset(s_task_manager, 0, sizeof(TaskManager));
 
-        s_task_manager->pool = threadpool_create(TASK_NUM, 
-                                                TASK_QUEUE_SIZE, 0);
+        s_task_manager->pool = threadpool_create(TASK_NUM, TASK_QUEUE_SIZE, 0);
         s_task_manager->add_task = __add_task;
         s_task_manager->destory = __destory;
     }

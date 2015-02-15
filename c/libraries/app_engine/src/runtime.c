@@ -242,7 +242,13 @@ static void test_sqlite(App *app)
 
 static void task_run(TaskParam param)
 {
-    printf("TaskRun add\n");
+    int *id = (int*)param;
+    printf("TaskRun......, %d\n", *id);
+
+    if (id != NULL) {
+        free(id);
+        id = NULL;
+    }
 }
 
 static void test_task_manager(App *app)
@@ -250,8 +256,10 @@ static void test_task_manager(App *app)
     TaskManager *task_manager = app->task_manager;
 
     int i;
-    for (i = 0; i < 256; i++) {
-        task_manager->add_task(task_manager, task_run, NULL);
+    for (i = 0; i < 100; i++) {
+        int *id = (int*)malloc(sizeof(int));
+        *id = i;
+        task_manager->add_task(task_manager, task_run, (void*)id);
     }
 }
 
@@ -1008,12 +1016,13 @@ int on_app_process(struct app_runtime_t *app)
     /* test_module_serial(); */
 
     // TASK MANAGER
-    /* test_task_manager(app); */
+    test_task_manager(app);
 
     // TELNET SERVER
     /* test_register_telnet_proc(app);   */
 
-    test_gtk_sdl();
+    // GTK SDL
+    /* test_gtk_sdl(); */
 
     return 1;
 }

@@ -23,8 +23,10 @@
 #include "options.h"
 #include "appe_app.h"
 
+// 命令行模块静态变量
 static Options s_options;
 
+// 命令行变量类型和参数映射
 static Tag tags[] = {
     {"--config", TAGTYPE_STRING, s_options.cmd.config_file_path},
     {"--localaddr", TAGTYPE_STRING, s_options.cmd.server_ip_addr},
@@ -33,6 +35,7 @@ static Tag tags[] = {
     {"--help", TAGTYPE_BOOL, &s_options.cmd.help_mode},
 };
 
+// 命令行参数初始化
 int initOptions(Options *options, int argc, const char *argv[])
 {
     memset(options, 0, sizeof(Options));
