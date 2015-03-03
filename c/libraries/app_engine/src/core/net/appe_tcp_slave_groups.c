@@ -54,13 +54,18 @@ static int __tcp_slave_groups_register(AppeTcpSlaveGroups *groups,
     App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
     
-    if (groups->slave_count >= MAX_SLAVES) {
-        logger->log_e(logger, "Net: Slave Register, Groups Is Full.");
+    if (!groups || (groups->slave_count >= MAX_SLAVES)) {
+        logger->log_e(logger, "Net: Slave Register, Groups Is Full or NULL.");
         return -1; 
     }
 
-    if (!strcmp(slave_name, "")) {
+    if (!slave_name || !strcmp(slave_name, "")) {
         logger->log_e(logger, "Net: Slave Register, Slave Name Is NULL.");
+        return -1;
+    }
+
+    if (!server_ip || !strcmp(server_ip, "")) {
+        logger->log_e(logger, "Net: Slave Register, Server IP Is NULL.");
         return -1;
     }
 
@@ -124,6 +129,11 @@ static int __tcp_slave_groups_destroy(AppeTcpSlaveGroups *groups)
     AppeTcpSlave *slave = NULL;
     App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
+
+    if (!groups) {
+        DEBUG("tcp_slave_groups_destroy: groups == NULL\n");
+        return -1; 
+    }
 
     DEBUG("tcp_slave_groups_destroy: BEGIN\n");
     int i;

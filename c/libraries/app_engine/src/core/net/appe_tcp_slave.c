@@ -219,7 +219,7 @@ static void* thread_slave_recv(void *param)
 
 int appe_slave_register_handler(AppeTcpSlave *slave, AppeRecvHandler *handler)
 {
-    if (!handler) {
+    if (!handler || !slave) {
         return -1;
     }
 

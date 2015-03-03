@@ -25,6 +25,7 @@
 static void __tcp_server_register_event_handler(struct tcp_server_t *server, AppeEventHandler *handler)
 {
     assert(server != NULL);
+    assert(handler != NULL);
 
     appe_registerHandler(server->sock, handler);
 }

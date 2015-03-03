@@ -78,16 +78,21 @@ static int __tcp_server_groups_register(AppeTcpServerGroups *groups,
     App *s_app = appe_get_app_instance();
     Logger *logger = s_app->logger;
 
-    if (groups->server_count >= MAX_SERVERS) {
-        logger->log_e(logger, "Net: Server Register, Groups Is Full.");
+    if (!groups || (groups->server_count >= MAX_SERVERS)) {
+        logger->log_e(logger, "Net: Server Register, Groups Is Full or NULL.");
         return -1; 
     }
 
-    if (!strcmp(server_name, "")) {
+    if (!server_name || !strcmp(server_name, "")) {
         logger->log_e(logger, "Net: Server Register, Server Name Is NULL.");
         return -1;
     }
 
+    if (!server_ip || !strcmp(server_ip, "")) {
+        logger->log_e(logger, "Net: Server Register, Server IP Is NULL.");
+        return -1;
+    }
+    
     int error;
     if (server_type == ENUM_SERVER_TCP_ASCII) {
         // create tcp server instance
